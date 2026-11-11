@@ -177,6 +177,13 @@ public class MainActivity extends BaseActivity
 
     private void setActivityTitle() {
         ActionBar actionBar = Objects.requireNonNull(getSupportActionBar());
+        if (getIntent().getBooleanExtra(getPackageName() + ".BYBOOKMARK", false)) {
+            String title = getIntent().getStringExtra(getPackageName() + ".BOOKMARK_TITLE");
+            if (title != null && !title.isEmpty()) {
+                actionBar.setTitle(title);
+                return;
+            }
+        }
         switch (modeType) {
             case FAVORITE:
                 actionBar.setTitle(R.string.favorite_online_manga);
@@ -601,7 +608,7 @@ public class MainActivity extends BaseActivity
             if (inspector.getGalleries() != null)
                 showDialogDownloadAll();
         } else if (item.getItemId() == R.id.add_bookmark) {
-            Queries.BookmarkTable.addBookmark(inspector);
+            com.maxwai.nclientv3.utility.BookmarkDialogs.showAdd(this, inspector);
         } else if (item.getItemId() == R.id.tag_manager) {
             TagStatus ts = TagV2.updateStatus(inspector.getTag());
             updateTagStatus(item, ts);

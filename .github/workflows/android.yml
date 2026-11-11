@@ -25,6 +25,9 @@ jobs:
             -   name: Grant execute permission for gradlew
                 run: chmod +x gradlew
 
+            -   name: Check bookmark migration and saved queries
+                run: python3 scripts/check_bookmarks.py
+
             -   name: Add empty keystore.properties
                 run: |
                     echo "storePassword=dummy" > keystore.properties

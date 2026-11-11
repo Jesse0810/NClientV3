@@ -25,7 +25,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     static final String DATABASE_NAME = "Entries.db";
-    private static final int DATABASE_VERSION = 13;
+    private static final int DATABASE_VERSION = 14;
     private final Context context;
 
     public DatabaseHelper(Context context1) {
@@ -93,7 +93,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (oldVersion <= 10) db.execSQL(Queries.ResumeTable.CREATE_TABLE);
         if (oldVersion <= 11) updateFavoriteTable(db);
         if (oldVersion <= 12) addStatusTables(db);
+        if (oldVersion <= 13) addBookmarkName(db);
 
+    }
+
+    private void addBookmarkName(SQLiteDatabase db) {
+        // Very old databases may already have created the current table above.
+        try (Cursor columns = db.rawQuery("PRAGMA table_info(Bookmark)", null)) {
+            while (columns.moveToNext())
+                if ("name".equals(columns.getString(columns.getColumnIndexOrThrow("name")))) return;
+        }
+        db.execSQL("ALTER TABLE Bookmark ADD COLUMN name TEXT NOT NULL DEFAULT ''");
     }
 
     private void addStatusTables(SQLiteDatabase db) {

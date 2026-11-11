@@ -441,4 +441,28 @@
     <string name="tag_category_western">western</string>
     <string name="tag_category_artistcg">artistcg</string>
     <string name="tag_category_misc">misc</string>
+
+    <!-- Named, editable saved searches. -->
+    <string name="bookmark_name">Bookmark name</string>
+    <string name="bookmark_edit">Edit bookmark</string>
+    <string name="bookmark_delete">Delete bookmark</string>
+    <string name="bookmark_unnamed">Unnamed bookmark</string>
+    <string name="bookmark_all_content">All content</string>
+    <string name="bookmark_scope_all">All galleries</string>
+    <string name="bookmark_scope_favorites">Online favorites</string>
+    <string name="bookmark_scope_format">Search in: %1$s</string>
+    <string name="bookmark_sort_format">Sort: %1$s</string>
+    <string name="bookmark_include_tag">Include %1$s: %2$s</string>
+    <string name="bookmark_exclude_tag">Exclude %1$s: %2$s</string>
+    <string name="bookmark_unavailable">The saved tag is unavailable. Edit this bookmark to choose new filters.</string>
+    <string name="bookmark_save">Save bookmark</string>
+    <string name="bookmark_saved">Bookmark saved</string>
+    <string name="bookmark_name_required">Enter a bookmark name</string>
+    <string name="bookmark_save_failed">Unable to save. A bookmark with the same conditions may already exist.</string>
+    <string name="bookmark_keywords">Keywords or search expression</string>
+    <string name="bookmark_filter_hint">Tap a tag to include or exclude it. Use its close button to remove it.</string>
+    <string name="bookmark_complex_hint">This custom expression is kept in the keyword field. You can edit it directly; selected tags add more conditions.</string>
+    <string name="bookmark_page_reset_hint">Changing filters opens the first page. Renaming alone keeps the saved page.</string>
+    <string name="invalid_tag_name">Enter a tag name without quotes or backslashes. Put custom expressions in the keyword field.</string>
+    <string name="bookmark_view_conditions">View all conditions</string>
 </resources>

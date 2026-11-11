@@ -1,61 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="4dp"
-    android:layout_marginTop="2dp"
-    android:layout_marginEnd="4dp"
-    android:layout_marginBottom="2dp">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/master_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackground">
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/remove_button"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/bookmark_description"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/page"
-            app:layout_constraintStart_toStartOf="@+id/page"
-            app:layout_constraintTop_toBottomOf="@+id/page"
-            app:srcCompat="@drawable/ic_close" />
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:gravity="center|start"
-            android:minLines="2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/page"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/page"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp" android:layout_marginVertical="4dp">
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/master_layout"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground">
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:orientation="vertical" android:layout_margin="12dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/bookmark_actions"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent">
+            <TextView android:id="@+id/title" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
+            <TextView android:id="@+id/bookmark_conditions" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="8dp"
+                android:maxLines="6" android:ellipsize="end" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bookmark_details"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:minHeight="48dp" android:text="@string/bookmark_view_conditions" />
+            <TextView android:id="@+id/page" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="8dp"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/bookmark_actions" android:layout_width="48dp"
+            android:layout_height="wrap_content" android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <androidx.appcompat.widget.AppCompatImageButton android:id="@+id/edit_bookmark"
+                android:layout_width="48dp" android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/bookmark_edit" app:srcCompat="@drawable/ic_edit" />
+            <androidx.appcompat.widget.AppCompatImageButton android:id="@+id/remove_button"
+                android:layout_width="48dp" android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/bookmark_delete" app:srcCompat="@drawable/ic_close" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

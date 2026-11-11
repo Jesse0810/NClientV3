@@ -59,6 +59,11 @@ public class Ranges implements Parcelable {
         return toPage;
     }
 
+    public int getFromDate() { return fromDate; }
+    public int getToDate() { return toDate; }
+    public TimeUnit getFromDateUnit() { return fromDateUnit; }
+    public TimeUnit getToDateUnit() { return toDateUnit; }
+
     public void setToPage(int toPage) {
         this.toPage = toPage;
     }
@@ -88,7 +93,7 @@ public class Ranges implements Parcelable {
             if (toPage != UNDEFINED) builder.append("pages:<=").append(toPage).append(' ');
         }
 
-        if (fromDate != UNDEFINED && toDate != UNDEFINED && fromDate == toDate) {
+        if (fromDate != UNDEFINED && toDate != UNDEFINED && fromDate == toDate && fromDateUnit == toDateUnit) {
             builder.append("uploaded:").append(fromDate).append(fromDateUnit.val);
         } else {
             if (fromDate != UNDEFINED)

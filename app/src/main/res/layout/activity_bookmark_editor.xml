@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appbar"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar"
+        android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" />
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:fillViewport="true">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/bookmark_name_layout" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:hint="@string/bookmark_name">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/bookmark_name"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="textCapSentences" android:maxLength="120" android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView android:id="@+id/bookmark_scope" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="12dp" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" android:text="@string/bookmark_keywords" />
+            <com.maxwai.nclientv3.components.widgets.CustomSearchView android:id="@+id/search"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                app:iconifiedByDefault="false" />
+            <TextView android:id="@+id/bookmark_complex_hint" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="@string/bookmark_complex_hint"
+                android:visibility="gone" />
+            <TextView android:id="@+id/bookmark_sort_label" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="@string/sort_select_type"
+                android:labelFor="@id/bookmark_sort" />
+            <Spinner android:id="@+id/bookmark_sort" android:layout_width="match_parent"
+                android:layout_height="48dp" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" android:text="@string/bookmark_filter_hint" />
+            <LinearLayout android:id="@+id/groups" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="vertical">
+                <include layout="@layout/search_options_content" />
+            </LinearLayout>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" android:text="@string/bookmark_page_reset_hint" />
+        </LinearLayout>
+    </ScrollView>
+    <com.google.android.material.button.MaterialButton android:id="@+id/save_bookmark"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_margin="12dp" android:text="@string/bookmark_save" />
+</LinearLayout>

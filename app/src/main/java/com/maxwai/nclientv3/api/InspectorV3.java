@@ -143,6 +143,23 @@ public class InspectorV3 extends Thread implements Parcelable {
         return searchInspector(context, null, null, page, Global.getSortType(), null, response);
     }
 
+    /** Restore a complete saved query without adding today's global filters or language. */
+    public static InspectorV3 bookmarkInspector(Context context, String query, int page,
+                                               SortType sortType, boolean favorite, InspectorResponse response) {
+        InspectorV3 inspector = new InspectorV3(context, response);
+        inspector.custom = true;
+        inspector.tags = new HashSet<>();
+        inspector.query = query == null ? "" : query;
+        inspector.page = Math.max(1, page);
+        inspector.pageCount = 0;
+        inspector.sortType = sortType;
+        inspector.requestType = favorite ? ApiRequestType.FAVORITE
+            : inspector.query.isEmpty() ? ApiRequestType.BYALL : ApiRequestType.BYSEARCH;
+        if (inspector.requestType == ApiRequestType.BYALL) inspector.tryByAllPopular();
+        inspector.createUrl();
+        return inspector;
+    }
+
     public static InspectorV3 tagInspector(Context context, Tag tag, int page, SortType sortType, InspectorResponse response) {
         Collection<Tag> tags;
         if (!Global.isOnlyTag()) {

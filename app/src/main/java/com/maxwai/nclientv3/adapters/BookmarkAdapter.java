@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageButton;
@@ -14,9 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.maxwai.nclientv3.BookmarkActivity;
 import com.maxwai.nclientv3.MainActivity;
 import com.maxwai.nclientv3.R;
+import com.maxwai.nclientv3.SearchActivity;
+import com.maxwai.nclientv3.api.InspectorV3;
 import com.maxwai.nclientv3.async.database.Queries;
 import com.maxwai.nclientv3.components.classes.Bookmark;
 import com.maxwai.nclientv3.utility.IntentUtility;
+import com.maxwai.nclientv3.settings.Global;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.List;
 
@@ -41,13 +46,24 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int pos) {
-        final int position = holder.getBindingAdapterPosition();
-        Bookmark bookmark = bookmarks.get(position);
+        Bookmark bookmark = bookmarks.get(pos);
 
-        holder.queryText.setText(bookmark.toString());
+        holder.queryText.setText(bookmark.getDisplayTitle(bookmarkActivity));
+        holder.conditionsText.setText(bookmark.getDisplayConditions(bookmarkActivity));
+        holder.detailsButton.setOnClickListener(v -> new MaterialAlertDialogBuilder(bookmarkActivity)
+            .setTitle(bookmark.getDisplayTitle(bookmarkActivity))
+            .setMessage(bookmark.getDisplayConditions(bookmarkActivity))
+            .setPositiveButton(R.string.ok, null).show());
         holder.pageLabel.setText(bookmarkActivity.getString(R.string.bookmark_page_format, bookmark.page));
 
-        holder.deleteButton.setOnClickListener(v -> removeBookmarkAtPosition(position));
+        holder.deleteButton.setOnClickListener(v -> removeBookmarkAtPosition(holder.getBindingAdapterPosition()));
+        holder.editButton.setOnClickListener(v -> {
+            Intent intent = new Intent(bookmarkActivity, SearchActivity.class);
+            intent.putExtra(SearchActivity.EXTRA_BOOKMARK_URL, bookmark.url);
+            bookmarkActivity.startActivity(intent);
+        });
+        Global.setTint(bookmarkActivity, holder.editButton.getDrawable());
+        Global.setTint(bookmarkActivity, holder.deleteButton.getDrawable());
 
         holder.rootLayout.setOnClickListener(v -> loadBookmark(bookmark));
     }
@@ -58,9 +74,15 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
      * @param bookmark bookmark to load
      */
     private void loadBookmark(Bookmark bookmark) {
+        InspectorV3 inspector = bookmark.createInspector(bookmarkActivity, null);
+        if (inspector == null) {
+            Toast.makeText(bookmarkActivity, R.string.bookmark_unavailable, Toast.LENGTH_LONG).show();
+            return;
+        }
         Intent i = new Intent(bookmarkActivity, MainActivity.class);
         i.putExtra(bookmarkActivity.getPackageName() + ".BYBOOKMARK", true);
-        i.putExtra(bookmarkActivity.getPackageName() + ".INSPECTOR", bookmark.createInspector(bookmarkActivity, null));
+        i.putExtra(bookmarkActivity.getPackageName() + ".INSPECTOR", inspector);
+        i.putExtra(bookmarkActivity.getPackageName() + ".BOOKMARK_TITLE", bookmark.getDisplayTitle(bookmarkActivity));
         IntentUtility.startAnotherActivity(bookmarkActivity, i);
     }
 
@@ -70,7 +92,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
      * @param position index to delete
      */
     private void removeBookmarkAtPosition(int position) {
-        if (position >= bookmarks.size()) return;
+        if (position < 0 || position >= bookmarks.size()) return;
         Bookmark bookmark = bookmarks.get(position);
         bookmark.deleteBookmark();
         bookmarks.remove(bookmark);
@@ -82,17 +104,29 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
         return bookmarks.size();
     }
 
+    public void reload() {
+        bookmarks.clear();
+        bookmarks.addAll(Queries.BookmarkTable.getBookmarks());
+        notifyDataSetChanged();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final AppCompatImageButton deleteButton;
+        final AppCompatImageButton editButton;
         final TextView queryText;
+        final TextView conditionsText;
+        final TextView detailsButton;
         final TextView pageLabel;
         final ConstraintLayout rootLayout;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             deleteButton = itemView.findViewById(R.id.remove_button);
+            editButton = itemView.findViewById(R.id.edit_bookmark);
             pageLabel = itemView.findViewById(R.id.page);
             queryText = itemView.findViewById(R.id.title);
+            conditionsText = itemView.findViewById(R.id.bookmark_conditions);
+            detailsButton = itemView.findViewById(R.id.bookmark_details);
             rootLayout = itemView.findViewById(R.id.master_layout);
         }
     }

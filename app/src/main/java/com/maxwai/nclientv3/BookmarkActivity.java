@@ -36,6 +36,12 @@ public class BookmarkActivity extends GeneralActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if (adapter != null) adapter.reload();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();

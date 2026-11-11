@@ -736,42 +736,62 @@ public class Queries {
         static final String PAGE = "page";
         static final String TYPE = "type";
         static final String TAG_ID = "tagId";
+        static final String NAME = "name";
         static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS `Bookmark`(" +
             "`url` TEXT NOT NULL UNIQUE," +
             "`page` INT NOT NULL," +
             "`type` INT NOT NULL," +
-            "`tagId` INT NOT NULL" +
+            "`tagId` INT NOT NULL," +
+            "`name` TEXT NOT NULL DEFAULT ''" +
             ");";
 
         public static void deleteBookmark(String url) {
             LogUtility.d("Deleted: " + db.delete(TABLE_NAME, URL + "=?", new String[]{url}));
         }
 
-        public static void addBookmark(InspectorV3 inspector) {
-            Tag tag = inspector.getTag();
-            ContentValues values = new ContentValues(4);
-            values.put(URL, inspector.getUrl());
-            values.put(PAGE, inspector.getPage());
-            values.put(TYPE, inspector.getRequestType().ordinal());
-            values.put(TAG_ID, tag == null ? 0 : tag.getId());
-            LogUtility.d("ADDED: " + inspector.getUrl());
-            db.insertWithOnConflict(TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_IGNORE);
+        public static boolean saveBookmark(@Nullable String originalUrl, Bookmark bookmark) {
+            ContentValues values = new ContentValues(5);
+            values.put(URL, bookmark.url);
+            values.put(PAGE, bookmark.page);
+            values.put(TYPE, bookmark.getRequestType().ordinal());
+            values.put(TAG_ID, bookmark.tag);
+            values.put(NAME, bookmark.name);
+            try {
+                if (originalUrl == null)
+                    return db.insertWithOnConflict(TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_IGNORE) != -1;
+                // A single UPDATE preserves the row and fails atomically on a duplicate URL.
+                return db.updateWithOnConflict(TABLE_NAME, values, URL + "=?", new String[]{originalUrl},
+                    SQLiteDatabase.CONFLICT_ABORT) == 1;
+            } catch (android.database.sqlite.SQLiteException e) {
+                LogUtility.w("Unable to save bookmark", e);
+                return false;
+            }
+        }
+
+        @Nullable
+        public static Bookmark getBookmark(String url) {
+            try (Cursor cursor = db.query(TABLE_NAME, null, URL + "=?", new String[]{url}, null, null, null)) {
+                return cursor.moveToFirst() ? readBookmark(cursor) : null;
+            }
+        }
+
+        private static Bookmark readBookmark(Cursor cursor) {
+            return new Bookmark(cursor.getString(cursor.getColumnIndexOrThrow(URL)),
+                cursor.getInt(cursor.getColumnIndexOrThrow(PAGE)),
+                ApiRequestType.values[cursor.getInt(cursor.getColumnIndexOrThrow(TYPE))],
+                cursor.getInt(cursor.getColumnIndexOrThrow(TAG_ID)),
+                cursor.getString(cursor.getColumnIndexOrThrow(NAME)));
         }
 
         public static List<Bookmark> getBookmarks() {
-            String query = "SELECT * FROM " + TABLE_NAME;
+            String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY rowid ASC";
             try (Cursor cursor = db.rawQuery(query, null)) {
                 List<Bookmark> bookmarks = new ArrayList<>(cursor.getCount());
                 Bookmark b;
                 LogUtility.d("This url has " + cursor.getCount());
                 if (cursor.moveToFirst()) {
                     do {
-                        b = new Bookmark(
-                            cursor.getString(cursor.getColumnIndex(URL)),
-                            cursor.getInt(cursor.getColumnIndex(PAGE)),
-                            ApiRequestType.values[cursor.getInt(cursor.getColumnIndex(TYPE))],
-                            cursor.getInt(cursor.getColumnIndex(TAG_ID))
-                        );
+                        b = readBookmark(cursor);
                         bookmarks.add(b);
                     } while (cursor.moveToNext());
                 }
