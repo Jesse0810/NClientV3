@@ -420,4 +420,25 @@
     <string name="auth_title">Biometric login for NClient</string>
     <string name="auth_subtitle">Log in using your biometric credential</string>
 
+    <string name="tag_language_japanese">japanese</string>
+    <string name="tag_language_english">english</string>
+    <string name="tag_language_translated">translated</string>
+    <string name="tag_language_chinese">chinese</string>
+    <string name="tag_language_arabic">arabic</string>
+    <string name="tag_language_czech">czech</string>
+    <string name="tag_language_turkish">turkish</string>
+    <string name="tag_language_ukrainian">ukrainian</string>
+    <string name="tag_language_greek">greek</string>
+    <string name="tag_language_romanian">romanian</string>
+    <string name="tag_language_hebrew">hebrew</string>
+    <string name="tag_language_khmer">khmer</string>
+    <string name="tag_language_textless">textless</string>
+    <string name="tag_language_textless_narrative">textless narrative</string>
+    <string name="tag_language_japanese_definition">japanese | definition revised please read the wiki</string>
+    <string name="tag_category_doujinshi">doujinshi</string>
+    <string name="tag_category_manga">manga</string>
+    <string name="tag_category_non_h">non-h</string>
+    <string name="tag_category_western">western</string>
+    <string name="tag_category_artistcg">artistcg</string>
+    <string name="tag_category_misc">misc</string>
 </resources>

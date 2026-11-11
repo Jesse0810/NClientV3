@@ -1,6 +1,7 @@
 package com.maxwai.nclientv3.api.components;
 
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,9 +11,11 @@ import android.util.JsonWriter;
 
 import androidx.annotation.NonNull;
 
+import com.maxwai.nclientv3.R;
 import com.maxwai.nclientv3.api.enums.TagStatus;
 import com.maxwai.nclientv3.api.enums.TagType;
 import com.maxwai.nclientv3.utility.LogUtility;
+import com.maxwai.nclientv3.utility.ContentTagTranslations;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -110,6 +113,84 @@ public class Tag implements Parcelable {
 
     public String getName() {
         return name;
+    }
+
+    /** Returns a localized UI label while keeping the original name for queries and storage. */
+    public String getDisplayName(Context context) {
+        if (TagType.TAG.equals(type))
+            return ContentTagTranslations.getDisplayName(context, name);
+        int resource = 0;
+        if (TagType.LANGUAGE.equals(type)) {
+            switch (name) {
+                case "japanese":
+                    resource = R.string.tag_language_japanese;
+                    break;
+                case "english":
+                    resource = R.string.tag_language_english;
+                    break;
+                case "translated":
+                    resource = R.string.tag_language_translated;
+                    break;
+                case "chinese":
+                    resource = R.string.tag_language_chinese;
+                    break;
+                case "arabic":
+                    resource = R.string.tag_language_arabic;
+                    break;
+                case "czech":
+                    resource = R.string.tag_language_czech;
+                    break;
+                case "turkish":
+                    resource = R.string.tag_language_turkish;
+                    break;
+                case "ukrainian":
+                    resource = R.string.tag_language_ukrainian;
+                    break;
+                case "greek":
+                    resource = R.string.tag_language_greek;
+                    break;
+                case "romanian":
+                    resource = R.string.tag_language_romanian;
+                    break;
+                case "hebrew":
+                    resource = R.string.tag_language_hebrew;
+                    break;
+                case "khmer":
+                    resource = R.string.tag_language_khmer;
+                    break;
+                case "textless":
+                    resource = R.string.tag_language_textless;
+                    break;
+                case "textless narrative":
+                    resource = R.string.tag_language_textless_narrative;
+                    break;
+                case "japanese | definition revised please read the wiki":
+                    resource = R.string.tag_language_japanese_definition;
+                    break;
+            }
+        } else if (TagType.CATEGORY.equals(type)) {
+            switch (name) {
+                case "doujinshi":
+                    resource = R.string.tag_category_doujinshi;
+                    break;
+                case "manga":
+                    resource = R.string.tag_category_manga;
+                    break;
+                case "non-h":
+                    resource = R.string.tag_category_non_h;
+                    break;
+                case "western":
+                    resource = R.string.tag_category_western;
+                    break;
+                case "artistcg":
+                    resource = R.string.tag_category_artistcg;
+                    break;
+                case "misc":
+                    resource = R.string.tag_category_misc;
+                    break;
+            }
+        }
+        return resource == 0 ? name : context.getString(resource);
     }
 
     public int getCount() {

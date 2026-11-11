@@ -1,0 +1,11 @@
+Offline content-tag display labels, resolved in priority order:
+1. fullDict: user-provided dictionary snapshot. No licensing information was supplied or inferred.
+2. EhTagTranslation/Database community labels.
+Copyright: EhTagTranslation Database contributors.
+Source: https://github.com/EhTagTranslation/Database/tree/e0f66dc4424a53872473b05b7fb006ceebfcbe5d
+Community license: CC BY-NC-SA 3.0 China Mainland.
+https://creativecommons.org/licenses/by-nc-sa/3.0/cn/
+3. AI: explicitly reviewed labels; uncertain proper names remain unchanged and are not counted as translated.
+Changes to community data: selected reliable labels, removed markup/icons, merged namespaces, and applied higher-priority user values. Japanese kana was not accepted as Chinese translation.
+Community-derived data retains its community license; this notice does not assign that license to user-provided dictionary entries. Application code retains its own license.
+Per-entry provenance and input hashes: data/tag-translations/provenance.json and coverage.json in the repository.

@@ -3,6 +3,8 @@ package com.maxwai.nclientv3;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,9 +13,11 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.appcompat.widget.SearchView;
@@ -60,6 +64,7 @@ public class SearchActivity extends GeneralActivity {
     private Ranges.TimeUnit temporaryUnit;
     private InputMethodManager inputMethodManager;
     private AlertDialog alertDialog;
+    private TagSuggestion selectedTagSuggestion;
 
     public void setQuery(String str, boolean submit) {
         runOnUiThread(() -> searchView.setQuery(str, submit));
@@ -96,6 +101,24 @@ public class SearchActivity extends GeneralActivity {
         initRanges();
         adapter = new HistoryAdapter(this);
         autoComplete = (AppCompatAutoCompleteTextView) getLayoutInflater().inflate(R.layout.autocomplete_entry, findViewById(R.id.appbar), false);
+        autoComplete.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                selectedTagSuggestion = null;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        autoComplete.setOnItemClickListener((parent, view, position, id) -> {
+            Object item = parent.getItemAtPosition(position);
+            selectedTagSuggestion = item instanceof TagSuggestion ? (TagSuggestion) item : null;
+        });
         autoComplete.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEND) {
                 alertDialog.dismiss();
@@ -331,11 +354,73 @@ public class SearchActivity extends GeneralActivity {
 
     private void loadDropdown(TagType type) {
         List<Tag> allTags = Queries.TagTable.getAllTagOfType(type);
+        if (TagType.TAG.equals(type)) {
+            loadContentTagDropdown(allTags);
+            loadedTag = type;
+            return;
+        }
         String[] tagNames = new String[allTags.size()];
         int i = 0;
         for (Tag t : allTags) tagNames[i++] = t.getName();
         autoComplete.setAdapter(new ArrayAdapter<>(SearchActivity.this, android.R.layout.simple_dropdown_item_1line, tagNames));
         loadedTag = type;
+    }
+
+    private void loadContentTagDropdown(List<Tag> allTags) {
+        List<TagSuggestion> suggestions = new ArrayList<>(allTags.size());
+        for (Tag tag : allTags) suggestions.add(new TagSuggestion(this, tag));
+        autoComplete.setAdapter(new ArrayAdapter<TagSuggestion>(this,
+            android.R.layout.simple_dropdown_item_1line, new ArrayList<>(suggestions)) {
+            private final Filter suggestionFilter = new Filter() {
+                @Override
+                protected FilterResults performFiltering(CharSequence constraint) {
+                    String query = constraint == null ? "" : constraint.toString().toLowerCase(Locale.ROOT);
+                    List<TagSuggestion> matches = new ArrayList<>();
+                    for (TagSuggestion suggestion : suggestions) {
+                        if (suggestion.matches(query)) matches.add(suggestion);
+                    }
+                    FilterResults results = new FilterResults();
+                    results.values = matches.toArray(new TagSuggestion[0]);
+                    results.count = matches.size();
+                    return results;
+                }
+
+                @Override
+                protected void publishResults(CharSequence constraint, FilterResults results) {
+                    setNotifyOnChange(false);
+                    clear();
+                    for (TagSuggestion suggestion : (TagSuggestion[]) results.values) add(suggestion);
+                    notifyDataSetChanged();
+                }
+            };
+
+            @NonNull
+            @Override
+            public Filter getFilter() {
+                return suggestionFilter;
+            }
+        });
+    }
+
+    private static final class TagSuggestion {
+        private final Tag tag;
+        private final String displayName;
+
+        private TagSuggestion(Context context, Tag tag) {
+            this.tag = tag;
+            displayName = tag.getDisplayName(context);
+        }
+
+        private boolean matches(String query) {
+            return tag.getName().toLowerCase(Locale.ROOT).contains(query)
+                || displayName.toLowerCase(Locale.ROOT).contains(query);
+        }
+
+        @NonNull
+        @Override
+        public String toString() {
+            return displayName.equals(tag.getName()) ? displayName : displayName + " (" + tag.getName() + ')';
+        }
     }
 
     private void loadTag(TagType type) {
@@ -367,7 +452,9 @@ public class SearchActivity extends GeneralActivity {
 
     private void createChip() {
         String name = autoComplete.getText().toString().toLowerCase(Locale.US);
-        Tag tag = Queries.TagTable.searchTag(name, loadedTag);
+        Tag tag = selectedTagSuggestion != null && TagType.TAG.equals(loadedTag)
+            && selectedTagSuggestion.toString().contentEquals(autoComplete.getText())
+            ? selectedTagSuggestion.tag : Queries.TagTable.searchTag(name, loadedTag);
         if (tag == null) tag = new Tag(name, 0, customId++, loadedTag, TagStatus.ACCEPTED);
         LogUtility.d("CREATED WITH ID: " + tag.getId());
         if (tagAlreadyExist(tag)) return;

@@ -1,0 +1,81 @@
+{
+  "ai_mapped_names": 91,
+  "ai_preserved_names": 346,
+  "ai_reviewed_input_entries": 176,
+  "approved_allowlist_names": 1127,
+  "community_input_sha256": {
+    "LICENSE.md": "b6c4452f59b6c8d4bdae7011c6554c49d1aa2b22a340488edf32b8974c9b2b70",
+    "database/artist.md": "84f2bb64b01fb9a79ac8b1aa13214e97d9dc68cab459a72e4bcc118a3c5aea8c",
+    "database/character.md": "48a55cec7bae6a9722941471c204f874989c5a9a4108dca3e6365fadba311095",
+    "database/cosplayer.md": "eaed17da5006e398023b893c893d00a272e7b5956ffec42a4b5d04291a904123",
+    "database/female.md": "302512773c61e283fddf87a082a054652433bc43947984bc93d6b0b85e645e81",
+    "database/group.md": "40a0fbaea45447e777194d77299f5d482d98ea1175ba51c51c7968ff459d96b7",
+    "database/language.md": "0290cfcf13fb42242e68f46d0457b3847f6899674b953164554d5878073539f2",
+    "database/location.md": "5aaaaa95e14773185061bce892207ca81c1f6882f48ae8f05be46faeb78ed538",
+    "database/male.md": "0c53122f62a262d5d62c1737f511e64f27a3e4fc94901f9e00ac64e9d3a1d326",
+    "database/mixed.md": "4b9c843b0ece433ba932fb7de9a0624f37d1f54d71d3f7935cafcd5217d3b2c2",
+    "database/other.md": "d6a9d8826d7de84b9075c9ef5751958549eb1bdea7bec831a97306af79eb9721",
+    "database/parody.md": "070be0a0608ab7ddb76b5ab31d6b27e8ec672512888d97fc80fd8b0d2d3e6eb0",
+    "database/reclass.md": "6de80d91dfbac4ca5465b4188c575ad7491b0969dc68b2d44f22b196b7e228e6",
+    "database/rows.md": "c373607a3b2fe23f946b3c0bb4cf2d1e5e9c76d959d7d844075dfcdb40dee7e0"
+  },
+  "community_license": "CC-BY-NC-SA-3.0-CN",
+  "detail_hidden_names": 0,
+  "detail_visible_names": 4780,
+  "exact_candidate_names": 2249,
+  "exact_candidate_records": 2252,
+  "exact_cross_field_excluded": 2531,
+  "excluded_names": 3653,
+  "full_dict_input_entries": 581,
+  "full_dict_source": "User-provided dictionary; no licensing information supplied or inferred",
+  "input_sha256": {
+    "ai-reviewed": "95b7918fbc15761a7353e3233cafa81ea72b9c630b5c07081317263610aea1a4",
+    "approved-content-tags": "a0298625217d94b9976b3f7e4d16c0c78024e36bb8cbfe7dacd1e9bf1ca3817f",
+    "data/tags.json": "ab5f7d2af6f71cd084f585eb5d883a7003b86d91f84609a88821e243112ffcf4",
+    "exact-candidates-canonical": "4d364b9bfab27f718824b8162ad6ddd145700d90d76fdc7cdfca595530a64d5d",
+    "fullDict": "6c60e9f52fec9e73eeea13f9e993c484f8c878ee28590ca074f90389ac612a0c",
+    "semantic-decisions": "0d2d2a0efd6c0aa2d6a69d463115129fef177f3450e98a30bcf2b01750868938",
+    "semantic-review-snapshot": "b3b748a0edd105ebd0db0fcc14d2a6a4c92a27cb60886e404afd83044f0625f2"
+  },
+  "management_hidden_names": 3653,
+  "management_visible_names": 1127,
+  "mapped_by_source": {
+    "AI": 91,
+    "EhTagTranslation": 181,
+    "fullDict": 509
+  },
+  "mapped_names": 781,
+  "original_tag_records": 4783,
+  "original_unique_names": 4780,
+  "preserved_by_source": {
+    "AI": 346,
+    "EhTagTranslation": 0,
+    "fullDict": 0
+  },
+  "preserved_names": 346,
+  "preserved_native_script_names": 0,
+  "priority": [
+    "fullDict",
+    "EhTagTranslation",
+    "AI"
+  ],
+  "semantic_excluded": 119,
+  "semantic_kept_names": 1127,
+  "semantic_quarantined": 1003,
+  "semantic_review_loaded": true,
+  "semantic_stale_decisions": 0,
+  "semantic_unreviewed_names": 0,
+  "source_archive_sha256": "0e9bce61c735fde92e4b905eaa2bba14311d6e5814772604221d57766f65381c",
+  "source_commit": "e0f66dc4424a53872473b05b7fb006ceebfcbe5d",
+  "source_counts": {
+    "AI": 437,
+    "EhTagTranslation": 181,
+    "fullDict": 509
+  },
+  "source_repository": "https://github.com/EhTagTranslation/Database",
+  "tag_records": 1130,
+  "translation_eligibility_policy": "Only semantic candidates in the fixed approved-content-tags.json; never approve future names automatically",
+  "unapproved_after_semantics_names": 0,
+  "unique_names": 1127,
+  "whitelist_enforced": true
+}

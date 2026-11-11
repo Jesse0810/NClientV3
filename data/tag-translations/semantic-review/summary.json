@@ -1,0 +1,73 @@
+{
+  "approved_allowlist_names": 1127,
+  "approved_content_tags_sha256": "a0298625217d94b9976b3f7e4d16c0c78024e36bb8cbfe7dacd1e9bf1ca3817f",
+  "confirmed_by_field": {
+    "Artists": 12,
+    "Characters": 56,
+    "Groups": 4,
+    "Parodies": 47
+  },
+  "decisions": {
+    "exclude": 119,
+    "keep": 1127,
+    "quarantine": 1003
+  },
+  "decisions_sha256": "0d2d2a0efd6c0aa2d6a69d463115129fef177f3450e98a30bcf2b01750868938",
+  "detail_hidden_names": 0,
+  "detail_visible_names": 4780,
+  "first_stage_exact_exclusions": 2531,
+  "input_snapshot_sha256": "b3b748a0edd105ebd0db0fcc14d2a6a4c92a27cb60886e404afd83044f0625f2",
+  "management_hidden_names": 3653,
+  "management_visible_names": 1127,
+  "new_translations": 0,
+  "policy": "Historical semantic decisions stay frozen; only approved names appear in content-tag management or receive translations. Gallery details show every content tag, raw outside approval.",
+  "quarantined_by_field": {
+    "Artists": 104,
+    "Artists/Characters": 4,
+    "Artists/Groups": 8,
+    "Artists/Groups/Parodies": 2,
+    "Characters": 8,
+    "Groups": 133,
+    "Groups/Artists": 1,
+    "Groups/Organization": 2,
+    "Groups/Parodies": 1,
+    "Groups/SpecificPlace": 1,
+    "NamedItems/Artists": 1,
+    "Parodies": 15,
+    "Parodies/Artists": 1,
+    "Parodies/Groups": 5,
+    "Parodies/Groups/Artists": 1,
+    "Places": 1,
+    "UncertainEntity": 708,
+    "UnknownEntity": 7
+  },
+  "remaining_names": 1127,
+  "remaining_records": 1130,
+  "reviewed_by_source": {
+    "AI": {
+      "exclude": 100,
+      "keep": 437,
+      "quarantine": 1003,
+      "reviewed": 1540
+    },
+    "EhTagTranslation": {
+      "exclude": 19,
+      "keep": 181,
+      "quarantine": 0,
+      "reviewed": 200
+    },
+    "fullDict": {
+      "exclude": 0,
+      "keep": 509,
+      "quarantine": 0,
+      "reviewed": 509
+    }
+  },
+  "scope_names": 2249,
+  "scope_records": 2252,
+  "second_review_changes": 54,
+  "semantic_confirmed_exclusions": 119,
+  "semantic_quarantined_names": 1003,
+  "translation_eligible_names": 1127,
+  "unreviewed_current_names": 0
+}

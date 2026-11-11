@@ -1,0 +1,145 @@
+{
+  "additional_names_reviewed": 1353,
+  "new_labels_accepted": {
+    "cosplay": "角色扮演",
+    "lilia saijo": "西条莉莉亚",
+    "melonbooks": "蜜瓜书店",
+    "nya-tan": "喵炭",
+    "ortlinde": "奥特琳德",
+    "otomi tachibana": "立花音美",
+    "skeb": "Skeb约稿",
+    "soshuuhen": "总集篇",
+    "tenochtitlan": "特诺奇蒂特兰",
+    "v yuusha no kuse ni namaikida r": "V！勇者实在太嚣张R"
+  },
+  "new_suggestions_retracted": {
+    "body packing": "当前数据无定义或可靠中文依据；既可涉及人体藏物，也可能指身体包裹等其他含义，不能仅凭英文认定体内藏物。",
+    "oat meal": "虽可按普通食品词解释，但当前仅有名称，无法确认是内容描述而非笔名/社团名；无可靠来源时保留。",
+    "opium": "虽为常见英语词，但当前无法确认是内容描述还是专名；缺少可靠标签语境，暂保留原文。",
+    "pizzicato": "既是音乐术语，也可能为笔名/社团等专名；当前无可靠来源确认拨弦是此标签含义，保留原文。"
+  },
+  "no_guessed_japanese_kanji": true,
+  "prior_labels_retracted": {
+    "dangomushi": {
+      "current_label": "鼠妇",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "dashimaki tamago": {
+      "current_label": "出汁玉子烧",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "hashigo": {
+      "current_label": "梯子",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "hebi nyoubou": {
+      "current_label": "蛇妻",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "hibachi": {
+      "current_label": "火钵",
+      "reason": "同一罗马字可对应火钵，也可为绯蜂等专名；缺少上下文，不能确定此处应译火钵。"
+    },
+    "hirune zora": {
+      "current_label": "午睡天空",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "ikiataribattari": {
+      "current_label": "走一步算一步",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "ikidomari": {
+      "current_label": "死胡同",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "inoru jutsu o motanai": {
+      "current_label": "无从祈祷",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "iron elbow": {
+      "current_label": "铁肘",
+      "reason": "不像明确的通用内容术语，也可能是名称；铁肘只是逐词直译，没有可靠名称来源。"
+    },
+    "is the island utopia or dystopia": {
+      "current_label": "这座岛是乌托邦还是反乌托邦",
+      "reason": "句式像作品标题；现有中文为自由直译，未确认标准译名。"
+    },
+    "isekai higaeri manyuuki": {
+      "current_label": "异世界当日往返漫游记",
+      "reason": "属于罗马字作品名；现有标题是逐词拟译，未确认可靠中文作品名称。"
+    },
+    "ishoku dougen": {
+      "current_label": "医食同源",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "jasmine pocket": {
+      "current_label": "茉莉口袋",
+      "reason": "可能为社团等专名；茉莉口袋为逐词自造显示名，缺少可靠出处。"
+    },
+    "jikomanzoku manga shuudan": {
+      "current_label": "自我满足漫画集团",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "jingai lab": {
+      "current_label": "人外实验室",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "joukikikansha": {
+      "current_label": "蒸汽机车",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "jump 400manbu": {
+      "current_label": "JUMP 400万部",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "jumyou wa isshukan": {
+      "current_label": "寿命只有一周",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "kago no midori tori": {
+      "current_label": "笼中绿鸟",
+      "reason": "属于罗马字专名/作品名；笼中绿鸟仅为字面拟译，没有可靠中文名称依据。"
+    },
+    "kaibatsu 12 meters": {
+      "current_label": "海拔12米",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "kakeibo": {
+      "current_label": "家计簿",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "kakucho parts": {
+      "current_label": "扩展部件",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "kakuu shoujo": {
+      "current_label": "架空少女",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "kamo nanban": {
+      "current_label": "鸭肉南蛮面",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "karinto": {
+      "current_label": "花林糖",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "kawara soba": {
+      "current_label": "瓦片荞麦面",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "kazoku": {
+      "current_label": "家族",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "kiichigo": {
+      "current_label": "树莓",
+      "reason": "译文仅由罗马字字面还原；没有可靠依据确认此处是普通内容词而非笔名、社团或作品名，按不确信保留原文处理。"
+    },
+    "kobushi": {
+      "current_label": "拳头",
+      "reason": "罗马字存在拳、辛夷、歌唱转音等词义或专名可能，当前拳头译法未经语境确认。"
+    }
+  },
+  "review_method": "AI-assisted label translation and review; uncertain proper names remain unchanged under the user preference"
+}

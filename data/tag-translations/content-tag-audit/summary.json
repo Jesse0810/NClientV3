@@ -1,0 +1,72 @@
+{
+  "additional_matches_under_normalization": {
+    "casefold": 0,
+    "trim": 0,
+    "trim_casefold": 0
+  },
+  "app_dictionary_modified": false,
+  "approved_allowlist_names": 1127,
+  "approved_content_tags_sha256": "a0298625217d94b9976b3f7e4d16c0c78024e36bb8cbfe7dacd1e9bf1ca3817f",
+  "detail_hidden_names": 0,
+  "detail_visible_names": 4780,
+  "exact_candidate_canonical_sha256": "4d364b9bfab27f718824b8162ad6ddd145700d90d76fdc7cdfca595530a64d5d",
+  "excluded_names": 2531,
+  "excluded_records": 2531,
+  "existing_app_mappings_excluded": 0,
+  "existing_app_mappings_remaining": 781,
+  "final_candidate_names": 1127,
+  "final_candidate_records": 1130,
+  "management_hidden_names": 3653,
+  "management_hidden_records": 3653,
+  "management_visible_names": 1127,
+  "new_translations": 0,
+  "number_of_matching_fields": {
+    "1": 2449,
+    "2": 72,
+    "3": 10
+  },
+  "original_data_modified": false,
+  "overlap_by_field": {
+    "Artists": {
+      "field_zh": "画师",
+      "overlapping_names": 1281
+    },
+    "Categories": {
+      "field_zh": "类别",
+      "overlapping_names": 6
+    },
+    "Characters": {
+      "field_zh": "角色",
+      "overlapping_names": 401
+    },
+    "Groups": {
+      "field_zh": "社团",
+      "overlapping_names": 875
+    },
+    "Languages": {
+      "field_zh": "语言",
+      "overlapping_names": 0
+    },
+    "Parodies": {
+      "field_zh": "原作",
+      "overlapping_names": 60
+    }
+  },
+  "positive_allowlist_asset_generated": true,
+  "positive_allowlist_asset_names": 1127,
+  "remaining_names": 2249,
+  "remaining_records": 2252,
+  "rule": "Exclude a Tags value iff its original name exactly matches a value in Artists, Groups, Parodies, Characters, Languages, or Categories; no semantic exceptions",
+  "semantic_confirmed": 119,
+  "semantic_decisions_sha256": "0d2d2a0efd6c0aa2d6a69d463115129fef177f3450e98a30bcf2b01750868938",
+  "semantic_kept": 1127,
+  "semantic_quarantined": 1003,
+  "semantic_review_loaded": true,
+  "semantic_snapshot_sha256": "b3b748a0edd105ebd0db0fcc14d2a6a4c92a27cb60886e404afd83044f0625f2",
+  "semantic_stale_decisions": 0,
+  "semantic_unreviewed": 0,
+  "source_sha256": "ab5f7d2af6f71cd084f585eb5d883a7003b86d91f84609a88821e243112ffcf4",
+  "tag_names": 4780,
+  "tag_records": 4783,
+  "translation_eligible_names": 1127
+}

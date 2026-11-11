@@ -25,13 +25,18 @@ import com.maxwai.nclientv3.async.database.Queries;
 import com.maxwai.nclientv3.settings.Global;
 import com.maxwai.nclientv3.settings.Login;
 import com.maxwai.nclientv3.settings.TagV2;
+import com.maxwai.nclientv3.utility.ContentTagAllowlist;
+import com.maxwai.nclientv3.utility.ContentTagTranslations;
 import com.maxwai.nclientv3.utility.ImageDownloadUtility;
 import com.maxwai.nclientv3.utility.LogUtility;
 import com.maxwai.nclientv3.utility.Utility;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -48,6 +53,7 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> im
     private final TagMode tagMode;
     private String lastQuery = null;
     private Cursor cursor = null;
+    private Filter filter;
 
     public TagsAdapter(@NonNull TagFilterActivity cont, String query, boolean online) {
         this.context = cont;
@@ -65,14 +71,26 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> im
 
     @Override
     public Filter getFilter() {
-        return new Filter() {
+        if (filter != null) return filter;
+        filter = new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults results = new FilterResults();
                 if (constraint == null) constraint = "";
 
-                lastQuery = constraint.toString();
-                Cursor tags = Queries.TagTable.getFilterCursor(lastQuery, type, tagMode == TagMode.ONLINE, TagV2.isSortedByName());
+                boolean searchDisplayNamesOnly = TagType.TAG.equals(type)
+                    && ContentTagTranslations.isEnabled(context);
+                lastQuery = searchDisplayNamesOnly ? constraint.toString().trim() : constraint.toString();
+                List<String> translatedNames = Collections.emptyList();
+                if (searchDisplayNamesOnly)
+                    translatedNames = ContentTagTranslations.getMatchingDisplayNames(context, lastQuery);
+                else if (type == null || TagType.TAG.equals(type))
+                    translatedNames = ContentTagTranslations.getMatchingNames(context, lastQuery);
+                Set<String> allowedNames = type == null || TagType.TAG.equals(type)
+                    ? ContentTagAllowlist.getAllowedNames(context)
+                    : Collections.emptySet();
+                Cursor tags = Queries.TagTable.getFilterCursor(lastQuery, type, tagMode == TagMode.ONLINE,
+                    TagV2.isSortedByName(), translatedNames, allowedNames, searchDisplayNamesOnly);
                 results.count = tags.getCount();
                 results.values = tags;
 
@@ -92,6 +110,7 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> im
                 notifyItemRangeChanged(0, Math.min(newCount, oldCount));
             }
         };
+        return filter;
     }
 
     @NonNull
@@ -104,7 +123,7 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> im
     public void onBindViewHolder(@NonNull final TagsAdapter.ViewHolder holder, int position) {
         cursor.moveToPosition(position);
         final Tag ent = Queries.TagTable.cursorToTag(cursor);
-        holder.title.setText(ent.getName());
+        holder.title.setText(ent.getDisplayName(context));
         holder.count.setText(String.format(Locale.US, "%d", ent.getCount()));
         holder.master.setOnClickListener(v -> {
             switch (tagMode) {

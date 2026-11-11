@@ -1,0 +1,18 @@
+{
+  "app_asset_sha256": "39b8dfbb9775587f37edc66633aa8275fe3acf7817169891d28b6e8ab1201ed3",
+  "app_content_names": 1392,
+  "app_only_content": 826,
+  "common_content_names": 566,
+  "current_provenance": "../provenance.json",
+  "different": 325,
+  "duplicate_keys": [],
+  "exact_equal": 241,
+  "historical_snapshot": true,
+  "plugin_content_names": 567,
+  "plugin_only_content": 1,
+  "source_mode": "user-provided snapshot; not fetched from the live website",
+  "source_outside_content_snapshot": 14,
+  "source_pairs": 581,
+  "source_sha256": "978167d4296ce082cbc8f87e77d14ae8ad47bf069db3a73d6029ae0c6cdce3b0",
+  "source_unique_names": 581
+}

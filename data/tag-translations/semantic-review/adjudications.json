@@ -1,0 +1,1625 @@
+[
+  {
+    "name": "101-goushitsu",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "101-goushitsu",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "房间编号式地点描述，未有确证表明是特定社团。",
+      "evidence": [
+        "goushitsu为房间编号构词，不能仅凭此视为署名"
+      ]
+    },
+    "after": {
+      "name": "101-goushitsu",
+      "decision": "quarantine",
+      "field": "Groups/SpecificPlace",
+      "confidence": "medium",
+      "reason": "完整的101号室编号把地点特定化，较像社团／工作室或固定主体名，而非一般房间场景标签；未确认具体主体，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "特定房号101与goushitsu构成完整命名；不把通用room或bedroom一并隔离。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "3p-threepii-",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "3p-threepii-",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "包含通用人数/互动缩写及读法，不足确认具体主体。",
+      "evidence": [
+        "3p是通用组合缩写；完整串未确认实体"
+      ]
+    },
+    "after": {
+      "name": "3p-threepii-",
+      "decision": "quarantine",
+      "field": "Artists/Groups",
+      "confidence": "medium",
+      "reason": "3p后追加其读法threepii并加装饰连字符，形成自我标音式完整名称；不是单纯人数缩写，疑似署名或社团名，未确认先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "同一读音的代码＋注音式拼写及两侧连字符具有花式署名结构；仅3p这一通用缩写不因此排除。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "aburitoro salmon o kawari",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "aburitoro salmon o kawari",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "食物/点餐式日语短句，未确认具体社团或作品。",
+      "evidence": [
+        "食物名与点餐式表达，不单凭日语形式删项"
+      ]
+    },
+    "after": {
+      "name": "aburitoro salmon o kawari",
+      "decision": "quarantine",
+      "field": "Artists/Groups/Parodies",
+      "confidence": "medium",
+      "reason": "这不是一个单独食品类别，而是具体菜名加“再来一份”的完整点餐口号，较像创作者自称、社团口号或题名；未确认实体，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "炙烤三文鱼类餐点＋o kawari的完整口号结构；普通salmon、食品名本身仍保留。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "are ga yattsu",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "are ga yattsu",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "普通指示/数量式短句，未确认作品或署名。",
+      "evidence": [
+        "日语短句本身不足构成实体证据"
+      ]
+    },
+    "after": {
+      "name": "are ga yattsu",
+      "decision": "quarantine",
+      "field": "Parodies/Artists",
+      "confidence": "medium",
+      "reason": "带指示代词与特定数量的完整话语，缺少可独立稳定分类的属性对象，疑似题名或口号式署名；未确认具体作品，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "are ga与yattsu组合成特定指称话语，不是普通数量标签本身。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "ato wa maroboshi",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "ato wa maroboshi",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "日语句式含义尚待核，暂无具体实体定位证据。",
+      "evidence": [
+        "不能把未知日语短语直接视为专名"
+      ]
+    },
+    "after": {
+      "name": "ato wa maroboshi",
+      "decision": "quarantine",
+      "field": "Parodies/Groups",
+      "confidence": "medium",
+      "reason": "完整“之后／剩余则……”式抒情话语，具有题名或团体口号的结构，不能仅因可逐字解释就认定为通用状态；具体实体未确认，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "ato wa起头的完整特定话语，而不是常用单词或稳定身份／行为名。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "batsukakerupeke",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "batsukakerupeke",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作符号/字形式描述，未确认具体主体。",
+      "evidence": [
+        "符号及运算式读法可能，未核实体"
+      ]
+    },
+    "after": {
+      "name": "batsukakerupeke",
+      "decision": "quarantine",
+      "field": "Artists/Groups",
+      "confidence": "medium",
+      "reason": "把符号的两种读法经kakeru连成整串，较像带符号的花式笔名／社团名，而非通用内容属性；未确认具体署名，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "batsu／peke与kakeru组成自我标记式符号名称；不把普通符号或拟声词一并排除。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "chikuwa factory",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "chikuwa factory",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可描述一般食品工厂，未取得特定机构确证。",
+      "evidence": [
+        "食物＋工厂的通用场景组合"
+      ]
+    },
+    "after": {
+      "name": "chikuwa factory",
+      "decision": "quarantine",
+      "field": "Groups/Organization",
+      "confidence": "medium",
+      "reason": "食品名修饰factory形成机构式完整名称，不能把“食品工厂”字面可解释作为内容属性确证；疑似社团／工作室，未确认先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "chikuwa＋factory的命名型组织组合；普通chikuwa食品项不因此排除。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "chitsu kara liver",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "chitsu kara liver",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "身体/关系式短语语境待核，没有具体实体确证。",
+      "evidence": [
+        "可能为普通短句或俗写，不自动认作名字"
+      ]
+    },
+    "after": {
+      "name": "chitsu kara liver",
+      "decision": "quarantine",
+      "field": "Artists/Groups",
+      "confidence": "medium",
+      "reason": "助词kara连接日语词与英文liver，整串具有反常的混合口号／署名结构，未能识别为稳定内容术语；未确认具体主体，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "跨语言的完整自我表达式组合，不以其中单词的字面义证明通用标签身份。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "dogusare monkey",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "dogusare monkey",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可为动物/贬称式角色描述，未确认具体个体。",
+      "evidence": [
+        "一般动物词及口语修饰，不足实体定位"
+      ]
+    },
+    "after": {
+      "name": "dogusare monkey",
+      "decision": "quarantine",
+      "field": "Artists/Groups",
+      "confidence": "medium",
+      "reason": "带强烈贬抑修饰的动物自称式组合，较像花式昵称／署名，而非普通物种或稳定外观分类；未确认具体创作者，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "日语贬称修饰＋英文monkey构成整体人格化称号；并非仅因动物词或罗马字而隔离。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "ero tantei jimusho",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "ero tantei jimusho",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般角色、机构场景或称呼，未能确认特定实体。",
+      "evidence": [
+        "AI语义判断核对：ero tantei jimusho",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "ero tantei jimusho",
+      "decision": "quarantine",
+      "field": "Groups/Organization",
+      "confidence": "medium",
+      "reason": "修饰词＋侦探＋事务所构成完整机构式名称，较像社团／工作室或作品内组织；未确认具体机构，先隔离，不把通用侦探身份一并删除。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "jimusho作为机构后缀，与前面的完整修饰称呼组合；区别于普通tantei身份词。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "futsu no tapiocaya-san",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "futsu no tapiocaya-san",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般角色、机构场景或称呼，未能确认特定实体。",
+      "evidence": [
+        "AI语义判断核对：futsu no tapiocaya-san",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "futsu no tapiocaya-san",
+      "decision": "quarantine",
+      "field": "Groups/Artists",
+      "confidence": "medium",
+      "reason": "带“普通的”自我修饰及-san称呼的完整店主／店号式表达，较像自称、店铺品牌或社团名；未确认实体，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "futsu no＋具体店号＋san形成完整命名性称呼，区别于单独饮品或商店类别。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "fuwatoro lion",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "fuwatoro lion",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般角色、机构场景或称呼，未能确认特定实体。",
+      "evidence": [
+        "AI语义判断核对：fuwatoro lion",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "fuwatoro lion",
+      "decision": "quarantine",
+      "field": "Artists/Characters",
+      "confidence": "medium",
+      "reason": "拟态形容词与动物名构成完整人格化自称，较像画师笔名／吉祥物称号，缺少稳定内容分类含义；未确认具体主体，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "fuwatoro与lion整体更接近昵称式称号；并非仅凭lion动物名判实体。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "gyoumuin a",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "gyoumuin a",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "high",
+      "reason": "通用职业、身份或角色类型，不是具体命名人物。",
+      "evidence": [
+        "AI语义判断核对：gyoumuin a",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "gyoumuin a",
+      "decision": "quarantine",
+      "field": "Artists/Characters",
+      "confidence": "medium",
+      "reason": "通用职业后接固定字母A将其个体化，较像匿名笔名或特定人物代称；并非单纯职业类别，未确认身份，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "gyoumuin＋A的编号化署名／人物代称结构；普通职业词保留。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "h shenshi huashi",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "h shenshi huashi",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "high",
+      "reason": "通用职业、身份或角色类型，不是具体命名人物。",
+      "evidence": [
+        "AI语义判断核对：h shenshi huashi",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "h shenshi huashi",
+      "decision": "quarantine",
+      "field": "Artists",
+      "confidence": "medium",
+      "reason": "字母H与“绅士画师”式创作者自称组成署名型称呼，较像具体账号／笔名，而非作品中一般职业标签；未确认账号身份，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "H前缀＋创作者自我身份式词组；不把普通画师、教师等职业统统排除。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "haitokutekina anahori usagi",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "haitokutekina anahori usagi",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般角色、机构场景或称呼，未能确认特定实体。",
+      "evidence": [
+        "AI语义判断核对：haitokutekina anahori usagi",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "haitokutekina anahori usagi",
+      "decision": "quarantine",
+      "field": "Artists/Groups",
+      "confidence": "medium",
+      "reason": "道德评价修饰＋动作＋动物的完整人格化称号，较像花式笔名／社团名，不是稳定可复用的单一内容属性；未确认实体，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "完整的修饰性自称组合，而非单独动物、动作或普通外观标签。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "heya no sumi no rakugaki",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "heya no sumi no rakugaki",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般词语、语气、动作或状态；未见足够实体证据。",
+      "evidence": [
+        "AI语义判断核对：heya no sumi no rakugaki",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "heya no sumi no rakugaki",
+      "decision": "quarantine",
+      "field": "Parodies/Groups/Artists",
+      "confidence": "medium",
+      "reason": "“房间角落的涂鸦”是带特定意象的完整题名／创作署名式短语，不能由字面场景含义推出通用内容标签；未确认具体作品或社团，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "两个no连接地点与创作物的完整题名式表达；普通涂鸦或房间场景仍保留。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "hirune zora",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "hirune zora",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般词语、语气、动作或状态；未见足够实体证据。",
+      "evidence": [
+        "AI语义判断核对：hirune zora",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "hirune zora",
+      "decision": "quarantine",
+      "field": "Artists/Groups",
+      "confidence": "medium",
+      "reason": "“午睡”与“天空”组成抒情性的完整名称，较像创作者署名／社团意象，而非明确的一般天气、动作或场景标签；未确认主体，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "行为词与天空意象组合成称号式短语；普通hirune午睡动作本身仍保留。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "hitsuji kaichou",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "hitsuji kaichou",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "high",
+      "reason": "通用职业、身份或角色类型，不是具体命名人物。",
+      "evidence": [
+        "AI语义判断核对：hitsuji kaichou",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "hitsuji kaichou",
+      "decision": "quarantine",
+      "field": "Artists/Characters",
+      "confidence": "medium",
+      "reason": "动物词与会长敬称形成个体化称号，较像笔名或具名角色自称，而非普通职业／物种类别；未确认具体人物，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent_semantic_structure",
+          "detail": "hitsuji＋kaichou的拟人化称号结构；单独羊类、会长身份不因此排除。"
+        },
+        {
+          "kind": "namespace_check",
+          "detail": "未取得上游精确实体命名空间证据；此项是待确认隔离，不是已证实的作者、社团或作品。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "hyouzan daibakuha",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "hyouzan daibakuha",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般词语、语气、动作或状态；未见足够实体证据。",
+      "evidence": [
+        "AI语义判断核对：hyouzan daibakuha",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "hyouzan daibakuha",
+      "decision": "quarantine",
+      "field": "Parodies/Groups",
+      "confidence": "medium",
+      "reason": "该表达描述一次特定事象，整体具有企划／作品题名的结构，不像稳定的行为、身份或外观属性；目前没有具体作品或社团的同一实体确证，按高度疑似题名先隔离。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "完整事象式题名构词：对象＋大爆破；并非仅因使用日语或未取得译名。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "inoru jutsu o motanai",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "inoru jutsu o motanai",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般词语、语气、动作或状态；未见足够实体证据。",
+      "evidence": [
+        "AI语义判断核对：inoru jutsu o motanai",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "inoru jutsu o motanai",
+      "decision": "quarantine",
+      "field": "Parodies/Groups",
+      "confidence": "high",
+      "reason": "这是带宾语和否定谓语的完整叙述式短句，明显比通用动作标签更像作品题名或署名短句；能作字面理解不足以证明通用属性。未确认具体实体，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "语法结构为「某种术／办法を持たない」的叙述句，而不是单一行为或角色类型。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "itoshino -san",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "itoshino -san",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般角色、机构场景或称呼，未能确认特定实体。",
+      "evidence": [
+        "AI语义判断核对：itoshino -san",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "itoshino -san",
+      "decision": "quarantine",
+      "field": "Artists/Characters",
+      "confidence": "medium",
+      "reason": "带呼格／敬称 -san 的自称式串缺少可稳定归类的身份或属性中心词，更像署名、昵称或题名片段。未确认具体人物，不应据字面可理解直接保留，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "敬称附着的称名式结构，区别于 teacher、marquis 等通用职业或身份名称。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "jagaimo market",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "jagaimo market",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般词语、语气、动作或状态；未见足够实体证据。",
+      "evidence": [
+        "AI语义判断核对：jagaimo market",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "jagaimo market",
+      "decision": "quarantine",
+      "field": "Groups",
+      "confidence": "medium",
+      "reason": "食物词与 market 构成商店／组织式完整名，不能仅因前半是普通食品就认定为食物内容标签；整体高度疑似店名、社团或项目名，尚未确认具体实体，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "机构式构词：具象词＋market；普通食品 jagaimo 本身不因此隔离。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "jasmine pocket",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "jasmine pocket",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般词语、语气、动作或状态；未见足够实体证据。",
+      "evidence": [
+        "AI语义判断核对：jasmine pocket",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "jasmine pocket",
+      "decision": "quarantine",
+      "field": "Artists/Groups",
+      "confidence": "medium",
+      "reason": "jasmine 与 pocket 的组合更像比喻性署名或品牌式名称，不能从两个普通单词推出稳定内容属性。具体作者或社团身份未确认，按高度疑似花式名称隔离。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "非惯常物品类别的比喻性双词组合；不是仅因罗马字或陌生而判断。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "jingai lab",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "jingai lab",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般角色、机构场景或称呼，未能确认特定实体。",
+      "evidence": [
+        "AI语义判断核对：jingai lab",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "jingai lab",
+      "decision": "quarantine",
+      "field": "Groups",
+      "confidence": "medium",
+      "reason": "主题词与 lab 构成实验室／机构名式表达，主审将机构式名按可字面解释的角色场景保留过于宽松；尚无具体组织同一性确证，先作为疑似机构或社团隔离。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "机构后缀 lab 搭配主题词，区别于独立的通用人外类型标签。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "jintoku no kenkyuu",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "jintoku no kenkyuu",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般词语、语气、动作或状态；未见足够实体证据。",
+      "evidence": [
+        "AI语义判断核对：jintoku no kenkyuu",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "jintoku no kenkyuu",
+      "decision": "quarantine",
+      "field": "Parodies/Groups",
+      "confidence": "medium",
+      "reason": "「某主题的研究」构成完整论著／企划题名式表达，而非通用身份、动作或特征。尚未证实具体作品或社团，按高度疑似题名隔离。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "主题＋no kenkyuu 的整体标题结构；不是把普通研究行为一概排除。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "jumyou wa isshukan",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "jumyou wa isshukan",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般词语、语气、动作或状态；未见足够实体证据。",
+      "evidence": [
+        "AI语义判断核对：jumyou wa isshukan",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "jumyou wa isshukan",
+      "decision": "quarantine",
+      "field": "Groups",
+      "confidence": "high",
+      "reason": "与固定上游社团名 jumyou wa isshuukan. 的完整短句相同，仅存在长音及末尾句点写法差异，原来的寿命场景解释不足。尚缺将本站该记录与社团直接连结的证据，保守列隔离而非冒充确认排除。",
+      "evidence": [
+        {
+          "source_file": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/group.md",
+          "line": 13443,
+          "namespace": "group",
+          "name": "jumyou wa isshuukan.",
+          "title": "寿命は1週間。",
+          "match": "完整短句仅长音拼写／末尾标点不同；候选别名，未确认本站同一性"
+        }
+      ]
+    }
+  },
+  {
+    "name": "jureinomori",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "jureinomori",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般词语、语气、动作或状态；未见足够实体证据。",
+      "evidence": [
+        "AI语义判断核对：jureinomori",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "jureinomori",
+      "decision": "quarantine",
+      "field": "Groups",
+      "confidence": "high",
+      "reason": "固定上游存在社团 jurei no mori，短标题为「呪霊の杜」，当前串仅去除了词间空格；应优先视为疑似社团名称而不是仅按森林场景保留。未确认本站同一实体，先隔离。",
+      "evidence": [
+        {
+          "source_file": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/group.md",
+          "line": 12425,
+          "namespace": "group",
+          "name": "jurei no mori",
+          "title": "呪霊の杜",
+          "match": "去空格后同名；候选别名，未确认本站同一性"
+        }
+      ]
+    }
+  },
+  {
+    "name": "kaibatsu 12 meters",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "kaibatsu 12 meters",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "high",
+      "reason": "通用场景、地点状态或画面情境，不是已命名实体。",
+      "evidence": [
+        "AI语义判断核对：kaibatsu 12 meters",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "kaibatsu 12 meters",
+      "decision": "quarantine",
+      "field": "Groups/Parodies",
+      "confidence": "medium",
+      "reason": "具体到海拔 12 米的完整参数式短语更像创作团体／企划的专名标识，未形成可辨的通用内容属性类别；尚无具体实体确证，按高度疑似名称隔离。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "精确数值地点式命名；与一般 underwater、forest 等场景标签区分。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "kakitsubatagun",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "kakitsubatagun",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般词语、语气、动作或状态；未见足够实体证据。",
+      "evidence": [
+        "AI语义判断核对：kakitsubatagun",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "kakitsubatagun",
+      "decision": "quarantine",
+      "field": "Groups",
+      "confidence": "medium",
+      "reason": "以具体名词搭配群／团体式后缀构成集合名，整体更像命名社团而不是花卉或人物类型；目前未确认具体组织，先隔离待核。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "专门集合名式构词，而非仅依据日语罗马字或低计数。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "kanjougenome",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "kanjougenome",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作一般词语、语气、动作或状态；未见足够实体证据。",
+      "evidence": [
+        "AI语义判断核对：kanjougenome",
+        "没有可确认的具体作品、角色、作者或社团归属"
+      ]
+    },
+    "after": {
+      "name": "kanjougenome",
+      "decision": "quarantine",
+      "field": "Artists/Groups/Parodies",
+      "confidence": "medium",
+      "reason": "情绪概念与 genome 的融合式造词更像作者、项目或作品的标识，不能因两部分都有字面意义就视为稳定内容特征；具体指向未确认，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "非惯常分类术语的融合式命名，不是把一般情绪或生物学属性排除。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "kusatsu",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "kusatsu",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "地名可用于场景，不属于已确认作者/作品等实体",
+      "evidence": [
+        "标签词形：kusatsu",
+        "普通词/内容语义可成立，未确认特定实体"
+      ]
+    },
+    "after": {
+      "name": "kusatsu",
+      "decision": "quarantine",
+      "field": "Places",
+      "confidence": "medium",
+      "reason": "Kusatsu 常用作具体地名草津，并非一般地点类型。该记录也可能是采用地名的署名，尚不能确认实际指向；按具体地点／实体歧义先隔离，普通场景词仍保留。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "可定位的具体地名用法；不是仅凭同名角色、罗马字或未译状态。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "migi ni sasetsu",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "migi ni sasetsu",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "日语方向口语/矛盾表达，并非已确认专有名称",
+      "evidence": [
+        "候选词：migi ni sasetsu",
+        "存在通用内容语义，未确认具体实体；不以同名可能性排除"
+      ]
+    },
+    "after": {
+      "name": "migi ni sasetsu",
+      "decision": "quarantine",
+      "field": "Artists/Groups",
+      "confidence": "medium",
+      "reason": "方向与转向相互矛盾的完整短句具有刻意造出的双关署名／标题性质，按普通方向口语保留不充分；具体主体未确认，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "相反方向动作的修辞组合，区别于单独的方向或姿势描述。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "moomoomilk",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "moomoomilk",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "食品/牛奶式词组，不能仅据命名样式排除",
+      "evidence": [
+        "标签词形：moomoomilk",
+        "普通词/内容语义可成立，未确认特定实体"
+      ]
+    },
+    "after": {
+      "name": "moomoomilk",
+      "decision": "quarantine",
+      "field": "NamedItems/Artists",
+      "confidence": "medium",
+      "reason": "Moomoo Milk 是已知虚构作品中的具名道具用法，连写形式也可能是署名；不能仅按普通 milk 食品类别自动保留。当前具体指向尚未确认，先隔离，普通食品标签不受此判断影响。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "既有具名虚构物品用法：Pokémon 的 Moomoo Milk；未确认本站记录是否指该物品。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "muchuu yakou",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "muchuu yakou",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "可作普通状态与场景描述，尚无特定实体确认",
+      "evidence": [
+        "候选词：muchuu yakou",
+        "存在通用内容语义，未确认具体实体；不以同名可能性排除"
+      ]
+    },
+    "after": {
+      "name": "muchuu yakou",
+      "decision": "quarantine",
+      "field": "Parodies/Groups",
+      "confidence": "medium",
+      "reason": "两种意象组成的诗性整体短语更像创作题名／社团标识，主审仅据可拆成状态与夜间场景不足以证明它是通用标签；尚无具体实体确证，先隔离。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "意象式整体命名，而非普通夜间、梦境等单独场景属性。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "musen tansaku butai",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "musen tansaku butai",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "行动/单位类型短语，未确认具体命名组织",
+      "evidence": [
+        "候选词：musen tansaku butai",
+        "存在通用内容语义，未确认具体实体；不以同名可能性排除"
+      ]
+    },
+    "after": {
+      "name": "musen tansaku butai",
+      "decision": "quarantine",
+      "field": "Groups",
+      "confidence": "medium",
+      "reason": "带 butai 的完整探索单位式名称有明确组织／行动队命名结构，不能仅因包含行动词就当作行为标签保留。具体组织未确认，先作为高度疑似组织名隔离。",
+      "evidence": [
+        {
+          "kind": "independent-semantic-review",
+          "detail": "整串为某种探索部队式称名，不是通用职业或单一动作。",
+          "certainty": "candidate-not-confirmed"
+        }
+      ]
+    }
+  },
+  {
+    "name": "peninsula hantou",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "peninsula hantou",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "地理场景的普通描述，不是特定作品、角色或署名。",
+      "evidence": [
+        "原名：peninsula hantou",
+        "AI语义判断：半岛，英文和日语同义组合"
+      ]
+    },
+    "after": {
+      "name": "peninsula hantou",
+      "decision": "quarantine",
+      "field": "UnknownEntity",
+      "confidence": "medium",
+      "reason": "英文与日文同义的“半岛”被拼成完整固定称号，更像独立名号而非稳定的地点类型标签；不能仅据字面有地点含义判为通用。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "peninsula + hantou 重复表达同一概念，完整组合具有命名式特征，尚无通用内容标签用法证据。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "potala",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "potala",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "待核普通词或表达的普通描述，不是特定作品、角色或署名。",
+      "evidence": [
+        "原名：potala",
+        "AI语义判断：可表示地理地点/场景，不能据专名形态当作作者"
+      ]
+    },
+    "after": {
+      "name": "potala",
+      "decision": "quarantine",
+      "field": "UnknownEntity",
+      "confidence": "medium",
+      "reason": "Potala 通常是特定宫殿／宗教地点的专称，而不是泛指宫殿、山地或场景的类别词；当前不能确认词条的实际实体归属。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "可指布达拉／普陀洛伽这一专名；原审“普通词或表达”未给出稳定通用内容属性的依据。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "red light red",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "red light red",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "待核普通词或表达的普通描述，不是特定作品、角色或署名。",
+      "evidence": [
+        "原名：red light red",
+        "AI语义判断：颜色/光线短语，不足以确认具体实体"
+      ]
+    },
+    "after": {
+      "name": "red light red",
+      "decision": "quarantine",
+      "field": "UnknownEntity",
+      "confidence": "medium",
+      "reason": "重复色彩词拼接成完整名号，缺少作为单一内容属性的稳定解释，较像题名或署名而非普通“红光”场景词。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "完整名称多出第二个 red，不能把其中 red light 的普通场景义直接套给整个固定组合。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "red plum dianthus",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "red plum dianthus",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "待核普通词或表达的普通描述，不是特定作品、角色或署名。",
+      "evidence": [
+        "原名：red plum dianthus",
+        "AI语义判断：植物名称组合，不足以确认社团"
+      ]
+    },
+    "after": {
+      "name": "red plum dianthus",
+      "decision": "quarantine",
+      "field": "Artists",
+      "confidence": "medium",
+      "reason": "两个不同花卉称谓拼成完整称号，具有花式署名结构，而非某一明确、稳定的花卉／外观属性。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "red plum 与 dianthus 各自可作普通植物名，但整个并置组合不能仅因可逐词解释而认定为通用内容标签。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "rikopinrikopin",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "rikopinrikopin",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "待核普通词或表达的普通描述，不是特定作品、角色或署名。",
+      "evidence": [
+        "原名：rikopinrikopin",
+        "AI语义判断：可作番茄红素一词的重复，未确认具体署名"
+      ]
+    },
+    "after": {
+      "name": "rikopinrikopin",
+      "decision": "quarantine",
+      "field": "Artists",
+      "confidence": "medium",
+      "reason": "营养成分词被整体复写为固定用户名式称号，缺少作为人物特征、行为或食物类型的稳定内容含义。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "完整 rikopinrikopin 并非通常的食物名称或日语拟声词；本次依据完整称号的重复结构提出疑似署名，而不是因罗马字或低计数。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "rippoutai6",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "rippoutai6",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "待核普通词或表达的普通描述，不是特定作品、角色或署名。",
+      "evidence": [
+        "原名：rippoutai6",
+        "AI语义判断：立方体加数字的物件描述，未确认具体实体"
+      ]
+    },
+    "after": {
+      "name": "rippoutai6",
+      "decision": "quarantine",
+      "field": "Artists",
+      "confidence": "medium",
+      "reason": "几何名词与固定数字后缀组成编号式署名，不能由“立方体”的字面含义直接当作普通画面特征。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "完整名称的固定 6 后缀没有得到内容分类意义说明；高度疑似创作署名，但尚无作者对应确证。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "saneyaro",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "saneyaro",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "待核普通词或表达的普通描述，不是特定作品、角色或署名。",
+      "evidence": [
+        "原名：saneyaro",
+        "AI语义判断：可能为角色类型表达，未确认署名"
+      ]
+    },
+    "after": {
+      "name": "saneyaro",
+      "decision": "quarantine",
+      "field": "Groups",
+      "confidence": "high",
+      "reason": "社区已有同一独特组合的社团条目，当前拼写仅长元音差异；不能继续只作待核普通词保留。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "原名称与社区 saneyarou 的独特复合称号对应，需核实是否同一社团。"
+        },
+        {
+          "kind": "namespace-alias-candidate",
+          "namespace": "group",
+          "upstream_name": "saneyarou",
+          "title": "さね野郎",
+          "source": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/group.md#L13327",
+          "limitation": "别名／长元音／分词对应仍需核实，本次仅隔离，不冒充已确认实体"
+        }
+      ]
+    }
+  },
+  {
+    "name": "sekiwoshitemo shikori",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "sekiwoshitemo shikori",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "待核普通词或表达的普通描述，不是特定作品、角色或署名。",
+      "evidence": [
+        "原名：sekiwoshitemo shikori",
+        "AI语义判断：可按行为/情境短语理解，尚未确认具体署名"
+      ]
+    },
+    "after": {
+      "name": "sekiwoshitemo shikori",
+      "decision": "quarantine",
+      "field": "UnknownEntity",
+      "confidence": "medium",
+      "reason": "完整句式／改写式短语更像固定题名或自称，不能按其中动作词的字面含义直接判为稳定内容属性。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "包含 seki wo shitemo 的整句构造，并接固定尾语；与单一动作标签不同，尚未取得该完整短语作为通用内容术语的证据。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "shiawase na choushoku",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "shiawase na choushoku",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "high",
+      "reason": "生活场景的普通描述，不是特定作品、角色或署名。",
+      "evidence": [
+        "原名：shiawase na choushoku",
+        "AI语义判断：幸福的早餐"
+      ]
+    },
+    "after": {
+      "name": "shiawase na choushoku",
+      "decision": "quarantine",
+      "field": "Artists",
+      "confidence": "high",
+      "reason": "社区存在对应完整短语的创作者署名，长元音和句号差异不足支持继续单凭“幸福早餐”的字面生活场景判定保留。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "同一完整短语在 artist 命名空间出现，不能只由其可描述早餐场景就断言是内容属性。"
+        },
+        {
+          "kind": "namespace-alias-candidate",
+          "namespace": "artist",
+          "upstream_name": "shiawase na choshoku.",
+          "title": "幸せな朝食。",
+          "source": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/artist.md#L12076",
+          "limitation": "别名／长元音／分词对应仍需核实，本次仅隔离，不冒充已确认实体"
+        }
+      ]
+    }
+  },
+  {
+    "name": "shijou saikou no sakusen",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "shijou saikou no sakusen",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "待核普通词或表达的普通描述，不是特定作品、角色或署名。",
+      "evidence": [
+        "原名：shijou saikou no sakusen",
+        "AI语义判断：普通行动/作战的修饰短语，未确认特定作品"
+      ]
+    },
+    "after": {
+      "name": "shijou saikou no sakusen",
+      "decision": "quarantine",
+      "field": "Parodies",
+      "confidence": "medium",
+      "reason": "“史上最高的作战”是带完整叙事修饰的题名式表达，不是某个单一、稳定的行为或身份标签。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "最高级评价＋作战构成完整命名短语；原审没有通用内容术语依据，需排查作品题名。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "shimenawa to onna no ko",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "shimenawa to onna no ko",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "待核普通词或表达的普通描述，不是特定作品、角色或署名。",
+      "evidence": [
+        "原名：shimenawa to onna no ko",
+        "AI语义判断：绳具与女孩的主题组合，未确认特定作品"
+      ]
+    },
+    "after": {
+      "name": "shimenawa to onna no ko",
+      "decision": "quarantine",
+      "field": "Parodies",
+      "confidence": "medium",
+      "reason": "“注连绳与女孩”以并列主题构成完整题名／创作主题名号，不能等同于普通绳索或女性角色属性标签。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "A と B 形式在此把具体器物与人物主体组合成完整标题，缺乏稳定通用标签用法，先排查作品／署名。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "shuruban",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "shuruban",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "待核普通词或表达的普通描述，不是特定作品、角色或署名。",
+      "evidence": [
+        "原名：shuruban",
+        "AI语义判断：词义不明，尚未取得独立实体证据"
+      ]
+    },
+    "after": {
+      "name": "shuruban",
+      "decision": "quarantine",
+      "field": "Artists",
+      "confidence": "high",
+      "reason": "社区有对应创作者署名，当前仅分词／连字符不同；原审“待核普通词”并不能消除这个实体候选。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "shuruban 与 shuru-ban 的字母顺序完全一致，社区短标题为独特署名。"
+        },
+        {
+          "kind": "namespace-alias-candidate",
+          "namespace": "artist",
+          "upstream_name": "shuru-ban",
+          "title": "しゅる版",
+          "source": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/artist.md#L12579",
+          "limitation": "别名／长元音／分词对应仍需核实，本次仅隔离，不冒充已确认实体"
+        }
+      ]
+    }
+  },
+  {
+    "name": "six at tree",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "six at tree",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "待核普通词或表达的普通描述，不是特定作品、角色或署名。",
+      "evidence": [
+        "原名：six at tree",
+        "AI语义判断：普通英语词组，尚无具体实体证据"
+      ]
+    },
+    "after": {
+      "name": "six at tree",
+      "decision": "quarantine",
+      "field": "UnknownEntity",
+      "confidence": "medium",
+      "reason": "带数词和介词的完整称号不像已知行为、身份、特征或场景类别，较像刻意命名的署名／题名。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "完整 six at tree 缺乏通用内容属性解释；不是仅因为英语或陌生，而是其完整命名结构与内容分类功能不相符。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "so-en",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "so-en",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "so-en 可对应日语“疏远”等普通语词；未确认指某一实体",
+      "evidence": [
+        "词项结构：so-en；未据低计数或译文来源作决定"
+      ]
+    },
+    "after": {
+      "name": "so-en",
+      "decision": "quarantine",
+      "field": "Parodies",
+      "confidence": "medium",
+      "reason": "SO-EN 也可作为具体时尚刊物《装苑》的标识，不能仅用日语同音“疏远”的解释确定它是通用内容标签。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "存在专名刊物用法与普通同音词歧义；当前标签语境未锁定，需核对是否出版物／创作实体。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "sound project",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "sound project",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "sound project 是一般声音项目描述，缺少特定项目的限定证据",
+      "evidence": [
+        "词项结构：sound project；未据低计数或译文来源作决定"
+      ]
+    },
+    "after": {
+      "name": "sound project",
+      "decision": "quarantine",
+      "field": "Groups",
+      "confidence": "medium",
+      "reason": "project 在此组成完整项目／团队式名称，不能据 sound 的普通声音含义直接认定整个名称是媒介类型。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "“声音”是通用概念，但完整“sound project”指向某个项目式主体；尚无稳定内容属性用法证据，先隔离核对组织／品牌。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "taiyou no nishi",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "taiyou no nishi",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "taiyou no nishi 是“太阳之西”的一般方位描述；未确认具体作品",
+      "evidence": [
+        "词项结构：taiyou no nishi；未据低计数或译文来源作决定"
+      ]
+    },
+    "after": {
+      "name": "taiyou no nishi",
+      "decision": "quarantine",
+      "field": "UnknownEntity",
+      "confidence": "medium",
+      "reason": "“太阳之西”是完整诗性题名／称号，不能仅凭方位词义就确定它是普通场景标签。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "太阳不是通常固定方向参照物，这一完整短语具有创作题名或署名特征；未证实具体主体。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "terra earth",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "terra earth",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "terra 与 earth 都有大地/地球义，未取得具体实体证据",
+      "evidence": [
+        "词项结构：terra earth；未据低计数或译文来源作决定"
+      ]
+    },
+    "after": {
+      "name": "terra earth",
+      "decision": "quarantine",
+      "field": "UnknownEntity",
+      "confidence": "medium",
+      "reason": "同义的拉丁词与英文词并置形成固定双名，更像品牌／作品／署名名号，不是一般大地或地球类别词。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "terra 与 earth 的普通词义相同并不足以证明组合名是通用属性；完整组合需实体核对。"
+        }
+      ]
+    }
+  },
+  {
+    "name": "towa no yuugure",
+    "review": "对399个尚无映射的保留项作独立二次复核",
+    "before": {
+      "name": "towa no yuugure",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "medium",
+      "reason": "towa no yuugure 可作“永远的黄昏”的场景描述，未证实某一作品",
+      "evidence": [
+        "词项结构：towa no yuugure；未据低计数或译文来源作决定"
+      ]
+    },
+    "after": {
+      "name": "towa no yuugure",
+      "decision": "quarantine",
+      "field": "Parodies",
+      "confidence": "high",
+      "reason": "社区作品命名空间已有对应完整题名，长元音拼写差异不应让其继续被当作普通黄昏场景。 具体实体尚未完成对应核实，依用户授权先隔离，不按确认排除统计。",
+      "evidence": [
+        {
+          "kind": "semantic-second-review",
+          "detail": "与社区 towa no yugure 的完整题名相符，但保留别名核对边界，不在本轮冒充完全同一标签确证。"
+        },
+        {
+          "kind": "namespace-alias-candidate",
+          "namespace": "parody",
+          "upstream_name": "towa no yugure",
+          "title": "永远的黄昏",
+          "source": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/parody.md#L2660",
+          "limitation": "别名／长元音／分词对应仍需核实，本次仅隔离，不冒充已确认实体"
+        }
+      ]
+    }
+  },
+  {
+    "name": "skeb",
+    "review": "对92个AI已有映射保留项及6个通用义冲突项作独立二次复核",
+    "before": {
+      "name": "skeb",
+      "decision": "keep",
+      "field": "Content",
+      "confidence": "high",
+      "reason": "制作来源的普通描述，不是特定作品、角色或署名。",
+      "evidence": [
+        "原名：skeb",
+        "AI语义判断：Skeb委托来源或约稿制作方式"
+      ]
+    },
+    "after": {
+      "name": "skeb",
+      "decision": "exclude",
+      "field": "Groups",
+      "confidence": "high",
+      "reason": "Skeb是具体约稿服务平台/机构名；约稿是通用制作方式，但平台名本身不是通用内容词。",
+      "evidence": [
+        "可识别具名约稿平台 Skeb（スケブ）",
+        "输入原名为skeb，而不是commission等一般制作方式；现有显示名也明确指该平台"
+      ]
+    }
+  }
+]

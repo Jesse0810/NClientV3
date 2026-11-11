@@ -1,0 +1,30 @@
+{
+  "all_previous_sources_reviewed": {
+    "AI": 1540,
+    "EhTagTranslation": 200,
+    "fullDict": 509
+  },
+  "confirmed_action": "Historical exclusion decision remains; outside approval hide from content-tag management and translation only, while gallery detail shows the original name.",
+  "current_display_policy": {
+    "approval_file": "data/tag-translations/approved-content-tags.json",
+    "approval_sha256": "a0298625217d94b9976b3f7e4d16c0c78024e36bb8cbfe7dacd1e9bf1ca3817f",
+    "approval_updates": "Explicit user approval and an explicit edit to the fixed approval file are required to expand the range.",
+    "approved_names": 1127,
+    "gallery_detail": "All content tags remain visible. Names outside approval display their original canonical name without translation.",
+    "management": "Only fixed approved content-tag names appear; future new names are not admitted automatically.",
+    "translation": "Only the approved range may use existing display mappings; this change adds no new translations."
+  },
+  "evidence_boundary": "fixed community namespace/title records and AI semantic review; no claim of live web verification for all names",
+  "generic_content_attributes": "keep ordinary actions, identities, characteristics, clothing, objects, locations, style, and format",
+  "highly_suspected_action": "Historical quarantine remains unconfirmed; outside approval hide from management/translation only, and keep gallery-detail original-name visibility.",
+  "historical_semantic_decisions_frozen": true,
+  "input_dictionary_sha256": "6c26ab652ac760f39134cc2dca15fcaf3c8c7d003c57e39464c8165cd063a85f",
+  "input_snapshot_sha256": "b3b748a0edd105ebd0db0fcc14d2a6a4c92a27cb60886e404afd83044f0625f2",
+  "new_translations": 0,
+  "review_method": "Full 2249-name AI semantic review in five non-overlapping batches; fixed namespace evidence checked across every source; additional independent reviews of 399 unmapped AI keep items and 98 mapped/conflicting keep items",
+  "review_scope_names": 2249,
+  "review_scope_records": 2252,
+  "second_review_changes": 54,
+  "unconfirmed_entity_identity_is_not_a_fact": true,
+  "user_authorized_quarantine": true
+}

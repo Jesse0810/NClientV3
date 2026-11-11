@@ -40,6 +40,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHolder> {
@@ -175,22 +176,22 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
         }
         final LayoutInflater inflater = context.getLayoutInflater();
 
-        int tagCount, idStringTagName;
+        int idStringTagName;
         ViewGroup lay;
         ChipGroup cg;
         TagList tagList = this.gallery.getGalleryData().getTags();
         for (TagType type : TagType.values) {
             idStringTagName = TAG_NAMES[type.getId()];
-            tagCount = tagList.getCount(type);
+            List<Tag> visibleTags = tagList.retrieveForType(type);
             lay = (ViewGroup) vg.getChildAt(type.getId());
             cg = lay.findViewById(R.id.chip_group);
-            if (cg.getChildCount() != 0) continue;
-            lay.setVisibility(tagCount == 0 ? View.GONE : View.VISIBLE);
+            // Rebinding must not retain chips from a previous gallery.
+            cg.removeAllViews();
+            lay.setVisibility(visibleTags.isEmpty() ? View.GONE : View.VISIBLE);
             ((TextView) lay.findViewById(R.id.title)).setText(idStringTagName);
-            for (int a = 0; a < tagCount; a++) {
-                final Tag tag = tagList.getTag(type, a);
+            for (final Tag tag : visibleTags) {
                 Chip c = (Chip) inflater.inflate(R.layout.chip_layout, cg, false);
-                c.setText(tag.getName());
+                c.setText(tag.getDisplayName(context));
                 c.setOnClickListener(v -> {
                     Intent intent = new Intent(context, MainActivity.class);
                     intent.putExtra(context.getPackageName() + ".TAG", tag);

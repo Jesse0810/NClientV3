@@ -1,0 +1,181 @@
+name: Publish Chinese preview APKs
+
+on:
+  push:
+    tags:
+      - 'v*-zh-preview.*'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-preview-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tagged sources
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Validate preview tag and release notes
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$RELEASE_TAG" =~ ^v([0-9]+\.[0-9]+\.[0-9]+)-zh-preview\.[0-9]+$ ]]; then
+            echo 'Expected a tag such as v4.2.8-zh-preview.1' >&2
+            exit 1
+          fi
+          echo "RELEASE_VERSION=${BASH_REMATCH[1]}" >> "$GITHUB_ENV"
+          test -s "docs/releases/$RELEASE_TAG.md"
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v6.1.0
+        with:
+          java-version: '17'
+          distribution: temurin
+          cache: gradle
+
+      - name: Set up Android SDK tools
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: |
+          set -euo pipefail
+          sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+
+      - name: Prepare local Debug configuration
+        run: |
+          set -euo pipefail
+          if [[ ! -e keystore.properties ]]; then
+            (umask 077; set -o noclobber; cat > keystore.properties <<'PROPERTIES'
+          storePassword=dummy
+          keyPassword=dummy
+          keyAlias=dummy
+          storeFile=dummy.jks
+          PROPERTIES
+            )
+          fi
+
+      - name: Build Android 9+ and Android 8 Debug APKs
+        run: |
+          set -euo pipefail
+          bash ./gradlew --no-daemon --max-workers=2 assemblePost28Debug assemblePre28Debug
+
+      - name: Verify APK signatures, metadata and bundled translations
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          import re
+          import shutil
+          import subprocess
+          import zipfile
+          from pathlib import Path
+
+          version = os.environ["RELEASE_VERSION"]
+          tag = os.environ["RELEASE_TAG"]
+          tools = Path(os.environ["ANDROID_HOME"]) / "build-tools" / "36.0.0"
+          output = Path("release-assets")
+          output.mkdir()
+          expected_allowlist = json.loads(Path("app/src/main/assets/content_tag_allowlist.json").read_text())
+          expected_translations = json.loads(Path("app/src/main/assets/tag_translations_zh_CN.json").read_text())
+          if not isinstance(expected_allowlist, list) or len(expected_allowlist) != 1127 or len(set(expected_allowlist)) != 1127:
+              raise SystemExit("Expected 1127 unique approved content tags")
+          if expected_translations.get("incest") != "近亲乱伦" or not set(expected_translations) <= set(expected_allowlist):
+              raise SystemExit("Unexpected content-tag translations")
+
+          variants = (
+              ("post28", "", 28, 36, "android9plus"),
+              ("pre28", "_pre28", 26, 28, "android8"),
+          )
+          for flavor, suffix, min_sdk, target_sdk, label in variants:
+              apk = Path(f"app/build/outputs/apk/{flavor}/debug/NClientV3_{version}{suffix}_debug.apk")
+              if not apk.is_file():
+                  raise SystemExit(f"Missing APK: {apk}")
+              subprocess.run([str(tools / "apksigner"), "verify", "--verbose", "--print-certs", str(apk)], check=True)
+              badging = subprocess.check_output([str(tools / "aapt2"), "dump", "badging", str(apk)], text=True)
+              checks = {
+                  "package": (r"^package: name='([^']+)'", "com.maxwai.nclientv3.debug"),
+                  "version": (r"^package: .*versionName='([^']+)'", f"{version}-debug"),
+                  "min SDK": (r"^(?:sdkVersion|minSdkVersion):'([^']+)'", str(min_sdk)),
+                  "target SDK": (r"^targetSdkVersion:'([^']+)'", str(target_sdk)),
+              }
+              for field, (pattern, expected) in checks.items():
+                  match = re.search(pattern, badging, re.MULTILINE)
+                  if match is None or match.group(1) != expected:
+                      raise SystemExit(f"Unexpected {field} in {apk}")
+              with zipfile.ZipFile(apk) as archive:
+                  allowlist = json.loads(archive.read("assets/content_tag_allowlist.json"))
+                  translations = json.loads(archive.read("assets/tag_translations_zh_CN.json"))
+                  if "assets/excluded_content_tags.json" in archive.namelist():
+                      raise SystemExit(f"Obsolete content-tag exclusion asset in {apk}")
+              if allowlist != expected_allowlist or translations != expected_translations:
+                  raise SystemExit(f"Bundled content-tag data differs from tagged sources: {apk}")
+              destination = output / f"NClientV3_{tag}_{label}_debug.apk"
+              shutil.copy2(apk, destination)
+              print(f"Verified {destination.name}: SDK {min_sdk}+, 1127 approved tags")
+          PY
+          (cd release-assets && sha256sum -- *.apk > SHA256SUMS.txt && sha256sum --check SHA256SUMS.txt)
+
+      - name: Retain verified release assets
+        uses: actions/upload-artifact@v7
+        with:
+          name: chinese-preview-apks
+          path: release-assets/
+          if-no-files-found: error
+          retention-days: 14
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout tagged release notes
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Download verified release assets
+        uses: actions/download-artifact@v8
+        with:
+          name: chinese-preview-apks
+          path: release-assets
+
+      - name: Create draft, verify uploaded assets and publish preview
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          test -s "docs/releases/$RELEASE_TAG.md"
+          (cd release-assets && sha256sum --check SHA256SUMS.txt)
+          assets=(
+            "release-assets/NClientV3_${RELEASE_TAG}_android9plus_debug.apk"
+            "release-assets/NClientV3_${RELEASE_TAG}_android8_debug.apk"
+            'release-assets/SHA256SUMS.txt'
+          )
+          for asset in "${assets[@]}"; do test -s "$asset"; done
+          if gh release view "$RELEASE_TAG" --json isDraft >/dev/null 2>&1; then
+            echo 'A release already exists for this tag; this workflow never replaces existing assets.' >&2
+            exit 1
+          fi
+          gh release create "$RELEASE_TAG" "${assets[@]}" \
+            --verify-tag --draft --prerelease \
+            --title "$RELEASE_TAG · 简体中文测试版" \
+            --notes-file "docs/releases/$RELEASE_TAG.md"
+          download_dir="$RUNNER_TEMP/verified-preview-assets"
+          mkdir "$download_dir"
+          gh release download "$RELEASE_TAG" --dir "$download_dir"
+          cmp release-assets/SHA256SUMS.txt "$download_dir/SHA256SUMS.txt"
+          (cd "$download_dir" && sha256sum --check SHA256SUMS.txt)
+          gh release edit "$RELEASE_TAG" --draft=false --prerelease

@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.maxwai.nclientv3.adapters.TagsAdapter;
 import com.maxwai.nclientv3.components.activities.GeneralActivity;
 import com.maxwai.nclientv3.components.widgets.CustomGridLayoutManager;
 import com.maxwai.nclientv3.components.widgets.TagTypePage;
@@ -66,9 +65,7 @@ public class TagFilterActivity extends GeneralActivity {
             @Override
             public void onPageSelected(int position) {
                 TagTypePage page = getFragment(position);
-                if (page != null) {
-                    ((TagsAdapter) Objects.requireNonNull(page.getRecyclerView().getAdapter())).addItem();
-                }
+                if (page != null) page.refilter(getTagSearchQuery());
             }
         });
 
@@ -106,6 +103,10 @@ public class TagFilterActivity extends GeneralActivity {
     @Nullable
     private TagTypePage getActualFragment() {
         return getFragment(mViewPager.getCurrentItem());
+    }
+
+    public String getTagSearchQuery() {
+        return searchView == null ? "" : searchView.getQuery().toString();
     }
 
     @Nullable

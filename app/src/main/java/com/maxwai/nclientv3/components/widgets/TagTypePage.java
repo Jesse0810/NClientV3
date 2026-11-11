@@ -75,6 +75,7 @@ public class TagTypePage extends Fragment {
     }
 
     public void loadTags() {
+        query = activity.getTagSearchQuery();
         recyclerView.setLayoutManager(new CustomGridLayoutManager(activity, getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 4 : 2));
         if (type.equals(TagType.UNKNOWN)) adapter = new TagsAdapter(activity, query, false);
         else if (type.equals(TagType.CATEGORY)) adapter = new TagsAdapter(activity, query, true);
@@ -83,7 +84,10 @@ public class TagTypePage extends Fragment {
     }
 
     public void refilter(String newText) {
-        if (activity != null) activity.runOnUiThread(() -> adapter.getFilter().filter(newText));
+        query = newText == null ? "" : newText;
+        String currentQuery = query;
+        if (activity != null && adapter != null)
+            activity.runOnUiThread(() -> adapter.getFilter().filter(currentQuery));
     }
 
     public void reset() {

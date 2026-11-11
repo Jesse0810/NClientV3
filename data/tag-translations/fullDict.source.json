@@ -1,0 +1,21 @@
+{
+  "context_url": "https://sleazyfork.org/zh-CN/scripts/576537/code",
+  "duplicate_keys": [],
+  "effective_json_sha256": "6c60e9f52fec9e73eeea13f9e993c484f8c878ee28590ca074f90389ac612a0c",
+  "fetched_from_website": false,
+  "license": "上传片段未包含许可证信息；不臆断许可",
+  "normalized_json_sha256": "b9f04b2ae700f298278c74d130e813a6a1657ee96570fd862c5d8e645bcceb7e",
+  "normalized_json_sha256_scope": "原始上传片段规范化后的校验值，不含用户后续指定的译名修订。",
+  "priority": 1,
+  "source": "用户提供的 fullDict 词典片段",
+  "unique_entries": 581,
+  "uploaded_text_sha256": "ca6fecc6332645a9c19e35f397d37bfb971cd9ab6d746f91a694bed01c35f10b",
+  "user_requested_edits": [
+    {
+      "display_name": "近亲乱伦",
+      "name": "incest",
+      "previous_display_name": "近亲相奸",
+      "reason": "用户明确指定的标签译名修订；优先采用用户更新后的 fullDict 值。"
+    }
+  ]
+}

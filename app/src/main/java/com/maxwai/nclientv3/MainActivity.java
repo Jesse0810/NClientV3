@@ -185,7 +185,7 @@ public class MainActivity extends BaseActivity
                 actionBar.setTitle(inspector.getSearchTitle());
                 break;
             case TAG:
-                actionBar.setTitle(inspector.getTag().getName());
+                actionBar.setTitle(inspector.getTag().getDisplayName(this));
                 break;
             case NORMAL:
                 actionBar.setTitle(R.string.app_name);

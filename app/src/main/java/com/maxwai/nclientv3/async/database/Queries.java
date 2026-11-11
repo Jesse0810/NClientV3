@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 @SuppressLint("Range")
 public class Queries {
@@ -309,16 +310,56 @@ public class Queries {
          * @param type       If not null only tags which are of a specific {@link TagType}
          * @param online     Retrieve only tags which have been blacklisted from the main site
          * @param sortByName sort by name or by count
+         * @param translatedNames Canonical content-tag names matched by their display labels
+         * @param allowedNames Approved content-tag names visible in tag-management lists
+         * @param searchDisplayNamesOnly Match only displayed labels in the Simplified Chinese content-tag module
          */
-        public static Cursor getFilterCursor(@NonNull String query, TagType type, boolean online, boolean sortByName) {
+        public static Cursor getFilterCursor(@NonNull String query, TagType type, boolean online,
+                                             boolean sortByName, @NonNull List<String> translatedNames,
+                                             @NonNull Set<String> allowedNames, boolean searchDisplayNamesOnly) {
+            boolean displayNamesOnly = searchDisplayNamesOnly && TagType.TAG.equals(type);
             //create query
             StringBuilder sql = new StringBuilder("SELECT * FROM ").append(TABLE_NAME);
             sql.append(" WHERE ");
             sql.append(COUNT).append(">=? ");                                        //min tag count
-            if (!query.isEmpty())
-                sql.append("AND ").append(NAME).append(" LIKE ?");  //query if is used
+            if (!query.isEmpty()) {
+                sql.append("AND (");
+                if (!displayNamesOnly)
+                    sql.append(NAME).append(" LIKE ?");
+                if (!translatedNames.isEmpty() && (type == null || TagType.TAG.equals(type))) {
+                    if (!displayNamesOnly) sql.append(" OR ");
+                    sql.append('(').append(TYPE).append('=').append(TagType.TAG.getId())
+                        .append(" AND ").append(NAME).append(" IN (");
+                    for (int i = 0; i < translatedNames.size(); i++) {
+                        if (i > 0) sql.append(',');
+                        // Escaped dictionary names avoid the SQLite bind-variable limit for broad matches.
+                        sql.append(DatabaseUtils.sqlEscapeString(translatedNames.get(i)));
+                    }
+                    sql.append("))");
+                } else if (displayNamesOnly) sql.append('0');
+                sql.append(") ");
+            }
             if (type != null)
                 sql.append("AND ").append(TYPE).append("=? ");            //type if is used
+            if (type == null || TagType.TAG.equals(type)) {
+                sql.append("AND (");
+                if (type == null)
+                    sql.append(TYPE).append("!=").append(TagType.TAG.getId()).append(" OR ");
+                if (allowedNames.isEmpty()) {
+                    sql.append('0');
+                } else {
+                    sql.append(NAME).append(" IN (");
+                    boolean first = true;
+                    for (String name : allowedNames) {
+                        if (!first) sql.append(',');
+                        // Escape literals to support the fixed list beyond older SQLite bind limits.
+                        sql.append(DatabaseUtils.sqlEscapeString(name));
+                        first = false;
+                    }
+                    sql.append(')');
+                }
+                sql.append(") ");
+            }
             if (online)
                 sql.append("AND ").append(ONLINE).append("=1 ");              //retrieve only online tags
             if (!online && type == null)
@@ -331,7 +372,7 @@ public class Queries {
             //create parameter list
             ArrayList<String> list = new ArrayList<>();
             list.add("" + TagV2.getMinCount());               //minium tags (always provided)
-            if (!query.isEmpty()) list.add('%' + query + '%');    //query
+            if (!query.isEmpty() && !displayNamesOnly) list.add('%' + query + '%');    //canonical query
             if (type != null) list.add("" + type.getId());      //type of the tag
             LogUtility.d("FILTER URL: " + sql + ", ARGS: " + list);
             return db.rawQuery(sql.toString(), list.toArray(new String[0]));

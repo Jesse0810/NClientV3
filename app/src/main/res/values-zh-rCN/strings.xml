@@ -15,8 +15,8 @@
     <string name="title_activity_api_key">API key</string>
     <string name="parodies">原作</string>
     <string name="characters">角色</string>
-    <string name="tags">标签</string>
-    <string name="artists">艺术家</string>
+    <string name="tags">内容标签</string>
+    <string name="artists">画师</string>
     <string name="groups">社团</string>
     <string name="languages">语言</string>
     <string name="categories">类别</string>
@@ -54,7 +54,7 @@
     <string name="login_status_api_key_invalid">A saved API key exists, but it needs to be replaced or removed.</string>
     <string name="remove_api_key">Remove API key</string>
     <string name="favorite_online_manga">在线收藏漫画</string>
-    <string name="online_tags">在线标签</string>
+    <string name="online_tags">在线黑名单标签</string>
     <string name="add_to_online_favorite">添加至在线收藏</string>
     <string name="remove_from_online_favorites">从在线收藏移除</string>
     <string name="add_to_online_blacklist">列入在线黑名单？</string>
@@ -327,4 +327,25 @@
     <string name="auth_error">身份验证错误</string>
     <string name="auth_title">生物识别登录</string>
     <string name="auth_subtitle">使用您的生物识别凭证登录</string>
+    <string name="tag_language_japanese">日语</string>
+    <string name="tag_language_english">英语</string>
+    <string name="tag_language_translated">已翻译</string>
+    <string name="tag_language_chinese">中文</string>
+    <string name="tag_language_arabic">阿拉伯语</string>
+    <string name="tag_language_czech">捷克语</string>
+    <string name="tag_language_turkish">土耳其语</string>
+    <string name="tag_language_ukrainian">乌克兰语</string>
+    <string name="tag_language_greek">希腊语</string>
+    <string name="tag_language_romanian">罗马尼亚语</string>
+    <string name="tag_language_hebrew">希伯来语</string>
+    <string name="tag_language_khmer">高棉语</string>
+    <string name="tag_language_textless">无文字</string>
+    <string name="tag_language_textless_narrative">无文字叙事</string>
+    <string name="tag_language_japanese_definition">日语（定义已修订，请阅读维基）</string>
+    <string name="tag_category_doujinshi">同人志</string>
+    <string name="tag_category_manga">商业志</string>
+    <string name="tag_category_non_h">非成人</string>
+    <string name="tag_category_western">欧美作品</string>
+    <string name="tag_category_artistcg">画师插画集</string>
+    <string name="tag_category_misc">其他</string>
 </resources>
