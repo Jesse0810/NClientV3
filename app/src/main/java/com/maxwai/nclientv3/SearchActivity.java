@@ -61,6 +61,7 @@ import java.util.Locale;
 
 public class SearchActivity extends GeneralActivity {
     public static final String EXTRA_BOOKMARK_URL = "com.maxwai.nclientv3.extra.EDIT_BOOKMARK_URL";
+    public static final String EXTRA_CREATE_BOOKMARK = "com.maxwai.nclientv3.extra.CREATE_BOOKMARK";
     public static final int CUSTOM_ID_START = 100000000;
     private static int customId = CUSTOM_ID_START;
     private Ranges ranges = new Ranges();
@@ -77,6 +78,7 @@ public class SearchActivity extends GeneralActivity {
     private AlertDialog alertDialog;
     private TagSuggestion selectedTagSuggestion;
     private boolean bookmarkMode;
+    private boolean creatingBookmark;
     private Bookmark originalBookmark;
     private TextInputEditText bookmarkName;
     private Spinner bookmarkSort;
@@ -90,8 +92,9 @@ public class SearchActivity extends GeneralActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bookmarkMode = getIntent().hasExtra(EXTRA_BOOKMARK_URL);
-        if (bookmarkMode) {
+        creatingBookmark = getIntent().getBooleanExtra(EXTRA_CREATE_BOOKMARK, false);
+        bookmarkMode = creatingBookmark || getIntent().hasExtra(EXTRA_BOOKMARK_URL);
+        if (bookmarkMode && !creatingBookmark) {
             originalBookmark = Queries.BookmarkTable.getBookmark(getIntent().getStringExtra(EXTRA_BOOKMARK_URL));
             if (originalBookmark == null) {
                 Toast.makeText(this, R.string.bookmark_unavailable, Toast.LENGTH_LONG).show();
@@ -107,7 +110,7 @@ public class SearchActivity extends GeneralActivity {
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(bookmarkMode);
-        if (bookmarkMode) getSupportActionBar().setTitle(R.string.bookmark_edit);
+        if (bookmarkMode) getSupportActionBar().setTitle(creatingBookmark ? R.string.bookmark_new : R.string.bookmark_edit);
 
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
@@ -204,21 +207,21 @@ public class SearchActivity extends GeneralActivity {
     private void initializeBookmarkEditor(Bundle savedState) {
         bookmarkName = findViewById(R.id.bookmark_name);
         bookmarkSort = findViewById(R.id.bookmark_sort);
-        bookmarkName.setText(originalBookmark.name);
+        bookmarkName.setText(creatingBookmark ? "" : originalBookmark.name);
         ((TextView) findViewById(R.id.bookmark_scope)).setText(getString(R.string.bookmark_scope_format,
-            getString(originalBookmark.isFavorite() ? R.string.bookmark_scope_favorites : R.string.bookmark_scope_all)));
+            getString(!creatingBookmark && originalBookmark.isFavorite() ? R.string.bookmark_scope_favorites : R.string.bookmark_scope_all)));
         List<String> sorting = new ArrayList<>();
         for (SortType sort : SortType.values()) sorting.add(getString(sort.getNameId()));
         ArrayAdapter<String> sorts = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sorting);
         sorts.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         bookmarkSort.setAdapter(sorts);
-        initialBookmarkSort = originalBookmark.getSortType();
+        initialBookmarkSort = creatingBookmark ? SortType.RECENT_ALL_TIME : originalBookmark.getSortType();
         bookmarkSort.setSelection(initialBookmarkSort.ordinal());
-        if (originalBookmark.isFavorite()) {
+        if (!creatingBookmark && originalBookmark.isFavorite()) {
             bookmarkSort.setVisibility(View.GONE);
             findViewById(R.id.bookmark_sort_label).setVisibility(View.GONE);
         }
-        String originalQuery = originalBookmark.getEditQuery();
+        String originalQuery = creatingBookmark ? "" : originalBookmark.getEditQuery();
         BookmarkFilters filters = BookmarkFilters.parse(originalQuery);
         searchView.setQuery(filters.keywords, false);
         ranges.setFromPage(filters.minPages);
@@ -323,17 +326,22 @@ public class SearchActivity extends GeneralActivity {
         String query = getBookmarkEditorQuery();
         SortType sort = SortType.values()[bookmarkSort.getSelectedItemPosition()];
         Bookmark updated;
-        if (query.equals(initialBookmarkQuery) && sort == initialBookmarkSort) {
+        if (!creatingBookmark && query.equals(initialBookmarkQuery) && sort == initialBookmarkSort) {
             updated = originalBookmark.withName(name);
         } else {
-            if (originalBookmark.getQuery() == null && query.isEmpty()) {
+            if (!creatingBookmark && originalBookmark.getQuery() == null && query.isEmpty()) {
                 Toast.makeText(this, R.string.bookmark_unavailable, Toast.LENGTH_LONG).show();
                 return;
             }
-            InspectorV3 inspector = InspectorV3.bookmarkInspector(this, query, 1, sort, originalBookmark.isFavorite(), null);
+            boolean favorite = !creatingBookmark && originalBookmark.isFavorite();
+            InspectorV3 inspector = InspectorV3.bookmarkInspector(this, query, 1, sort, favorite, null);
+            if (!favorite && !inspector.canAddBookmark()) {
+                Toast.makeText(this, R.string.bookmark_requires_filters, Toast.LENGTH_LONG).show();
+                return;
+            }
             updated = Bookmark.fromInspector(inspector, name);
         }
-        if (!Queries.BookmarkTable.saveBookmark(originalBookmark.url, updated)) {
+        if (!Queries.BookmarkTable.saveBookmark(creatingBookmark ? null : originalBookmark.url, updated)) {
             Toast.makeText(this, R.string.bookmark_save_failed, Toast.LENGTH_LONG).show();
             return;
         }

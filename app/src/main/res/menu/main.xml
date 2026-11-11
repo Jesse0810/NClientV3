@@ -36,6 +36,7 @@
         android:id="@+id/add_bookmark"
         android:icon="@drawable/ic_bookmark_border"
         android:title="@string/add_bookmark"
+        android:visible="false"
         app:showAsAction="ifRoom|collapseActionView" />
     <item
         android:id="@+id/download_page"

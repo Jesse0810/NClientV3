@@ -479,6 +479,18 @@ public class InspectorV3 extends Thread implements Parcelable {
         return requestType;
     }
 
+    /** Bookmarks save filtered full-site results, including filters set in tag management. */
+    public boolean canAddBookmark() {
+        if (requestType != ApiRequestType.BYSEARCH && requestType != ApiRequestType.BYTAG)
+            return false;
+        // Popular sorting inserts this placeholder even when no filters were selected.
+        // It can remain in the query after switching back to recent sorting.
+        String keywords = query == null ? "" : query.trim();
+        return (!keywords.isEmpty() && !"-nclientv3".equals(keywords))
+            || (tags != null && !tags.isEmpty())
+            || (ranges != null && !ranges.isDefault());
+    }
+
     public int getPageCount() {
         return pageCount;
     }

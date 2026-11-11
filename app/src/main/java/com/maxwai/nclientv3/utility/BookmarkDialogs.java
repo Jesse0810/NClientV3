@@ -20,12 +20,16 @@ public final class BookmarkDialogs {
 
     public static void showAdd(AppCompatActivity activity, InspectorV3 inspector) {
         if (inspector == null) return;
+        if (!inspector.canAddBookmark()) {
+            Toast.makeText(activity, R.string.bookmark_requires_filters, Toast.LENGTH_LONG).show();
+            return;
+        }
         Bookmark snapshot = Bookmark.fromInspector(inspector, "");
         if (snapshot.getQuery() == null) {
             Toast.makeText(activity, R.string.bookmark_unavailable, Toast.LENGTH_LONG).show();
             return;
         }
-        Bookmark existing = Queries.BookmarkTable.getBookmark(snapshot.url);
+        Bookmark existing = Queries.BookmarkTable.findMatchingBookmark(snapshot, null);
         View view = activity.getLayoutInflater().inflate(R.layout.bookmark_name_dialog, null);
         TextInputLayout inputLayout = view.findViewById(R.id.bookmark_name_layout);
         TextInputEditText input = view.findViewById(R.id.bookmark_name);

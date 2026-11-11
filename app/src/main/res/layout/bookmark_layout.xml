@@ -21,9 +21,6 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:minHeight="48dp" android:text="@string/bookmark_view_conditions" />
-            <TextView android:id="@+id/page" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:layout_marginTop="8dp"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
         <LinearLayout android:id="@+id/bookmark_actions" android:layout_width="48dp"
             android:layout_height="wrap_content" android:orientation="vertical"

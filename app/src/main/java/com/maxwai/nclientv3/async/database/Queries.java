@@ -752,11 +752,15 @@ public class Queries {
         public static boolean saveBookmark(@Nullable String originalUrl, Bookmark bookmark) {
             ContentValues values = new ContentValues(5);
             values.put(URL, bookmark.url);
-            values.put(PAGE, bookmark.page);
+            // Retained for old backups; bookmarks no longer store a browsing position.
+            values.put(PAGE, 1);
             values.put(TYPE, bookmark.getRequestType().ordinal());
             values.put(TAG_ID, bookmark.tag);
             values.put(NAME, bookmark.name);
             try {
+                // Keep old, separately named rows intact, including when only renaming them.
+                if ((originalUrl == null || !originalUrl.equals(bookmark.url))
+                    && findMatchingBookmark(bookmark, originalUrl) != null) return false;
                 if (originalUrl == null)
                     return db.insertWithOnConflict(TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_IGNORE) != -1;
                 // A single UPDATE preserves the row and fails atomically on a duplicate URL.
@@ -775,9 +779,18 @@ public class Queries {
             }
         }
 
+        @Nullable
+        public static Bookmark findMatchingBookmark(Bookmark candidate, @Nullable String ignoredUrl) {
+            Bookmark exact = getBookmark(candidate.url);
+            if (exact != null && !exact.url.equals(ignoredUrl)) return exact;
+            String filterUrl = candidate.getFilterUrl();
+            for (Bookmark existing : getBookmarks())
+                if (!existing.url.equals(ignoredUrl) && filterUrl.equals(existing.getFilterUrl())) return existing;
+            return null;
+        }
+
         private static Bookmark readBookmark(Cursor cursor) {
             return new Bookmark(cursor.getString(cursor.getColumnIndexOrThrow(URL)),
-                cursor.getInt(cursor.getColumnIndexOrThrow(PAGE)),
                 ApiRequestType.values[cursor.getInt(cursor.getColumnIndexOrThrow(TYPE))],
                 cursor.getInt(cursor.getColumnIndexOrThrow(TAG_ID)),
                 cursor.getString(cursor.getColumnIndexOrThrow(NAME)));

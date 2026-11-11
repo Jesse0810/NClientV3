@@ -54,7 +54,6 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
             .setTitle(bookmark.getDisplayTitle(bookmarkActivity))
             .setMessage(bookmark.getDisplayConditions(bookmarkActivity))
             .setPositiveButton(R.string.ok, null).show());
-        holder.pageLabel.setText(bookmarkActivity.getString(R.string.bookmark_page_format, bookmark.page));
 
         holder.deleteButton.setOnClickListener(v -> removeBookmarkAtPosition(holder.getBindingAdapterPosition()));
         holder.editButton.setOnClickListener(v -> {
@@ -69,7 +68,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
     }
 
     /**
-     * Start an {@link MainActivity} with <code>bookmark</code> as query and page
+     * Start an {@link MainActivity} with the saved filters on the first page.
      *
      * @param bookmark bookmark to load
      */
@@ -116,14 +115,12 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
         final TextView queryText;
         final TextView conditionsText;
         final TextView detailsButton;
-        final TextView pageLabel;
         final ConstraintLayout rootLayout;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             deleteButton = itemView.findViewById(R.id.remove_button);
             editButton = itemView.findViewById(R.id.edit_bookmark);
-            pageLabel = itemView.findViewById(R.id.page);
             queryText = itemView.findViewById(R.id.title);
             conditionsText = itemView.findViewById(R.id.bookmark_conditions);
             detailsButton = itemView.findViewById(R.id.bookmark_details);

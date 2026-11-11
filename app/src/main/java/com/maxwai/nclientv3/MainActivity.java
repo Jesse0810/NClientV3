@@ -117,6 +117,7 @@ public class MainActivity extends BaseActivity
     };
     final Runnable changeLanguageRunnable = () -> {
         useNormalMode();
+        invalidateOptionsMenu();
         inspector.start();
     };
     private DrawerLayout drawerLayout;
@@ -511,6 +512,7 @@ public class MainActivity extends BaseActivity
 
         menu.findItem(R.id.only_language).setVisible(modeType == ModeType.NORMAL);
         menu.findItem(R.id.random_favorite).setVisible(modeType == ModeType.FAVORITE);
+        menu.findItem(R.id.add_bookmark).setVisible(inspector != null && inspector.canAddBookmark());
 
         initializeSearchItem(menu.findItem(R.id.search));
 
