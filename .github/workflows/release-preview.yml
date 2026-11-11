@@ -17,11 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout tagged sources
+        id: checkout
         uses: actions/checkout@v7
         with:
           persist-credentials: false
 
       - name: Validate preview tag and release notes
+        id: tag
         env:
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
@@ -34,21 +36,15 @@ jobs:
           test -s "docs/releases/$RELEASE_TAG.md"
 
       - name: Set up JDK 17
+        id: java
         uses: actions/setup-java@v6.1.0
         with:
           java-version: '17'
           distribution: temurin
           cache: gradle
 
-      - name: Set up Android SDK tools
-        uses: android-actions/setup-android@v3
-
-      - name: Install Android SDK packages
-        run: |
-          set -euo pipefail
-          sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
-
       - name: Prepare local Debug configuration
+        id: config
         run: |
           set -euo pipefail
           if [[ ! -e keystore.properties ]]; then
@@ -62,11 +58,13 @@ jobs:
           fi
 
       - name: Build Android 9+ and Android 8 Debug APKs
+        id: assemble
         run: |
           set -euo pipefail
           bash ./gradlew --no-daemon --max-workers=2 assemblePost28Debug assemblePre28Debug
 
       - name: Verify APK signatures, metadata and bundled translations
+        id: verify
         env:
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
@@ -126,12 +124,28 @@ jobs:
           (cd release-assets && sha256sum -- *.apk > SHA256SUMS.txt && sha256sum --check SHA256SUMS.txt)
 
       - name: Retain verified release assets
+        id: upload
         uses: actions/upload-artifact@v7
         with:
           name: chinese-preview-apks
           path: release-assets/
           if-no-files-found: error
           retention-days: 14
+
+      - name: Report build stages
+        if: always()
+        env:
+          CHECKOUT_RESULT: ${{ steps.checkout.outcome }}
+          TAG_RESULT: ${{ steps.tag.outcome }}
+          JAVA_RESULT: ${{ steps.java.outcome }}
+          CONFIG_RESULT: ${{ steps.config.outcome }}
+          ASSEMBLE_RESULT: ${{ steps.assemble.outcome }}
+          VERIFY_RESULT: ${{ steps.verify.outcome }}
+          UPLOAD_RESULT: ${{ steps.upload.outcome }}
+        run: |
+          printf '::notice title=Preview build stages::checkout=%s tag=%s java=%s config=%s assemble=%s verify=%s upload=%s\n' \
+            "$CHECKOUT_RESULT" "$TAG_RESULT" "$JAVA_RESULT" "$CONFIG_RESULT" \
+            "$ASSEMBLE_RESULT" "$VERIFY_RESULT" "$UPLOAD_RESULT"
 
   publish:
     needs: build
