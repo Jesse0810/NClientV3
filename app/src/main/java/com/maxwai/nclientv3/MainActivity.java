@@ -176,9 +176,13 @@ public class MainActivity extends BaseActivity
         }
     }
 
+    private boolean isBookmarkPage() {
+        return getIntent().getBooleanExtra(getPackageName() + ".BYBOOKMARK", false);
+    }
+
     private void setActivityTitle() {
         ActionBar actionBar = Objects.requireNonNull(getSupportActionBar());
-        if (getIntent().getBooleanExtra(getPackageName() + ".BYBOOKMARK", false)) {
+        if (isBookmarkPage()) {
             String title = getIntent().getStringExtra(getPackageName() + ".BOOKMARK_TITLE");
             if (title != null && !title.isEmpty()) {
                 actionBar.setTitle(title);
@@ -512,7 +516,7 @@ public class MainActivity extends BaseActivity
 
         menu.findItem(R.id.only_language).setVisible(modeType == ModeType.NORMAL);
         menu.findItem(R.id.random_favorite).setVisible(modeType == ModeType.FAVORITE);
-        menu.findItem(R.id.add_bookmark).setVisible(inspector != null && inspector.canAddBookmark());
+        menu.findItem(R.id.add_bookmark).setVisible(!isBookmarkPage() && inspector != null && inspector.canAddBookmark());
 
         initializeSearchItem(menu.findItem(R.id.search));
 
@@ -528,6 +532,12 @@ public class MainActivity extends BaseActivity
     }
 
     private void initializeSearchItem(MenuItem item) {
+        if (isBookmarkPage()) {
+            item.setActionView(null);
+            item.setVisible(false);
+            return;
+        }
+        item.setVisible(true);
         if (modeType != ModeType.FAVORITE)
             item.setActionView(null);
         else {
@@ -587,6 +597,8 @@ public class MainActivity extends BaseActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (isBookmarkPage() && (item.getItemId() == R.id.search || item.getItemId() == R.id.add_bookmark))
+            return true;
         Intent i;
         LogUtility.d("Pressed item: " + item.getItemId());
         if (item.getItemId() == R.id.by_popular) {

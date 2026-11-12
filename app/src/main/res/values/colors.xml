@@ -9,4 +9,10 @@
     <color name="primaryColorVariant">@color/primary_material_light</color>
     <color name="colorAccent">@android:color/holo_blue_bright</color>
     <color name="colorPrimary">@android:color/holo_blue_bright</color>
+    <color name="bookmark_include_background">#E4F4E8</color>
+    <color name="bookmark_include_foreground">#205A30</color>
+    <color name="bookmark_exclude_background">#FDE8E7</color>
+    <color name="bookmark_exclude_foreground">#922D2D</color>
+    <color name="bookmark_neutral_background">#F0F1F3</color>
+    <color name="bookmark_neutral_foreground">#333333</color>
 </resources>

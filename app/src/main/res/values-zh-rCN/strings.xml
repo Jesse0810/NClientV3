@@ -102,6 +102,8 @@
     <string name="setting_off_remove_ignored">模糊化带有已忽略标签的画廊</string>
     <string name="remove_ignored_galleries">移除已忽略画廊</string>
     <string name="clear_tag_preferences">清除标签偏好</string>
+    <string name="clear_all_tag_preferences_message">清除所有本地标签的包含和排除偏好？</string>
+    <string name="clear_tag_type_preferences_message">清除当前分类所有标签的包含和排除偏好？</string>
     <string name="check_for_update_on_startup">启动时检查更新</string>
     <string name="check_for_updates">检查更新</string>
     <string name="no_updates_found">未发现更新</string>
@@ -356,7 +358,6 @@
     <string name="bookmark_delete">删除书签</string>
     <string name="bookmark_unnamed">未命名书签</string>
     <string name="bookmark_all_content">全部内容</string>
-    <string name="bookmark_scope_all">全站</string>
     <string name="bookmark_scope_favorites">在线收藏</string>
     <string name="bookmark_scope_format">搜索范围：%1$s</string>
     <string name="bookmark_sort_format">排序：%1$s</string>
@@ -373,5 +374,10 @@
     <string name="bookmark_complex_hint">自定义表达式已保留在关键词栏，可直接修改；选择标签会追加筛选条件。</string>
     <string name="bookmark_page_reset_hint">书签每次打开均从第 1 页开始。</string>
     <string name="invalid_tag_name">标签名称不能为空，也不能包含引号或反斜杠。自定义表达式请在关键词栏输入。</string>
-    <string name="bookmark_view_conditions">查看全部条件</string>
+    <string name="bookmark_view_conditions">查看条件</string>
+    <string name="bookmark_scope_label">搜索范围</string>
+    <string name="bookmark_sort_label">排序</string>
+    <string name="bookmark_conditions_label">筛选条件</string>
+    <string name="bookmark_keywords_label">关键词</string>
+    <string name="bookmark_expression_label">搜索表达式</string>
 </resources>

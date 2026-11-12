@@ -117,8 +117,8 @@ public class Bookmark {
         String conditions = query == null ? context.getString(R.string.bookmark_unavailable)
             : query.isEmpty() ? context.getString(R.string.bookmark_all_content)
             : BookmarkQueryFormatter.format(context, query);
-        String scope = context.getString(isFavorite() ? R.string.bookmark_scope_favorites : R.string.bookmark_scope_all);
-        return scope + " · " + conditions + (isFavorite() ? "" : "\n" +
+        String scope = isFavorite() ? context.getString(R.string.bookmark_scope_favorites) + " · " : "";
+        return scope + conditions + (isFavorite() ? "" : "\n" +
             context.getString(R.string.bookmark_sort_format, context.getString(getSortType().getNameId())));
     }
 

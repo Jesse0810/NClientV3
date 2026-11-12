@@ -174,6 +174,8 @@
     <string name="setting_off_remove_ignored">The galleries with ignored tags will be blurred</string>
     <string name="remove_ignored_galleries">Remove ignored galleries</string>
     <string name="clear_tag_preferences">Clear tag preferences</string>
+    <string name="clear_all_tag_preferences_message">Clear all local include/exclude tag preferences?</string>
+    <string name="clear_tag_type_preferences_message">Clear the include/exclude preferences for all tags in this category?</string>
     <string name="check_for_update_on_startup">Check for update on startup</string>
     <string name="check_for_updates">Check for updates</string>
     <string name="no_updates_found">No updates found</string>
@@ -449,7 +451,6 @@
     <string name="bookmark_delete">Delete bookmark</string>
     <string name="bookmark_unnamed">Unnamed bookmark</string>
     <string name="bookmark_all_content">All content</string>
-    <string name="bookmark_scope_all">All galleries</string>
     <string name="bookmark_scope_favorites">Online favorites</string>
     <string name="bookmark_scope_format">Search in: %1$s</string>
     <string name="bookmark_sort_format">Sort: %1$s</string>
@@ -466,5 +467,10 @@
     <string name="bookmark_complex_hint">This custom expression is kept in the keyword field. You can edit it directly; selected tags add more conditions.</string>
     <string name="bookmark_page_reset_hint">Bookmarks always open results on the first page.</string>
     <string name="invalid_tag_name">Enter a tag name without quotes or backslashes. Put custom expressions in the keyword field.</string>
-    <string name="bookmark_view_conditions">View all conditions</string>
+    <string name="bookmark_view_conditions">View conditions</string>
+    <string name="bookmark_scope_label">Search in</string>
+    <string name="bookmark_sort_label">Sort</string>
+    <string name="bookmark_conditions_label">Conditions</string>
+    <string name="bookmark_keywords_label">Keywords</string>
+    <string name="bookmark_expression_label">Search expression</string>
 </resources>

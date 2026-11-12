@@ -60,6 +60,10 @@ public class TagV2 {
         Queries.TagTable.resetAllStatus();
     }
 
+    public static void resetStatusByType(TagType type) {
+        Queries.TagTable.resetStatusByType(type);
+    }
+
     public static boolean containTag(Tag[] tags, Tag t) {
         for (Tag t1 : tags) if (t.equals(t1)) return true;
         return false;

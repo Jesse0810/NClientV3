@@ -18,7 +18,8 @@
                     android:inputType="textCapSentences" android:maxLength="120" android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
             <TextView android:id="@+id/bookmark_scope" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:layout_marginTop="12dp" />
+                android:layout_height="wrap_content" android:layout_marginTop="12dp"
+                android:visibility="gone" />
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:layout_marginTop="12dp" android:text="@string/bookmark_keywords" />
             <com.maxwai.nclientv3.components.widgets.CustomSearchView android:id="@+id/search"

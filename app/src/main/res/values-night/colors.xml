@@ -6,4 +6,10 @@
     <color name="primaryColorVariant">@color/primary_material_dark</color>
     <color name="colorAccent">@android:color/holo_blue_dark</color>
     <color name="colorPrimary">@android:color/holo_blue_dark</color>
+    <color name="bookmark_include_background">#153A24</color>
+    <color name="bookmark_include_foreground">#B6E3BF</color>
+    <color name="bookmark_exclude_background">#4D2424</color>
+    <color name="bookmark_exclude_foreground">#F8BCB7</color>
+    <color name="bookmark_neutral_background">#292B2F</color>
+    <color name="bookmark_neutral_foreground">#E2E2E5</color>
 </resources>

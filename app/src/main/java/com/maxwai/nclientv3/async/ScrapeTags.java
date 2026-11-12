@@ -72,9 +72,7 @@ public class ScrapeTags extends Worker {
         try {
             newVersion = getNewVersionCode();
             if (lastVersion > -1 && lastVersion >= newVersion) return Result.success();
-            List<Tag> tags = Queries.TagTable.getAllFiltered();
             fetchTags();
-            for (Tag t : tags) Queries.TagTable.updateStatus(t.getId(), t.getStatus());
         } catch (IOException | JSONException e) {
             LogUtility.w("Error updating Tags", e);
             return Result.failure();
@@ -103,7 +101,7 @@ public class ScrapeTags extends Worker {
                         JSONArray entry = rootArray.getJSONArray(j);
                         tags.add(readTag(entry));
                     }
-                    Queries.TagTable.insertScrape(tags, true);
+                    Queries.TagTable.insertScrape(tags);
                 }
             } catch (JSONException ignored) {
                 throw new JSONException("Something went wrong parsing json");

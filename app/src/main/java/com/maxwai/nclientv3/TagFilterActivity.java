@@ -39,6 +39,7 @@ public class TagFilterActivity extends GeneralActivity {
 
     private SearchView searchView;
     private ViewPager2 mViewPager;
+    private MenuItem resetTagsItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class TagFilterActivity extends GeneralActivity {
         mViewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
+                if (resetTagsItem != null) resetTagsItem.setVisible(position != 6);
                 TagTypePage page = getFragment(position);
                 if (page != null) page.refilter(getTagSearchQuery());
             }
@@ -148,6 +150,8 @@ public class TagFilterActivity extends GeneralActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_tag_filter, menu);
         updateSortItem(menu.findItem(R.id.sort_by_name));
+        resetTagsItem = menu.findItem(R.id.reset_tags);
+        resetTagsItem.setVisible(mViewPager.getCurrentItem() != 6);
         searchView = (androidx.appcompat.widget.SearchView) menu.findItem(R.id.search).getActionView();
         Objects.requireNonNull(searchView).setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
             @Override
@@ -168,13 +172,18 @@ public class TagFilterActivity extends GeneralActivity {
     }
 
     private void createDialog() {
+        if (mViewPager.getCurrentItem() == 6) return;
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-        builder.setTitle(R.string.are_you_sure).setMessage(getString(R.string.clear_this_list)).setIcon(R.drawable.ic_help);
+        builder.setTitle(R.string.clear_tag_preferences)
+            .setMessage(mViewPager.getCurrentItem() == 0 ? R.string.clear_all_tag_preferences_message : R.string.clear_tag_type_preferences_message)
+            .setIcon(R.drawable.ic_help);
         builder.setPositiveButton(R.string.yes, (dialog, which) -> {
             TagTypePage page = getActualFragment();
             if (page != null) {
                 page.reset();
-
+                for (Fragment fragment : getSupportFragmentManager().getFragments())
+                    if (fragment instanceof TagTypePage && fragment != page)
+                        ((TagTypePage) fragment).refilter(getTagSearchQuery());
             }
         }).setNegativeButton(R.string.no, null).setCancelable(true);
         builder.show();

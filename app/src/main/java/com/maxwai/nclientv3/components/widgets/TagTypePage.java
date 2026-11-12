@@ -1,6 +1,5 @@
 package com.maxwai.nclientv3.components.widgets;
 
-import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import com.maxwai.nclientv3.R;
 import com.maxwai.nclientv3.TagFilterActivity;
 import com.maxwai.nclientv3.adapters.TagsAdapter;
 import com.maxwai.nclientv3.api.enums.TagType;
-import com.maxwai.nclientv3.async.ScrapeTags;
 import com.maxwai.nclientv3.settings.Global;
 import com.maxwai.nclientv3.settings.TagV2;
 
@@ -91,14 +89,11 @@ public class TagTypePage extends Fragment {
     }
 
     public void reset() {
+        if (type == null || type.equals(TagType.CATEGORY)) return; // Online blacklist is separate.
         if (type.equals(TagType.UNKNOWN)) TagV2.resetAllStatus();
-        else if (!type.equals(TagType.CATEGORY)) {
-            ScrapeTags.startWork(activity);
-        }
-        Activity activity = getActivity();
-        if (activity == null || adapter == null) return;
-        activity.runOnUiThread(adapter::notifyDataSetChanged);
-
+        else TagV2.resetStatusByType(type);
+        // A cursor is a snapshot: rebinding its old rows does not reload the cleared status.
+        refilter(activity == null ? query : activity.getTagSearchQuery());
     }
 
     public void changeSize() {

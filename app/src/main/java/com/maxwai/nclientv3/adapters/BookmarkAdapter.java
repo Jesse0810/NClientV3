@@ -20,8 +20,8 @@ import com.maxwai.nclientv3.api.InspectorV3;
 import com.maxwai.nclientv3.async.database.Queries;
 import com.maxwai.nclientv3.components.classes.Bookmark;
 import com.maxwai.nclientv3.utility.IntentUtility;
+import com.maxwai.nclientv3.utility.BookmarkConditionsDialog;
 import com.maxwai.nclientv3.settings.Global;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.List;
 
@@ -49,11 +49,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
         Bookmark bookmark = bookmarks.get(pos);
 
         holder.queryText.setText(bookmark.getDisplayTitle(bookmarkActivity));
-        holder.conditionsText.setText(bookmark.getDisplayConditions(bookmarkActivity));
-        holder.detailsButton.setOnClickListener(v -> new MaterialAlertDialogBuilder(bookmarkActivity)
-            .setTitle(bookmark.getDisplayTitle(bookmarkActivity))
-            .setMessage(bookmark.getDisplayConditions(bookmarkActivity))
-            .setPositiveButton(R.string.ok, null).show());
+        holder.detailsButton.setOnClickListener(v -> BookmarkConditionsDialog.show(bookmarkActivity, bookmark));
 
         holder.deleteButton.setOnClickListener(v -> removeBookmarkAtPosition(holder.getBindingAdapterPosition()));
         holder.editButton.setOnClickListener(v -> {
@@ -113,7 +109,6 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
         final AppCompatImageButton deleteButton;
         final AppCompatImageButton editButton;
         final TextView queryText;
-        final TextView conditionsText;
         final TextView detailsButton;
         final ConstraintLayout rootLayout;
 
@@ -122,7 +117,6 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
             deleteButton = itemView.findViewById(R.id.remove_button);
             editButton = itemView.findViewById(R.id.edit_bookmark);
             queryText = itemView.findViewById(R.id.title);
-            conditionsText = itemView.findViewById(R.id.bookmark_conditions);
             detailsButton = itemView.findViewById(R.id.bookmark_details);
             rootLayout = itemView.findViewById(R.id.master_layout);
         }

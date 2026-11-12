@@ -208,8 +208,11 @@ public class SearchActivity extends GeneralActivity {
         bookmarkName = findViewById(R.id.bookmark_name);
         bookmarkSort = findViewById(R.id.bookmark_sort);
         bookmarkName.setText(creatingBookmark ? "" : originalBookmark.name);
-        ((TextView) findViewById(R.id.bookmark_scope)).setText(getString(R.string.bookmark_scope_format,
-            getString(!creatingBookmark && originalBookmark.isFavorite() ? R.string.bookmark_scope_favorites : R.string.bookmark_scope_all)));
+        if (!creatingBookmark && originalBookmark.isFavorite()) {
+            TextView scope = findViewById(R.id.bookmark_scope);
+            scope.setText(getString(R.string.bookmark_scope_format, getString(R.string.bookmark_scope_favorites)));
+            scope.setVisibility(View.VISIBLE);
+        }
         List<String> sorting = new ArrayList<>();
         for (SortType sort : SortType.values()) sorting.add(getString(sort.getNameId()));
         ArrayAdapter<String> sorts = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sorting);
@@ -379,6 +382,7 @@ public class SearchActivity extends GeneralActivity {
     private void initRanges() {
         LinearLayout pageRangeLayout = findViewById(R.id.page_range);
         LinearLayout uploadRangeLayout = findViewById(R.id.upload_range);
+        if (bookmarkMode) pageRangeLayout.setVisibility(View.GONE);
         ((TextView) pageRangeLayout.findViewById(R.id.title)).setText(R.string.page_range);
         ((TextView) uploadRangeLayout.findViewById(R.id.title)).setText(R.string.upload_time);
         Button fromPage = pageRangeLayout.findViewById(R.id.fromButton);

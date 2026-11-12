@@ -508,6 +508,12 @@ public class Queries {
             db.updateWithOnConflict(TABLE_NAME, values, null, null, SQLiteDatabase.CONFLICT_IGNORE);
         }
 
+        public static void resetStatusByType(TagType type) {
+            ContentValues values = new ContentValues(1);
+            values.put(STATUS, TagStatus.DEFAULT.ordinal());
+            db.updateWithOnConflict(TABLE_NAME, values, TYPE + "=?", new String[]{"" + type.getId()}, SQLiteDatabase.CONFLICT_IGNORE);
+        }
+
         /**
          * Get the first <code>count</code> tags of <code>type</code>, ordered by tag count
          */
@@ -604,12 +610,18 @@ public class Queries {
         }
 
         /*To avoid conflict between the import process and the ScrapeTags*/
-        public static void insertScrape(List<Tag> tags, boolean b) {
+        public static void insertScrape(List<Tag> tags) {
             if (db.isOpen()){
                 db.beginTransaction();
                 try {
                     for (Tag tag : tags) {
-                        insert(tag, b);
+                        insert(tag, false);
+                        // Refresh metadata without replacing current preferences or online flags.
+                        ContentValues values = new ContentValues(3);
+                        values.put(NAME, tag.getName());
+                        values.put(TYPE, tag.getType().getId());
+                        values.put(COUNT, tag.getCount());
+                        db.updateWithOnConflict(TABLE_NAME, values, IDTAG + "=?", new String[]{"" + tag.getId()}, SQLiteDatabase.CONFLICT_IGNORE);
                     }
                     db.setTransactionSuccessful();
                 } finally {
