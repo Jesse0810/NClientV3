@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/groups"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,7 +9,7 @@
     android:layout_marginRight="8dp"
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
-    android:visibility="gone">
+    android:orientation="vertical">
 
     <include layout="@layout/search_options_content" />
-</androidx.core.widget.NestedScrollView>
+</LinearLayout>

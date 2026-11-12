@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import android.widget.Button;
 import android.widget.Filter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -45,7 +43,6 @@ import com.maxwai.nclientv3.settings.DefaultDialogs;
 import com.maxwai.nclientv3.settings.Global;
 import com.maxwai.nclientv3.settings.Login;
 import com.maxwai.nclientv3.utility.LogUtility;
-import com.maxwai.nclientv3.utility.Utility;
 import com.maxwai.nclientv3.utility.BookmarkQuery;
 import com.maxwai.nclientv3.utility.BookmarkFilters;
 import com.google.android.material.chip.Chip;
@@ -53,11 +50,15 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 public class SearchActivity extends GeneralActivity {
     public static final String EXTRA_BOOKMARK_URL = "com.maxwai.nclientv3.extra.EDIT_BOOKMARK_URL";
@@ -81,9 +82,7 @@ public class SearchActivity extends GeneralActivity {
     private boolean creatingBookmark;
     private Bookmark originalBookmark;
     private TextInputEditText bookmarkName;
-    private Spinner bookmarkSort;
     private String initialBookmarkQuery;
-    private SortType initialBookmarkSort;
 
     public void setQuery(String str, boolean submit) {
         runOnUiThread(() -> searchView.setQuery(str, submit));
@@ -206,23 +205,11 @@ public class SearchActivity extends GeneralActivity {
 
     private void initializeBookmarkEditor(Bundle savedState) {
         bookmarkName = findViewById(R.id.bookmark_name);
-        bookmarkSort = findViewById(R.id.bookmark_sort);
         bookmarkName.setText(creatingBookmark ? "" : originalBookmark.name);
         if (!creatingBookmark && originalBookmark.isFavorite()) {
             TextView scope = findViewById(R.id.bookmark_scope);
             scope.setText(getString(R.string.bookmark_scope_format, getString(R.string.bookmark_scope_favorites)));
             scope.setVisibility(View.VISIBLE);
-        }
-        List<String> sorting = new ArrayList<>();
-        for (SortType sort : SortType.values()) sorting.add(getString(sort.getNameId()));
-        ArrayAdapter<String> sorts = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sorting);
-        sorts.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        bookmarkSort.setAdapter(sorts);
-        initialBookmarkSort = creatingBookmark ? SortType.RECENT_ALL_TIME : originalBookmark.getSortType();
-        bookmarkSort.setSelection(initialBookmarkSort.ordinal());
-        if (!creatingBookmark && originalBookmark.isFavorite()) {
-            bookmarkSort.setVisibility(View.GONE);
-            findViewById(R.id.bookmark_sort_label).setVisibility(View.GONE);
         }
         String originalQuery = creatingBookmark ? "" : originalBookmark.getEditQuery();
         BookmarkFilters filters = BookmarkFilters.parse(originalQuery);
@@ -252,8 +239,6 @@ public class SearchActivity extends GeneralActivity {
             if (savedTags != null) for (Tag tag : savedTags) restoreBookmarkTag(tag);
             Ranges savedRanges = savedState.getParcelable("bookmarkDraftRanges");
             if (savedRanges != null) ranges = savedRanges;
-            int sort = savedState.getInt("bookmarkDraftSort", initialBookmarkSort.ordinal());
-            if (sort >= 0 && sort < SortType.values().length) bookmarkSort.setSelection(sort);
         }
         refreshBookmarkRangeLabels();
         findViewById(R.id.save_bookmark).setOnClickListener(v -> saveBookmark());
@@ -327,9 +312,8 @@ public class SearchActivity extends GeneralActivity {
         }
         input.setError(null);
         String query = getBookmarkEditorQuery();
-        SortType sort = SortType.values()[bookmarkSort.getSelectedItemPosition()];
         Bookmark updated;
-        if (!creatingBookmark && query.equals(initialBookmarkQuery) && sort == initialBookmarkSort) {
+        if (!creatingBookmark && query.equals(initialBookmarkQuery)) {
             updated = originalBookmark.withName(name);
         } else {
             if (!creatingBookmark && originalBookmark.getQuery() == null && query.isEmpty()) {
@@ -337,7 +321,7 @@ public class SearchActivity extends GeneralActivity {
                 return;
             }
             boolean favorite = !creatingBookmark && originalBookmark.isFavorite();
-            InspectorV3 inspector = InspectorV3.bookmarkInspector(this, query, 1, sort, favorite, null);
+            InspectorV3 inspector = InspectorV3.bookmarkInspector(this, query, 1, SortType.RECENT_ALL_TIME, favorite, null);
             if (!favorite && !inspector.canAddBookmark()) {
                 Toast.makeText(this, R.string.bookmark_requires_filters, Toast.LENGTH_LONG).show();
                 return;
@@ -359,7 +343,6 @@ public class SearchActivity extends GeneralActivity {
             state.putString("bookmarkDraftKeywords", searchView.getQuery().toString());
             state.putParcelableArrayList("bookmarkDraftTags", getSelectedTags());
             state.putParcelable("bookmarkDraftRanges", ranges);
-            state.putInt("bookmarkDraftSort", bookmarkSort.getSelectedItemPosition());
         }
         super.onSaveInstanceState(state);
     }
@@ -477,16 +460,17 @@ public class SearchActivity extends GeneralActivity {
     }
 
     private void populateGroup() {
-        //add top tags
-        for (TagType type : new TagType[]{TagType.TAG, TagType.PARODY, TagType.CHARACTER, TagType.ARTIST, TagType.GROUP}) {
-            for (Tag t : Queries.TagTable.getTopTags(type, Global.getFavoriteLimit(this))) {
-                if (bookmarkMode) t.setStatus(TagStatus.DEFAULT);
-                addChipTag(t, true, true);
-            }
+        // Entity fields start with actual selections only; content-tag suggestions are unchanged.
+        for (Tag t : Queries.TagTable.getTopTags(TagType.TAG, Global.getFavoriteLimit(this))) {
+            if (bookmarkMode) t.setStatus(TagStatus.DEFAULT);
+            addChipTag(t, true, true);
         }
         //add already filtered tags
-        if (!bookmarkMode) for (Tag t : Queries.TagTable.getAllFiltered())
-            if (!tagAlreadyExist(t)) addChipTag(t, true, true);
+        if (!bookmarkMode) for (Tag t : Queries.TagTable.getAllFiltered()) {
+            // Fixed choices below already include their saved states and must not become removable duplicates.
+            if (!TagType.CATEGORY.equals(t.getType()) && !TagType.LANGUAGE.equals(t.getType()))
+                addChipTag(t, true, true);
+        }
         //add categories
         for (Tag t : Queries.TagTable.getTrueAllType(TagType.CATEGORY)) {
             if (bookmarkMode) t.setStatus(TagStatus.DEFAULT);
@@ -539,6 +523,15 @@ public class SearchActivity extends GeneralActivity {
     }
 
     private void addChipTag(Tag t, boolean close, boolean canBeAvoided) {
+        for (ChipTag existing : tags) {
+            Tag original = existing.getTag();
+            if (original.getType().equals(t.getType()) && original.getName().equals(t.getName())) {
+                // Different IDs can represent the same query value; retain an existing active preference.
+                if (original.getStatus() == TagStatus.DEFAULT && t.getStatus() != TagStatus.DEFAULT)
+                    existing.changeStatus(t.getStatus());
+                return;
+            }
+        }
         ChipGroup cg = getGroup(t.getType());
         ChipTag c = (ChipTag) getLayoutInflater().inflate(R.layout.chip_layout_entry, cg, false);
         c.init(t, close, canBeAvoided);
@@ -572,12 +565,16 @@ public class SearchActivity extends GeneralActivity {
     private void loadContentTagDropdown(List<Tag> allTags) {
         List<TagSuggestion> suggestions = new ArrayList<>(allTags.size());
         for (Tag tag : allTags) suggestions.add(new TagSuggestion(this, tag));
-        autoComplete.setAdapter(new ArrayAdapter<TagSuggestion>(this,
+        autoComplete.setAdapter(createSuggestionAdapter(suggestions));
+    }
+
+    private ArrayAdapter<TagSuggestion> createSuggestionAdapter(List<TagSuggestion> suggestions) {
+        return new ArrayAdapter<TagSuggestion>(this,
             android.R.layout.simple_dropdown_item_1line, new ArrayList<>(suggestions)) {
             private final Filter suggestionFilter = new Filter() {
                 @Override
                 protected FilterResults performFiltering(CharSequence constraint) {
-                    String query = constraint == null ? "" : constraint.toString().toLowerCase(Locale.ROOT);
+                    String query = constraint == null ? "" : constraint.toString().trim().toLowerCase(Locale.ROOT);
                     List<TagSuggestion> matches = new ArrayList<>();
                     for (TagSuggestion suggestion : suggestions) {
                         if (suggestion.matches(query)) matches.add(suggestion);
@@ -602,35 +599,149 @@ public class SearchActivity extends GeneralActivity {
             public Filter getFilter() {
                 return suggestionFilter;
             }
-        });
+        };
     }
 
     private static final class TagSuggestion {
         private final Tag tag;
         private final String displayName;
+        private final String searchName, searchDisplay;
 
         private TagSuggestion(Context context, Tag tag) {
             this.tag = tag;
             displayName = tag.getDisplayName(context);
+            searchName = tag.getName().toLowerCase(Locale.ROOT);
+            searchDisplay = displayName.toLowerCase(Locale.ROOT);
         }
 
         private boolean matches(String query) {
-            return tag.getName().toLowerCase(Locale.ROOT).contains(query)
-                || displayName.toLowerCase(Locale.ROOT).contains(query);
+            return searchName.contains(query) || searchDisplay.contains(query);
         }
 
         @NonNull
         @Override
         public String toString() {
-            return displayName.equals(tag.getName()) ? displayName : displayName + " (" + tag.getName() + ')';
+            return displayName;
         }
     }
 
     private void loadTag(TagType type) {
+        if (isEntityField(type)) {
+            showEntityPicker(type);
+            return;
+        }
         if (type != loadedTag) loadDropdown(type);
         addDialog();
         autoComplete.requestFocus();
         inputMethodManager.showSoftInput(autoComplete, InputMethodManager.SHOW_IMPLICIT);
+    }
+
+    private static boolean isEntityField(TagType type) {
+        return TagType.PARODY.equals(type) || TagType.CHARACTER.equals(type)
+            || TagType.ARTIST.equals(type) || TagType.GROUP.equals(type);
+    }
+
+    private List<TagSuggestion> loadEntityChoices(TagType type) {
+        List<TagSuggestion> choices = new ArrayList<>();
+        Set<String> names = new HashSet<>();
+        for (Tag tag : Queries.TagTable.getTrueAllType(type)) {
+            if (type.equals(tag.getType()) && !tag.getName().trim().isEmpty() && names.add(tag.getName()))
+                choices.add(new TagSuggestion(this, tag));
+        }
+        choices.sort((left, right) -> {
+            int display = left.displayName.compareToIgnoreCase(right.displayName);
+            return display != 0 ? display : left.tag.getName().compareTo(right.tag.getName());
+        });
+        return choices;
+    }
+
+    private void showEntityPicker(TagType type) {
+        View view = getLayoutInflater().inflate(R.layout.tag_choice_dialog, null);
+        TextInputLayout field = view.findViewById(R.id.tag_choice_layout);
+        MaterialAutoCompleteTextView input = view.findViewById(R.id.tag_choice);
+        int title = TagType.PARODY.equals(type) ? R.string.parodies : TagType.CHARACTER.equals(type)
+            ? R.string.characters : TagType.ARTIST.equals(type) ? R.string.artists : R.string.groups;
+        AlertDialog dialog = new MaterialAlertDialogBuilder(this)
+            .setTitle(getString(R.string.select_existing_tag, getString(title)))
+            .setView(view).setPositiveButton(R.string.add, null)
+            .setNegativeButton(R.string.cancel, null).create();
+        TagSuggestion[] selected = new TagSuggestion[1];
+        field.setEnabled(false);
+        field.setHelperText(getString(R.string.tag_choices_loading));
+        Runnable addSelection = () -> {
+            TagSuggestion choice = selected[0];
+            if (choice == null || !type.equals(choice.tag.getType())
+                || !choice.toString().contentEquals(input.getText()) || !addExistingEntityTag(choice.tag, type)) {
+                field.setError(getString(R.string.select_existing_tag_error));
+                return;
+            }
+            inputMethodManager.hideSoftInputFromWindow(input.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            dialog.dismiss();
+        };
+        input.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence text, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence text, int start, int before, int count) {
+                selected[0] = null;
+                field.setError(null);
+                if (dialog.isShowing()) dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+            }
+            @Override public void afterTextChanged(Editable text) {
+                if (text.length() == 0 && input.getAdapter() != null)
+                    ((ArrayAdapter<?>) input.getAdapter()).getFilter().filter("", count -> {
+                        if (dialog.isShowing() && input.hasFocus()) input.showDropDown();
+                    });
+            }
+        });
+        input.setOnItemClickListener((parent, itemView, position, id) -> {
+            Object item = parent.getItemAtPosition(position);
+            selected[0] = item instanceof TagSuggestion ? (TagSuggestion) item : null;
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(selected[0] != null);
+        });
+        input.setOnEditorActionListener((textView, action, event) -> {
+            if (action == EditorInfo.IME_ACTION_DONE || action == EditorInfo.IME_ACTION_SEARCH || action == EditorInfo.IME_ACTION_SEND) {
+                addSelection.run();
+                return true;
+            }
+            return false;
+        });
+        dialog.setOnShowListener(ignored -> {
+            Button add = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            add.setEnabled(false);
+            add.setOnClickListener(button -> addSelection.run());
+        });
+        dialog.show();
+        CompletableFuture<List<TagSuggestion>> loading = CompletableFuture.supplyAsync(() -> loadEntityChoices(type));
+        dialog.setOnDismissListener(ignored -> loading.cancel(true));
+        loading.whenComplete((choices, error) -> runOnUiThread(() -> {
+            if (!dialog.isShowing() || isFinishing() || isDestroyed()) return;
+            if (error != null) {
+                LogUtility.w("Unable to load existing tags", error);
+                field.setHelperText(getString(R.string.tag_choices_error));
+                return;
+            }
+            input.setAdapter(createSuggestionAdapter(choices));
+            field.setEnabled(true);
+            field.setHelperText(getString(choices.isEmpty() ? R.string.tag_choices_empty : R.string.select_existing_tag_hint));
+            input.requestFocus();
+            input.post(() -> {
+                if (dialog.isShowing()) input.showDropDown();
+            });
+        }));
+    }
+
+    private boolean addExistingEntityTag(Tag candidate, TagType type) {
+        if (!isEntityField(type) || candidate == null || !type.equals(candidate.getType())) return false;
+        Tag existing = Queries.TagTable.getTagById(candidate.getId());
+        if (existing == null || !type.equals(existing.getType()) || !existing.getName().equals(candidate.getName())
+            || existing.getName().trim().isEmpty() || existing.getName().contains("\"") || existing.getName().contains("\\")) return false;
+        Tag tag = new Tag(existing.getName(), existing.getCount(), existing.getId(), type, TagStatus.ACCEPTED);
+        ChipGroup group = getGroup(type);
+        Chip add = addChip[type.getId()];
+        if (add != null) group.removeView(add);
+        addChipTag(tag, true, true);
+        if (add != null) group.addView(add);
+        advanced = true;
+        return true;
     }
 
     private ChipGroup getGroup(TagType type) {
@@ -657,6 +768,10 @@ public class SearchActivity extends GeneralActivity {
     }
 
     private boolean createChip() {
+        if (isEntityField(loadedTag)) {
+            autoComplete.setError(getString(R.string.select_existing_tag_error));
+            return false;
+        }
         String name = autoComplete.getText().toString().trim().toLowerCase(Locale.ROOT);
         if (name.isEmpty() || name.contains("\"") || name.contains("\\")) {
             autoComplete.setError(getString(R.string.invalid_tag_name));
@@ -691,25 +806,10 @@ public class SearchActivity extends GeneralActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if (bookmarkMode) return true;
-        getMenuInflater().inflate(R.menu.search, menu);
-        Utility.tintMenu(this, menu);
-        return super.onCreateOptionsMenu(menu);
-
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
             return true;
-        } else if (item.getItemId() == R.id.view_groups) {
-            View v = findViewById(R.id.groups);
-            boolean isVisible = v.getVisibility() == View.VISIBLE;
-            v.setVisibility(isVisible ? View.GONE : View.VISIBLE);
-            item.setIcon(isVisible ? R.drawable.ic_add : R.drawable.ic_close);
-            Global.setTint(this, item.getIcon());
         }
         return super.onOptionsItemSelected(item);
     }

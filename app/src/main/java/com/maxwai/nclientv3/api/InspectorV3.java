@@ -23,6 +23,7 @@ import com.maxwai.nclientv3.async.database.Queries;
 import com.maxwai.nclientv3.settings.Global;
 import com.maxwai.nclientv3.utility.LogUtility;
 import com.maxwai.nclientv3.utility.Utility;
+import com.maxwai.nclientv3.utility.BrowserUrls;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -451,6 +452,10 @@ public class InspectorV3 extends Thread implements Parcelable {
             filterDocumentTags();
     }
 
+    public SortType getSortType() {
+        return sortType == null ? SortType.RECENT_ALL_TIME : sortType;
+    }
+
     public void setSortType(SortType sortType) {
         this.sortType = sortType;
         if (this.requestType == ApiRequestType.BYALL)
@@ -473,6 +478,11 @@ public class InspectorV3 extends Thread implements Parcelable {
 
     public String getUrl() {
         return url;
+    }
+
+    @Nullable
+    public String getBrowserUrl() {
+        return BrowserUrls.fromApiUrl(url);
     }
 
     public ApiRequestType getRequestType() {

@@ -157,6 +157,7 @@
     <string name="share_with">Share with</string>
     <string name="link_copied_to_clipboard">Link copied to clipboard</string>
     <string name="open_in_browser">Open in browser</string>
+    <string name="unable_to_open_browser">Unable to open a browser.</string>
     <string name="go_online">Go online</string>
     <string name="update_tag_status">Update tag status</string>
     <string name="change_view">Change view</string>
@@ -453,7 +454,6 @@
     <string name="bookmark_all_content">All content</string>
     <string name="bookmark_scope_favorites">Online favorites</string>
     <string name="bookmark_scope_format">Search in: %1$s</string>
-    <string name="bookmark_sort_format">Sort: %1$s</string>
     <string name="bookmark_include_tag">Include %1$s: %2$s</string>
     <string name="bookmark_exclude_tag">Exclude %1$s: %2$s</string>
     <string name="bookmark_unavailable">The saved tag is unavailable. Edit this bookmark to choose new filters.</string>
@@ -465,11 +465,17 @@
     <string name="bookmark_keywords">Keywords or search expression</string>
     <string name="bookmark_filter_hint">Tap a tag to include or exclude it. Use its close button to remove it.</string>
     <string name="bookmark_complex_hint">This custom expression is kept in the keyword field. You can edit it directly; selected tags add more conditions.</string>
-    <string name="bookmark_page_reset_hint">Bookmarks always open results on the first page.</string>
+    <string name="bookmark_page_reset_hint">Bookmarks open on page 1 with the latest galleries first. Change pages and sorting in the results.</string>
     <string name="invalid_tag_name">Enter a tag name without quotes or backslashes. Put custom expressions in the keyword field.</string>
+    <string name="select_existing_tag">Select %1$s</string>
+    <string name="search_existing_tags">Search by keyword</string>
+    <string name="select_existing_tag_hint">Search, then choose an existing value from the dropdown.</string>
+    <string name="select_existing_tag_error">Choose an existing value from the dropdown.</string>
+    <string name="tag_choices_loading">Loading available values…</string>
+    <string name="tag_choices_error">Unable to load values. Close this dialog and try again.</string>
+    <string name="tag_choices_empty">No existing values are available.</string>
     <string name="bookmark_view_conditions">View conditions</string>
     <string name="bookmark_scope_label">Search in</string>
-    <string name="bookmark_sort_label">Sort</string>
     <string name="bookmark_conditions_label">Conditions</string>
     <string name="bookmark_keywords_label">Keywords</string>
     <string name="bookmark_expression_label">Search expression</string>

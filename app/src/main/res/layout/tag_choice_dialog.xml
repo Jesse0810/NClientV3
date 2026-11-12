@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="24dp">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tag_choice_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:hint="@string/search_existing_tags">
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/tag_choice"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:inputType="text" android:imeOptions="actionDone"
+            android:completionThreshold="1" android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>

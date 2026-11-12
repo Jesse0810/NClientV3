@@ -1,8 +1,6 @@
 package com.maxwai.nclientv3;
 
-import android.content.Intent;
 import android.content.res.Configuration;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +18,7 @@ import com.maxwai.nclientv3.components.activities.BaseActivity;
 import com.maxwai.nclientv3.components.views.PageSwitcher;
 import com.maxwai.nclientv3.settings.Global;
 import com.maxwai.nclientv3.utility.Utility;
+import com.maxwai.nclientv3.utility.IntentUtility;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.Objects;
@@ -131,10 +130,8 @@ public class FavoriteActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent i;
         if (item.getItemId() == R.id.open_browser) {
-            i = new Intent(Intent.ACTION_VIEW, Uri.parse(Utility.getBaseUrl() + "favorites/"));
-            startActivity(i);
+            IntentUtility.openBrowser(this, Utility.getBaseUrl() + "favorites/");
         } else if (item.getItemId() == R.id.download_page) {
             if (adapter != null) showDialogDownloadAll();
         } else if (item.getItemId() == R.id.sort_by_name) {

@@ -65,9 +65,11 @@ def query_checks():
             path.write_text(text)
             files.append(str(path))
         files += [str(JAVA / "utility/BookmarkQuery.java"), str(JAVA / "utility/BookmarkFilters.java"),
-                  str(JAVA / "api/components/Ranges.java"), str(ROOT / "tests/bookmarks/BookmarkQueryChecks.java")]
+                  str(JAVA / "utility/BrowserUrls.java"), str(JAVA / "api/components/Ranges.java"),
+                  str(ROOT / "tests/bookmarks/BookmarkQueryChecks.java"), str(ROOT / "tests/bookmarks/BrowserUrlChecks.java")]
         subprocess.run(["javac", "--release", "11", "-d", str(directory / "classes"), *files], check=True)
         subprocess.run(["java", "-cp", str(directory / "classes"), "BookmarkQueryChecks"], check=True)
+        subprocess.run(["java", "-cp", str(directory / "classes"), "BrowserUrlChecks"], check=True)
 
 
 if __name__ == "__main__":

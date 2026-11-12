@@ -38,10 +38,6 @@ public final class BookmarkConditionsDialog {
         if (bookmark.isFavorite())
             addValue(activity, addField(activity, fields, R.string.bookmark_scope_label),
                 activity.getString(R.string.bookmark_scope_favorites), null, null);
-        if (!bookmark.isFavorite())
-            addValue(activity, addField(activity, fields, R.string.bookmark_sort_label),
-                activity.getString(bookmark.getSortType().getNameId()), null, null);
-
         String query = bookmark.getEditQuery();
         if (query == null) {
             addText(activity, fields, R.string.bookmark_conditions_label, activity.getString(R.string.bookmark_unavailable));

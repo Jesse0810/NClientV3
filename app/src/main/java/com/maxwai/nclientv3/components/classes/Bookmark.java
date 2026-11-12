@@ -38,7 +38,7 @@ public class Bookmark {
 
     public static Bookmark fromInspector(InspectorV3 inspector, String name) {
         Tag tag = inspector.getTag();
-        return new Bookmark(withoutPagination(Uri.parse(inspector.getUrl())), inspector.getRequestType(),
+        return new Bookmark(withoutBrowsingState(Uri.parse(inspector.getUrl())), inspector.getRequestType(),
             tag == null ? 0 : tag.getId(), name);
     }
 
@@ -46,12 +46,12 @@ public class Bookmark {
         return new Bookmark(url, requestType, tag, name);
     }
 
-    /** Keep legacy URLs as row identities while ignoring their pagination for matching. */
+    /** Keep legacy URLs as row identities while matching only their saved filters. */
     public String getFilterUrl() {
-        return withoutPagination(uri);
+        return withoutBrowsingState(uri);
     }
 
-    private static String withoutPagination(Uri uri) {
+    private static String withoutBrowsingState(Uri uri) {
         String encodedQuery = uri.getEncodedQuery();
         if (encodedQuery == null) return uri.toString();
         List<String> parameters = new ArrayList<>();
@@ -59,10 +59,11 @@ public class Bookmark {
         for (String parameter : encodedQuery.split("&", -1)) {
             int separator = parameter.indexOf('=');
             String key = separator < 0 ? parameter : parameter.substring(0, separator);
-            if ("page".equals(Uri.decode(key))) removed = true;
+            String name = Uri.decode(key);
+            if ("page".equals(name) || "sort".equals(name)) removed = true;
             else parameters.add(parameter);
         }
-        // Preserve the encoded query verbatim; only the result-page parameter is removed.
+        // Preserve the encoded filters verbatim; page and sort belong to the browsing session.
         return removed ? uri.buildUpon().encodedQuery(parameters.isEmpty() ? null : String.join("&", parameters))
             .build().toString() : uri.toString();
     }
@@ -91,21 +92,14 @@ public class Bookmark {
     @Nullable
     public String getEditQuery() {
         String query = getQuery();
-        return "-nclientv3".equals(query) && getSortType() != SortType.RECENT_ALL_TIME ? "" : query;
-    }
-
-    public SortType getSortType() {
-        String sort = uri.getQueryParameter("sort");
-        for (SortType type : SortType.values())
-            if (type.getUrlAddition() != null && type.getUrlAddition().equals(sort)) return type;
-        return SortType.RECENT_ALL_TIME;
+        return query != null && "-nclientv3".equals(query.trim()) ? "" : query;
     }
 
     @Nullable
     public InspectorV3 createInspector(Context context, InspectorV3.InspectorResponse response) {
-        String query = getQuery();
+        String query = getEditQuery();
         return query == null ? null
-            : InspectorV3.bookmarkInspector(context, query, 1, getSortType(), isFavorite(), response);
+            : InspectorV3.bookmarkInspector(context, query, 1, SortType.RECENT_ALL_TIME, isFavorite(), response);
     }
 
     public String getDisplayTitle(Context context) {
@@ -118,8 +112,7 @@ public class Bookmark {
             : query.isEmpty() ? context.getString(R.string.bookmark_all_content)
             : BookmarkQueryFormatter.format(context, query);
         String scope = isFavorite() ? context.getString(R.string.bookmark_scope_favorites) + " · " : "";
-        return scope + conditions + (isFavorite() ? "" : "\n" +
-            context.getString(R.string.bookmark_sort_format, context.getString(getSortType().getNameId())));
+        return scope + conditions;
     }
 
     public void deleteBookmark() {

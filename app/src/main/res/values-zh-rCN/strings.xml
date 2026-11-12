@@ -85,6 +85,7 @@
     <string name="share_with">分享</string>
     <string name="link_copied_to_clipboard">链接已复制到剪贴板</string>
     <string name="open_in_browser">在浏览器中打开</string>
+    <string name="unable_to_open_browser">无法打开浏览器。</string>
     <string name="go_online">在线查看</string>
     <string name="update_tag_status">更新标签状态</string>
     <string name="change_view">变更视图</string>
@@ -360,7 +361,6 @@
     <string name="bookmark_all_content">全部内容</string>
     <string name="bookmark_scope_favorites">在线收藏</string>
     <string name="bookmark_scope_format">搜索范围：%1$s</string>
-    <string name="bookmark_sort_format">排序：%1$s</string>
     <string name="bookmark_include_tag">包含%1$s：%2$s</string>
     <string name="bookmark_exclude_tag">排除%1$s：%2$s</string>
     <string name="bookmark_unavailable">原标签已不可用，请编辑书签重新选择筛选条件。</string>
@@ -372,11 +372,17 @@
     <string name="bookmark_keywords">关键词或搜索表达式</string>
     <string name="bookmark_filter_hint">点击标签可切换包含或排除，点击关闭按钮可移除标签。</string>
     <string name="bookmark_complex_hint">自定义表达式已保留在关键词栏，可直接修改；选择标签会追加筛选条件。</string>
-    <string name="bookmark_page_reset_hint">书签每次打开均从第 1 页开始。</string>
+    <string name="bookmark_page_reset_hint">书签每次从第 1 页、按最新排序打开，可在结果页临时调整。</string>
     <string name="invalid_tag_name">标签名称不能为空，也不能包含引号或反斜杠。自定义表达式请在关键词栏输入。</string>
+    <string name="select_existing_tag">选择%1$s</string>
+    <string name="search_existing_tags">输入关键词搜索</string>
+    <string name="select_existing_tag_hint">输入关键词筛选，再从下拉列表中选择已有值。</string>
+    <string name="select_existing_tag_error">请从下拉列表中选择已有值。</string>
+    <string name="tag_choices_loading">正在加载可选值…</string>
+    <string name="tag_choices_error">加载失败，请关闭后重试。</string>
+    <string name="tag_choices_empty">暂无可选值。</string>
     <string name="bookmark_view_conditions">查看条件</string>
     <string name="bookmark_scope_label">搜索范围</string>
-    <string name="bookmark_sort_label">排序</string>
     <string name="bookmark_conditions_label">筛选条件</string>
     <string name="bookmark_keywords_label">关键词</string>
     <string name="bookmark_expression_label">搜索表达式</string>

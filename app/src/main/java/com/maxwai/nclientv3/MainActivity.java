@@ -59,6 +59,7 @@ import com.maxwai.nclientv3.settings.Login;
 import com.maxwai.nclientv3.settings.TagV2;
 import com.maxwai.nclientv3.utility.LogUtility;
 import com.maxwai.nclientv3.utility.Utility;
+import com.maxwai.nclientv3.utility.IntentUtility;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -559,8 +560,12 @@ public class MainActivity extends BaseActivity
     }
 
     private void popularItemDispay(MenuItem item) {
-        item.setTitle(getString(R.string.sort_type_title_format, getString(Global.getSortType().getNameId())));
+        item.setTitle(getString(R.string.sort_type_title_format, getString(getCurrentSortType().getNameId())));
         Global.setTint(this, item.getIcon());
+    }
+
+    private SortType getCurrentSortType() {
+        return isBookmarkPage() && inspector != null ? inspector.getSortType() : Global.getSortType();
     }
 
     private void showLanguageIcon(MenuItem item) {
@@ -612,8 +617,7 @@ public class MainActivity extends BaseActivity
             }
         } else if (item.getItemId() == R.id.open_browser) {
             if (inspector != null) {
-                i = new Intent(Intent.ACTION_VIEW, Uri.parse(inspector.getUrl()));
-                startActivity(i);
+                IntentUtility.openBrowser(this, inspector.getBrowserUrl());
             }
         } else if (item.getItemId() == R.id.random_favorite) {
             inspector = InspectorV3.randomInspector(this, startGallery, true);
@@ -637,7 +641,7 @@ public class MainActivity extends BaseActivity
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
         for (SortType type : SortType.values())
             adapter.add(getString(type.getNameId()));
-        temporaryType = Global.getSortType();
+        temporaryType = getCurrentSortType();
         builder.setIcon(R.drawable.ic_sort).setTitle(R.string.sort_select_type);
         builder.setSingleChoiceItems(adapter, temporaryType.ordinal(), (dialog, which) -> temporaryType = SortType.values()[which]);
         builder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -652,10 +656,10 @@ public class MainActivity extends BaseActivity
             }
         });
         builder.setPositiveButton(R.string.ok, (dialog, which) -> {
-            Global.updateSortType(MainActivity.this, temporaryType);
-            popularItemDispay(item);
+            if (!isBookmarkPage()) Global.updateSortType(MainActivity.this, temporaryType);
             inspector = inspector.cloneInspector(MainActivity.this, resetDataset);
             inspector.setSortType(temporaryType);
+            popularItemDispay(item);
             inspector.start();
         });
         builder.setNegativeButton(R.string.cancel, null);

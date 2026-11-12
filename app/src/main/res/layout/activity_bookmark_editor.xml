@@ -28,11 +28,6 @@
             <TextView android:id="@+id/bookmark_complex_hint" android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:text="@string/bookmark_complex_hint"
                 android:visibility="gone" />
-            <TextView android:id="@+id/bookmark_sort_label" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:text="@string/sort_select_type"
-                android:labelFor="@id/bookmark_sort" />
-            <Spinner android:id="@+id/bookmark_sort" android:layout_width="match_parent"
-                android:layout_height="48dp" />
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:layout_marginTop="12dp" android:text="@string/bookmark_filter_hint" />
             <LinearLayout android:id="@+id/groups" android:layout_width="match_parent"

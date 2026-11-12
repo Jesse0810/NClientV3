@@ -17,6 +17,14 @@
 
     <uses-sdk tools:overrideLibrary="me.zhanghai.android.fastscroll" />
 
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
     <application
         android:name=".components.activities.CrashApplication"
         android:allowBackup="true"
