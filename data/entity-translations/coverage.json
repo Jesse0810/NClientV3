@@ -1,0 +1,95 @@
+{
+  "asset_sha256": "6ec301d928a3c596cd609340e74c1b7ff50cb7ee43df33e7335ec337e4a38053",
+  "decisions_sha256": "8e341340ac6e7bdf637aea526274a0219805c2831ff431b234e437dfbf346892",
+  "inventory_sha256": "ab5f7d2af6f71cd084f585eb5d883a7003b86d91f84609a88821e243112ffcf4",
+  "mapped": 25454,
+  "namespaces": {
+    "artist": {
+      "mapped_sources": {
+        "Bangumi Archive": 1511,
+        "Danbooru+EhTagTranslation": 3305,
+        "EhTagTranslation": 5580
+      },
+      "preservation_reasons": {
+        "han_name_without_explicit_original_orthography": 2762,
+        "kana_punctuation_is_not_native_evidence": 10,
+        "korean_name_not_required": 3,
+        "multiple_aliases_or_ambiguous_name": 22,
+        "no_japanese_original_in_community_label": 1586,
+        "no_reliable_source_match": 18549,
+        "script_variant_or_chinese_glyph_risk": 42,
+        "western_native_handle": 1
+      },
+      "status_counts": {
+        "mapped": 10396,
+        "preserved": 22975
+      },
+      "tag_records": 33406,
+      "unique_names": 33371
+    },
+    "character": {
+      "mapped_sources": {
+        "Bangumi Archive": 1399,
+        "EhTagTranslation": 5325
+      },
+      "preservation_reasons": {
+        "no_reliable_simplified_chinese_name": 114,
+        "no_reliable_source_match": 8520,
+        "unverified_origin_or_identity": 2364,
+        "western_or_mixed_origin_preserved": 263
+      },
+      "status_counts": {
+        "mapped": 6724,
+        "preserved": 11261
+      },
+      "tag_records": 17989,
+      "unique_names": 17985
+    },
+    "group": {
+      "mapped_sources": {
+        "Bangumi Archive": 68,
+        "EhTagTranslation": 6421
+      },
+      "preservation_reasons": {
+        "han_name_without_explicit_original_orthography": 2400,
+        "kana_punctuation_is_not_native_evidence": 29,
+        "multiple_aliases_or_ambiguous_name": 15,
+        "no_japanese_original_in_community_label": 3349,
+        "no_reliable_source_match": 13115,
+        "script_variant_or_chinese_glyph_risk": 12
+      },
+      "status_counts": {
+        "mapped": 6489,
+        "preserved": 18920
+      },
+      "tag_records": 25428,
+      "unique_names": 25409
+    },
+    "parody": {
+      "mapped_sources": {
+        "Bangumi Archive": 214,
+        "EhTagTranslation": 1332,
+        "bangumi-data": 56,
+        "bangumi-data+anime-offline-database": 243
+      },
+      "preservation_reasons": {
+        "no_reliable_simplified_chinese_name": 42,
+        "no_reliable_source_match": 1465,
+        "unverified_cross_source_origin": 144,
+        "unverified_origin_or_identity": 741,
+        "western_or_mixed_origin_preserved": 160
+      },
+      "status_counts": {
+        "mapped": 1845,
+        "preserved": 2552
+      },
+      "tag_records": 4402,
+      "unique_names": 4397
+    }
+  },
+  "overrides_sha256": "3b4a2ffe5564017be6bf015b2c0633821fa233535b6de1d262a9f2dfd4b6c4ad",
+  "policy": "Names are display-only, exact namespace matching; Western and unverified entries preserve their canonical value.",
+  "sources_sha256": "46d69ead7f40e195aac0ccf20a7b1770e78a1c48885dd836c2db72da0eb09780",
+  "tag_records": 81225,
+  "unique_names": 81162
+}

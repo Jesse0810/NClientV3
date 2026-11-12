@@ -78,6 +78,7 @@ public class Global {
     private static String lastVersion, mirror;
     private static int maxHistory, columnCount, maxId, galleryWidth = -1, galleryHeight = -1;
     private static int colPortStat, colLandStat, colPortHist, colLandHist, colPortMain, colLandMain, colPortDownload, colLandDownload, colLandFavorite, colPortFavorite;
+    public static final int MAX_LIST_COLUMNS = 8;
     private static boolean infiniteScrollMain, infiniteScrollFavorite, exactTagMatch;
     private static int defaultZoom, offscreenLimit;
     private static Point screenSize;
@@ -266,16 +267,16 @@ public class Global {
         offscreenLimit = Math.max(1, shared.getInt(context.getString(R.string.preference_key_offscreen_limit), 5));
         maxHistory = shared.getInt(context.getString(R.string.preference_key_max_history_size), 2);
         defaultZoom = shared.getInt(context.getString(R.string.preference_key_default_zoom), 100);
-        colPortMain = shared.getInt(context.getString(R.string.key_column_port_main), 2);
-        colLandMain = shared.getInt(context.getString(R.string.key_column_land_main), 4);
-        colPortDownload = shared.getInt(context.getString(R.string.key_column_port_down), 2);
-        colLandDownload = shared.getInt(context.getString(R.string.key_column_land_down), 4);
-        colPortFavorite = shared.getInt(context.getString(R.string.key_column_port_favo), 2);
-        colLandFavorite = shared.getInt(context.getString(R.string.key_column_land_favo), 4);
-        colPortHist = shared.getInt(context.getString(R.string.key_column_port_hist), 2);
-        colLandHist = shared.getInt(context.getString(R.string.key_column_land_hist), 4);
-        colPortStat = shared.getInt(context.getString(R.string.key_column_port_stat), 2);
-        colLandStat = shared.getInt(context.getString(R.string.key_column_land_stat), 4);
+        colPortMain = clampListColumnCount(shared.getInt(context.getString(R.string.key_column_port_main), 2));
+        colLandMain = clampListColumnCount(shared.getInt(context.getString(R.string.key_column_land_main), 4));
+        colPortDownload = clampListColumnCount(shared.getInt(context.getString(R.string.key_column_port_down), 2));
+        colLandDownload = clampListColumnCount(shared.getInt(context.getString(R.string.key_column_land_down), 4));
+        colPortFavorite = clampListColumnCount(shared.getInt(context.getString(R.string.key_column_port_favo), 2));
+        colLandFavorite = clampListColumnCount(shared.getInt(context.getString(R.string.key_column_land_favo), 4));
+        colPortHist = clampListColumnCount(shared.getInt(context.getString(R.string.key_column_port_hist), 2));
+        colLandHist = clampListColumnCount(shared.getInt(context.getString(R.string.key_column_land_hist), 4));
+        colPortStat = clampListColumnCount(shared.getInt(context.getString(R.string.key_column_port_stat), 2));
+        colLandStat = clampListColumnCount(shared.getInt(context.getString(R.string.key_column_land_stat), 4));
         zoomOneColumn = shared.getBoolean(context.getString(R.string.preference_key_zoom_one_column), false);
         int x = Math.max(0, shared.getInt(context.getString(R.string.key_only_language), Language.ALL.ordinal()));
         sortType = SortType.values()[shared.getInt(context.getString(R.string.key_by_popular), SortType.RECENT_ALL_TIME.ordinal())];
@@ -489,6 +490,27 @@ public class Global {
     public static void updateColumnCount(@NonNull Context context, int count) {
         context.getSharedPreferences("Settings", 0).edit().putInt(context.getString((R.string.key_column_count)), count).apply();
         columnCount = count;
+    }
+
+    public static int clampListColumnCount(int count) {
+        return Math.max(1, Math.min(MAX_LIST_COLUMNS, count));
+    }
+
+    /** Update one comic-list preference without reloading unrelated settings. */
+    public static void updateListColumnCount(@NonNull Context context, int key, int count) {
+        count = clampListColumnCount(count);
+        if (key == R.string.key_column_port_main) colPortMain = count;
+        else if (key == R.string.key_column_land_main) colLandMain = count;
+        else if (key == R.string.key_column_port_favo) colPortFavorite = count;
+        else if (key == R.string.key_column_land_favo) colLandFavorite = count;
+        else if (key == R.string.key_column_port_hist) colPortHist = count;
+        else if (key == R.string.key_column_land_hist) colLandHist = count;
+        else if (key == R.string.key_column_port_down) colPortDownload = count;
+        else if (key == R.string.key_column_land_down) colLandDownload = count;
+        else if (key == R.string.key_column_port_stat) colPortStat = count;
+        else if (key == R.string.key_column_land_stat) colLandStat = count;
+        else throw new IllegalArgumentException("Not a comic-list column preference");
+        context.getSharedPreferences("Settings", 0).edit().putInt(context.getString(key), count).apply();
     }
 
     public static void updateMaxId(@NonNull Context context, int id) {

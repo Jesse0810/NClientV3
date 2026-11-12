@@ -1,0 +1,2138 @@
+{
+  "ami mizuno": {
+    "display_name": "水野亚美",
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 23577549,
+    "parody": "sailor moon",
+    "raw_alias_article_title": "Sailor Mercury",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_display_from_description": {
+      "alias_of": "sailor mercury",
+      "reason": "Pinned source explicitly states this civilian Chinese name; Wikipedia identity page establishes the raw full-name alias.",
+      "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L2304"
+    },
+    "source_title": "Sailor Mercury",
+    "source_url": "https://en.wikipedia.org/wiki/Sailor_Mercury"
+  },
+  "amy rose": {
+    "evidence": [
+      {
+        "character_id": 226023,
+        "matched_explicit_alias": {
+          "key": "英文名",
+          "value": "Amy Rose"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "エミー・ローズ",
+        "original_japanese_subjects": [
+          {
+            "id": 26314,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ソニックX",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/226023"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "sonic the hedgehog",
+        "resolved_article": "List of Sonic the Hedgehog characters",
+        "source_article": "Amy Rose",
+        "source_url": "https://en.wikipedia.org/wiki/Amy_Rose"
+      },
+      {
+        "franchise_url": "https://sonicpedia.org/wiki/艾咪・罗斯",
+        "method": "pinned_explicit_franchise_wiki",
+        "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L5233"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "sonic the hedgehog",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/Amy_Rose"
+  },
+  "arcanine": {
+    "evidence": [],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Pokemon species name and National Pokedex ID in the public species catalog; the original Pokemon franchise is Japanese. US-film adaptation relationships do not change species origin.",
+    "source_url": "https://www.pokemon.com/us/pokedex/arcanine"
+  },
+  "arlong": {
+    "evidence": [
+      {
+        "character_id": 2384,
+        "matched_explicit_alias": {
+          "key": "罗马字",
+          "value": "Arlong"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "アーロン",
+        "original_japanese_subjects": [
+          {
+            "id": 975,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 2
+          },
+          {
+            "id": 90390,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE エピソードオブナミ 〜航海士の涙と仲間の絆〜",
+            "type": 2
+          },
+          {
+            "id": 518603,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE 魚人島編",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/2384"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "one piece",
+        "resolved_article": "List of One Piece characters",
+        "source_article": "List of One Piece characters",
+        "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "one piece",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+  },
+  "azusa nakano": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 20570726,
+    "parody": "k-on",
+    "raw_alias_article_title": "Azusa Nakano",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "K-On!",
+    "source_url": "https://en.wikipedia.org/wiki/K-On!"
+  },
+  "bartolomeo": {
+    "evidence": [
+      {
+        "character_id": 60876,
+        "matched_explicit_alias": {
+          "key": "英文名",
+          "value": "Bartolomeo"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "バルトロメオ",
+        "original_japanese_subjects": [
+          {
+            "id": 3510,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 1
+          },
+          {
+            "id": 975,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 2
+          },
+          {
+            "id": 358803,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE FILM RED",
+            "type": 2
+          },
+          {
+            "id": 602059,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE エルバフ編",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/60876"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "one piece",
+        "resolved_article": "List of One Piece characters",
+        "source_article": "List of One Piece characters",
+        "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "one piece",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+  },
+  "batou": {
+    "evidence": [
+      {
+        "character_id": 3002,
+        "matched_explicit_alias": {
+          "key": "罗马字",
+          "value": "Batou"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "バトー",
+        "original_japanese_subjects": [
+          {
+            "id": 25256,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "攻殻機動隊",
+            "type": 1
+          },
+          {
+            "id": 237,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "GHOST IN THE SHELL / 攻殻機動隊",
+            "type": 2
+          },
+          {
+            "id": 238,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "イノセンス",
+            "type": 2
+          },
+          {
+            "id": 320,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "攻殻機動隊 STAND ALONE COMPLEX Solid State Society",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/3002"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "ghost in the shell",
+        "resolved_article": "Batou",
+        "source_article": "Batou",
+        "source_url": "https://en.wikipedia.org/wiki/Batou"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "ghost in the shell",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/Batou"
+  },
+  "belldandy": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 17146902,
+    "parody": "ah my goddess",
+    "raw_alias_article_title": "Belldandy",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Belldandy",
+    "source_url": "https://en.wikipedia.org/wiki/Belldandy"
+  },
+  "bellemere": {
+    "evidence": [
+      {
+        "character_id": 2394,
+        "matched_explicit_alias": {
+          "key": "罗马字",
+          "value": "Bellemere"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "ベルメール",
+        "original_japanese_subjects": [
+          {
+            "id": 3510,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 1
+          },
+          {
+            "id": 975,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 2
+          },
+          {
+            "id": 90390,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE エピソードオブナミ 〜航海士の涙と仲間の絆〜",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/2394"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "one piece",
+        "resolved_article": "List of One Piece characters",
+        "source_article": "List of One Piece characters",
+        "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "one piece",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+  },
+  "booster": {
+    "evidence": [
+      {
+        "canonical_alias": {
+          "key": "罗马字",
+          "value": "Booster"
+        },
+        "character": 2336,
+        "japanese_relationships": [
+          {
+            "id": 3019,
+            "title": "ポケットモンスター"
+          }
+        ],
+        "method": "reviewed_exact_archive_character_identity",
+        "original_franchise_relationships": [
+          {
+            "id": 266573,
+            "title": "POKÉMON Detective Pikachu"
+          }
+        ],
+        "source_name": "ブースター",
+        "url": "https://bgm.tv/character/2336"
+      },
+      {
+        "method": "reviewed_original_ip_identity",
+        "note": "Original IP identity reviewed explicitly; country inference is not based on archive movie metadata or English spelling.",
+        "origin_intro_fetched": true,
+        "origin_reference_url": "https://en.wikipedia.org/wiki/Pok%C3%A9mon",
+        "title": "Flareon",
+        "url": "https://en.wikipedia.org/wiki/Flareon"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Japanese name ブースター and romaji Booster identify Flareon; original Pokémon is Japanese. Detective Pikachu is only a later adaptation.",
+    "source_url": "https://en.wikipedia.org/wiki/Flareon"
+  },
+  "bulbasaur": {
+    "evidence": [],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Pokemon species name and National Pokedex ID in the public species catalog; the original Pokemon franchise is Japanese. US-film adaptation relationships do not change species origin.",
+    "source_url": "https://www.pokemon.com/us/pokedex/bulbasaur"
+  },
+  "charizard": {
+    "evidence": [],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Pokemon species name and National Pokedex ID in the public species catalog; the original Pokemon franchise is Japanese. US-film adaptation relationships do not change species origin.",
+    "source_url": "https://www.pokemon.com/us/pokedex/charizard"
+  },
+  "charmander": {
+    "evidence": [],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Pokemon species name and National Pokedex ID in the public species catalog; the original Pokemon franchise is Japanese. US-film adaptation relationships do not change species origin.",
+    "source_url": "https://www.pokemon.com/us/pokedex/charmander"
+  },
+  "chris redfield": {
+    "evidence": [
+      {
+        "character_id": 19855,
+        "matched_explicit_alias": {
+          "key": "英文名",
+          "value": "Chris Redfield"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "クリス・レッドフィールド",
+        "original_japanese_subjects": [],
+        "url": "https://bgm.tv/character/19855"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "resident evil",
+        "resolved_article": "Chris Redfield",
+        "source_article": "Chris Redfield",
+        "source_url": "https://en.wikipedia.org/wiki/Chris_Redfield"
+      },
+      {
+        "fact": "Pinned description explicitly names CAPCOM Resident Evil as the originating franchise.",
+        "method": "pinned_exact_community_description",
+        "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L5083"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "resident evil",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/Chris_Redfield"
+  },
+  "cloud strife": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 289661,
+    "parody": "final fantasy vii",
+    "raw_alias_article_title": "Cloud Strife",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Cloud Strife",
+    "source_url": "https://en.wikipedia.org/wiki/Cloud_Strife"
+  },
+  "dark magician girl": {
+    "method": "reviewed_source_description_or_franchise_link",
+    "origin": "japan",
+    "origin_reference_url": "https://en.wikipedia.org/wiki/Yu-Gi-Oh!",
+    "parody": "yu-gi-oh",
+    "reason": "Pinned source description or explicit franchise Fandom link identifies this known character/player role in the cited work.",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L2709"
+  },
+  "doctor": {
+    "method": "reviewed_source_description_or_franchise_link",
+    "origin": "china",
+    "origin_reference_url": "https://en.wikipedia.org/wiki/Arknights",
+    "parody": "arknights",
+    "reason": "Pinned source description or explicit franchise Fandom link identifies this known character/player role in the cited work.",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L3714"
+  },
+  "galdino": {
+    "evidence": [
+      {
+        "character_id": 3898,
+        "matched_explicit_alias": {
+          "key": "英文名",
+          "value": "Galdino"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "ギャルディーノ",
+        "original_japanese_subjects": [
+          {
+            "id": 975,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 2
+          },
+          {
+            "id": 258349,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE STAMPEDE",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/3898"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "one piece",
+        "resolved_article": "List of One Piece characters",
+        "source_article": "List of One Piece characters",
+        "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "one piece",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+  },
+  "haruhi suzumiya": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 4751286,
+    "parody": "the melancholy of haruhi suzumiya",
+    "raw_alias_article_title": "Haruhi Suzumiya (character)",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Haruhi Suzumiya (character)",
+    "source_url": "https://en.wikipedia.org/wiki/Haruhi_Suzumiya_(character)"
+  },
+  "haruka nanase": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 39228550,
+    "parody": "free",
+    "raw_alias_article_title": "Haruka Nanase",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Free!",
+    "source_url": "https://en.wikipedia.org/wiki/Free!"
+  },
+  "haunter": {
+    "evidence": [],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Pokemon species name and National Pokedex ID in the public species catalog; the original Pokemon franchise is Japanese. US-film adaptation relationships do not change species origin.",
+    "source_url": "https://www.pokemon.com/us/pokedex/haunter"
+  },
+  "hero": {
+    "method": "reviewed_source_description_or_franchise_link",
+    "origin": "japan",
+    "origin_reference_url": "https://en.wikipedia.org/wiki/Dragon_Quest",
+    "parody": "dragon quest",
+    "reason": "Pinned source description or explicit franchise Fandom link identifies this known character/player role in the cited work.",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L2593"
+  },
+  "hitori gotou": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 66812332,
+    "parody": "bocchi the rock",
+    "raw_alias_article_title": "Hitori Gotoh",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Bocchi the Rock!",
+    "source_url": "https://en.wikipedia.org/wiki/Bocchi_the_Rock!"
+  },
+  "izuku midoriya": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 62799946,
+    "parody": "my hero academia",
+    "raw_alias_article_title": "Izuku Midoriya",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Izuku Midoriya",
+    "source_url": "https://en.wikipedia.org/wiki/Izuku_Midoriya"
+  },
+  "jigglypuff": {
+    "evidence": [],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Pokemon species name and National Pokedex ID in the public species catalog; the original Pokemon franchise is Japanese. US-film adaptation relationships do not change species origin.",
+    "source_url": "https://www.pokemon.com/us/pokedex/jigglypuff"
+  },
+  "joey wheeler": {
+    "evidence": [
+      {
+        "character_id": 7638,
+        "matched_explicit_alias": {
+          "key": "英文名",
+          "value": "Joey Wheeler"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "城之内克也",
+        "original_japanese_subjects": [
+          {
+            "id": 38257,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "遊☆戯☆王",
+            "type": 1
+          },
+          {
+            "id": 45796,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "遊☆戯☆王R",
+            "type": 1
+          },
+          {
+            "id": 6390,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "遊☆戯☆王デュエルモンスターズ",
+            "type": 2
+          },
+          {
+            "id": 12344,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "遊☆戯☆王",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/7638"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "yu-gi-oh",
+        "resolved_article": "List of Yu-Gi-Oh! characters",
+        "source_article": "Joey Wheeler",
+        "source_url": "https://en.wikipedia.org/wiki/Joey_Wheeler"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "yu-gi-oh",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/Joey_Wheeler"
+  },
+  "kagami hiiragi": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 10216411,
+    "parody": "lucky star",
+    "raw_alias_article_title": "Kagami Hiiragi",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "List of Lucky Star characters",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_Lucky_Star_characters"
+  },
+  "katsuki bakugou": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 54628625,
+    "parody": "my hero academia",
+    "raw_alias_article_title": "Katsuki Bakugo",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Katsuki Bakugo",
+    "source_url": "https://en.wikipedia.org/wiki/Katsuki_Bakugo"
+  },
+  "kaworu nagisa": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 1147165,
+    "parody": "neon genesis evangelion",
+    "raw_alias_article_title": "Kaworu Nagisa",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Kaworu Nagisa",
+    "source_url": "https://en.wikipedia.org/wiki/Kaworu_Nagisa"
+  },
+  "kayako saeki": {
+    "evidence": [
+      {
+        "character_id": 134435,
+        "matched_explicit_alias": {
+          "key": "英文名",
+          "value": "Kayako Saeki"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "佐伯伽椰子",
+        "original_japanese_subjects": [
+          {
+            "id": 180523,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "貞子VS伽椰子",
+            "type": 6
+          },
+          {
+            "id": 200524,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "呪怨 終わりの始まり",
+            "type": 6
+          },
+          {
+            "id": 285400,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "呪怨：呪いの家",
+            "type": 6
+          },
+          {
+            "id": 448578,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "呪怨（劇場版）",
+            "type": 6
+          }
+        ],
+        "url": "https://bgm.tv/character/134435"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "ju-on",
+        "resolved_article": "Kayako Saeki",
+        "source_article": "Kayako Saeki",
+        "source_url": "https://en.wikipedia.org/wiki/Kayako_Saeki"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "ju-on",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/Kayako_Saeki"
+  },
+  "kokkoro": {
+    "method": "reviewed_source_description_or_franchise_link",
+    "origin": "japan",
+    "origin_reference_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/parody.md",
+    "parody": "princess connect",
+    "reason": "Pinned source description or explicit franchise Fandom link identifies this known character/player role in the cited work.",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L2796"
+  },
+  "konata izumi": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 10216411,
+    "parody": "lucky star",
+    "raw_alias_article_title": "Konata Izumi",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "List of Lucky Star characters",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_Lucky_Star_characters"
+  },
+  "kyon": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 7628271,
+    "parody": "the melancholy of haruhi suzumiya",
+    "raw_alias_article_title": "Kyon",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "List of Haruhi Suzumiya characters",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_Haruhi_Suzumiya_characters"
+  },
+  "len kagamine": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 45097115,
+    "parody": "vocaloid",
+    "raw_alias_article_title": "Kagamine Rin/Len",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Kagamine Rin/Len",
+    "source_url": "https://en.wikipedia.org/wiki/Kagamine_Rin/Len"
+  },
+  "levi ackerman": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 66658088,
+    "parody": "shingeki no kyojin",
+    "raw_alias_article_title": "Levi Ackerman",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Levi Ackerman",
+    "source_url": "https://en.wikipedia.org/wiki/Levi_Ackerman"
+  },
+  "lickitung": {
+    "evidence": [],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Pokemon species name and National Pokedex ID in the public species catalog; the original Pokemon franchise is Japanese. US-film adaptation relationships do not change species origin.",
+    "source_url": "https://www.pokemon.com/us/pokedex/lickitung"
+  },
+  "link": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 488714,
+    "parody": "the legend of zelda",
+    "raw_alias_article_title": "Link (The Legend of Zelda)",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Link (The Legend of Zelda)",
+    "source_url": "https://en.wikipedia.org/wiki/Link_(The_Legend_of_Zelda)"
+  },
+  "luigi": {
+    "evidence": [
+      {
+        "character_id": 11714,
+        "matched_explicit_alias": {
+          "key": "英文名",
+          "value": "Luigi"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "ルイージ",
+        "original_japanese_subjects": [],
+        "url": "https://bgm.tv/character/11714"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "super mario brothers",
+        "resolved_article": "Luigi",
+        "source_article": "Luigi",
+        "source_url": "https://en.wikipedia.org/wiki/Luigi"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "super mario brothers",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/Luigi"
+  },
+  "lynn minmay": {
+    "evidence": [
+      {
+        "character_id": 6654,
+        "matched_explicit_alias": {
+          "key": "英文名",
+          "value": "Lynn Minmay"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "リン・ミンメイ",
+        "original_japanese_subjects": [
+          {
+            "id": 3166,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "超時空要塞マクロス",
+            "type": 2
+          },
+          {
+            "id": 3172,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "超時空要塞マクロス 愛・おぼえていますか",
+            "type": 2
+          },
+          {
+            "id": 100858,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "マクロスΔ",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/6654"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "macross",
+        "resolved_article": "Lynn Minmay",
+        "source_article": "Lynn Minmay",
+        "source_url": "https://en.wikipedia.org/wiki/Lynn_Minmay"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "macross",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/Lynn_Minmay"
+  },
+  "machamp": {
+    "evidence": [],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Pokemon species name and National Pokedex ID in the public species catalog; the original Pokemon franchise is Japanese. US-film adaptation relationships do not change species origin.",
+    "source_url": "https://www.pokemon.com/us/pokedex/machamp"
+  },
+  "mai shiranui": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 750760,
+    "parody": "fatal fury",
+    "raw_alias_article_title": "Mai Shiranui",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Mai Shiranui",
+    "source_url": "https://en.wikipedia.org/wiki/Mai_Shiranui"
+  },
+  "makoto kino": {
+    "display_name": "木野真琴",
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 23573419,
+    "parody": "sailor moon",
+    "raw_alias_article_title": "Sailor Jupiter",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_display_from_description": {
+      "alias_of": "sailor jupiter",
+      "reason": "Pinned source explicitly states this civilian Chinese name; Wikipedia identity page establishes the raw full-name alias.",
+      "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L2306"
+    },
+    "source_title": "Sailor Jupiter",
+    "source_url": "https://en.wikipedia.org/wiki/Sailor_Jupiter"
+  },
+  "mewtwo": {
+    "evidence": [],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Pokemon species name and National Pokedex ID in the public species catalog; the original Pokemon franchise is Japanese. US-film adaptation relationships do not change species origin.",
+    "source_url": "https://www.pokemon.com/us/pokedex/mewtwo"
+  },
+  "mikasa ackerman": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 43156758,
+    "parody": "shingeki no kyojin",
+    "raw_alias_article_title": "Mikasa Ackerman",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Mikasa Ackerman",
+    "source_url": "https://en.wikipedia.org/wiki/Mikasa_Ackerman"
+  },
+  "miku hatsune": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 13494461,
+    "parody": "vocaloid",
+    "raw_alias_article_title": "Hatsune Miku",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Hatsune Miku",
+    "source_url": "https://en.wikipedia.org/wiki/Hatsune_Miku"
+  },
+  "mikuru asahina": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 7628271,
+    "parody": "the melancholy of haruhi suzumiya",
+    "raw_alias_article_title": "Mikuru Asahina",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "List of Haruhi Suzumiya characters",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_Haruhi_Suzumiya_characters"
+  },
+  "milia fallyna jenius": {
+    "evidence": [
+      {
+        "character_id": 41166,
+        "matched_explicit_alias": {
+          "key": "英文名",
+          "value": "Milia Fallyna Jenius"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "ミリア・ファリーナ",
+        "original_japanese_subjects": [
+          {
+            "id": 3166,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "超時空要塞マクロス",
+            "type": 2
+          },
+          {
+            "id": 3169,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "マクロス7",
+            "type": 2
+          },
+          {
+            "id": 100858,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "マクロスΔ",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/41166"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "macross",
+        "resolved_article": "List of Macross characters",
+        "source_article": "Milia Fallyna Jenius",
+        "source_url": "https://en.wikipedia.org/wiki/Milia_Fallyna_Jenius"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "macross",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/Milia_Fallyna_Jenius"
+  },
+  "mimikyu": {
+    "evidence": [],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Pokemon species name and National Pokedex ID in the public species catalog; the original Pokemon franchise is Japanese. US-film adaptation relationships do not change species origin.",
+    "source_url": "https://www.pokemon.com/us/pokedex/mimikyu"
+  },
+  "minako aino": {
+    "display_name": "爱野美奈子",
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 143875,
+    "parody": "sailor moon",
+    "raw_alias_article_title": "Sailor Venus",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_display_from_description": {
+      "alias_of": "sailor venus",
+      "reason": "Pinned source explicitly states this civilian Chinese name; Wikipedia identity page establishes the raw full-name alias.",
+      "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L2307"
+    },
+    "source_title": "Sailor Venus",
+    "source_url": "https://en.wikipedia.org/wiki/Sailor_Venus"
+  },
+  "miss goldenweek": {
+    "evidence": [
+      {
+        "character_id": 3899,
+        "matched_explicit_alias": {
+          "key": "罗马字",
+          "value": "Miss Goldenweek"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "マリアンヌ",
+        "original_japanese_subjects": [
+          {
+            "id": 3510,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 1
+          },
+          {
+            "id": 975,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/3899"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "one piece",
+        "resolved_article": "List of One Piece characters",
+        "source_article": "List of One Piece characters",
+        "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "one piece",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+  },
+  "miss valentine": {
+    "evidence": [
+      {
+        "character_id": 3904,
+        "matched_explicit_alias": {
+          "key": "罗马字",
+          "value": "Miss Valentine"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "ミス・バレンタイン",
+        "original_japanese_subjects": [
+          {
+            "id": 3510,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 1
+          },
+          {
+            "id": 975,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/3904"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "one piece",
+        "resolved_article": "List of One Piece characters",
+        "source_article": "List of One Piece characters",
+        "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "one piece",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+  },
+  "morrigan aensland": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 1223475,
+    "parody": "darkstalkers",
+    "raw_alias_article_title": "Morrigan Aensland",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Morrigan Aensland",
+    "source_url": "https://en.wikipedia.org/wiki/Morrigan_Aensland"
+  },
+  "mr. mime": {
+    "evidence": [],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Pokemon species name and National Pokedex ID in the public species catalog; the original Pokemon franchise is Japanese. US-film adaptation relationships do not change species origin.",
+    "source_url": "https://www.pokemon.com/us/pokedex/mr-mime"
+  },
+  "nakoruru": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 870454,
+    "parody": "samurai spirits",
+    "raw_alias_article_title": "Nakoruru",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Nakoruru",
+    "source_url": "https://en.wikipedia.org/wiki/Nakoruru"
+  },
+  "naru narusegawa": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 7264744,
+    "parody": "love hina",
+    "raw_alias_article_title": "Naru Narusegawa",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Naru Narusegawa",
+    "source_url": "https://en.wikipedia.org/wiki/Naru_Narusegawa"
+  },
+  "nojiko": {
+    "evidence": [
+      {
+        "character_id": 2395,
+        "matched_explicit_alias": {
+          "key": "罗马字",
+          "value": "Nojiko"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "ノジコ",
+        "original_japanese_subjects": [
+          {
+            "id": 975,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 2
+          },
+          {
+            "id": 2462,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE FILM STRONG WORLD",
+            "type": 2
+          },
+          {
+            "id": 90390,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE エピソードオブナミ 〜航海士の涙と仲間の絆〜",
+            "type": 2
+          },
+          {
+            "id": 358803,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE FILM RED",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/2395"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "one piece",
+        "resolved_article": "List of One Piece characters",
+        "source_article": "List of One Piece characters",
+        "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "one piece",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+  },
+  "ochako uraraka": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 70029692,
+    "parody": "my hero academia",
+    "raw_alias_article_title": "Ochaco Uraraka",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Ochaco Uraraka",
+    "source_url": "https://en.wikipedia.org/wiki/Ochaco_Uraraka"
+  },
+  "pecorine": {
+    "method": "reviewed_source_description_or_franchise_link",
+    "origin": "japan",
+    "origin_reference_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/parody.md",
+    "parody": "princess connect",
+    "reason": "Pinned source description or explicit franchise Fandom link identifies this known character/player role in the cited work.",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L2955"
+  },
+  "pikachu": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 269816,
+    "parody": "pokemon",
+    "raw_alias_article_title": "Pikachu",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Pikachu",
+    "source_url": "https://en.wikipedia.org/wiki/Pikachu"
+  },
+  "princess zelda": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 362011,
+    "parody": "the legend of zelda",
+    "raw_alias_article_title": "Princess Zelda",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Princess Zelda",
+    "source_url": "https://en.wikipedia.org/wiki/Princess_Zelda"
+  },
+  "psyduck": {
+    "evidence": [],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Pokemon species name and National Pokedex ID in the public species catalog; the original Pokemon franchise is Japanese. US-film adaptation relationships do not change species origin.",
+    "source_url": "https://www.pokemon.com/us/pokedex/psyduck"
+  },
+  "ranma saotome": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 285481,
+    "parody": "ranma 12",
+    "raw_alias_article_title": "Ranma Saotome",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Ranma Saotome",
+    "source_url": "https://en.wikipedia.org/wiki/Ranma_Saotome"
+  },
+  "rei hino": {
+    "display_name": "火野丽",
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 227062,
+    "parody": "sailor moon",
+    "raw_alias_article_title": "Sailor Mars",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_display_from_description": {
+      "alias_of": "sailor mars",
+      "reason": "Pinned source explicitly states this civilian Chinese name; Wikipedia identity page establishes the raw full-name alias.",
+      "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L2305"
+    },
+    "source_title": "Sailor Mars",
+    "source_url": "https://en.wikipedia.org/wiki/Sailor_Mars"
+  },
+  "remy shimada": {
+    "evidence": [
+      {
+        "character_id": 122931,
+        "matched_explicit_alias": {
+          "key": "罗马字",
+          "value": "Remy Shimada"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "レミー島田",
+        "original_japanese_subjects": [
+          {
+            "id": 37256,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "戦国魔神ゴーショーグン",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/122931"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "goshogun",
+        "resolved_article": "GoShogun",
+        "source_article": "GoShogun",
+        "source_url": "https://en.wikipedia.org/wiki/GoShogun"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "goshogun",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/GoShogun"
+  },
+  "ritsu tainaka": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 20570726,
+    "parody": "k-on",
+    "raw_alias_article_title": "Ritsu Tainaka",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "K-On!",
+    "source_url": "https://en.wikipedia.org/wiki/K-On!"
+  },
+  "ruri gokou": {
+    "method": "reviewed_source_description_or_franchise_link",
+    "origin": "japan",
+    "origin_reference_url": "https://en.wikipedia.org/wiki/Oreimo",
+    "parody": "ore no imouto ga konna ni kawaii wake ga nai",
+    "reason": "Pinned source description or explicit franchise Fandom link identifies this known character/player role in the cited work.",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L960"
+  },
+  "ruri hoshino": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 10500249,
+    "parody": "martian successor nadesico",
+    "raw_alias_article_title": "Ruri Hoshino",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "List of Martian Successor Nadesico characters",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_Martian_Successor_Nadesico_characters"
+  },
+  "sabo": {
+    "evidence": [
+      {
+        "character_id": 65339,
+        "matched_explicit_alias": {
+          "key": "罗马字",
+          "value": "Sabo"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "サボ",
+        "original_japanese_subjects": [
+          {
+            "id": 3510,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 1
+          },
+          {
+            "id": 975,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 2
+          },
+          {
+            "id": 137580,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE エピソードオブサボ 〜3兄弟の絆 奇跡の再会と受け継がれる意志〜",
+            "type": 2
+          },
+          {
+            "id": 144846,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE FILM GOLD",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/65339"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "one piece",
+        "resolved_article": "List of One Piece characters",
+        "source_article": "List of One Piece characters",
+        "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "one piece",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+  },
+  "sena kashiwazaki": {
+    "method": "reviewed_source_description_or_franchise_link",
+    "origin": "japan",
+    "origin_reference_url": "https://en.wikipedia.org/wiki/Haganai",
+    "parody": "boku wa tomodachi ga sukunai",
+    "reason": "Pinned source description or explicit franchise Fandom link identifies this known character/player role in the cited work.",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L1057"
+  },
+  "seto kaiba": {
+    "evidence": [
+      {
+        "character_id": 18161,
+        "matched_explicit_alias": {
+          "key": "英文名",
+          "value": "Seto Kaiba"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "海馬瀬人",
+        "original_japanese_subjects": [
+          {
+            "id": 38257,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "遊☆戯☆王",
+            "type": 1
+          },
+          {
+            "id": 45796,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "遊☆戯☆王R",
+            "type": 1
+          },
+          {
+            "id": 534100,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "TRANSCEND・GAME 遊☆戯☆王",
+            "type": 1
+          },
+          {
+            "id": 3711,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "遊☆戯☆王デュエルモンスターズGX",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/18161"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "yu-gi-oh",
+        "resolved_article": "Seto Kaiba",
+        "source_article": "Seto Kaiba",
+        "source_url": "https://en.wikipedia.org/wiki/Seto_Kaiba"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "yu-gi-oh",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/Seto_Kaiba"
+  },
+  "shanks": {
+    "evidence": [
+      {
+        "character_id": 2479,
+        "matched_explicit_alias": {
+          "key": "罗马字",
+          "value": "Shanks"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "シャンクス",
+        "original_japanese_subjects": [
+          {
+            "id": 975,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 2
+          },
+          {
+            "id": 1904,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE THE MOVIE デッドエンドの冒険",
+            "type": 2
+          },
+          {
+            "id": 5393,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE FILM STRONG WORLD EPISODE:0",
+            "type": 2
+          },
+          {
+            "id": 90391,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE エピソードオブルフィ 〜ハンドアイランドの冒険〜",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/2479"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "one piece",
+        "resolved_article": "List of One Piece characters",
+        "source_article": "List of One Piece characters",
+        "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "one piece",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+  },
+  "shikikan": {
+    "display_name": "指挥官",
+    "kind": "generic_player_identity",
+    "method": "reviewed_japanese_generic_role",
+    "origin": "generic",
+    "origin_reference_url": "https://ja.wiktionary.org/wiki/%E6%8C%87%E6%8F%AE%E5%AE%98",
+    "reason": "Pinned character source provides the Chinese role term; Japanese dictionary confirms the exact romanized reading. This is a reusable player role, not a uniquely identified historical person.",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L288"
+  },
+  "shimotsuki kuina": {
+    "evidence": [
+      {
+        "character_id": 2402,
+        "matched_explicit_alias": {
+          "key": "罗马字",
+          "value": "Shimotsuki Kuina"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "霜月くいな",
+        "original_japanese_subjects": [
+          {
+            "id": 3510,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 1
+          },
+          {
+            "id": 975,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 2
+          },
+          {
+            "id": 5393,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE FILM STRONG WORLD EPISODE:0",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/2402"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "one piece",
+        "resolved_article": "List of One Piece characters",
+        "source_article": "List of One Piece characters",
+        "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "one piece",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+  },
+  "shinji ikari": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 366537,
+    "parody": "neon genesis evangelion",
+    "raw_alias_article_title": "Shinji Ikari",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Shinji Ikari",
+    "source_url": "https://en.wikipedia.org/wiki/Shinji_Ikari"
+  },
+  "shinobu maehara": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 274560,
+    "parody": "love hina",
+    "raw_alias_article_title": "Shinobu Maehara",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "List of Love Hina characters",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_Love_Hina_characters"
+  },
+  "shouto todoroki": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 57551093,
+    "parody": "my hero academia",
+    "raw_alias_article_title": "Shoto Todoroki",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Shoto Todoroki",
+    "source_url": "https://en.wikipedia.org/wiki/Shoto_Todoroki"
+  },
+  "snorlax": {
+    "evidence": [],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Pokemon species name and National Pokedex ID in the public species catalog; the original Pokemon franchise is Japanese. US-film adaptation relationships do not change species origin.",
+    "source_url": "https://www.pokemon.com/us/pokedex/snorlax"
+  },
+  "sonic the hedgehog": {
+    "evidence": [
+      {
+        "character_id": 75332,
+        "matched_explicit_alias": {
+          "key": "英文名",
+          "value": "Sonic The Hedgehog"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "ソニック",
+        "original_japanese_subjects": [
+          {
+            "id": 632542,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ソニックと勇気のつるぎ",
+            "type": 1
+          },
+          {
+            "id": 26314,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ソニックX",
+            "type": 2
+          },
+          {
+            "id": 101784,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "Hi☆sCoool! セハガール",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/75332"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "sonic the hedgehog",
+        "resolved_article": "Sonic the Hedgehog (character)",
+        "source_article": "Sonic the Hedgehog (character)",
+        "source_url": "https://en.wikipedia.org/wiki/Sonic_the_Hedgehog_(character)"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "sonic the hedgehog",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/Sonic_the_Hedgehog_(character)"
+  },
+  "tashigi": {
+    "evidence": [
+      {
+        "character_id": 3315,
+        "matched_explicit_alias": {
+          "key": "罗马字",
+          "value": "Tashigi"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "たしぎ",
+        "original_japanese_subjects": [
+          {
+            "id": 975,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 2
+          },
+          {
+            "id": 258349,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE STAMPEDE",
+            "type": 2
+          },
+          {
+            "id": 358803,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE FILM RED",
+            "type": 2
+          },
+          {
+            "id": 518519,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE FAN LETTER",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/3315"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "one piece",
+        "resolved_article": "List of One Piece characters",
+        "source_article": "List of One Piece characters",
+        "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "one piece",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+  },
+  "teitoku": {
+    "display_name": "提督",
+    "kind": "generic_player_identity",
+    "method": "reviewed_japanese_generic_role",
+    "origin": "generic",
+    "origin_reference_url": "https://ja.wiktionary.org/wiki/%E6%8F%90%E7%9D%A3",
+    "reason": "Pinned character source provides the Chinese role term; Japanese dictionary confirms the exact romanized reading. This is a reusable player role, not a uniquely identified historical person.",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L295"
+  },
+  "tifa lockhart": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 892759,
+    "parody": "final fantasy vii",
+    "raw_alias_article_title": "Tifa Lockhart",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Tifa Lockhart",
+    "source_url": "https://en.wikipedia.org/wiki/Tifa_Lockhart"
+  },
+  "totodile": {
+    "evidence": [],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "pokemon",
+    "reason": "Exact Pokemon species name and National Pokedex ID in the public species catalog; the original Pokemon franchise is Japanese. US-film adaptation relationships do not change species origin.",
+    "source_url": "https://www.pokemon.com/us/pokedex/totodile"
+  },
+  "tsumugi kotobuki": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 20570726,
+    "parody": "k-on",
+    "raw_alias_article_title": "Tsumugi Kotobuki",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "K-On!",
+    "source_url": "https://en.wikipedia.org/wiki/K-On!"
+  },
+  "ultraman ace": {
+    "evidence": [
+      {
+        "character_id": 130806,
+        "matched_explicit_alias": {
+          "key": "英文名",
+          "value": "Ultraman Ace"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "ウルトラマンA",
+        "original_japanese_subjects": [
+          {
+            "id": 4769,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "大怪獣バトル ウルトラ銀河伝説 THE MOVIE",
+            "type": 6
+          },
+          {
+            "id": 32253,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ウルトラマンメビウス",
+            "type": 6
+          },
+          {
+            "id": 38653,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ウルトラマンA",
+            "type": 6
+          },
+          {
+            "id": 38658,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ウルトラマンタロウ",
+            "type": 6
+          }
+        ],
+        "url": "https://bgm.tv/character/130806"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "ultraman ace",
+        "resolved_article": "Ultraman Ace",
+        "source_article": "Ultraman Ace",
+        "source_url": "https://en.wikipedia.org/wiki/Ultraman_Ace"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "ultraman ace",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/Ultraman_Ace"
+  },
+  "usagi tsukino": {
+    "display_name": "月野兔",
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 39803,
+    "parody": "sailor moon",
+    "raw_alias_article_title": "Sailor Moon (character)",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_display_from_description": {
+      "alias_of": "sailor moon",
+      "reason": "Pinned source explicitly states this civilian Chinese name; Wikipedia identity page establishes the raw full-name alias.",
+      "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L2302"
+    },
+    "source_title": "Sailor Moon (character)",
+    "source_url": "https://en.wikipedia.org/wiki/Sailor_Moon_(character)"
+  },
+  "usopp": {
+    "evidence": [
+      {
+        "character_id": 2362,
+        "matched_explicit_alias": {
+          "key": "罗马字",
+          "value": "Usopp"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "ウソップ",
+        "original_japanese_subjects": [
+          {
+            "id": 3510,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 1
+          },
+          {
+            "id": 975,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 2
+          },
+          {
+            "id": 1871,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE ねじまき島の冒険",
+            "type": 2
+          },
+          {
+            "id": 2462,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE FILM STRONG WORLD",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/2362"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "one piece",
+        "resolved_article": "List of One Piece characters",
+        "source_article": "List of One Piece characters",
+        "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "one piece",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+  },
+  "warrior": {
+    "method": "reviewed_source_description_or_franchise_link",
+    "origin": "japan",
+    "origin_reference_url": "https://en.wikipedia.org/wiki/Dragon_Quest",
+    "parody": "dragon quest",
+    "reason": "Pinned source description or explicit franchise Fandom link identifies this known character/player role in the cited work.",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L2596"
+  },
+  "yui hirasawa": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 20570726,
+    "parody": "k-on",
+    "raw_alias_article_title": "Yui Hirasawa",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "K-On!",
+    "source_url": "https://en.wikipedia.org/wiki/K-On!"
+  },
+  "yuki nagato": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 7628271,
+    "parody": "the melancholy of haruhi suzumiya",
+    "raw_alias_article_title": "Yuki Nagato",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "List of Haruhi Suzumiya characters",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_Haruhi_Suzumiya_characters"
+  },
+  "yuu narukami": {
+    "method": "reviewed_wikipedia_character_identity",
+    "origin": "japan",
+    "pageid": 34374743,
+    "parody": "persona 4",
+    "raw_alias_article_title": "Yu Narukami",
+    "reason": "Wikipedia canonical/redirect article for this exact character identity links it to the cited Japanese franchise; no names inferred from romaji.",
+    "source_title": "Yu Narukami",
+    "source_url": "https://en.wikipedia.org/wiki/Yu_Narukami"
+  },
+  "zeff": {
+    "evidence": [
+      {
+        "character_id": 2454,
+        "matched_explicit_alias": {
+          "key": "罗马字",
+          "value": "Zeff"
+        },
+        "method": "exact_archive_character_identity",
+        "name": "ゼフ",
+        "original_japanese_subjects": [
+          {
+            "id": 975,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE",
+            "type": 2
+          },
+          {
+            "id": 90792,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE エピソードオブメリー 〜もうひとりの仲間の物語〜",
+            "type": 2
+          },
+          {
+            "id": 358803,
+            "lang": "ja",
+            "origin_basis": "curated_meta_tags",
+            "origin_meta_tags": [
+              "日本"
+            ],
+            "title": "ONE PIECE FILM RED",
+            "type": 2
+          }
+        ],
+        "url": "https://bgm.tv/character/2454"
+      },
+      {
+        "method": "reviewed_original_franchise_character_relationship",
+        "note": "Character belongs to the original Japanese game/manga/anime franchise. Western related-subject entries are later adaptations, not proof of a Western original character.",
+        "parody": "one piece",
+        "resolved_article": "List of One Piece characters",
+        "source_article": "List of One Piece characters",
+        "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+      }
+    ],
+    "method": "reviewed_original_ip_identity_69",
+    "origin": "japan",
+    "parody": "one piece",
+    "reason": "Exact character identity is from the original Japanese franchise; its Western adaptations do not change original IP origin.",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_One_Piece_characters"
+  }
+}

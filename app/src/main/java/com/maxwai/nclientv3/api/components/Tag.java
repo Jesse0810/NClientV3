@@ -16,6 +16,7 @@ import com.maxwai.nclientv3.api.enums.TagStatus;
 import com.maxwai.nclientv3.api.enums.TagType;
 import com.maxwai.nclientv3.utility.LogUtility;
 import com.maxwai.nclientv3.utility.ContentTagTranslations;
+import com.maxwai.nclientv3.utility.EntityTagTranslations;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -119,6 +120,8 @@ public class Tag implements Parcelable {
     public String getDisplayName(Context context) {
         if (TagType.TAG.equals(type))
             return ContentTagTranslations.getDisplayName(context, name);
+        if (EntityTagTranslations.isEntityType(type))
+            return EntityTagTranslations.getDisplayName(context, type, name);
         int resource = 0;
         if (TagType.LANGUAGE.equals(type)) {
             switch (name) {

@@ -1,0 +1,176 @@
+{
+  "input_hashes": {
+    "native_records": "4261e7c683254a56141d951afadb390a56f2b69a3663ab17dd3d6b978c954d8d",
+    "origins": "1c1c9ddb03a03af0695e70544ad7d5b5c46bf8ac03847ac4be98e0570727fa3f",
+    "western_overrides": "35a5d662b9928d9050424b4fc144db37bc7fbdb64fc47bbe63cafbdbc6a87979"
+  },
+  "native_source_manifest": {
+    "complete_inventory": {
+      "artist": 33371,
+      "group": 25409
+    },
+    "mapping_counts": {
+      "artist": 10406,
+      "group": 6518
+    },
+    "sha256": {
+      "archive-person.jsonlines": "76253dc1c76af30c25970e99d321dc8f4672c42ce2951270611a361981117cc7",
+      "artist.md": "84f2bb64b01fb9a79ac8b1aa13214e97d9dc68cab459a72e4bcc118a3c5aea8c",
+      "danbooru-artists.json": "2d8b312b6b7a95dadc88149142e23dbab55503e44116065998875622533cc8a9",
+      "danbooru-source.json": "b81604f2f45878f0d2d19f23fded56988ade3820ede6d4c447dedbed5da81573",
+      "group.md": "40a0fbaea45447e777194d77299f5d482d98ea1175ba51c51c7968ff459d96b7",
+      "native-mappings.json": "4372dedf2db95635cc4d5fc7be0768cbe73f3fc1ab0fc97bc1e1a48f9ff768c5",
+      "native-records.json": "4261e7c683254a56141d951afadb390a56f2b69a3663ab17dd3d6b978c954d8d",
+      "native-summary.json": "f4cdcd307cc0e0db760041059947483e8ef1e32e31b98bb6c1da873ce652f60b",
+      "nclientv3-native-build.py": "973ad47b9afd261f5bed74166f265493db36227b633fb865f242566a5110958e",
+      "nclientv3-native-fetch.py": "1bdd5669f9bffeeec053558cf39aa5df64e1a8deed8d0d5ada667f6f31d7e6c7",
+      "nclientv3-native-validate.py": "cd16fb8b3d9f1f4cf107fc24e07ec1c02884690d8ec5621512de5f3ff8fb5809"
+    },
+    "snapshot_date": "2026-11-12",
+    "sources": [
+      {
+        "commit": "e0f66dc4424a53872473b05b7fb006ceebfcbe5d",
+        "license": "CC BY-NC-SA 3.0 CN",
+        "license_file": "LICENSE.md",
+        "name": "EhTagTranslation"
+      },
+      {
+        "license": "CC BY-SA 3.0",
+        "license_evidence": "https://bgm.tv/about/copyright",
+        "name": "Bangumi Archive",
+        "snapshot": "2026-11-10.210405Z",
+        "source_metadata": "archive-person.jsonlines.source.json"
+      },
+      {
+        "attribution": "https://danbooru.donmai.us",
+        "license_note": "Only proper-name facts and source record identifiers/URLs are extracted. No explicit artist-metadata license was found; no open license is claimed. No media, wiki prose or descriptions copied.",
+        "name": "Danbooru public artist metadata",
+        "snapshot": "2026-11-12",
+        "source_metadata": "danbooru-source.json"
+      }
+    ],
+    "validation": "PASS full 58780 inventory partition; exact namespace keys; all mapped rows source/evidence; no markup/prose placeholders; representative original names, preserved pen-name aliases, and Western/native-Latin fallback."
+  },
+  "normalization": {
+    "artist_group": "No script conversion; original native spelling retained",
+    "parody_character": "OpenCC t2s, opencc-python-reimplemented 0.1.7; no kana accepted as a Chinese label"
+  },
+  "post_merge_guards": {
+    "community_native_names": "Require actual kana script, not just the middle dot or prolonged-sound punctuation. Unverified pure-Han/Latin names retain their canonical value.",
+    "filtered_name_counts": {
+      "artist": 10,
+      "group": 29
+    }
+  },
+  "scope": {
+    "runtime": "Offline, Simplified Chinese only; canonical IDs/values unchanged",
+    "unresolved": "Preserve original and record why",
+    "western": "Preserve original, including mixed Western/Japanese source identities"
+  },
+  "sources": {
+    "Bangumi Archive": {
+      "copyright_url": "https://bgm.tv/about/copyright",
+      "license": "CC BY-SA 3.0",
+      "members": {
+        "character": {
+          "compressed_sha256": "f99d981e12e79e2d88555f0d21275f25c248816083d2df2d89128f5327706991",
+          "compressed_size": 44985930,
+          "compression": 8,
+          "crc32": 3213588650,
+          "filename": "archive-character.jsonlines",
+          "header_offset": 312939302,
+          "raw_sha256": "be532506878be7ef495445770a3b388089a80902a1a8210adec834b8720b61c4",
+          "size": 165191572,
+          "source_url": "https://github.com/bangumi/Archive/releases/download/archive/dump-2026-11-10.210405Z.zip"
+        },
+        "person": {
+          "compressed_sha256": "470094a58b9c3ccd844af929d7d2a34ccd90e9f48d8dbc7753077c5842e193d5",
+          "compressed_size": 19803792,
+          "compression": 8,
+          "crc32": 134737345,
+          "filename": "archive-person.jsonlines",
+          "header_offset": 293135448,
+          "raw_sha256": "76253dc1c76af30c25970e99d321dc8f4672c42ce2951270611a361981117cc7",
+          "size": 74094785,
+          "source_url": "https://github.com/bangumi/Archive/releases/download/archive/dump-2026-11-10.210405Z.zip"
+        },
+        "subject": {
+          "compressed_sha256": "77007b48bed51e2472d4da7904989b67fd36d9ed7ec9d6ab3a4ebf78c37b4323",
+          "compressed_size": 293135385,
+          "compression": 8,
+          "crc32": 1185113289,
+          "filename": "archive-subject.jsonlines",
+          "header_offset": 0,
+          "raw_sha256": "ce596e1ceba1deab60bd401dd7e2253782bc8d7b738d9c7ec7526fbbaacacceb",
+          "size": 998429831,
+          "source_url": "https://github.com/bangumi/Archive/releases/download/archive/dump-2026-11-10.210405Z.zip"
+        },
+        "subject-characters": {
+          "compressed_sha256": "171be659d22580b254dcfd6d58e601cb7b5cbca1ae29ae393b833d3f56186d2f",
+          "compressed_size": 2415920,
+          "compression": 8,
+          "crc32": 3984289668,
+          "filename": "archive-subject-characters.jsonlines",
+          "header_offset": 445610436,
+          "raw_sha256": "df5a5e4b5ec29bc3d48776a8b438835cc18147b7ef5cc23019e4fa5fc07f796d",
+          "size": 28308020,
+          "source_url": "https://github.com/bangumi/Archive/releases/download/archive/dump-2026-11-10.210405Z.zip"
+        }
+      },
+      "repository": "https://github.com/bangumi/Archive"
+    },
+    "Danbooru+EhTagTranslation": {
+      "description": "Cross-checked Japanese original names; see exact per-entry identity evidence and separate original source notices.",
+      "license": "Source subsets retain original licenses; Danbooru artist metadata has no explicit open license; factual names and record identifiers only.",
+      "sources": [
+        "Danbooru",
+        "EhTagTranslation"
+      ]
+    },
+    "EhTagTranslation": {
+      "archive_sha256": "0e9bce61c735fde92e4b905eaa2bba14311d6e5814772604221d57766f65381c",
+      "commit": "e0f66dc4424a53872473b05b7fb006ceebfcbe5d",
+      "license": "CC BY-NC-SA 3.0 China Mainland",
+      "repository": "https://github.com/EhTagTranslation/Database",
+      "row_lookup": "database/{namespace}.md exact raw tag column"
+    },
+    "bangumi-data": {
+      "commit": "d5f56180c0c71fbeb24bd1914eb04c75f2f358fa",
+      "data_sha256": "f8f02b81690d7545e4ef9a7f9ace7eb05407c8bbc0a4f32e2aa63d10217feb85",
+      "data_url": "https://raw.githubusercontent.com/bangumi-data/bangumi-data/d5f56180c0c71fbeb24bd1914eb04c75f2f358fa/dist/data.json",
+      "license": "CC BY 4.0 (README License section)",
+      "notice_sha256": "a0c63e61aa3a00780afe0c67cb53faf0f8c7a6bef31cd23b007c78526242558f",
+      "repository": "https://github.com/bangumi-data/bangumi-data"
+    },
+    "bangumi-data+anime-offline-database": {
+      "labels_from": "bangumi-data titleTranslate.zh-Hans",
+      "license": "Chinese labels CC BY 4.0; separate alias/provider crosswalk ODbL-1.0 + DbCL-1.0",
+      "matching_source": {
+        "commit": "96da26358c8e599a9c076818aee247c68cb69401",
+        "compressed_sha256": "5672cef0fd729a7f7810fc9cf7d54007612aee83fbcf44dd370359c82db6373a",
+        "data_sha256": "395be786fb2f98f1fca9e963911b9332110098a080e7e2569902bbc5641d1a41",
+        "data_url": "https://github.com/manami-project/anime-offline-database/releases/download/2026-27/anime-offline-database-minified.json.zst",
+        "license": "ODbL-1.0 + Database Contents License 1.0",
+        "license_sha256": "b618196160182d36789b352f8bc21ca645f049295bf8690eed4bd668ff391330",
+        "release": "2026-27",
+        "repository": "https://github.com/manami-project/anime-offline-database"
+      }
+    },
+    "reviewed-origin": {
+      "description": "Country/identity evidence from public Wikidata claims, exact franchise identity review and cited public encyclopedia pages; never infers kanji from romanized names.",
+      "license": "Wikidata claims CC0; third-party names/facts retain their original terms",
+      "wikidata": {
+        "api": "https://www.wikidata.org/w/api.php?action=wbgetentities",
+        "entity_count": 930,
+        "license": "CC0",
+        "note": "Cached exact Wikipedia sitelinks and P495 country entity IDs, extracted from public claims; full claim references/qualifiers omitted. Multiple countries do not imply a single nationality.",
+        "property": "P495",
+        "queried_en_titles": 56,
+        "queried_zh_titles": 932,
+        "retrieved_utc": "2026-11-12",
+        "sha256": "e24dc9706441b53bfb657607c7479f63ab6967683eef2b7092845ff84d07ca3b",
+        "source": "Wikidata"
+      }
+    }
+  }
+}

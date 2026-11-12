@@ -1,0 +1,430 @@
+{
+  "ah my goddess": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 113023,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Oh My Goddess!",
+    "source_url": "https://en.wikipedia.org/wiki/Oh_My_Goddess!"
+  },
+  "arknights": {
+    "method": "existing_verified_franchise_origin",
+    "origin": "china",
+    "reason": "Existing explicit country/franchise evidence reused for a source-established character relationship.",
+    "source_url": "https://en.wikipedia.org/wiki/Arknights"
+  },
+  "bakemonogatari": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 19072303,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Monogatari (series)",
+    "source_url": "https://en.wikipedia.org/wiki/Monogatari_(series)"
+  },
+  "bocchi the rock": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 66812332,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Bocchi the Rock!",
+    "source_url": "https://en.wikipedia.org/wiki/Bocchi_the_Rock!"
+  },
+  "boku wa tomodachi ga sukunai": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 31952451,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Haganai",
+    "source_url": "https://en.wikipedia.org/wiki/Haganai"
+  },
+  "darkstalkers": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 504871,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Darkstalkers",
+    "source_url": "https://en.wikipedia.org/wiki/Darkstalkers"
+  },
+  "dragon quest": {
+    "method": "existing_verified_franchise_origin",
+    "origin": "japan",
+    "reason": "Existing explicit country/franchise evidence reused for a source-established character relationship.",
+    "source_url": "https://en.wikipedia.org/wiki/Dragon_Quest"
+  },
+  "dragon quest iii": {
+    "method": "reviewed_wikipedia_series_or_developer_origin",
+    "origin": "japan",
+    "origin_reference_url": "https://en.wikipedia.org/wiki/Dragon_Quest",
+    "pageid": 984290,
+    "reason": "Work article identifies the series or developer; the linked series/developer article explicitly identifies Japanese origin.",
+    "source_title": "Dragon Quest III",
+    "source_url": "https://en.wikipedia.org/wiki/Dragon_Quest_III"
+  },
+  "dragon quest v": {
+    "method": "reviewed_wikipedia_series_or_developer_origin",
+    "origin": "japan",
+    "origin_reference_url": "https://en.wikipedia.org/wiki/Dragon_Quest",
+    "pageid": 1580726,
+    "reason": "Work article identifies the series or developer; the linked series/developer article explicitly identifies Japanese origin.",
+    "source_title": "Dragon Quest V",
+    "source_url": "https://en.wikipedia.org/wiki/Dragon_Quest_V"
+  },
+  "dungeon ni deai o motomeru no wa machigatteiru darou ka": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 44201391,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Is It Wrong to Try to Pick Up Girls in a Dungeon?",
+    "source_url": "https://en.wikipedia.org/wiki/Is_It_Wrong_to_Try_to_Pick_Up_Girls_in_a_Dungeon%3F"
+  },
+  "fatal fury": {
+    "method": "reviewed_wikipedia_series_or_developer_origin",
+    "origin": "japan",
+    "origin_reference_url": "https://en.wikipedia.org/wiki/SNK",
+    "pageid": 460195,
+    "reason": "Work article identifies the series or developer; the linked series/developer article explicitly identifies Japanese origin.",
+    "source_title": "Fatal Fury",
+    "source_url": "https://en.wikipedia.org/wiki/Fatal_Fury"
+  },
+  "fate apocrypha": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 36483836,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Fate/Apocrypha",
+    "source_url": "https://en.wikipedia.org/wiki/Fate/Apocrypha"
+  },
+  "fate grand order": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 52441546,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Fate/Grand Order",
+    "source_url": "https://en.wikipedia.org/wiki/Fate/Grand_Order"
+  },
+  "fate kaleid liner prisma illya": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 36361465,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Fate/kaleid liner Prisma Illya",
+    "source_url": "https://en.wikipedia.org/wiki/Fate/kaleid_liner_Prisma_Illya"
+  },
+  "fate stay night": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 994533,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Fate/Stay Night",
+    "source_url": "https://en.wikipedia.org/wiki/Fate/Stay_Night"
+  },
+  "final fantasy vii": {
+    "method": "reviewed_wikipedia_series_or_developer_origin",
+    "origin": "japan",
+    "origin_reference_url": "https://en.wikipedia.org/wiki/Final_Fantasy",
+    "pageid": 52756,
+    "reason": "Work article identifies the series or developer; the linked series/developer article explicitly identifies Japanese origin.",
+    "source_title": "Final Fantasy VII",
+    "source_url": "https://en.wikipedia.org/wiki/Final_Fantasy_VII"
+  },
+  "free": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 39228550,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Free!",
+    "source_url": "https://en.wikipedia.org/wiki/Free!"
+  },
+  "gochuumon wa usagi desu ka": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 41101499,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Is the Order a Rabbit?",
+    "source_url": "https://en.wikipedia.org/wiki/Is_the_Order_a_Rabbit%3F"
+  },
+  "gundam seed": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 253056,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Mobile Suit Gundam SEED",
+    "source_url": "https://en.wikipedia.org/wiki/Mobile_Suit_Gundam_SEED"
+  },
+  "k-on": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 20570726,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "K-On!",
+    "source_url": "https://en.wikipedia.org/wiki/K-On!"
+  },
+  "kanon": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 288001,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Kanon (video game)",
+    "source_url": "https://en.wikipedia.org/wiki/Kanon_(video_game)"
+  },
+  "kuroko no basuke": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 25673619,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Kuroko's Basketball",
+    "source_url": "https://en.wikipedia.org/wiki/Kuroko%27s_Basketball"
+  },
+  "love hina": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 76793,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Love Hina",
+    "source_url": "https://en.wikipedia.org/wiki/Love_Hina"
+  },
+  "love live nijigasaki high school idol club": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 62613556,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Love Live! Nijigasaki High School Idol Club",
+    "source_url": "https://en.wikipedia.org/wiki/Love_Live!_Nijigasaki_High_School_Idol_Club"
+  },
+  "love live sunshine": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 51499992,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Love Live! Sunshine!!",
+    "source_url": "https://en.wikipedia.org/wiki/Love_Live!_Sunshine!!"
+  },
+  "lucky star": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 4778915,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Lucky Star (manga)",
+    "source_url": "https://en.wikipedia.org/wiki/Lucky_Star_(manga)"
+  },
+  "martian successor nadesico": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 158568,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Martian Successor Nadesico",
+    "source_url": "https://en.wikipedia.org/wiki/Martian_Successor_Nadesico"
+  },
+  "monster hunter": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 23275071,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Monster Hunter",
+    "source_url": "https://en.wikipedia.org/wiki/Monster_Hunter"
+  },
+  "my hero academia": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 44555475,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "My Hero Academia",
+    "source_url": "https://en.wikipedia.org/wiki/My_Hero_Academia"
+  },
+  "neon genesis evangelion": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 21711,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Neon Genesis Evangelion",
+    "source_url": "https://en.wikipedia.org/wiki/Neon_Genesis_Evangelion"
+  },
+  "ojamajo doremi": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 1566501,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Ojamajo Doremi",
+    "source_url": "https://en.wikipedia.org/wiki/Ojamajo_Doremi"
+  },
+  "ore no imouto ga konna ni kawaii wake ga nai": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 20206150,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Oreimo",
+    "source_url": "https://en.wikipedia.org/wiki/Oreimo"
+  },
+  "osomatsu-san": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 47201795,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Mr. Osomatsu",
+    "source_url": "https://en.wikipedia.org/wiki/Mr._Osomatsu"
+  },
+  "persona 4": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 16401301,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Persona 4",
+    "source_url": "https://en.wikipedia.org/wiki/Persona_4"
+  },
+  "pokemon": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 23745,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Pokémon",
+    "source_url": "https://en.wikipedia.org/wiki/Pok%C3%A9mon"
+  },
+  "princess connect": {
+    "method": "reviewed_source_developer_relationship",
+    "origin": "japan",
+    "origin_reference_url": "https://en.wikipedia.org/wiki/Cygames",
+    "reason": "Pinned source explicitly names Cygames as developer; public Cygames encyclopedia intro identifies a Japanese development studio.",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/parody.md"
+  },
+  "queens blade": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 14962535,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Queen's Blade",
+    "source_url": "https://en.wikipedia.org/wiki/Queen%27s_Blade"
+  },
+  "ranma 12": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 26324,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Ranma ½",
+    "source_url": "https://en.wikipedia.org/wiki/Ranma_%C2%BD"
+  },
+  "sailor moon": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 27931,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Sailor Moon",
+    "source_url": "https://en.wikipedia.org/wiki/Sailor_Moon"
+  },
+  "samurai spirits": {
+    "method": "reviewed_wikipedia_series_or_developer_origin",
+    "origin": "japan",
+    "origin_reference_url": "https://en.wikipedia.org/wiki/SNK",
+    "pageid": 3056642,
+    "reason": "Work article identifies the series or developer; the linked series/developer article explicitly identifies Japanese origin.",
+    "source_title": "Samurai Shodown",
+    "source_url": "https://en.wikipedia.org/wiki/Samurai_Shodown"
+  },
+  "seiken densetsu 3": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 1580801,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Trials of Mana",
+    "source_url": "https://en.wikipedia.org/wiki/Trials_of_Mana"
+  },
+  "senran kagura": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 36577850,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Senran Kagura",
+    "source_url": "https://en.wikipedia.org/wiki/Senran_Kagura"
+  },
+  "shingeki no kyojin": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 31773051,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Attack on Titan",
+    "source_url": "https://en.wikipedia.org/wiki/Attack_on_Titan"
+  },
+  "smile precure": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 33892304,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Smile PreCure!",
+    "source_url": "https://en.wikipedia.org/wiki/Smile_PreCure!"
+  },
+  "the legend of zelda": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 30035,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "The Legend of Zelda",
+    "source_url": "https://en.wikipedia.org/wiki/The_Legend_of_Zelda"
+  },
+  "the melancholy of haruhi suzumiya": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 11500693,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Haruhi Suzumiya",
+    "source_url": "https://en.wikipedia.org/wiki/Haruhi_Suzumiya"
+  },
+  "to love-ru": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 10089270,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "To Love Ru",
+    "source_url": "https://en.wikipedia.org/wiki/To_Love_Ru"
+  },
+  "vocaloid": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 1698102,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Vocaloid",
+    "source_url": "https://en.wikipedia.org/wiki/Vocaloid"
+  },
+  "voiceroid": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 29039034,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Voiceroid",
+    "source_url": "https://en.wikipedia.org/wiki/Voiceroid"
+  },
+  "warship girls": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "china",
+    "reason": "Public encyclopedia intro explicitly identifies Chinese developer 幻萌网络.",
+    "source_url": "https://zh.wikipedia.org/wiki/战舰少女"
+  },
+  "yu-gi-oh": {
+    "method": "existing_verified_franchise_origin",
+    "origin": "japan",
+    "reason": "Existing explicit country/franchise evidence reused for a source-established character relationship.",
+    "source_url": "https://en.wikipedia.org/wiki/Yu-Gi-Oh!"
+  },
+  "yu-gi-oh arc-v": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 41459192,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Yu-Gi-Oh! Arc-V",
+    "source_url": "https://en.wikipedia.org/wiki/Yu-Gi-Oh!_Arc-V"
+  },
+  "yu-gi-oh zexal": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 30094911,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "Yu-Gi-Oh! Zexal",
+    "source_url": "https://en.wikipedia.org/wiki/Yu-Gi-Oh!_Zexal"
+  },
+  "zero no tsukaima": {
+    "method": "reviewed_wikipedia_franchise_origin",
+    "origin": "japan",
+    "pageid": 5982921,
+    "reason": "Public encyclopedia intro explicitly identifies Japanese production/authorship/development.",
+    "source_title": "The Familiar of Zero",
+    "source_url": "https://en.wikipedia.org/wiki/The_Familiar_of_Zero"
+  }
+}

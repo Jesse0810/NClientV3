@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 
 @SuppressLint("Range")
@@ -313,10 +314,12 @@ public class Queries {
          * @param translatedNames Canonical content-tag names matched by their display labels
          * @param allowedNames Approved content-tag names visible in tag-management lists
          * @param searchDisplayNamesOnly Match only displayed labels in the Simplified Chinese content-tag module
+         * @param translatedEntityNames Canonical entity names matched by labels, grouped by their exact type
          */
         public static Cursor getFilterCursor(@NonNull String query, TagType type, boolean online,
                                              boolean sortByName, @NonNull List<String> translatedNames,
-                                             @NonNull Set<String> allowedNames, boolean searchDisplayNamesOnly) {
+                                             @NonNull Set<String> allowedNames, boolean searchDisplayNamesOnly,
+                                             @NonNull Map<TagType, List<String>> translatedEntityNames) {
             boolean displayNamesOnly = searchDisplayNamesOnly && TagType.TAG.equals(type);
             //create query
             StringBuilder sql = new StringBuilder("SELECT * FROM ").append(TABLE_NAME);
@@ -324,6 +327,7 @@ public class Queries {
             sql.append(COUNT).append(">=? ");                                        //min tag count
             if (!query.isEmpty()) {
                 sql.append("AND (");
+                boolean hasSearchTerm = !displayNamesOnly;
                 if (!displayNamesOnly)
                     sql.append(NAME).append(" LIKE ?");
                 if (!translatedNames.isEmpty() && (type == null || TagType.TAG.equals(type))) {
@@ -336,7 +340,25 @@ public class Queries {
                         sql.append(DatabaseUtils.sqlEscapeString(translatedNames.get(i)));
                     }
                     sql.append("))");
-                } else if (displayNamesOnly) sql.append('0');
+                    hasSearchTerm = true;
+                }
+                // A shared display label or raw name in another namespace must never cross-match.
+                if (!displayNamesOnly) for (TagType entityType : new TagType[]{
+                    TagType.PARODY, TagType.CHARACTER, TagType.ARTIST, TagType.GROUP}) {
+                    if (type != null && !type.equals(entityType)) continue;
+                    List<String> names = translatedEntityNames.get(entityType);
+                    if (names == null || names.isEmpty()) continue;
+                    if (hasSearchTerm) sql.append(" OR ");
+                    sql.append('(').append(TYPE).append('=').append(entityType.getId())
+                        .append(" AND ").append(NAME).append(" IN (");
+                    for (int i = 0; i < names.size(); i++) {
+                        if (i > 0) sql.append(',');
+                        sql.append(DatabaseUtils.sqlEscapeString(names.get(i)));
+                    }
+                    sql.append("))");
+                    hasSearchTerm = true;
+                }
+                if (!hasSearchTerm) sql.append('0');
                 sql.append(") ");
             }
             if (type != null)

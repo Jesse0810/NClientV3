@@ -1,0 +1,47 @@
+{
+  "complete_inventory": {
+    "artist": 33371,
+    "group": 25409
+  },
+  "mapping_counts": {
+    "artist": 10406,
+    "group": 6518
+  },
+  "sha256": {
+    "archive-person.jsonlines": "76253dc1c76af30c25970e99d321dc8f4672c42ce2951270611a361981117cc7",
+    "artist.md": "84f2bb64b01fb9a79ac8b1aa13214e97d9dc68cab459a72e4bcc118a3c5aea8c",
+    "danbooru-artists.json": "2d8b312b6b7a95dadc88149142e23dbab55503e44116065998875622533cc8a9",
+    "danbooru-source.json": "b81604f2f45878f0d2d19f23fded56988ade3820ede6d4c447dedbed5da81573",
+    "group.md": "40a0fbaea45447e777194d77299f5d482d98ea1175ba51c51c7968ff459d96b7",
+    "native-mappings.json": "4372dedf2db95635cc4d5fc7be0768cbe73f3fc1ab0fc97bc1e1a48f9ff768c5",
+    "native-records.json": "4261e7c683254a56141d951afadb390a56f2b69a3663ab17dd3d6b978c954d8d",
+    "native-summary.json": "f4cdcd307cc0e0db760041059947483e8ef1e32e31b98bb6c1da873ce652f60b",
+    "nclientv3-native-build.py": "973ad47b9afd261f5bed74166f265493db36227b633fb865f242566a5110958e",
+    "nclientv3-native-fetch.py": "1bdd5669f9bffeeec053558cf39aa5df64e1a8deed8d0d5ada667f6f31d7e6c7",
+    "nclientv3-native-validate.py": "cd16fb8b3d9f1f4cf107fc24e07ec1c02884690d8ec5621512de5f3ff8fb5809"
+  },
+  "snapshot_date": "2026-11-12",
+  "sources": [
+    {
+      "commit": "e0f66dc4424a53872473b05b7fb006ceebfcbe5d",
+      "license": "CC BY-NC-SA 3.0 CN",
+      "license_file": "LICENSE.md",
+      "name": "EhTagTranslation"
+    },
+    {
+      "license": "CC BY-SA 3.0",
+      "license_evidence": "https://bgm.tv/about/copyright",
+      "name": "Bangumi Archive",
+      "snapshot": "2026-11-10.210405Z",
+      "source_metadata": "archive-person.jsonlines.source.json"
+    },
+    {
+      "attribution": "https://danbooru.donmai.us",
+      "license_note": "Only proper-name facts and source record identifiers/URLs are extracted. No explicit artist-metadata license was found; no open license is claimed. No media, wiki prose or descriptions copied.",
+      "name": "Danbooru public artist metadata",
+      "snapshot": "2026-11-12",
+      "source_metadata": "danbooru-source.json"
+    }
+  ],
+  "validation": "PASS full 58780 inventory partition; exact namespace keys; all mapped rows source/evidence; no markup/prose placeholders; representative original names, preserved pen-name aliases, and Western/native-Latin fallback."
+}

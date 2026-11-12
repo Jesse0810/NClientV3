@@ -1,0 +1,12 @@
+{
+  "source": "Wikidata",
+  "license": "CC0",
+  "retrieved_utc": "2026-11-12",
+  "api": "https://www.wikidata.org/w/api.php?action=wbgetentities",
+  "property": "P495",
+  "note": "Cached exact Wikipedia sitelinks and P495 country entity IDs, extracted from public claims; full claim references/qualifiers omitted. Multiple countries do not imply a single nationality.",
+  "sha256": "e24dc9706441b53bfb657607c7479f63ab6967683eef2b7092845ff84d07ca3b",
+  "entity_count": 930,
+  "queried_zh_titles": 932,
+  "queried_en_titles": 56
+}

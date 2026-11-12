@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/list_columns"
+        android:icon="@drawable/ic_view_2"
+        android:orderInCategory="0"
+        android:title="@string/list_columns_title"
+        app:showAsAction="always" />
+</menu>

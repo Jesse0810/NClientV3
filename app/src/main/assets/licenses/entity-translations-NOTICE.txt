@@ -1,0 +1,49 @@
+Offline display names for parody, character, artist and group fields.
+Canonical names and IDs are retained for API queries and storage.
+
+EhTagTranslation Database contributors:
+https://github.com/EhTagTranslation/Database/tree/e0f66dc4424a53872473b05b7fb006ceebfcbe5d
+CC BY-NC-SA 3.0 China Mainland; see EhTagTranslation-LICENSE.md.
+Changes: exact namespace selection, markup removal, origin/identity review,
+and Simplified Chinese normalization for parody/character labels only.
+
+bangumi-data contributors:
+https://github.com/bangumi-data/bangumi-data
+CC BY 4.0; see Bangumi-data-LICENSE.txt.
+Only selected Simplified Chinese titles and exact title/provider-ID links are used.
+
+Manami and anime-offline-database contributors:
+https://github.com/manami-project/anime-offline-database/releases/tag/2026-27
+ODbL 1.0 / Database Contents License 1.0; see anime-offline-database-LICENSE.txt.
+Used for a separately attributed alias/provider-ID crosswalk; the Chinese title
+text in this subset comes from bangumi-data, not from Manami.
+
+Bangumi wiki contributors and Bangumi Archive:
+https://github.com/bangumi/Archive
+Snapshot: 2026-11-10.210405Z.
+Official copyright statement: https://bgm.tv/about/copyright
+CC BY-SA 3.0; see Bangumi-Archive-LICENSE.txt.
+Only selected name facts, explicit aliases, original-name fields and identity/
+work relationships are used. Summaries, images and the full archive are not bundled.
+
+Wikidata contributors: https://www.wikidata.org/ (CC0).
+Selected exact identity and work-origin claims support origin review.
+
+Danbooru contributors: https://danbooru.donmai.us/
+Public Artist metadata snapshot: 2026-11-12.
+Only proper-name facts, record IDs and identity/profile references are extracted
+to corroborate original artist names. No explicit artist-metadata open license
+was found; no CC0/public-domain or other open license is claimed for it.
+No images, media or wiki descriptions are copied.
+
+OpenCC/opencc-python contributors:
+https://github.com/yichen0831/opencc-python
+Apache License 2.0; see OpenCC-LICENSE.txt.
+Used offline only for t2s normalization of Chinese parody/character names.
+Japanese artist/group spelling is never converted.
+
+Source subsets retain their respective original attribution and terms; this
+notice does not apply one blanket license to the mixed name facts or app code.
+Frozen versions, hashes, selection methods and per-entry evidence are available
+under data/entity-translations in the repository, including complete records of
+adopted names and names left in their original form.

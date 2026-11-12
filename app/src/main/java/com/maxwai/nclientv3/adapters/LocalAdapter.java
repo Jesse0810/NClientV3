@@ -255,7 +255,9 @@ public class LocalAdapter extends MultichoiceAdapter<Object, LocalAdapter.ViewHo
     }
 
     public void setColCount(int colCount) {
+        boolean layoutChanged = (this.colCount == 1) != (colCount == 1);
         this.colCount = colCount;
+        if (layoutChanged) notifyDataSetChanged();
     }
 
     private void sortElements() {
@@ -266,12 +268,12 @@ public class LocalAdapter extends MultichoiceAdapter<Object, LocalAdapter.ViewHo
     @Override
     protected ViewHolder onCreateMultichoiceViewHolder(@NonNull ViewGroup parent, int viewType) {
         int id = 0;
-        switch (viewType) {
+        switch (viewType % 2) {
             case 0:
-                id = colCount == 1 ? R.layout.entry_layout_single : R.layout.entry_layout;
+                id = viewType >= 2 ? R.layout.entry_layout_single : R.layout.entry_layout;
                 break;
             case 1:
-                id = colCount == 1 ? R.layout.entry_download_layout : R.layout.entry_download_layout_compact;
+                id = viewType >= 2 ? R.layout.entry_download_layout : R.layout.entry_download_layout_compact;
                 break;
         }
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(id, parent, false));
@@ -279,7 +281,7 @@ public class LocalAdapter extends MultichoiceAdapter<Object, LocalAdapter.ViewHo
 
     @Override
     public int getItemViewType(int position) {
-        return filter.get(position) instanceof LocalGallery ? 0 : 1;
+        return (filter.get(position) instanceof LocalGallery ? 0 : 1) + (colCount == 1 ? 2 : 0);
     }
 
     private void bindGallery(@NonNull final ViewHolder holder, LocalGallery ent) {

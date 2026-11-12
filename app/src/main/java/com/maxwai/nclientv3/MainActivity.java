@@ -511,6 +511,7 @@ public class MainActivity extends BaseActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
+        addListColumnMenu(menu);
         popularItemDispay(menu.findItem(R.id.by_popular));
 
         showLanguageIcon(menu.findItem(R.id.only_language));
@@ -598,6 +599,11 @@ public class MainActivity extends BaseActivity
     @Override
     protected int getLandscapeColumnCount() {
         return Global.getColLandMain();
+    }
+
+    @Override
+    protected int getListColumnPreference(boolean landscape) {
+        return landscape ? R.string.key_column_land_main : R.string.key_column_port_main;
     }
 
     @Override

@@ -27,6 +27,7 @@ import com.maxwai.nclientv3.settings.Login;
 import com.maxwai.nclientv3.settings.TagV2;
 import com.maxwai.nclientv3.utility.ContentTagAllowlist;
 import com.maxwai.nclientv3.utility.ContentTagTranslations;
+import com.maxwai.nclientv3.utility.EntityTagTranslations;
 import com.maxwai.nclientv3.utility.ImageDownloadUtility;
 import com.maxwai.nclientv3.utility.LogUtility;
 import com.maxwai.nclientv3.utility.Utility;
@@ -90,7 +91,8 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> im
                     ? ContentTagAllowlist.getAllowedNames(context)
                     : Collections.emptySet();
                 Cursor tags = Queries.TagTable.getFilterCursor(lastQuery, type, tagMode == TagMode.ONLINE,
-                    TagV2.isSortedByName(), translatedNames, allowedNames, searchDisplayNamesOnly);
+                    TagV2.isSortedByName(), translatedNames, allowedNames, searchDisplayNamesOnly,
+                    EntityTagTranslations.getMatchingNames(context, lastQuery, type));
                 results.count = tags.getCount();
                 results.values = tags;
 

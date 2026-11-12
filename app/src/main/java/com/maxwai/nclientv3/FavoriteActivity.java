@@ -81,6 +81,11 @@ public class FavoriteActivity extends BaseActivity {
         return Global.getColPortFavorite();
     }
 
+    @Override
+    protected int getListColumnPreference(boolean landscape) {
+        return landscape ? R.string.key_column_land_favo : R.string.key_column_port_favo;
+    }
+
     private int calculatePages(@Nullable String text) {
         int perPage = getEntryPerPage();
         int totalEntries = Queries.FavoriteTable.countFavorite(text);
@@ -102,6 +107,7 @@ public class FavoriteActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
+        addListColumnMenu(menu);
         menu.findItem(R.id.download_page).setVisible(true);
         menu.findItem(R.id.sort_by_name).setVisible(true);
         menu.findItem(R.id.by_popular).setVisible(false);

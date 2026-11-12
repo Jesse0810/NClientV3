@@ -93,6 +93,7 @@ public class LocalActivity extends BaseActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.download, menu);
         getMenuInflater().inflate(R.menu.local_multichoice, menu);
+        addListColumnMenu(menu);
         this.optionMenu = menu;
         setMenuVisibility(menu);
         searchView = (androidx.appcompat.widget.SearchView) menu.findItem(R.id.search).getActionView();
@@ -126,6 +127,7 @@ public class LocalActivity extends BaseActivity {
         }
 
         menu.findItem(R.id.search).setVisible(mode == MultichoiceAdapter.Mode.NORMAL);
+        menu.findItem(R.id.list_columns).setVisible(mode == MultichoiceAdapter.Mode.NORMAL);
         menu.findItem(R.id.sort_by_name).setVisible(mode == MultichoiceAdapter.Mode.NORMAL);
         menu.findItem(R.id.folder_choose).setVisible(mode == MultichoiceAdapter.Mode.NORMAL && Global.getUsableFolders(this).size() > 1);
         menu.findItem(R.id.random_favorite).setVisible(mode == MultichoiceAdapter.Mode.NORMAL);
@@ -147,8 +149,8 @@ public class LocalActivity extends BaseActivity {
     @Override
     protected void changeLayout(boolean landscape) {
         colCount = (landscape ? getLandscapeColumnCount() : getPortraitColumnCount());
-        if (adapter != null) adapter.setColCount(colCount);
         super.changeLayout(landscape);
+        if (adapter != null) adapter.setColCount(colCount);
     }
 
     public int getColCount() {
@@ -238,6 +240,11 @@ public class LocalActivity extends BaseActivity {
     @Override
     protected int getLandscapeColumnCount() {
         return Global.getColLandDownload();
+    }
+
+    @Override
+    protected int getListColumnPreference(boolean landscape) {
+        return landscape ? R.string.key_column_land_down : R.string.key_column_port_down;
     }
 
     public String getQuery() {

@@ -28,6 +28,9 @@ jobs:
             -   name: Check bookmark migration and saved queries
                 run: python3 scripts/check_bookmarks.py
 
+            -   name: Check entity display names and complete inventory
+                run: python3 scripts/check_entity_translations.py
+
             -   name: Add empty keystore.properties
                 run: |
                     echo "storePassword=dummy" > keystore.properties

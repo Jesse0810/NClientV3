@@ -8,7 +8,7 @@
         <SeekBarPreference
             android:defaultValue="2"
             android:key="@string/key_column_port_main"
-            android:max="4"
+            android:max="8"
             android:title="@string/use_column_port"
             app:iconSpaceReserved="false"
             app:min="1"
@@ -16,7 +16,7 @@
         <SeekBarPreference
             android:defaultValue="4"
             android:key="@string/key_column_land_main"
-            android:max="4"
+            android:max="8"
             android:title="@string/use_column_land"
             app:iconSpaceReserved="false"
             app:min="1"
@@ -34,7 +34,7 @@
         <SeekBarPreference
             android:defaultValue="2"
             android:key="@string/key_column_port_down"
-            android:max="4"
+            android:max="8"
             android:title="@string/use_column_port"
             app:iconSpaceReserved="false"
             app:min="1"
@@ -42,7 +42,7 @@
         <SeekBarPreference
             android:defaultValue="4"
             android:key="@string/key_column_land_down"
-            android:max="4"
+            android:max="8"
             android:title="@string/use_column_land"
             app:iconSpaceReserved="false"
             app:min="1"
@@ -55,7 +55,7 @@
         <SeekBarPreference
             android:defaultValue="2"
             android:key="@string/key_column_port_favo"
-            android:max="4"
+            android:max="8"
             android:title="@string/use_column_port"
             app:iconSpaceReserved="false"
             app:min="1"
@@ -63,7 +63,7 @@
         <SeekBarPreference
             android:defaultValue="4"
             android:key="@string/key_column_land_favo"
-            android:max="4"
+            android:max="8"
             android:title="@string/use_column_land"
             app:iconSpaceReserved="false"
             app:min="1"
@@ -81,7 +81,7 @@
         <SeekBarPreference
             android:defaultValue="2"
             android:key="@string/key_column_port_hist"
-            android:max="4"
+            android:max="8"
             android:title="@string/use_column_port"
             app:iconSpaceReserved="false"
             app:min="1"
@@ -89,7 +89,7 @@
         <SeekBarPreference
             android:defaultValue="4"
             android:key="@string/key_column_land_hist"
-            android:max="4"
+            android:max="8"
             android:title="@string/use_column_land"
             app:iconSpaceReserved="false"
             app:min="1"
@@ -102,7 +102,7 @@
         <SeekBarPreference
             android:defaultValue="2"
             android:key="@string/key_column_port_stat"
-            android:max="4"
+            android:max="8"
             android:title="@string/use_column_port"
             app:iconSpaceReserved="false"
             app:min="1"
@@ -110,7 +110,7 @@
         <SeekBarPreference
             android:defaultValue="4"
             android:key="@string/key_column_land_stat"
-            android:max="4"
+            android:max="8"
             android:title="@string/use_column_land"
             app:iconSpaceReserved="false"
             app:min="1"

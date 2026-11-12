@@ -1,0 +1,21 @@
+{
+  "parody": {
+    "fate grand order": {
+      "action": "map",
+      "display_name": "命运-冠位指定",
+      "source": "EhTagTranslation",
+      "origin": "japan",
+      "reason": "explicit_community_chinese_name_in_description",
+      "evidence": [
+        {
+          "source": "EhTagTranslation",
+          "namespace": "parody",
+          "raw": "fate grand order",
+          "field": "description",
+          "quote": "中文译名：命运-冠位指定",
+          "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/parody.md"
+        }
+      ]
+    }
+  }
+}

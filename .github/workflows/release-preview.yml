@@ -60,6 +60,9 @@ jobs:
       - name: Check bookmark migration and saved queries
         run: python3 scripts/check_bookmarks.py
 
+      - name: Check entity display names and complete inventory
+        run: python3 scripts/check_entity_translations.py
+
       - name: Build Android 9+ and Android 8 Debug APKs
         id: assemble
         run: |
@@ -88,6 +91,7 @@ jobs:
           output.mkdir()
           expected_allowlist = json.loads(Path("app/src/main/assets/content_tag_allowlist.json").read_text())
           expected_translations = json.loads(Path("app/src/main/assets/tag_translations_zh_CN.json").read_text())
+          expected_entities = json.loads(Path("app/src/main/assets/entity_translations_zh_CN.json").read_text())
           if not isinstance(expected_allowlist, list) or len(expected_allowlist) != 1127 or len(set(expected_allowlist)) != 1127:
               raise SystemExit("Expected 1127 unique approved content tags")
           if expected_translations.get("incest") != "近亲乱伦" or not set(expected_translations) <= set(expected_allowlist):
@@ -116,9 +120,10 @@ jobs:
               with zipfile.ZipFile(apk) as archive:
                   allowlist = json.loads(archive.read("assets/content_tag_allowlist.json"))
                   translations = json.loads(archive.read("assets/tag_translations_zh_CN.json"))
+                  entities = json.loads(archive.read("assets/entity_translations_zh_CN.json"))
                   if "assets/excluded_content_tags.json" in archive.namelist():
                       raise SystemExit(f"Obsolete content-tag exclusion asset in {apk}")
-              if allowlist != expected_allowlist or translations != expected_translations:
+              if allowlist != expected_allowlist or translations != expected_translations or entities != expected_entities:
                   raise SystemExit(f"Bundled content-tag data differs from tagged sources: {apk}")
               destination = output / f"NClientV3_{tag}_{label}_debug.apk"
               shutil.copy2(apk, destination)

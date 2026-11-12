@@ -64,9 +64,15 @@ public class HistoryActivity extends BaseActivity {
     }
 
     @Override
+    protected int getListColumnPreference(boolean landscape) {
+        return landscape ? R.string.key_column_land_hist : R.string.key_column_port_hist;
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.history, menu);
+        addListColumnMenu(menu);
         Utility.tintMenu(this, menu);
         return true;
     }

@@ -1,0 +1,383 @@
+{
+  "ant-man": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "avengers",
+        "title": "Ant-Man",
+        "url": "https://en.wikipedia.org/wiki/Ant-Man"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L5093"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "avengers"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  },
+  "ariel": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "the little mermaid",
+        "title": "Ariel (The Little Mermaid)",
+        "url": "https://en.wikipedia.org/wiki/Ariel_(The_Little_Mermaid)"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L3575"
+      }
+    ],
+    "origin": "mixed_western",
+    "parody_references": [
+      "kumo desu ga nani ka",
+      "the little mermaid"
+    ],
+    "previous_origin": "japan",
+    "reason": "shared_character_name_with_western_source",
+    "translate_allowed": false
+  },
+  "batgirl": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "batman",
+        "title": "Batgirl",
+        "url": "https://en.wikipedia.org/wiki/Batgirl"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L3222"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "batman"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  },
+  "catwoman": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "batman",
+        "title": "Catwoman",
+        "url": "https://en.wikipedia.org/wiki/Catwoman"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L5387"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "batman"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  },
+  "emma frost": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "x-men",
+        "title": "Emma Frost",
+        "url": "https://en.wikipedia.org/wiki/Emma_Frost"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L6835"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "x-men"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  },
+  "francine smith": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "american dad",
+        "title": "Francine Smith",
+        "url": "https://en.wikipedia.org/wiki/Francine_Smith"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L9218"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "american dad"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  },
+  "gwenpool": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "the unbelievable gwenpool",
+        "title": "Gwenpool",
+        "url": "https://en.wikipedia.org/wiki/Gwenpool"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L7568"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "the unbelievable gwenpool"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  },
+  "harley quinn": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "batman",
+        "title": "Harley Quinn",
+        "url": "https://en.wikipedia.org/wiki/Harley_Quinn"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L3216"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "batman"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  },
+  "joker": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "batman",
+        "title": "Joker (character)",
+        "url": "https://en.wikipedia.org/wiki/Joker_(character)"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L2292"
+      }
+    ],
+    "origin": "mixed_western",
+    "parody_references": [
+      "batman"
+    ],
+    "previous_origin": "japan",
+    "reason": "shared_character_name_with_western_source",
+    "translate_allowed": false
+  },
+  "kim possible": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "kim possible",
+        "title": "Kim Possible (character)",
+        "url": "https://en.wikipedia.org/wiki/Kim_Possible_(character)"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L5376"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "kim possible"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  },
+  "peni parker": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "spider-man",
+        "title": "Peni Parker",
+        "url": "https://en.wikipedia.org/wiki/Peni_Parker"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L8785"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "spider-man"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  },
+  "poison ivy": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "batman",
+        "title": "Poison Ivy (character)",
+        "url": "https://en.wikipedia.org/wiki/Poison_Ivy_(character)"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L3228"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "batman"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  },
+  "princess bubblegum": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "adventure time",
+        "title": "Princess Bubblegum",
+        "url": "https://en.wikipedia.org/wiki/Princess_Bubblegum"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L5244"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "adventure time"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  },
+  "robin": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "batman",
+        "title": "Robin (character)",
+        "url": "https://en.wikipedia.org/wiki/Robin_(character)"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L3429"
+      }
+    ],
+    "origin": "mixed_western",
+    "parody_references": [
+      "batman",
+      "fire emblem awakening",
+      "honkai star rail"
+    ],
+    "previous_origin": "east_asia_mixed",
+    "reason": "shared_character_name_with_western_source",
+    "translate_allowed": false
+  },
+  "scarlet witch": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "avengers",
+        "title": "Scarlet Witch",
+        "url": "https://en.wikipedia.org/wiki/Scarlet_Witch"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L3970"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "avengers"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  },
+  "shego": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "kim possible",
+        "title": "Shego",
+        "url": "https://en.wikipedia.org/wiki/Shego"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L5378"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "kim possible"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  },
+  "supergirl": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "superman",
+        "title": "Supergirl",
+        "url": "https://en.wikipedia.org/wiki/Supergirl"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L3219"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "superman"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  },
+  "wonder woman": {
+    "evidence": [
+      {
+        "method": "reviewed_exact_character_identity",
+        "parody": "justice league",
+        "title": "Wonder Woman",
+        "url": "https://en.wikipedia.org/wiki/Wonder_Woman"
+      },
+      {
+        "method": "community_exact_character_entry",
+        "url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/character.md#L3211"
+      }
+    ],
+    "origin": "western",
+    "parody_references": [
+      "justice league"
+    ],
+    "previous_origin": "unknown",
+    "reason": "reviewed_western_character_identity",
+    "translate_allowed": false
+  }
+}

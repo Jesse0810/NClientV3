@@ -1,0 +1,20 @@
+{
+  "anime-offline-database": {
+    "commit": "96da26358c8e599a9c076818aee247c68cb69401",
+    "compressed_sha256": "5672cef0fd729a7f7810fc9cf7d54007612aee83fbcf44dd370359c82db6373a",
+    "data_sha256": "395be786fb2f98f1fca9e963911b9332110098a080e7e2569902bbc5641d1a41",
+    "data_url": "https://github.com/manami-project/anime-offline-database/releases/download/2026-27/anime-offline-database-minified.json.zst",
+    "license": "ODbL-1.0 + Database Contents License 1.0",
+    "license_sha256": "b618196160182d36789b352f8bc21ca645f049295bf8690eed4bd668ff391330",
+    "release": "2026-27",
+    "repository": "https://github.com/manami-project/anime-offline-database"
+  },
+  "bangumi-data": {
+    "commit": "d5f56180c0c71fbeb24bd1914eb04c75f2f358fa",
+    "data_sha256": "f8f02b81690d7545e4ef9a7f9ace7eb05407c8bbc0a4f32e2aa63d10217feb85",
+    "data_url": "https://raw.githubusercontent.com/bangumi-data/bangumi-data/d5f56180c0c71fbeb24bd1914eb04c75f2f358fa/dist/data.json",
+    "license": "CC BY 4.0 (README License section)",
+    "notice_sha256": "a0c63e61aa3a00780afe0c67cb53faf0f8c7a6bef31cd23b007c78526242558f",
+    "repository": "https://github.com/bangumi-data/bangumi-data"
+  }
+}

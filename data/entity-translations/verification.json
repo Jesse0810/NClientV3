@@ -1,0 +1,28 @@
+{
+  "actual_runtime_assertions": 358543,
+  "apk_builds": [
+    "post28Debug",
+    "pre28Debug"
+  ],
+  "apk_bundled_entities_content_assets_licenses_and_signatures": "verified",
+  "asset_sha256": "6ec301d928a3c596cd609340e74c1b7ff50cb7ee43df33e7335ec337e4a38053",
+  "canonical_inventory_and_content_tag_assets": "unchanged",
+  "date": "2026-11-12",
+  "fixture_sql_queries": 384,
+  "future_inventory_isolation": "passed",
+  "helper_sha256": "3549398df562f96d3864312444857f05359156f8ad0dafef44a0acdf81bd0cb9",
+  "inventory_sha256": "ab5f7d2af6f71cd084f585eb5d883a7003b86d91f84609a88821e243112ffcf4",
+  "limitations": [
+    "Actual Java methods exercised with lightweight Android/JSON stubs; SQL executed in SQLite.",
+    "No Android device rendering test.",
+    "Pre-release local verification snapshot; APK publication is tracked in GitHub Releases."
+  ],
+  "mapped_names": 25454,
+  "queries_sha256": "fbfe1330535557211a046f6de5feaae3b61131b5f123496a318b25cb9746298a",
+  "scope": "pre-release local verification snapshot; publication is tracked in GitHub Releases",
+  "source_rows": 81225,
+  "status": "passed",
+  "translated_keyword_sql_queries": 330,
+  "unique_names": 81162,
+  "validated_keyword_result_rows": 1622
+}

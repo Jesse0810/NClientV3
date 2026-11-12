@@ -89,6 +89,9 @@
     <string name="go_online">在线查看</string>
     <string name="update_tag_status">更新标签状态</string>
     <string name="change_view">变更视图</string>
+    <string name="list_columns_title">每行显示几本漫画</string>
+    <string name="list_columns_count">每行 %1$d 本</string>
+    <string name="list_columns_action">调整列数（每行 %1$d 本）</string>
     <string name="tag_preference">标签偏好</string>
     <string name="manage_tags">管理标签</string>
     <string name="applied_filters">已用筛选器</string>

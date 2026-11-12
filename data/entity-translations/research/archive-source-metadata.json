@@ -1,0 +1,56 @@
+{
+  "name": "Bangumi Wiki Archive",
+  "snapshot": "dump-2026-11-10.210405Z.zip",
+  "data_url": "https://github.com/bangumi/Archive/releases/download/archive/dump-2026-11-10.210405Z.zip",
+  "data_license": "CC BY-SA 3.0",
+  "copyright_statement": "https://bgm.tv/about/copyright",
+  "copyright_license_link": "http://creativecommons.org/licenses/by-sa/3.0/deed.zh",
+  "retrieved": "2026-11-12",
+  "copyright_html_sha256": "08d55ea73ba2b85f90e4405beb1534b429e5668f5671bec4cdbc2daf3ee3d14a",
+  "members": [
+    {
+      "filename": "archive-person.jsonlines",
+      "compressed_size": 19803792,
+      "size": 74094785,
+      "header_offset": 293135448,
+      "compression": 8,
+      "crc32": 134737345,
+      "source_url": "https://github.com/bangumi/Archive/releases/download/archive/dump-2026-11-10.210405Z.zip",
+      "raw_sha256": "76253dc1c76af30c25970e99d321dc8f4672c42ce2951270611a361981117cc7",
+      "compressed_sha256": "470094a58b9c3ccd844af929d7d2a34ccd90e9f48d8dbc7753077c5842e193d5"
+    },
+    {
+      "filename": "archive-character.jsonlines",
+      "compressed_size": 44985930,
+      "size": 165191572,
+      "header_offset": 312939302,
+      "compression": 8,
+      "crc32": 3213588650,
+      "source_url": "https://github.com/bangumi/Archive/releases/download/archive/dump-2026-11-10.210405Z.zip",
+      "raw_sha256": "be532506878be7ef495445770a3b388089a80902a1a8210adec834b8720b61c4",
+      "compressed_sha256": "f99d981e12e79e2d88555f0d21275f25c248816083d2df2d89128f5327706991"
+    },
+    {
+      "filename": "archive-subject-characters.jsonlines",
+      "compressed_size": 2415920,
+      "size": 28308020,
+      "header_offset": 445610436,
+      "compression": 8,
+      "crc32": 3984289668,
+      "source_url": "https://github.com/bangumi/Archive/releases/download/archive/dump-2026-11-10.210405Z.zip",
+      "raw_sha256": "df5a5e4b5ec29bc3d48776a8b438835cc18147b7ef5cc23019e4fa5fc07f796d",
+      "compressed_sha256": "171be659d22580b254dcfd6d58e601cb7b5cbca1ae29ae393b833d3f56186d2f"
+    },
+    {
+      "filename": "archive-subject.jsonlines",
+      "compressed_size": 293135385,
+      "size": 998429831,
+      "header_offset": 0,
+      "compression": 8,
+      "crc32": 1185113289,
+      "source_url": "https://github.com/bangumi/Archive/releases/download/archive/dump-2026-11-10.210405Z.zip",
+      "raw_sha256": "ce596e1ceba1deab60bd401dd7e2253782bc8d7b738d9c7ec7526fbbaacacceb",
+      "compressed_sha256": "77007b48bed51e2472d4da7904989b67fd36d9ed7ec9d6ab3a4ebf78c37b4323"
+    }
+  ]
+}
