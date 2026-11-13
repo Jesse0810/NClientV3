@@ -23,6 +23,7 @@ import com.maxwai.nclientv3.files.GalleryFolder;
 import com.maxwai.nclientv3.files.PageFile;
 import com.maxwai.nclientv3.settings.Global;
 import com.maxwai.nclientv3.utility.LogUtility;
+import com.maxwai.nclientv3.utility.ContentTagAliases;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -276,10 +277,11 @@ public class Gallery extends GenericGallery {
 
     public boolean hasIgnoredTags(Set<Tag> s) {
         for (Tag t : getTags().getAllTagsSet())
-            if (s.contains(t)) {
-                LogUtility.d("Found: " + s + ",," + t.toQueryTag());
-                return true;
-            }
+            for (Tag excluded : s)
+                if (ContentTagAliases.sameTag(t, excluded)) {
+                    LogUtility.d("Found: " + s + ",," + t.toQueryTag());
+                    return true;
+                }
         return false;
     }
 

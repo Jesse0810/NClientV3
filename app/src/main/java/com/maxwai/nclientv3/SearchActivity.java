@@ -7,7 +7,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -19,7 +18,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -45,6 +43,8 @@ import com.maxwai.nclientv3.settings.Login;
 import com.maxwai.nclientv3.utility.LogUtility;
 import com.maxwai.nclientv3.utility.BookmarkQuery;
 import com.maxwai.nclientv3.utility.BookmarkFilters;
+import com.maxwai.nclientv3.utility.ContentTagAllowlist;
+import com.maxwai.nclientv3.utility.ContentTagAliases;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -70,14 +70,10 @@ public class SearchActivity extends GeneralActivity {
     private final Chip[] addChip = new Chip[TagType.values.length];
     private ChipGroup[] groups;
     private SearchView searchView;
-    private AppCompatAutoCompleteTextView autoComplete;
-    private TagType loadedTag = null;
     private HistoryAdapter adapter;
     private boolean advanced = false;
     private Ranges.TimeUnit temporaryUnit;
     private InputMethodManager inputMethodManager;
-    private AlertDialog alertDialog;
-    private TagSuggestion selectedTagSuggestion;
     private boolean bookmarkMode;
     private boolean creatingBookmark;
     private Bookmark originalBookmark;
@@ -129,33 +125,6 @@ public class SearchActivity extends GeneralActivity {
         };
         initRanges();
         if (!bookmarkMode) adapter = new HistoryAdapter(this);
-        autoComplete = (AppCompatAutoCompleteTextView) getLayoutInflater().inflate(R.layout.autocomplete_entry, findViewById(R.id.appbar), false);
-        autoComplete.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                selectedTagSuggestion = null;
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-        autoComplete.setOnItemClickListener((parent, view, position, id) -> {
-            Object item = parent.getItemAtPosition(position);
-            selectedTagSuggestion = item instanceof TagSuggestion ? (TagSuggestion) item : null;
-        });
-        autoComplete.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_SEND) {
-                if (createChip()) alertDialog.dismiss();
-                return true;
-            }
-            return false;
-        });
-
         //init recyclerview
         if (!bookmarkMode) {
             recyclerView.setLayoutManager(new CustomLinearLayoutManager(this));
@@ -171,24 +140,7 @@ public class SearchActivity extends GeneralActivity {
                     saveBookmark();
                     return true;
                 }
-                query = query.trim();
-                if (query.isEmpty() && !advanced) return true;
-                if (!query.isEmpty()) adapter.addHistory(query);
-                final Intent i = new Intent(SearchActivity.this, MainActivity.class);
-                i.putExtra(getPackageName() + ".SEARCHMODE", true);
-                i.putExtra(getPackageName() + ".QUERY", query);
-                i.putExtra(getPackageName() + ".ADVANCED", advanced);
-                if (advanced) {
-                    ArrayList<Tag> tt = new ArrayList<>(tags.size());
-                    for (ChipTag t : tags)
-                        if (t.getTag().getStatus() != TagStatus.DEFAULT) tt.add(t.getTag());
-                    i.putParcelableArrayListExtra(getPackageName() + ".TAGS", tt);
-                    i.putExtra(getPackageName() + ".RANGES", ranges);
-                }
-                SearchActivity.this.runOnUiThread(() -> {
-                    startActivity(i);
-                    finish();
-                });
+                submitSearch(query);
                 return true;
             }
 
@@ -200,7 +152,27 @@ public class SearchActivity extends GeneralActivity {
 
         populateGroup();
         if (bookmarkMode) initializeBookmarkEditor(savedInstanceState);
-        else searchView.requestFocus();
+        else {
+            // SearchView's built-in submit button ignores an empty keyword. Submit filters directly.
+            findViewById(R.id.submit_search).setOnClickListener(v -> submitSearch(searchView.getQuery().toString()));
+            searchView.requestFocus();
+        }
+    }
+
+    private void submitSearch(String query) {
+        query = query.trim();
+        if (!query.isEmpty()) adapter.addHistory(query);
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra(getPackageName() + ".SEARCHMODE", true);
+        intent.putExtra(getPackageName() + ".QUERY", query);
+        intent.putExtra(getPackageName() + ".ADVANCED", advanced);
+        if (advanced) {
+            intent.putParcelableArrayListExtra(getPackageName() + ".TAGS", getSelectedTags());
+            intent.putExtra(getPackageName() + ".RANGES", ranges);
+        }
+        inputMethodManager.hideSoftInputFromWindow(searchView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        startActivity(intent);
+        finish();
     }
 
     private void initializeBookmarkEditor(Bundle savedState) {
@@ -460,13 +432,9 @@ public class SearchActivity extends GeneralActivity {
     }
 
     private void populateGroup() {
-        // Entity fields start with actual selections only; content-tag suggestions are unchanged.
-        for (Tag t : Queries.TagTable.getTopTags(TagType.TAG, Global.getFavoriteLimit(this))) {
-            if (bookmarkMode) t.setStatus(TagStatus.DEFAULT);
-            addChipTag(t, true, true);
-        }
+        // Content and entity fields start with actual selections only, without popular suggestions.
         //add already filtered tags
-        if (!bookmarkMode) for (Tag t : Queries.TagTable.getAllFiltered()) {
+        if (!bookmarkMode) for (Tag t : Queries.TagTable.mergeContentTags(Queries.TagTable.getAllFiltered())) {
             // Fixed choices below already include their saved states and must not become removable duplicates.
             if (!TagType.CATEGORY.equals(t.getType()) && !TagType.LANGUAGE.equals(t.getType()))
                 addChipTag(t, true, true);
@@ -488,9 +456,12 @@ public class SearchActivity extends GeneralActivity {
             addChipTag(t, false, bookmarkMode);
         }
         //add online tags
-        if (!bookmarkMode && Login.useAccountTag()) for (Tag t : Queries.TagTable.getAllOnlineBlacklisted())
-            if (!tagAlreadyExist(t))
+        if (!bookmarkMode && Login.useAccountTag()) for (Tag t : Queries.TagTable.mergeContentTags(Queries.TagTable.getAllOnlineBlacklisted())) {
+            if (!tagAlreadyExist(t)) {
+                t.setStatus(TagStatus.AVOIDED);
                 addChipTag(t, true, true);
+            }
+        }
         //add + button
         for (TagType type : TagType.values) {
             //ignore these tags
@@ -548,30 +519,15 @@ public class SearchActivity extends GeneralActivity {
         tags.add(c);
     }
 
-    private void loadDropdown(TagType type) {
-        List<Tag> allTags = Queries.TagTable.getAllTagOfType(type);
-        if (TagType.TAG.equals(type)) {
-            loadContentTagDropdown(allTags);
-            loadedTag = type;
-            return;
-        }
-        String[] tagNames = new String[allTags.size()];
-        int i = 0;
-        for (Tag t : allTags) tagNames[i++] = t.getName();
-        autoComplete.setAdapter(new ArrayAdapter<>(SearchActivity.this, android.R.layout.simple_dropdown_item_1line, tagNames));
-        loadedTag = type;
-    }
-
-    private void loadContentTagDropdown(List<Tag> allTags) {
-        List<TagSuggestion> suggestions = new ArrayList<>(allTags.size());
-        for (Tag tag : allTags) suggestions.add(new TagSuggestion(this, tag));
-        autoComplete.setAdapter(createSuggestionAdapter(suggestions));
-    }
-
     private ArrayAdapter<TagSuggestion> createSuggestionAdapter(List<TagSuggestion> suggestions) {
         return new ArrayAdapter<TagSuggestion>(this,
-            android.R.layout.simple_dropdown_item_1line, new ArrayList<>(suggestions)) {
+            R.layout.tag_suggestion_row, new ArrayList<>(suggestions)) {
             private final Filter suggestionFilter = new Filter() {
+                @Override
+                public CharSequence convertResultToString(Object resultValue) {
+                    return resultValue instanceof TagSuggestion ? resultValue.toString() : "";
+                }
+
                 @Override
                 protected FilterResults performFiltering(CharSequence constraint) {
                     String query = constraint == null ? "" : constraint.toString().trim().toLowerCase(Locale.ROOT);
@@ -609,8 +565,9 @@ public class SearchActivity extends GeneralActivity {
 
         private TagSuggestion(Context context, Tag tag) {
             this.tag = tag;
-            displayName = tag.getDisplayName(context);
-            searchName = tag.getName().toLowerCase(Locale.ROOT);
+            displayName = tag.getFilterDisplayName(context);
+            searchName = (TagType.TAG.equals(tag.getType())
+                ? String.join(" ", ContentTagAliases.members(tag.getName())) : tag.getName()).toLowerCase(Locale.ROOT);
             searchDisplay = displayName.toLowerCase(Locale.ROOT);
         }
 
@@ -626,26 +583,29 @@ public class SearchActivity extends GeneralActivity {
     }
 
     private void loadTag(TagType type) {
-        if (isEntityField(type)) {
-            showEntityPicker(type);
-            return;
-        }
-        if (type != loadedTag) loadDropdown(type);
-        addDialog();
-        autoComplete.requestFocus();
-        inputMethodManager.showSoftInput(autoComplete, InputMethodManager.SHOW_IMPLICIT);
+        if (isSelectableTagType(type)) showTagPicker(type);
     }
 
-    private static boolean isEntityField(TagType type) {
-        return TagType.PARODY.equals(type) || TagType.CHARACTER.equals(type)
+    private static boolean isSelectableTagType(TagType type) {
+        return TagType.TAG.equals(type) || TagType.PARODY.equals(type) || TagType.CHARACTER.equals(type)
             || TagType.ARTIST.equals(type) || TagType.GROUP.equals(type);
     }
 
-    private List<TagSuggestion> loadEntityChoices(TagType type) {
+    private List<TagSuggestion> loadTagChoices(TagType type) {
+        return loadTagChoices(type, false);
+    }
+
+    private List<TagSuggestion> loadTagChoices(TagType type, boolean legacySpellings) {
         List<TagSuggestion> choices = new ArrayList<>();
         Set<String> names = new HashSet<>();
-        for (Tag tag : Queries.TagTable.getTrueAllType(type)) {
-            if (type.equals(tag.getType()) && !tag.getName().trim().isEmpty() && names.add(tag.getName()))
+        List<Tag> available = Queries.TagTable.getTrueAllType(type);
+        if (!legacySpellings) available = Queries.TagTable.mergeContentTags(available);
+        for (Tag tag : available) {
+            if (type.equals(tag.getType()) && !tag.getName().trim().isEmpty()
+                && (!TagType.TAG.equals(type) || ContentTagAllowlist.isAllowed(this, tag.getName()))
+                && (!legacySpellings || (TagType.TAG.equals(type)
+                    && !ContentTagAliases.canonicalName(tag.getName()).equals(tag.getName())))
+                && names.add(tag.getName()))
                 choices.add(new TagSuggestion(this, tag));
         }
         choices.sort((left, right) -> {
@@ -655,23 +615,34 @@ public class SearchActivity extends GeneralActivity {
         return choices;
     }
 
-    private void showEntityPicker(TagType type) {
+    private void showTagPicker(TagType type) {
+        showTagPicker(type, false);
+    }
+
+    private void showTagPicker(TagType type, boolean legacySpellings) {
         View view = getLayoutInflater().inflate(R.layout.tag_choice_dialog, null);
         TextInputLayout field = view.findViewById(R.id.tag_choice_layout);
         MaterialAutoCompleteTextView input = view.findViewById(R.id.tag_choice);
-        int title = TagType.PARODY.equals(type) ? R.string.parodies : TagType.CHARACTER.equals(type)
+        // A single CJK character is a useful query; never inherit the platform's two-character default.
+        input.setThreshold(1);
+        int title = TagType.TAG.equals(type) ? R.string.tags : TagType.PARODY.equals(type) ? R.string.parodies : TagType.CHARACTER.equals(type)
             ? R.string.characters : TagType.ARTIST.equals(type) ? R.string.artists : R.string.groups;
-        AlertDialog dialog = new MaterialAlertDialogBuilder(this)
-            .setTitle(getString(R.string.select_existing_tag, getString(title)))
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this)
+            .setTitle(legacySpellings ? getString(R.string.select_legacy_content_tag)
+                : getString(R.string.select_existing_tag, getString(title)))
             .setView(view).setPositiveButton(R.string.add, null)
-            .setNegativeButton(R.string.cancel, null).create();
+            .setNegativeButton(R.string.cancel, null);
+        if (TagType.TAG.equals(type)) builder.setNeutralButton(legacySpellings
+            ? R.string.standard_content_tags : R.string.legacy_content_tags,
+            (ignored, which) -> showTagPicker(type, !legacySpellings));
+        AlertDialog dialog = builder.create();
         TagSuggestion[] selected = new TagSuggestion[1];
         field.setEnabled(false);
         field.setHelperText(getString(R.string.tag_choices_loading));
         Runnable addSelection = () -> {
             TagSuggestion choice = selected[0];
             if (choice == null || !type.equals(choice.tag.getType())
-                || !choice.toString().contentEquals(input.getText()) || !addExistingEntityTag(choice.tag, type)) {
+                || !choice.toString().contentEquals(input.getText()) || !addExistingTag(choice.tag, type)) {
                 field.setError(getString(R.string.select_existing_tag_error));
                 return;
             }
@@ -694,7 +665,10 @@ public class SearchActivity extends GeneralActivity {
         });
         input.setOnItemClickListener((parent, itemView, position, id) -> {
             Object item = parent.getItemAtPosition(position);
-            selected[0] = item instanceof TagSuggestion ? (TagSuggestion) item : null;
+            TagSuggestion choice = item instanceof TagSuggestion ? (TagSuggestion) item : null;
+            // Keep the object that was clicked; never resolve an identity from its localized text.
+            if (choice != null) input.setText(choice.toString(), false);
+            selected[0] = choice;
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(selected[0] != null);
         });
         input.setOnEditorActionListener((textView, action, event) -> {
@@ -710,7 +684,7 @@ public class SearchActivity extends GeneralActivity {
             add.setOnClickListener(button -> addSelection.run());
         });
         dialog.show();
-        CompletableFuture<List<TagSuggestion>> loading = CompletableFuture.supplyAsync(() -> loadEntityChoices(type));
+        CompletableFuture<List<TagSuggestion>> loading = CompletableFuture.supplyAsync(() -> loadTagChoices(type, legacySpellings));
         dialog.setOnDismissListener(ignored -> loading.cancel(true));
         loading.whenComplete((choices, error) -> runOnUiThread(() -> {
             if (!dialog.isShowing() || isFinishing() || isDestroyed()) return;
@@ -721,7 +695,8 @@ public class SearchActivity extends GeneralActivity {
             }
             input.setAdapter(createSuggestionAdapter(choices));
             field.setEnabled(true);
-            field.setHelperText(getString(choices.isEmpty() ? R.string.tag_choices_empty : R.string.select_existing_tag_hint));
+            field.setHelperText(getString(choices.isEmpty() ? R.string.tag_choices_empty
+                : legacySpellings ? R.string.legacy_content_tag_hint : R.string.select_existing_tag_hint));
             input.requestFocus();
             input.post(() -> {
                 if (dialog.isShowing()) input.showDropDown();
@@ -729,13 +704,26 @@ public class SearchActivity extends GeneralActivity {
         }));
     }
 
-    private boolean addExistingEntityTag(Tag candidate, TagType type) {
-        if (!isEntityField(type) || candidate == null || !type.equals(candidate.getType())) return false;
+    private boolean addExistingTag(Tag candidate, TagType type) {
+        if (!isSelectableTagType(type) || candidate == null || !type.equals(candidate.getType())) return false;
         Tag existing = Queries.TagTable.getTagById(candidate.getId());
         if (existing == null || !type.equals(existing.getType()) || !existing.getName().equals(candidate.getName())
             || existing.getName().trim().isEmpty() || existing.getName().contains("\"") || existing.getName().contains("\\")) return false;
+        if (TagType.TAG.equals(type) && !ContentTagAllowlist.isAllowed(this, existing.getName())) return false;
         Tag tag = new Tag(existing.getName(), existing.getCount(), existing.getId(), type, TagStatus.ACCEPTED);
         ChipGroup group = getGroup(type);
+        if (TagType.TAG.equals(type) && ContentTagAliases.members(tag.getName()).size() > 1) {
+            // Standard and old spellings are alternative searches, not an AND of both names.
+            for (int index = tags.size() - 1; index >= 0; index--) {
+                ChipTag chip = tags.get(index);
+                if (ContentTagAliases.sameTag(chip.getTag(), tag)
+                    && !chip.getTag().getName().equals(tag.getName())) {
+                    if (chip.getTag().getStatus() == TagStatus.AVOIDED) tag.setStatus(TagStatus.AVOIDED);
+                    group.removeView(chip);
+                    tags.remove(index);
+                }
+            }
+        }
         Chip add = addChip[type.getId()];
         if (add != null) group.removeView(add);
         addChipTag(tag, true, true);
@@ -746,63 +734,6 @@ public class SearchActivity extends GeneralActivity {
 
     private ChipGroup getGroup(TagType type) {
         return groups[type.getId()];
-    }
-
-    private void addDialog() {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-        builder.setView(autoComplete);
-        autoComplete.setText("");
-        autoComplete.setError(null);
-        builder.setPositiveButton(R.string.ok, null);
-        builder.setCancelable(true).setNegativeButton(R.string.cancel, null);
-        builder.setTitle(R.string.insert_tag_name);
-        try {
-            alertDialog = builder.show();
-        } catch (IllegalStateException e) {//the autoComplete is still attached to another View
-            ((ViewGroup) autoComplete.getParent()).removeView(autoComplete);
-            alertDialog = builder.show();
-        }
-        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
-            if (createChip()) alertDialog.dismiss();
-        });
-    }
-
-    private boolean createChip() {
-        if (isEntityField(loadedTag)) {
-            autoComplete.setError(getString(R.string.select_existing_tag_error));
-            return false;
-        }
-        String name = autoComplete.getText().toString().trim().toLowerCase(Locale.ROOT);
-        if (name.isEmpty() || name.contains("\"") || name.contains("\\")) {
-            autoComplete.setError(getString(R.string.invalid_tag_name));
-            return false;
-        }
-        Tag tag = selectedTagSuggestion != null && TagType.TAG.equals(loadedTag)
-            && selectedTagSuggestion.toString().contentEquals(autoComplete.getText())
-            ? selectedTagSuggestion.tag : Queries.TagTable.searchTag(name, loadedTag);
-        if (tag == null) tag = new Tag(name, 0, customId++, loadedTag, TagStatus.ACCEPTED);
-        if (tag.getName().contains("\"") || tag.getName().contains("\\")) {
-            autoComplete.setError(getString(R.string.invalid_tag_name));
-            return false;
-        }
-        autoComplete.setError(null);
-        if (bookmarkMode) tag.setStatus(TagStatus.ACCEPTED);
-        LogUtility.d("CREATED WITH ID: " + tag.getId());
-        if (tagAlreadyExist(tag)) {
-            if (!bookmarkMode) return true;
-            restoreBookmarkTag(tag);
-        } else {
-            if (getGroup(loadedTag) != null) getGroup(loadedTag).removeView(addChip[loadedTag.getId()]);
-            addChipTag(tag, true, true);
-            getGroup(loadedTag).addView(addChip[loadedTag.getId()]);
-        }
-
-        inputMethodManager.hideSoftInputFromWindow(searchView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-        autoComplete.setText("");
-        advanced = true;
-        if (autoComplete.getParent() != null)
-            ((ViewGroup) autoComplete.getParent()).removeView(autoComplete);
-        return true;
     }
 
     @Override

@@ -17,6 +17,8 @@ import com.maxwai.nclientv3.api.enums.TagType;
 import com.maxwai.nclientv3.utility.LogUtility;
 import com.maxwai.nclientv3.utility.ContentTagTranslations;
 import com.maxwai.nclientv3.utility.EntityTagTranslations;
+import com.maxwai.nclientv3.utility.TagLabelDisambiguation;
+import com.maxwai.nclientv3.utility.ContentTagAliases;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -116,12 +118,23 @@ public class Tag implements Parcelable {
         return name;
     }
 
+    /** Filter labels identify an explicitly selected old spelling; ordinary detail labels stay merged. */
+    public String getFilterDisplayName(Context context) {
+        String label = getDisplayName(context);
+        if (TagType.TAG.equals(type) && ContentTagTranslations.isEnabled(context)
+            && !ContentTagAliases.canonicalName(name).equals(name))
+            return context.getString(R.string.legacy_content_tag_label, label, name);
+        return label;
+    }
+
     /** Returns a localized UI label while keeping the original name for queries and storage. */
     public String getDisplayName(Context context) {
         if (TagType.TAG.equals(type))
-            return ContentTagTranslations.getDisplayName(context, name);
+            return TagLabelDisambiguation.getDisplayName(context, type, name,
+                ContentTagTranslations.getDisplayName(context, name));
         if (EntityTagTranslations.isEntityType(type))
-            return EntityTagTranslations.getDisplayName(context, type, name);
+            return TagLabelDisambiguation.getDisplayName(context, type, name,
+                EntityTagTranslations.getDisplayName(context, type, name));
         int resource = 0;
         if (TagType.LANGUAGE.equals(type)) {
             switch (name) {

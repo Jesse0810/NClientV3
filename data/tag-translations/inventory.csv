@@ -28,10 +28,10 @@ amazon position,亚马逊体位,AI,mapped,163679,AI 显式审核表提供译名�
 amputee,截肢/残缺,fullDict,mapped,7354,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 an butter,an butter,AI,preserved,145574,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 anaguma,anaguma,AI,preserved,166371,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
-anal,肛交,fullDict,mapped,14283,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
+anal,肛门插入,AI,mapped,14283,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“肛交”。社区定义明确区分：anal 是更广的肛门插入类别，anal intercourse 是其中的性交类型，并以 anal 为前置。
 anal birth,肛内分娩,fullDict,mapped,21924,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 anal grind,肛部摩擦,AI,mapped,146090,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
-anal intercourse,肛交,EhTagTranslation,mapped,130025,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
+anal intercourse,肛交,AI,mapped,130025,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 EhTagTranslation，显示值“肛交”。社区定义明确区分：anal 是更广的肛门插入类别，anal intercourse 是其中的性交类型，并以 anal 为前置。
 anal prolapse,脱肛,EhTagTranslation,mapped,135834,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 analphagia,肛门吞食,EhTagTranslation,mapped,132825,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 animal on animal,动物交配,fullDict,mapped,139872,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
@@ -95,7 +95,7 @@ big clit,大阴蒂,fullDict,mapped,30126,用户提供 fullDict 直接命中，�
 big lips,大阴唇,fullDict,mapped,3811,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 big muscles,大肌肉,EhTagTranslation,mapped,132829,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 big nipples,大乳头,fullDict,mapped,7995,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
-big penis,巨根,fullDict,mapped,30555,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
+big penis,大根,AI,mapped,30555,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“巨根”。社区定义明确区分 big 与 huge 两档，并将 big 作为 huge 的前置；不合并。
 big vagina,名器/大阴道,fullDict,mapped,20769,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 bike shorts,骑行短裤,fullDict,mapped,21538,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 bikini,比基尼,fullDict,mapped,19175,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
@@ -239,7 +239,7 @@ deer,鹿,EhTagTranslation,mapped,136860,固定社区词库中的可靠汉字显�
 deer boy,鹿男孩,EhTagTranslation,mapped,143127,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 deer girl,鹿女孩,EhTagTranslation,mapped,133146,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 defaced,污损,EhTagTranslation,mapped,140890,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
-defloration,破处,fullDict,mapped,20525,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
+defloration,女性破处,AI,mapped,20525,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“破处”。按当前社区标签定义，defloration 用于女性初次失贞过程，virginity 在该标签语境用于男性；不是仅从 virginity 普通字面义推断。
 dekoboko miso,dekoboko miso,AI,preserved,145682,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 delta chitai,delta chitai,AI,preserved,156197,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 demon,恶魔,fullDict,mapped,26380,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
@@ -350,7 +350,7 @@ fried chip,fried chip,AI,preserved,145621,AI 核对／保留原文：显式审�
 frog boy,青蛙男孩,EhTagTranslation,mapped,162564,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 frog girl,青蛙娘,fullDict,mapped,132810,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 frottage,股间摩擦,fullDict,mapped,13640,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
-full body tattoo,全身纹身,fullDict,mapped,21112,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
+full body tattoo,全身纹身,AI,mapped,21112,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“全身纹身”。full body 描述全身；社区 large tattoo 定义只要求足够突出的大面积纹身，并不要求全身覆盖。
 full censorship,全马赛克,fullDict,mapped,8368,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 full color,全彩,fullDict,mapped,20905,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 full tour,消化道游览,EhTagTranslation,mapped,152040,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
@@ -400,7 +400,7 @@ goudoushi,合作本,EhTagTranslation,mapped,108118,固定社区词库中的可�
 granddaughter,孙女,fullDict,mapped,33138,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 grandfather,祖父,fullDict,mapped,133145,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 grandmother,祖母,fullDict,mapped,11020,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
-group,群交,fullDict,mapped,8010,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
+group,群交,AI,mapped,8010,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“群交”。group 的社区定义是多人同时性活动；orgy 的词典含义突出纵欲聚会。保留两个原值，用“聚会”表明侧重，不编造三人／四人或大型人数门槛。没有证据声称当前网站有正式人数分界。
 growth,巨大化,fullDict,mapped,18544,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 gunpuu,gunpuu,AI,preserved,157654,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 gunyuu kakkyo,gunyuu kakkyo,AI,preserved,157655,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
@@ -455,10 +455,10 @@ hotel,酒店,AI,mapped,161284,AI 显式审核表提供译名；仅在 fullDict �
 hotpants,热裤,fullDict,mapped,28589,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 how to,教程,fullDict,mapped,133127,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 huge breasts,爆乳,fullDict,mapped,14072,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
-huge penis,巨根,fullDict,mapped,23967,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
+huge penis,巨根,AI,mapped,23967,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“巨根”。社区定义明确区分 big 与 huge 两档，并将 big 作为 huge 的前置；不合并。
 human cattle,人体牧场,fullDict,mapped,25848,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 human on furry,人x兽人,fullDict,mapped,36616,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
-human pet,人宠,fullDict,mapped,21774,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
+human pet,人类宠物,AI,mapped,21774,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“人宠”。human pet 表达人作为宠物的身份；petplay 表达宠物式对待／角色扮演活动。两者相关，但没有查得当前网站将它们声明为同义词的证据，因此保留原值并用角色／活动措辞区分。
 humiliation,羞辱,fullDict,mapped,5357,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 hunnyaka,hunnyaka,AI,preserved,146003,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 hyena boy,鬣狗男孩,EhTagTranslation,mapped,146140,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
@@ -553,7 +553,7 @@ kyugata,kyugata,AI,preserved,153485,AI 核对／保留原文：显式审核表�
 lab coat,白大褂,fullDict,mapped,15242,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 lactation,泌乳,fullDict,mapped,24102,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 large insertions,巨物插入,fullDict,mapped,28778,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
-large tattoo,全身纹身,EhTagTranslation,mapped,106006,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
+large tattoo,大面积纹身,AI,mapped,106006,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 EhTagTranslation，显示值“全身纹身”。full body 描述全身；社区 large tattoo 定义只要求足够突出的大面积纹身，并不要求全身覆盖。
 laserbeam,laserbeam,AI,preserved,139531,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 latex,胶衣,fullDict,mapped,20074,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 layer cake,夹心饼/三明治,fullDict,mapped,6671,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
@@ -600,10 +600,10 @@ manyuu,manyuu,AI,preserved,145966,AI 核对／保留原文：显式审核表未�
 marquis,marquis,AI,preserved,146524,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 masked face,戴面具,fullDict,mapped,21283,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 massage,按摩,AI,mapped,166384,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
-masturbation,自慰,fullDict,mapped,9162,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
-masturbtion,自慰（原文拼写有误）,AI,mapped,154718,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
+masturbation,自慰,AI,mapped,9162,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“自慰”。两个低频值分别漏掉 a 或 s，含义不变。
+masturbtion,自慰,AI,mapped,154718,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“自慰（原文拼写有误）”。两个低频值分别漏掉 a 或 s，含义不变。
 mating press,交配压制,AI,mapped,166496,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
-maturbation,自慰（原文拼写有误）,AI,mapped,134115,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
+maturbation,自慰,AI,mapped,134115,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“自慰（原文拼写有误）”。两个低频值分别漏掉 a 或 s，含义不变。
 mecha boy,机甲男,fullDict,mapped,133689,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 mecha girl,机甲娘,fullDict,mapped,31371,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 meishou,meishou,AI,preserved,147884,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
@@ -648,8 +648,8 @@ mouth mask,口罩,EhTagTranslation,mapped,124610,固定社区词库中的可靠�
 mtf threesome,一男一女一扶她,fullDict,mapped,15463,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 mugai,mugai,AI,preserved,147075,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 mukakin,mukakin,AI,preserved,147381,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
-mult-work series,多部作品系列（原文拼写有误）,AI,mapped,135172,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
-multi-work series,系列作,fullDict,mapped,21572,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
+mult-work series,系列作,AI,mapped,135172,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“多部作品系列（原文拼写有误）”。mult-work series 为 multi-work series 漏 i；原译名尾注只是拼写提示，不代表独立内容概念。
+multi-work series,系列作,AI,mapped,21572,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“系列作”。mult-work series 为 multi-work series 漏 i；原译名尾注只是拼写提示，不代表独立内容概念。
 multimouth blowjob,多口口交,EhTagTranslation,mapped,126671,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 multipanel sequence,多格序列,EhTagTranslation,mapped,132926,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 multiple arms,多臂,fullDict,mapped,23639,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
@@ -742,7 +742,7 @@ opium,opium,AI,preserved,145327,AI 核对／保留原文：显式审核表未提
 oppai loli,巨乳萝莉,fullDict,mapped,25663,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 orc,半兽人,fullDict,mapped,6220,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 orgasm denial,高潮放置/寸止,fullDict,mapped,24984,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
-orgy,群交,AI,mapped,164701,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
+orgy,乱交聚会,AI,mapped,164701,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“群交”。group 的社区定义是多人同时性活动；orgy 的词典含义突出纵欲聚会。保留两个原值，用“聚会”表明侧重，不编造三人／四人或大型人数门槛。没有证据声称当前网站有正式人数分界。
 ostrich,鸵鸟,fullDict,mapped,138203,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 otetsuki,otetsuki,AI,preserved,136028,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 otokofutanari,扶他,EhTagTranslation,mapped,138357,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
@@ -774,7 +774,7 @@ penis reduction,阴茎缩小,EhTagTranslation,mapped,157233,固定社区词库�
 penny dreadful,低俗怪谈,AI,mapped,135414,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
 personality excretion,人格排泄,EhTagTranslation,mapped,135786,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 petapeta,petapeta,AI,preserved,142993,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
-petplay,人宠,EhTagTranslation,mapped,118056,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
+petplay,宠物扮演,AI,mapped,118056,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 EhTagTranslation，显示值“人宠”。human pet 表达人作为宠物的身份；petplay 表达宠物式对待／角色扮演活动。两者相关，但没有查得当前网站将它们声明为同义词的证据，因此保留原值并用角色／活动措辞区分。
 petrification,石化,fullDict,mapped,30176,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 phone sex,电话性爱,fullDict,mapped,29481,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 piercing,穿环,fullDict,mapped,5820,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
@@ -870,7 +870,7 @@ sarururu,sarururu,AI,preserved,145090,AI 核对／保留原文：显式审核表
 sate,sate,AI,preserved,138312,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 sauna,桑拿,EhTagTranslation,mapped,161409,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 scan,扫描版,AI,mapped,134935,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
-scanmark,水印,fullDict,mapped,15492,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
+scanmark,扫描组水印,AI,mapped,15492,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“水印”。社区定义明确要求区分：scanmark 是扫描、翻译、上色相关方添加；watermarked 是与制作流程无关第三方的宣传水印。
 scat,排泄/屎,fullDict,mapped,2820,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 scat insertion,粪便插入,EhTagTranslation,mapped,144124,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 school gym uniform,学校体操服,EhTagTranslation,mapped,132870,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
@@ -910,7 +910,7 @@ shisukeijyu,shisukeijyu,AI,preserved,164519,AI 核对／保留原文：显式审
 shisuko wo n,shisuko wo n,AI,preserved,167102,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 shitataru,shitataru,AI,preserved,143791,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 shoga,shoga,AI,preserved,153432,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
-shokushu,触手,AI,mapped,153107,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
+shokushu,触手,AI,mapped,153107,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“触手”。shokushu 是日语“触手”的罗马字写法，与当前标签语境中的 tentacles 指同一概念；不是另一个物种或行为等级。
 short-haired female,短发女性,AI,mapped,163463,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
 shortstack,矮小丰满体型,AI,mapped,166380,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
 shotacon,正太控,fullDict,mapped,32341,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
@@ -951,16 +951,16 @@ snuff,虐杀,fullDict,mapped,10542,用户提供 fullDict 直接命中，逐字�
 sockjob,袜交,fullDict,mapped,132904,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 sokushi,sokushi,AI,preserved,132970,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 sole dickgirl,单扶她,fullDict,mapped,35972,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
-sole female,单女,fullDict,mapped,35762,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
-sole femla,仅女性（原标签拼写有误）,AI,mapped,134262,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
-sole fmelae,仅女性（原标签拼写有误）,AI,mapped,134195,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
+sole female,单一女性,AI,mapped,35762,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“单女”。两个低频值是 female 的漏字／字母错序；合并到正确原名。sole female 指只有一位女性参与，不等于没有男性，也不必然是叙事女主。
+sole femla,单一女性,AI,mapped,134262,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“仅女性（原标签拼写有误）”。两个低频值是 female 的漏字／字母错序；合并到正确原名。sole female 指只有一位女性参与，不等于没有男性，也不必然是叙事女主。
+sole fmelae,单一女性,AI,mapped,134195,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“仅女性（原标签拼写有误）”。两个低频值是 female 的漏字／字母错序；合并到正确原名。sole female 指只有一位女性参与，不等于没有男性，也不必然是叙事女主。
 sole male,单男,fullDict,mapped,35763,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 sole pussyboy,单扶他,EhTagTranslation,mapped,141132,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 solo action,单人动作,fullDict,mapped,17801,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 sonna bakana,sonna bakana,AI,preserved,132867,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 sorya anmarida,sorya anmarida,AI,preserved,135962,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
-soshuuhen,总集篇,AI,mapped,144688,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
-soushuuhen,总集篇,EhTagTranslation,mapped,107503,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
+soshuuhen,总集篇,AI,mapped,144688,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“总集篇”。总集篇（総集編）的低频长音省略写法，归并词库中已有规范罗马字。
+soushuuhen,总集篇,AI,mapped,107503,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 EhTagTranslation，显示值“总集篇”。总集篇（総集編）的低频长音省略写法，归并词库中已有规范罗马字。
 space ship,宇宙飞船,AI,mapped,141471,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
 spanking,打屁股,fullDict,mapped,5962,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 speculum,窥阴器,fullDict,mapped,17003,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
@@ -1027,7 +1027,7 @@ teacher,老师,fullDict,mapped,28550,用户提供 fullDict 直接命中，逐字
 teardrop,泪滴,AI,mapped,160917,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
 teaser apron,挑逗围裙,AI,mapped,139543,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
 tengusaru,tengusaru,AI,preserved,158437,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
-tentacles,触手,fullDict,mapped,31775,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
+tentacles,触手,AI,mapped,31775,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“触手”。shokushu 是日语“触手”的罗马字写法，与当前标签语境中的 tentacles 指同一概念；不是另一个物种或行为等级。
 tetsugyo,tetsugyo,AI,preserved,148595,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 themeless,无主题,fullDict,mapped,136807,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 thick eyebrows,浓眉,EhTagTranslation,mapped,92409,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
@@ -1045,8 +1045,8 @@ torn clothes,破损衣物,AI,mapped,166497,AI 显式审核表提供译名；仅�
 torture,拷问,fullDict,mapped,4549,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 tracksuit,运动服,fullDict,mapped,17349,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 trampling,踩踏,fullDict,mapped,20488,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
-tranformation,变身,AI,mapped,132963,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
-transformation,变身,fullDict,mapped,2531,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
+tranformation,变身,AI,mapped,132963,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“变身”。tranformation 比 transformation 少一个 s，归并正确拼写。
+transformation,变身,AI,mapped,2531,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“变身”。tranformation 比 transformation 少一个 s，归并正确拼写。
 transparent clothing,透明服装,EhTagTranslation,mapped,139723,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 tribadism,磨豆腐,fullDict,mapped,30206,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 triple anal,三穴肛交,fullDict,mapped,6303,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
@@ -1066,8 +1066,8 @@ umaikushi,umaikushi,AI,preserved,158287,AI 核对／保留原文：显式审核�
 unbirth,反向分娩,fullDict,mapped,9116,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 uncensored,无修正,fullDict,mapped,8693,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 uncle,叔/伯/舅,fullDict,mapped,13993,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
-underwater,水下,fullDict,mapped,3031,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
-underwater sex,水下,EhTagTranslation,mapped,158852,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
+underwater,水下场景,AI,mapped,3031,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“水下”。underwater 表达水下场景；带 sex 的原值明确限定性行为发生于水下。没有证据可将场景直接等同于具体活动。
+underwater sex,水下性行为,AI,mapped,158852,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 EhTagTranslation，显示值“水下”。underwater 表达水下场景；带 sex 的原值明确限定性行为发生于水下。没有证据可将场景直接等同于具体活动。
 unusual insertions,异物插入,EhTagTranslation,mapped,114895,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 unusual pupils,特殊瞳孔,fullDict,mapped,6817,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 unusual teeth,特殊牙齿,fullDict,mapped,1215,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
@@ -1083,7 +1083,7 @@ variant set,变体集,EhTagTranslation,mapped,104291,固定社区词库中的可
 vegetablenabe,vegetablenabe,AI,preserved,137559,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 very long hair,超长发,EhTagTranslation,mapped,122908,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
 villain,反派,AI,mapped,141525,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
-virginity,破处,fullDict,mapped,2515,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
+virginity,男性失贞,AI,mapped,2515,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“破处”。按当前社区标签定义，defloration 用于女性初次失贞过程，virginity 在该标签语境用于男性；不是仅从 virginity 普通字面义推断。
 vomit,呕吐,fullDict,mapped,7288,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 vore,丸吞,fullDict,mapped,15425,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 voyeurism,偷窥,fullDict,mapped,28521,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
@@ -1093,8 +1093,8 @@ waitress,女服务员,fullDict,mapped,26848,用户提供 fullDict 直接命中�
 walkure,walkure,AI,preserved,133118,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
 warrior of light,光之战士,AI,mapped,142270,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
 warui hito,warui hito,AI,preserved,138554,AI 核对／保留原文：显式审核表未提供可靠译名；不推测姓名或专名，不计为汉化完成。
-watermaked,带水印,AI,mapped,145056,AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。
-watermarked,水印,EhTagTranslation,mapped,30786,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。
+watermaked,第三方水印,AI,mapped,145056,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“带水印”。watermaked 为 watermarked 漏 r；两项共用明确区分扫描组水印的名称。
+watermarked,第三方水印,AI,mapped,30786,用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 EhTagTranslation，显示值“水印”。watermaked 为 watermarked 漏 r；两项共用明确区分扫描组水印的名称。 社区定义明确要求区分：scanmark 是扫描、翻译、上色相关方添加；watermarked 是与制作流程无关第三方的宣传水印。
 webtoon,条漫,fullDict,mapped,50585,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 weight gain,变胖,fullDict,mapped,16487,用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。
 western cg,西方CG,EhTagTranslation,mapped,132851,固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。

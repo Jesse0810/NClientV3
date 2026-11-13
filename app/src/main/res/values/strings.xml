@@ -137,6 +137,12 @@
     <string name="related">Related</string>
     <string name="failed">Failed</string>
     <string name="search">Search</string>
+    <string name="search_keywords_hint">Enter search keywords (optional)</string>
+    <string name="legacy_content_tags">Old spellings</string>
+    <string name="standard_content_tags">Standard tags</string>
+    <string name="select_legacy_content_tag">Search an old spelling</string>
+    <string name="legacy_content_tag_hint">Find galleries tagged with an old spelling. This replaces the corresponding standard tag in your filters.</string>
+    <string name="legacy_content_tag_label">%1$s (old spelling: %2$s)</string>
     <string name="prev">Previous</string>
     <string name="share">Share</string>
     <string name="image">Image</string>

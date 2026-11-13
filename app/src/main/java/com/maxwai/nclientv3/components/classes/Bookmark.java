@@ -38,7 +38,7 @@ public class Bookmark {
 
     public static Bookmark fromInspector(InspectorV3 inspector, String name) {
         Tag tag = inspector.getTag();
-        return new Bookmark(withoutBrowsingState(Uri.parse(inspector.getUrl())), inspector.getRequestType(),
+        return new Bookmark(withoutBrowsingState(Uri.parse(inspector.getSavedFilterUrl())), inspector.getRequestType(),
             tag == null ? 0 : tag.getId(), name);
     }
 

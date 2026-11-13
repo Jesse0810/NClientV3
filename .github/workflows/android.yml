@@ -31,6 +31,15 @@ jobs:
             -   name: Check entity display names and complete inventory
                 run: python3 scripts/check_entity_translations.py
 
+            -   name: Check duplicate labels and disambiguation index
+                run: python3 scripts/check_translation_collisions.py --check
+
+            -   name: Check reviewed content labels and spelling groups
+                run: python3 scripts/check_content_label_review.py
+
+            -   name: Check alias selection and exclusion regressions
+                run: python3 scripts/check_content_aliases.py
+
             -   name: Add empty keystore.properties
                 run: |
                     echo "storePassword=dummy" > keystore.properties

@@ -291,10 +291,21 @@
     ]
   },
   {
-    "display_name": "肛交",
+    "display_name": "肛门插入",
     "name": "anal",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“肛交”。社区定义明确区分：anal 是更广的肛门插入类别，anal intercourse 是其中的性交类型，并以 anal 为前置。",
+    "prior_display_name": "肛交",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "anal",
+      "evidence": [
+        "eh-female-anal",
+        "eh-female-anal-intercourse"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       14283
@@ -323,8 +334,19 @@
   {
     "display_name": "肛交",
     "name": "anal intercourse",
-    "note": "固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。",
-    "source": "EhTagTranslation",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 EhTagTranslation，显示值“肛交”。社区定义明确区分：anal 是更广的肛门插入类别，anal intercourse 是其中的性交类型，并以 anal 为前置。",
+    "prior_display_name": "肛交",
+    "prior_source": "EhTagTranslation",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "anal intercourse",
+      "evidence": [
+        "eh-female-anal",
+        "eh-female-anal-intercourse"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       130025
@@ -961,10 +983,21 @@
     ]
   },
   {
-    "display_name": "巨根",
+    "display_name": "大根",
     "name": "big penis",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“巨根”。社区定义明确区分 big 与 huge 两档，并将 big 作为 huge 的前置；不合并。",
+    "prior_display_name": "巨根",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "big penis",
+      "evidence": [
+        "eh-male-big-penis",
+        "eh-male-huge-penis"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       30555
@@ -2401,10 +2434,21 @@
     ]
   },
   {
-    "display_name": "破处",
+    "display_name": "女性破处",
     "name": "defloration",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“破处”。按当前社区标签定义，defloration 用于女性初次失贞过程，virginity 在该标签语境用于男性；不是仅从 virginity 普通字面义推断。",
+    "prior_display_name": "破处",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "defloration",
+      "evidence": [
+        "eh-female-defloration",
+        "eh-male-virginity"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       20525
@@ -3513,8 +3557,19 @@
   {
     "display_name": "全身纹身",
     "name": "full body tattoo",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“全身纹身”。full body 描述全身；社区 large tattoo 定义只要求足够突出的大面积纹身，并不要求全身覆盖。",
+    "prior_display_name": "全身纹身",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "full body tattoo",
+      "evidence": [
+        "eh-female-large-tattoo",
+        "fullDict-full-body-tattoo"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       21112
@@ -4014,8 +4069,19 @@
   {
     "display_name": "群交",
     "name": "group",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“群交”。group 的社区定义是多人同时性活动；orgy 的词典含义突出纵欲聚会。保留两个原值，用“聚会”表明侧重，不编造三人／四人或大型人数门槛。没有证据声称当前网站有正式人数分界。",
+    "prior_display_name": "群交",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "group",
+      "evidence": [
+        "eh-mixed-group",
+        "wordnet-orgy"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       8010
@@ -4564,8 +4630,19 @@
   {
     "display_name": "巨根",
     "name": "huge penis",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“巨根”。社区定义明确区分 big 与 huge 两档，并将 big 作为 huge 的前置；不合并。",
+    "prior_display_name": "巨根",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "huge penis",
+      "evidence": [
+        "eh-male-big-penis",
+        "eh-male-huge-penis"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       23967
@@ -4592,10 +4669,21 @@
     ]
   },
   {
-    "display_name": "人宠",
+    "display_name": "人类宠物",
     "name": "human pet",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“人宠”。human pet 表达人作为宠物的身份；petplay 表达宠物式对待／角色扮演活动。两者相关，但没有查得当前网站将它们声明为同义词的证据，因此保留原值并用角色／活动措辞区分。",
+    "prior_display_name": "人宠",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "human pet",
+      "evidence": [
+        "eh-female-petplay",
+        "fullDict-human-pet"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       21774
@@ -5542,10 +5630,21 @@
     ]
   },
   {
-    "display_name": "全身纹身",
+    "display_name": "大面积纹身",
     "name": "large tattoo",
-    "note": "固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。",
-    "source": "EhTagTranslation",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 EhTagTranslation，显示值“全身纹身”。full body 描述全身；社区 large tattoo 定义只要求足够突出的大面积纹身，并不要求全身覆盖。",
+    "prior_display_name": "全身纹身",
+    "prior_source": "EhTagTranslation",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "large tattoo",
+      "evidence": [
+        "eh-female-large-tattoo",
+        "fullDict-full-body-tattoo"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       106006
@@ -6014,17 +6113,37 @@
   {
     "display_name": "自慰",
     "name": "masturbation",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“自慰”。两个低频值分别漏掉 a 或 s，含义不变。",
+    "prior_display_name": "自慰",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "merge_canonical",
+      "canonical_name": "masturbation",
+      "evidence": [
+        "eh-female-masturbation"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       9162
     ]
   },
   {
-    "display_name": "自慰（原文拼写有误）",
+    "display_name": "自慰",
     "name": "masturbtion",
-    "note": "AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“自慰（原文拼写有误）”。两个低频值分别漏掉 a 或 s，含义不变。",
+    "prior_display_name": "自慰（原文拼写有误）",
+    "prior_source": "AI",
+    "review": {
+      "action": "merge_alias",
+      "canonical_name": "masturbation",
+      "evidence": [
+        "eh-female-masturbation"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
     "source": "AI",
     "status": "mapped",
     "tag_ids": [
@@ -6042,9 +6161,19 @@
     ]
   },
   {
-    "display_name": "自慰（原文拼写有误）",
+    "display_name": "自慰",
     "name": "maturbation",
-    "note": "AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“自慰（原文拼写有误）”。两个低频值分别漏掉 a 或 s，含义不变。",
+    "prior_display_name": "自慰（原文拼写有误）",
+    "prior_source": "AI",
+    "review": {
+      "action": "merge_alias",
+      "canonical_name": "masturbation",
+      "evidence": [
+        "eh-female-masturbation"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
     "source": "AI",
     "status": "mapped",
     "tag_ids": [
@@ -6492,9 +6621,19 @@
     ]
   },
   {
-    "display_name": "多部作品系列（原文拼写有误）",
+    "display_name": "系列作",
     "name": "mult-work series",
-    "note": "AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“多部作品系列（原文拼写有误）”。mult-work series 为 multi-work series 漏 i；原译名尾注只是拼写提示，不代表独立内容概念。",
+    "prior_display_name": "多部作品系列（原文拼写有误）",
+    "prior_source": "AI",
+    "review": {
+      "action": "merge_alias",
+      "canonical_name": "multi-work series",
+      "evidence": [
+        "eh-other-multi-work-series"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
     "source": "AI",
     "status": "mapped",
     "tag_ids": [
@@ -6504,8 +6643,18 @@
   {
     "display_name": "系列作",
     "name": "multi-work series",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“系列作”。mult-work series 为 multi-work series 漏 i；原译名尾注只是拼写提示，不代表独立内容概念。",
+    "prior_display_name": "系列作",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "merge_canonical",
+      "canonical_name": "multi-work series",
+      "evidence": [
+        "eh-other-multi-work-series"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       21572
@@ -7432,9 +7581,20 @@
     ]
   },
   {
-    "display_name": "群交",
+    "display_name": "乱交聚会",
     "name": "orgy",
-    "note": "AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“群交”。group 的社区定义是多人同时性活动；orgy 的词典含义突出纵欲聚会。保留两个原值，用“聚会”表明侧重，不编造三人／四人或大型人数门槛。没有证据声称当前网站有正式人数分界。",
+    "prior_display_name": "群交",
+    "prior_source": "AI",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "orgy",
+      "evidence": [
+        "eh-mixed-group",
+        "wordnet-orgy"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
     "source": "AI",
     "status": "mapped",
     "tag_ids": [
@@ -7752,10 +7912,21 @@
     ]
   },
   {
-    "display_name": "人宠",
+    "display_name": "宠物扮演",
     "name": "petplay",
-    "note": "固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。",
-    "source": "EhTagTranslation",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 EhTagTranslation，显示值“人宠”。human pet 表达人作为宠物的身份；petplay 表达宠物式对待／角色扮演活动。两者相关，但没有查得当前网站将它们声明为同义词的证据，因此保留原值并用角色／活动措辞区分。",
+    "prior_display_name": "人宠",
+    "prior_source": "EhTagTranslation",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "petplay",
+      "evidence": [
+        "eh-female-petplay",
+        "fullDict-human-pet"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       118056
@@ -8713,10 +8884,21 @@
     ]
   },
   {
-    "display_name": "水印",
+    "display_name": "扫描组水印",
     "name": "scanmark",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“水印”。社区定义明确要求区分：scanmark 是扫描、翻译、上色相关方添加；watermarked 是与制作流程无关第三方的宣传水印。",
+    "prior_display_name": "水印",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "scanmark",
+      "evidence": [
+        "eh-other-scanmark",
+        "eh-other-watermarked"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       15492
@@ -9115,7 +9297,17 @@
   {
     "display_name": "触手",
     "name": "shokushu",
-    "note": "AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“触手”。shokushu 是日语“触手”的罗马字写法，与当前标签语境中的 tentacles 指同一概念；不是另一个物种或行为等级。",
+    "prior_display_name": "触手",
+    "prior_source": "AI",
+    "review": {
+      "action": "merge_alias",
+      "canonical_name": "tentacles",
+      "evidence": [
+        "eh-female-tentacles"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
     "source": "AI",
     "status": "mapped",
     "tag_ids": [
@@ -9523,19 +9715,39 @@
     ]
   },
   {
-    "display_name": "单女",
+    "display_name": "单一女性",
     "name": "sole female",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“单女”。两个低频值是 female 的漏字／字母错序；合并到正确原名。sole female 指只有一位女性参与，不等于没有男性，也不必然是叙事女主。",
+    "prior_display_name": "单女",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "merge_canonical",
+      "canonical_name": "sole female",
+      "evidence": [
+        "eh-female-sole-female"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       35762
     ]
   },
   {
-    "display_name": "仅女性（原标签拼写有误）",
+    "display_name": "单一女性",
     "name": "sole femla",
-    "note": "AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“仅女性（原标签拼写有误）”。两个低频值是 female 的漏字／字母错序；合并到正确原名。sole female 指只有一位女性参与，不等于没有男性，也不必然是叙事女主。",
+    "prior_display_name": "仅女性（原标签拼写有误）",
+    "prior_source": "AI",
+    "review": {
+      "action": "merge_alias",
+      "canonical_name": "sole female",
+      "evidence": [
+        "eh-female-sole-female"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
     "source": "AI",
     "status": "mapped",
     "tag_ids": [
@@ -9543,9 +9755,19 @@
     ]
   },
   {
-    "display_name": "仅女性（原标签拼写有误）",
+    "display_name": "单一女性",
     "name": "sole fmelae",
-    "note": "AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“仅女性（原标签拼写有误）”。两个低频值是 female 的漏字／字母错序；合并到正确原名。sole female 指只有一位女性参与，不等于没有男性，也不必然是叙事女主。",
+    "prior_display_name": "仅女性（原标签拼写有误）",
+    "prior_source": "AI",
+    "review": {
+      "action": "merge_alias",
+      "canonical_name": "sole female",
+      "evidence": [
+        "eh-female-sole-female"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
     "source": "AI",
     "status": "mapped",
     "tag_ids": [
@@ -9605,7 +9827,17 @@
   {
     "display_name": "总集篇",
     "name": "soshuuhen",
-    "note": "AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“总集篇”。总集篇（総集編）的低频长音省略写法，归并词库中已有规范罗马字。",
+    "prior_display_name": "总集篇",
+    "prior_source": "AI",
+    "review": {
+      "action": "merge_alias",
+      "canonical_name": "soushuuhen",
+      "evidence": [
+        "eh-other-soushuuhen"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
     "source": "AI",
     "status": "mapped",
     "tag_ids": [
@@ -9615,8 +9847,18 @@
   {
     "display_name": "总集篇",
     "name": "soushuuhen",
-    "note": "固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。",
-    "source": "EhTagTranslation",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 EhTagTranslation，显示值“总集篇”。总集篇（総集編）的低频长音省略写法，归并词库中已有规范罗马字。",
+    "prior_display_name": "总集篇",
+    "prior_source": "EhTagTranslation",
+    "review": {
+      "action": "merge_canonical",
+      "canonical_name": "soushuuhen",
+      "evidence": [
+        "eh-other-soushuuhen"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       107503
@@ -10285,8 +10527,18 @@
   {
     "display_name": "触手",
     "name": "tentacles",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“触手”。shokushu 是日语“触手”的罗马字写法，与当前标签语境中的 tentacles 指同一概念；不是另一个物种或行为等级。",
+    "prior_display_name": "触手",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "merge_canonical",
+      "canonical_name": "tentacles",
+      "evidence": [
+        "eh-female-tentacles"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       31775
@@ -10465,7 +10717,17 @@
   {
     "display_name": "变身",
     "name": "tranformation",
-    "note": "AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“变身”。tranformation 比 transformation 少一个 s，归并正确拼写。",
+    "prior_display_name": "变身",
+    "prior_source": "AI",
+    "review": {
+      "action": "merge_alias",
+      "canonical_name": "transformation",
+      "evidence": [
+        "eh-female-transformation"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
     "source": "AI",
     "status": "mapped",
     "tag_ids": [
@@ -10475,8 +10737,18 @@
   {
     "display_name": "变身",
     "name": "transformation",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“变身”。tranformation 比 transformation 少一个 s，归并正确拼写。",
+    "prior_display_name": "变身",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "merge_canonical",
+      "canonical_name": "transformation",
+      "evidence": [
+        "eh-female-transformation"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       2531
@@ -10673,20 +10945,42 @@
     ]
   },
   {
-    "display_name": "水下",
+    "display_name": "水下场景",
     "name": "underwater",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“水下”。underwater 表达水下场景；带 sex 的原值明确限定性行为发生于水下。没有证据可将场景直接等同于具体活动。",
+    "prior_display_name": "水下",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "underwater",
+      "evidence": [
+        "eh-female-underwater-sex",
+        "fullDict-underwater"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       3031
     ]
   },
   {
-    "display_name": "水下",
+    "display_name": "水下性行为",
     "name": "underwater sex",
-    "note": "固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。",
-    "source": "EhTagTranslation",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 EhTagTranslation，显示值“水下”。underwater 表达水下场景；带 sex 的原值明确限定性行为发生于水下。没有证据可将场景直接等同于具体活动。",
+    "prior_display_name": "水下",
+    "prior_source": "EhTagTranslation",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "underwater sex",
+      "evidence": [
+        "eh-female-underwater-sex",
+        "fullDict-underwater"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       158852
@@ -10843,10 +11137,21 @@
     ]
   },
   {
-    "display_name": "破处",
+    "display_name": "男性失贞",
     "name": "virginity",
-    "note": "用户提供 fullDict 直接命中，逐字使用其显示值；优先于社区词库与 AI。",
-    "source": "fullDict",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 fullDict，显示值“破处”。按当前社区标签定义，defloration 用于女性初次失贞过程，virginity 在该标签语境用于男性；不是仅从 virginity 普通字面义推断。",
+    "prior_display_name": "破处",
+    "prior_source": "fullDict",
+    "review": {
+      "action": "distinguish_meaning",
+      "canonical_name": "virginity",
+      "evidence": [
+        "eh-female-defloration",
+        "eh-male-virginity"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       2515
@@ -10943,9 +11248,19 @@
     ]
   },
   {
-    "display_name": "带水印",
+    "display_name": "第三方水印",
     "name": "watermaked",
-    "note": "AI 显式审核表提供译名；仅在 fullDict 与可靠社区译名均未命中时采用。",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 AI，显示值“带水印”。watermaked 为 watermarked 漏 r；两项共用明确区分扫描组水印的名称。",
+    "prior_display_name": "带水印",
+    "prior_source": "AI",
+    "review": {
+      "action": "merge_alias",
+      "canonical_name": "watermarked",
+      "evidence": [
+        "eh-other-watermarked"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
     "source": "AI",
     "status": "mapped",
     "tag_ids": [
@@ -10953,10 +11268,21 @@
     ]
   },
   {
-    "display_name": "水印",
+    "display_name": "第三方水印",
     "name": "watermarked",
-    "note": "固定社区词库中的可靠汉字显示名；已清除标记／图标，未采用日文假名原字。",
-    "source": "EhTagTranslation",
+    "note": "用户要求的逐项语义复核覆盖原优先级；计入 AI 人工复核来源。复核前来源 EhTagTranslation，显示值“水印”。watermaked 为 watermarked 漏 r；两项共用明确区分扫描组水印的名称。 社区定义明确要求区分：scanmark 是扫描、翻译、上色相关方添加；watermarked 是与制作流程无关第三方的宣传水印。",
+    "prior_display_name": "水印",
+    "prior_source": "EhTagTranslation",
+    "review": {
+      "action": "merge_canonical",
+      "canonical_name": "watermarked",
+      "evidence": [
+        "eh-other-watermarked",
+        "eh-other-scanmark"
+      ],
+      "path": "data/tag-translations/content-label-review/reviewed-decisions.json"
+    },
+    "source": "AI",
     "status": "mapped",
     "tag_ids": [
       30786

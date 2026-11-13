@@ -1,0 +1,35 @@
+collision_group,namespace,field,display_name,name,canonical_name,tag_ids,status,translation_source,visible_in_picker,group_identity_count,group_logical_concept_count,group_display_variant_count,metadata_reference
+parody-001,parody,原作,仙境传说,ragnarok online,ragnarok online,18350,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-001,parody,原作,仙境传说,ragnarok the animation,ragnarok the animation,2148,mapped,bangumi-data,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-002,parody,原作,侧耳倾听,mimi wo sumaseba,mimi wo sumaseba,148681,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-002,parody,原作,侧耳倾听,whisper of the heart,whisper of the heart,17922,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-003,parody,原作,健康全裸游泳社 海商,kenkou zenrakei suieibu umishou,kenkou zenrakei suieibu umishou,27009,mapped,bangumi-data+anime-offline-database,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-003,parody,原作,健康全裸游泳社 海商,umisho,umisho,32150,mapped,bangumi-data+anime-offline-database,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-004,parody,原作,光之美少女 Splash Star,futari wa precure splash star,futari wa precure splash star,130740,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-004,parody,原作,光之美少女 Splash Star,pretty cure splash star,pretty cure splash star,1158,mapped,bangumi-data+anime-offline-database,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-005,parody,原作,凉宫春日的忧郁,suzumiya haruhi no yuuutsu,suzumiya haruhi no yuuutsu,63148,mapped,bangumi-data+anime-offline-database,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-005,parody,原作,凉宫春日的忧郁,the melancholy of haruhi suzumiya,the melancholy of haruhi suzumiya,27547,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-006,parody,原作,南国少年巴布华,nangoku shounen papuwa-kun,nangoku shounen papuwa-kun,99188,mapped,bangumi-data+anime-offline-database,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-006,parody,原作,南国少年巴布华,papuwa,papuwa,146937,mapped,bangumi-data,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-007,parody,原作,古代王者 恐龙王,dinosaur king,dinosaur king,11271,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-007,parody,原作,古代王者 恐龙王,kodai ouja kyouryuu king,kodai ouja kyouryuu king,65932,mapped,bangumi-data+anime-offline-database,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-008,parody,原作,宿命回响：命运节拍,takt op.,takt op.,151205,mapped,bangumi-data+anime-offline-database,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-008,parody,原作,宿命回响：命运节拍,takt op. destiny,takt op. destiny,151206,mapped,bangumi-data+anime-offline-database,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-009,parody,原作,寻找满月,full moon o sagashite,full moon o sagashite,130565,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-009,parody,原作,寻找满月,full moon wo sagashite,full moon wo sagashite,1505,mapped,bangumi-data+anime-offline-database,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-010,parody,原作,更衣人偶坠入爱河,my dress-up darling,my dress-up darling,124785,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-010,parody,原作,更衣人偶坠入爱河,sono bisque doll wa koi o suru,sono bisque doll wa koi o suru,138500,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-011,parody,原作,机巧少女不会受伤,kikou shoujo wa kizutsukanai,kikou shoujo wa kizutsukanai,16233,mapped,bangumi-data+anime-offline-database,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-011,parody,原作,机巧少女不会受伤,machine-doll wa kizutsukanai,machine-doll wa kizutsukanai,123569,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-012,parody,原作,来自新世界,shin sekai yori,shin sekai yori,14956,mapped,bangumi-data+anime-offline-database,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-012,parody,原作,来自新世界,shinsekai yori,shinsekai yori,21819,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-013,parody,原作,爆裂天使,bakuten,bakuten,146563,mapped,bangumi-data+anime-offline-database,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-013,parody,原作,爆裂天使,burst angel,burst angel,31941,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-014,parody,原作,物怪,mokke,mokke,8763,mapped,bangumi-data+anime-offline-database,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-014,parody,原作,物怪,mononoke,mononoke,23565,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-015,parody,原作,终结的炽天使,owari no seraph,owari no seraph,134103,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-015,parody,原作,终结的炽天使,seraph of the end,seraph of the end,12877,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-016,parody,原作,长腿叔叔,my daddy long legs,my daddy long legs,19227,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-016,parody,原作,长腿叔叔,watashi no ashinaga ojisan,watashi no ashinaga ojisan,98693,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-017,parody,原作,青涩宝贝,sentimental graffiti,sentimental graffiti,28421,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/parody-inventory.csv
+parody-017,parody,原作,青涩宝贝,sentimental journey,sentimental journey,128118,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/parody-inventory.csv

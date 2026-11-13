@@ -45,7 +45,7 @@ public class ChipTag extends Chip {
 
     private void setTag(Tag tag) {
         this.tag = tag;
-        setText(tag.getDisplayName(getContext()));
+        setText(tag.getFilterDisplayName(getContext()));
         loadStatusIcon();
     }
 

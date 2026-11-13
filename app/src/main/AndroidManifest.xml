@@ -79,7 +79,7 @@
         <activity android:name=".HistoryActivity" />
         <activity android:name=".BookmarkActivity" />
         <activity android:name=".CommentActivity" />
-        <activity android:name=".SearchActivity" />
+        <activity android:name=".SearchActivity" android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize"

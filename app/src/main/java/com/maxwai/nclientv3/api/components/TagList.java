@@ -85,6 +85,13 @@ public class TagList implements Parcelable {
     }
 
     public boolean hasTag(Tag tag) {
+        if (TagType.TAG.equals(tag.getType())) {
+            // Duplicate IDs can name the same API query value. Keep distinct spellings exact,
+            // so an explicitly selected old spelling does not turn into a standard-tag search.
+            for (Tag existing : tagList[tag.getType().getId()])
+                if (existing.getName().equals(tag.getName())) return true;
+            return false;
+        }
         return tagList[tag.getType().getId()].contains(tag);
     }
 

@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
+import android.database.MatrixCursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.NonNull;
@@ -29,13 +30,19 @@ import com.maxwai.nclientv3.components.status.StatusManager;
 import com.maxwai.nclientv3.settings.Global;
 import com.maxwai.nclientv3.settings.TagV2;
 import com.maxwai.nclientv3.utility.LogUtility;
+import com.maxwai.nclientv3.utility.ContentTagAliases;
+import com.maxwai.nclientv3.utility.ContentTagAliasData;
 
 import org.json.JSONException;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -304,6 +311,133 @@ public class Queries {
             }
         }
 
+        /** Actual database rows for a reviewed content group; no IDs or names are invented. */
+        public static List<Tag> getContentTagFamily(Tag tag) {
+            List<String> names = ContentTagAliases.members(tag.getName());
+            if (!TagType.TAG.equals(tag.getType()))
+                return Collections.singletonList(tag);
+            String placeholders = String.join(",", Collections.nCopies(names.size(), "?"));
+            ArrayList<String> arguments = new ArrayList<>(names.size() + 1);
+            arguments.add(String.valueOf(TagType.TAG.getId()));
+            arguments.addAll(names);
+            List<Tag> family = getTagsFromCursor(db.rawQuery("SELECT * FROM " + TABLE_NAME
+                + " WHERE " + TYPE + "=? AND " + NAME + " IN (" + placeholders + ") ORDER BY "
+                + NAME + "," + IDTAG, arguments.toArray(new String[0])));
+            return family.isEmpty() ? Collections.singletonList(tag) : family;
+        }
+
+        /**
+         * Management/default-preference projection. Even when only an old spelling matched
+         * a filter, use the real canonical row and aggregate all stored family preferences.
+         * Explicit old-spelling searches must keep their original Tag instead of using this.
+         */
+        public static List<Tag> mergeContentTags(Collection<Tag> tags) {
+            List<Tag> result = new ArrayList<>(tags.size());
+            Set<String> requestedNames = new HashSet<>();
+            Map<String, List<Tag>> fallback = new HashMap<>();
+            for (Tag tag : tags) if (TagType.TAG.equals(tag.getType())) {
+                requestedNames.addAll(ContentTagAliases.members(tag.getName()));
+                fallback.computeIfAbsent(ContentTagAliases.canonicalName(tag.getName()), ignored -> new ArrayList<>()).add(tag);
+            }
+            Map<String, List<Tag>> families = new HashMap<>();
+            if (!requestedNames.isEmpty()) {
+                List<String> escaped = new ArrayList<>(requestedNames.size());
+                for (String name : requestedNames) escaped.add(DatabaseUtils.sqlEscapeString(name));
+                // One query for the complete visible families avoids a query per normal tag.
+                for (Tag member : getTagsFromCursor(db.rawQuery("SELECT * FROM " + TABLE_NAME
+                    + " WHERE " + TYPE + "=? AND " + NAME + " IN (" + String.join(",", escaped) + ")",
+                    new String[]{String.valueOf(TagType.TAG.getId())})))
+                    families.computeIfAbsent(ContentTagAliases.canonicalName(member.getName()), ignored -> new ArrayList<>()).add(member);
+            }
+            Set<String> seen = new HashSet<>();
+            for (Tag tag : tags) {
+                if (!TagType.TAG.equals(tag.getType())) {
+                    result.add(tag);
+                    continue;
+                }
+                String canonical = ContentTagAliases.canonicalName(tag.getName());
+                if (!seen.add(canonical)) continue;
+                result.add(mergeManagementFamily(canonical, families.getOrDefault(canonical, fallback.get(canonical))));
+            }
+            return result;
+        }
+
+        private static Tag mergeManagementFamily(String canonical, List<Tag> family) {
+            Tag representative = family.get(0);
+            int count = representative.getCount();
+            TagStatus status = TagStatus.DEFAULT;
+            for (Tag member : family) {
+                boolean preferred = canonical.equals(member.getName());
+                boolean previousPreferred = canonical.equals(representative.getName());
+                int order = member.getName().compareTo(representative.getName());
+                if ((preferred && !previousPreferred) || (preferred == previousPreferred
+                    && (order < 0 || (order == 0 && member.getId() < representative.getId()))))
+                    representative = member;
+                count = Math.max(count, member.getCount());
+                if (member.getStatus() == TagStatus.AVOIDED || (status == TagStatus.DEFAULT
+                    && member.getStatus() == TagStatus.ACCEPTED)) status = member.getStatus();
+            }
+            return new Tag(representative.getName(), count, representative.getId(), representative.getType(), status);
+        }
+
+        /** Consume the raw query cursor and return one visible row per reviewed content group. */
+        public static Cursor mergeContentTagCursor(Cursor raw) {
+            List<Tag> tags = new ArrayList<>(raw.getCount());
+            Map<String, Integer> onlineByGroup = new HashMap<>();
+            try (raw) {
+                while (raw.moveToNext()) {
+                    Tag tag = cursorToTag(raw);
+                    tags.add(tag);
+                    String key = managementIdentity(tag);
+                    int online = raw.getInt(raw.getColumnIndex(ONLINE));
+                    onlineByGroup.put(key, Math.max(online, onlineByGroup.getOrDefault(key, 0)));
+                }
+            }
+            List<Tag> merged = mergeContentTags(tags);
+            merged.sort((left, right) -> {
+                int count = TagV2.isSortedByName() ? 0 : Integer.compare(right.getCount(), left.getCount());
+                return count == 0 ? left.getName().compareTo(right.getName()) : count;
+            });
+            MatrixCursor result = new MatrixCursor(new String[]{IDTAG, NAME, TYPE, COUNT, STATUS, ONLINE}, merged.size());
+            for (Tag tag : merged)
+                result.addRow(new Object[]{tag.getId(), tag.getName(), tag.getType().getId(), tag.getCount(),
+                    tag.getStatus().ordinal(), onlineByGroup.getOrDefault(managementIdentity(tag), 0)});
+            return result;
+        }
+
+        private static String managementIdentity(Tag tag) {
+            if (TagType.TAG.equals(tag.getType()))
+                return TagType.TAG.getId() + ":" + ContentTagAliases.canonicalName(tag.getName());
+            return tag.getType().getId() + ":" + tag.getId();
+        }
+
+        /** Change a logical group's preference without rewriting raw counts, IDs or names. */
+        public static int updateTagPreference(Tag tag) {
+            List<String> names = ContentTagAliases.members(tag.getName());
+            if (!TagType.TAG.equals(tag.getType()))
+                return updateTag(tag); // Preserve existing behavior for legacy/custom ungrouped tags.
+            Tag original = getTagById(tag.getId());
+            if (original == null && names.size() == 1) return updateTag(tag);
+            if (original == null || !original.getType().equals(tag.getType())
+                || !original.getName().equals(tag.getName())) return 0;
+            ContentValues values = new ContentValues(1);
+            values.put(STATUS, tag.getStatus().ordinal());
+            String placeholders = String.join(",", Collections.nCopies(names.size(), "?"));
+            ArrayList<String> arguments = new ArrayList<>(names.size() + 1);
+            arguments.add(String.valueOf(TagType.TAG.getId()));
+            arguments.addAll(names);
+            db.beginTransaction();
+            try {
+                int updated = db.updateWithOnConflict(TABLE_NAME, values,
+                    TYPE + "=? AND " + NAME + " IN (" + placeholders + ")",
+                    arguments.toArray(new String[0]), SQLiteDatabase.CONFLICT_IGNORE);
+                db.setTransactionSuccessful();
+                return updated;
+            } finally {
+                db.endTransaction();
+            }
+        }
+
         /**
          * Return a cursor which points to a list of {@link Tag} which have certain properties
          *
@@ -324,12 +458,51 @@ public class Queries {
             //create query
             StringBuilder sql = new StringBuilder("SELECT * FROM ").append(TABLE_NAME);
             sql.append(" WHERE ");
-            sql.append(COUNT).append(">=? ");                                        //min tag count
+            // An old spelling can have a preference/online flag but a very small count.
+            // Its visible logical group uses the largest member count, not that spelling's count.
+            sql.append('(').append(COUNT).append(">=?");
+            if (type == null || TagType.TAG.equals(type)) {
+                // The source can also have multiple IDs with exactly the same content name.
+                sql.append(" OR (").append(TYPE).append('=').append(TagType.TAG.getId())
+                    .append(" AND ").append(NAME).append(" IN (SELECT ").append(NAME).append(" FROM ")
+                    .append(TABLE_NAME).append(" WHERE ").append(TYPE).append('=').append(TagType.TAG.getId())
+                    .append(" AND ").append(COUNT).append(">=").append(TagV2.getMinCount()).append("))");
+                for (List<String> family : ContentTagAliasData.groups().values()) {
+                    List<String> escaped = new ArrayList<>(family.size());
+                    for (String name : family) escaped.add(DatabaseUtils.sqlEscapeString(name));
+                    String names = String.join(",", escaped);
+                    sql.append(" OR (").append(TYPE).append('=').append(TagType.TAG.getId())
+                        .append(" AND ").append(NAME).append(" IN (").append(names)
+                        .append(") AND EXISTS (SELECT 1 FROM ").append(TABLE_NAME).append(" family WHERE family.")
+                        .append(TYPE).append('=').append(TagType.TAG.getId()).append(" AND family.")
+                        .append(NAME).append(" IN (").append(names).append(") AND family.")
+                        .append(COUNT).append(">=").append(TagV2.getMinCount()).append("))");
+                }
+            }
+            sql.append(") ");
             if (!query.isEmpty()) {
                 sql.append("AND (");
                 boolean hasSearchTerm = !displayNamesOnly;
-                if (!displayNamesOnly)
+                if (!displayNamesOnly) {
                     sql.append(NAME).append(" LIKE ?");
+                    if (type == null || TagType.TAG.equals(type)) {
+                        String pattern = DatabaseUtils.sqlEscapeString('%' + query + '%');
+                        for (List<String> family : ContentTagAliasData.groups().values()) {
+                            List<String> escaped = new ArrayList<>(family.size());
+                            List<String> matches = new ArrayList<>(family.size());
+                            for (String name : family) {
+                                String literal = DatabaseUtils.sqlEscapeString(name);
+                                escaped.add(literal);
+                                matches.add(literal + " LIKE " + pattern);
+                            }
+                            // A group may be active/online only on an old spelling while
+                            // the displayed canonical member matches the user's query.
+                            sql.append(" OR (").append(TYPE).append('=').append(TagType.TAG.getId())
+                                .append(" AND ").append(NAME).append(" IN (").append(String.join(",", escaped))
+                                .append(") AND (").append(String.join(" OR ", matches)).append("))");
+                        }
+                    }
+                }
                 if (!translatedNames.isEmpty() && (type == null || TagType.TAG.equals(type))) {
                     if (!displayNamesOnly) sql.append(" OR ");
                     sql.append('(').append(TYPE).append('=').append(TagType.TAG.getId())

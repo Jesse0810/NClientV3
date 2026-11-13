@@ -1,8 +1,9 @@
 {
-  "ai_mapped_names": 91,
+  "ai_mapped_names": 112,
   "ai_preserved_names": 346,
   "ai_reviewed_input_entries": 176,
   "approved_allowlist_names": 1127,
+  "approved_logical_names": 1118,
   "community_input_sha256": {
     "LICENSE.md": "b6c4452f59b6c8d4bdae7011c6554c49d1aa2b22a340488edf32b8974c9b2b70",
     "database/artist.md": "84f2bb64b01fb9a79ac8b1aa13214e97d9dc68cab459a72e4bcc118a3c5aea8c",
@@ -20,6 +21,11 @@
     "database/rows.md": "c373607a3b2fe23f946b3c0bb4cf2d1e5e9c76d959d7d844075dfcdb40dee7e0"
   },
   "community_license": "CC-BY-NC-SA-3.0-CN",
+  "content_alias_data_sha256": "dcb339ff0ddb8efb43a45a12e3d7b5a9d05d67c673d05ff933bfaf46b186d7b7",
+  "content_alias_groups": 7,
+  "content_alias_names": 9,
+  "content_label_changed_names": 19,
+  "content_label_review_names": 31,
   "detail_hidden_names": 0,
   "detail_visible_names": 4780,
   "exact_candidate_names": 2249,
@@ -31,6 +37,7 @@
   "input_sha256": {
     "ai-reviewed": "95b7918fbc15761a7353e3233cafa81ea72b9c630b5c07081317263610aea1a4",
     "approved-content-tags": "a0298625217d94b9976b3f7e4d16c0c78024e36bb8cbfe7dacd1e9bf1ca3817f",
+    "content-label-review": "3a091e5dbbbf6120aeca217c89f88b7f1ec3ed596d63bb6dfa49af095f9420bd",
     "data/tags.json": "ab5f7d2af6f71cd084f585eb5d883a7003b86d91f84609a88821e243112ffcf4",
     "exact-candidates-canonical": "4d364b9bfab27f718824b8162ad6ddd145700d90d76fdc7cdfca595530a64d5d",
     "fullDict": "6c60e9f52fec9e73eeea13f9e993c484f8c878ee28590ca074f90389ac612a0c",
@@ -40,9 +47,9 @@
   "management_hidden_names": 3653,
   "management_visible_names": 1127,
   "mapped_by_source": {
-    "AI": 91,
-    "EhTagTranslation": 181,
-    "fullDict": 509
+    "AI": 112,
+    "EhTagTranslation": 175,
+    "fullDict": 494
   },
   "mapped_names": 781,
   "original_tag_records": 4783,
@@ -59,6 +66,7 @@
     "EhTagTranslation",
     "AI"
   ],
+  "priority_exception": "Explicit user-authorized content-label review overrides the original three-source priority; reviewed entries remain classified as AI with prior source/value retained",
   "semantic_excluded": 119,
   "semantic_kept_names": 1127,
   "semantic_quarantined": 1003,
@@ -68,9 +76,9 @@
   "source_archive_sha256": "0e9bce61c735fde92e4b905eaa2bba14311d6e5814772604221d57766f65381c",
   "source_commit": "e0f66dc4424a53872473b05b7fb006ceebfcbe5d",
   "source_counts": {
-    "AI": 437,
-    "EhTagTranslation": 181,
-    "fullDict": 509
+    "AI": 458,
+    "EhTagTranslation": 175,
+    "fullDict": 494
   },
   "source_repository": "https://github.com/EhTagTranslation/Database",
   "tag_records": 1130,

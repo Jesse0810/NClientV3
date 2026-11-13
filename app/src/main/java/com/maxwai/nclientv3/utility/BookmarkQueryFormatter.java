@@ -28,7 +28,7 @@ public final class BookmarkQueryFormatter {
                 TagType type = TagType.typeByName(token.namespace);
                 Tag tag = new Tag(token.value, 0, 0, type, token.excluded ? TagStatus.AVOIDED : TagStatus.ACCEPTED);
                 result.append(context.getString(token.excluded ? R.string.bookmark_exclude_tag : R.string.bookmark_include_tag,
-                    context.getString(TYPE_NAMES[type.getId()]), tag.getDisplayName(context)));
+                    context.getString(TYPE_NAMES[type.getId()]), tag.getFilterDisplayName(context)));
             } else {
                 Matcher range = RANGE.matcher(token.raw);
                 if (range.matches()) {

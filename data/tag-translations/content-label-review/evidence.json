@@ -1,0 +1,214 @@
+{
+  "eh-female-sole-female": {
+    "source": "EhTagTranslation",
+    "namespace": "female",
+    "name": "sole female",
+    "label": "单女主",
+    "definition_excerpt": "只有一个女性参与了整个图库的所有性爱或恋物癖活动。`futanari`或`shemale`不算在内。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/female.md#L680",
+    "file_sha256": "302512773c61e283fddf87a082a054652433bc43947984bc93d6b0b85e645e81",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-female-masturbation": {
+    "source": "EhTagTranslation",
+    "namespace": "female",
+    "name": "masturbation",
+    "label": "自慰",
+    "definition_excerpt": "自我愉悦。是`phone sex`的前置标签。不需要`fingering`标签。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/female.md#L640",
+    "file_sha256": "302512773c61e283fddf87a082a054652433bc43947984bc93d6b0b85e645e81",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-female-transformation": {
+    "source": "EhTagTranslation",
+    "namespace": "female",
+    "name": "transformation",
+    "label": "变身",
+    "definition_excerpt": "广义变身，从男变女到变成动物，奥特曼，魔法少女都可以使用此标签。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/female.md#L77",
+    "file_sha256": "302512773c61e283fddf87a082a054652433bc43947984bc93d6b0b85e645e81",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-other-soushuuhen": {
+    "source": "EhTagTranslation",
+    "namespace": "other",
+    "name": "soushuuhen",
+    "label": "总集篇",
+    "definition_excerpt": "由单一作者自行出版，包含复数作品的书籍，主要为`doujinshi`或者`non-h`图库.",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/other.md#L101",
+    "file_sha256": "d6a9d8826d7de84b9075c9ef5751958549eb1bdea7bec831a97306af79eb9721",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-female-tentacles": {
+    "source": "EhTagTranslation",
+    "namespace": "female",
+    "name": "tentacles",
+    "label": "触手",
+    "definition_excerpt": "用于性目的的长而柔软的卷须。当没有明显的所有者时不应加上`monster`标签。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/female.md#L138",
+    "file_sha256": "302512773c61e283fddf87a082a054652433bc43947984bc93d6b0b85e645e81",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-other-watermarked": {
+    "source": "EhTagTranslation",
+    "namespace": "other",
+    "name": "watermarked",
+    "label": "水印",
+    "definition_excerpt": "由带有水印的复制品组成的图库，为与内容的创作、扫描、着色或翻译无关的网站做广告。不用于相关方添加的水印。有关上述内容，参见`scanmark`。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/other.md#L95",
+    "file_sha256": "d6a9d8826d7de84b9075c9ef5751958549eb1bdea7bec831a97306af79eb9721",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-other-multi-work-series": {
+    "source": "EhTagTranslation",
+    "namespace": "other",
+    "name": "multi-work series",
+    "label": "系列作品",
+    "definition_excerpt": "一个完整的作品，其故事跨多册书籍或发行版。不应与`story arc`混淆。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/other.md#L61",
+    "file_sha256": "d6a9d8826d7de84b9075c9ef5751958549eb1bdea7bec831a97306af79eb9721",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-female-petplay": {
+    "source": "EhTagTranslation",
+    "namespace": "female",
+    "name": "petplay",
+    "label": "人宠",
+    "definition_excerpt": "像宠物一样对待人。不应与`human cattle`和`slave`混淆。常是`bdsm`的一环。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/female.md#L611",
+    "file_sha256": "302512773c61e283fddf87a082a054652433bc43947984bc93d6b0b85e645e81",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-female-large-tattoo": {
+    "source": "EhTagTranslation",
+    "namespace": "female",
+    "name": "large tattoo",
+    "label": "全身纹身",
+    "definition_excerpt": "皮肤上的永久标记/图案，通常用墨水完成。必须足够突出以覆盖至少一半肢体或脸部。也可由许多小型纹身累积以满足条件。不应与`crotch tattoo`混淆。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/female.md#L207",
+    "file_sha256": "302512773c61e283fddf87a082a054652433bc43947984bc93d6b0b85e645e81",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-male-big-penis": {
+    "source": "EhTagTranslation",
+    "namespace": "male",
+    "name": "big penis",
+    "label": "大根",
+    "definition_excerpt": "异常大的阴茎，至少要和其主人的前臂一样大。是`huge penis`的前置标签。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/male.md#L366",
+    "file_sha256": "0c53122f62a262d5d62c1737f511e64f27a3e4fc94901f9e00ac64e9d3a1d326",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-male-huge-penis": {
+    "source": "EhTagTranslation",
+    "namespace": "male",
+    "name": "huge penis",
+    "label": "巨根",
+    "definition_excerpt": "巨大的阴茎，长度至少等于其所有者的躯干。需要`big penis`标签。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/male.md#L372",
+    "file_sha256": "0c53122f62a262d5d62c1737f511e64f27a3e4fc94901f9e00ac64e9d3a1d326",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-female-underwater-sex": {
+    "source": "EhTagTranslation",
+    "namespace": "female",
+    "name": "underwater sex",
+    "label": "水下",
+    "definition_excerpt": "在性期间大部分或完全浸没在液体中。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/female.md#L577",
+    "file_sha256": "302512773c61e283fddf87a082a054652433bc43947984bc93d6b0b85e645e81",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-other-scanmark": {
+    "source": "EhTagTranslation",
+    "namespace": "other",
+    "name": "scanmark",
+    "label": "扫描水印",
+    "definition_excerpt": "由扫描者/译者/上色者添加的水印。如果存在，将被无水印版本替换。不应与第三方添加的`watermarked`混淆。不应与作者添加的水印混淆。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/other.md#L94",
+    "file_sha256": "d6a9d8826d7de84b9075c9ef5751958549eb1bdea7bec831a97306af79eb9721",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-female-defloration": {
+    "source": "EhTagTranslation",
+    "namespace": "female",
+    "name": "defloration",
+    "label": "破处",
+    "definition_excerpt": "女性失去了处女的过程。经常包括轻微出血。不应该与`virginity`标签混淆，因为此标签只用于男性。需要有足够的证据支持。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/female.md#L404",
+    "file_sha256": "302512773c61e283fddf87a082a054652433bc43947984bc93d6b0b85e645e81",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-male-virginity": {
+    "source": "EhTagTranslation",
+    "namespace": "male",
+    "name": "virginity",
+    "label": "丧失童贞",
+    "definition_excerpt": "男性失去童贞，不得与女性的`defloration`混淆。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/male.md#L642",
+    "file_sha256": "0c53122f62a262d5d62c1737f511e64f27a3e4fc94901f9e00ac64e9d3a1d326",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-mixed-group": {
+    "source": "EhTagTranslation",
+    "namespace": "mixed",
+    "name": "group",
+    "label": "乱交",
+    "definition_excerpt": "两个以上的人同时进行性行为。是它们的前置标签：`harem`、`layer cake`、`mtf threesome`、`mmt threesome`、`mmf threesome`、`ttm threesome`、`ttf threesome`、`ffm threesome`和`fft threesome`等 3P 标签。其中 t 为变性人(transsexual)，包含`futanari`和`shemale`，这里为了书写方便用“扶”代指。两个或两个以上的伴侣有单独性行为或一群女孩站在周围不算。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/mixed.md#L71",
+    "file_sha256": "4b9c843b0ece433ba932fb7de9a0624f37d1f54d71d3f7935cafcd5217d3b2c2",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-female-anal": {
+    "source": "EhTagTranslation",
+    "namespace": "female",
+    "name": "anal",
+    "label": "爆肛",
+    "definition_excerpt": "插入肛门。任何方法都可以（`sex toys`，`tentacles`等）。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/female.md#L410",
+    "file_sha256": "302512773c61e283fddf87a082a054652433bc43947984bc93d6b0b85e645e81",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "eh-female-anal-intercourse": {
+    "source": "EhTagTranslation",
+    "namespace": "female",
+    "name": "anal intercourse",
+    "label": "肛交",
+    "definition_excerpt": "一个参与者使用阴茎或`strap-on`插入另一个参与者的肛门。需要`anal`标签。",
+    "source_url": "https://github.com/EhTagTranslation/Database/blob/e0f66dc4424a53872473b05b7fb006ceebfcbe5d/database/female.md#L412",
+    "file_sha256": "302512773c61e283fddf87a082a054652433bc43947984bc93d6b0b85e645e81",
+    "license": "CC-BY-NC-SA-3.0-CN"
+  },
+  "fullDict-human-pet": {
+    "source": "fullDict",
+    "name": "human pet",
+    "label": "人宠",
+    "source_path": "data/tag-translations/fullDict.json",
+    "limitation": "用户字典只提供译名，不提供该原值的范围定义。"
+  },
+  "fullDict-full-body-tattoo": {
+    "source": "fullDict",
+    "name": "full body tattoo",
+    "label": "全身纹身",
+    "source_path": "data/tag-translations/fullDict.json",
+    "limitation": "用户字典只提供译名，不提供该原值的范围定义。"
+  },
+  "fullDict-underwater": {
+    "source": "fullDict",
+    "name": "underwater",
+    "label": "水下",
+    "source_path": "data/tag-translations/fullDict.json",
+    "limitation": "用户字典只提供译名，不提供该原值的范围定义。"
+  },
+  "wordnet-orgy": {
+    "source": "Princeton WordNet 3.0 via NLTK distribution",
+    "name": "orgy",
+    "definition_excerpt": "a wild gathering involving excessive drinking and promiscuity",
+    "source_url": "https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/corpora/wordnet.zip",
+    "archive_sha256": "cbda5ea6eef7f36a97a43d4a75f85e07fccbb4f23657d27b4ccbc93e2646ab59",
+    "source_member": "wordnet/data.noun",
+    "synset_offset": "00511212",
+    "license_url": "https://wordnet.princeton.edu/license-and-commercial-use",
+    "limitation": "普通词义支持“聚会”的译法，不代表已证实 nhentai 的专有分级规则。"
+  }
+}

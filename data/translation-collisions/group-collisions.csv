@@ -1,0 +1,23 @@
+collision_group,namespace,field,display_name,name,canonical_name,tag_ids,status,translation_source,visible_in_picker,group_identity_count,group_logical_concept_count,group_display_variant_count,metadata_reference
+group-001,group,社团,ぐるぐる本舗,guru guru honpo,guru guru honpo,32768,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-001,group,社团,ぐるぐる本舗,guruguru honpo,guruguru honpo,11898,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-002,group,社团,つくね屋,tsukune-ya,tsukune-ya,104448,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-002,group,社团,つくね屋,tsukuneya,tsukuneya,162170,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-003,group,社团,どくどくめろん,dokudoku melon,dokudoku melon,55183,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-003,group,社团,どくどくめろん,dokudoku meron,dokudoku meron,1045,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-004,group,社团,ふぇすた。,festa,festa,155025,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-004,group,社团,ふぇすた。,festa.,festa.,32076,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-005,group,社团,まっ黒な,maclona,maclona,73176,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-005,group,社团,まっ黒な,makkurona,makkurona,8723,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-006,group,社团,スクラッチ実行委員会,scratch jikkou iinkai,scratch jikkou iinkai,13440,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-006,group,社团,スクラッチ実行委員会,shota scratch jikkou iinkai,shota scratch jikkou iinkai,6003,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-007,group,社团,ネコ☆探偵団,neko tantei dan,neko tantei dan,17936,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-007,group,社团,ネコ☆探偵団,neko tanteidan peach,neko tanteidan peach,52628,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-008,group,社团,ピアニッシモ,pianiishimo,pianiishimo,53007,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-008,group,社团,ピアニッシモ,pianissimo,pianissimo,31573,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-009,group,社团,ピンポイント,pin-point,pin-point,117216,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-009,group,社团,ピンポイント,pinpoint,pinpoint,87800,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-010,group,社团,混沌レディースタジオ,konton lady studio,konton lady studio,24289,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-010,group,社团,混沌レディースタジオ,teabreak scriptea,teabreak scriptea,97013,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-011,group,社团,絵描き小屋,ekakigoya,ekakigoya,5183,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv
+group-011,group,社团,絵描き小屋,ekakigoya notesystem,ekakigoya notesystem,31248,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/group-inventory.csv

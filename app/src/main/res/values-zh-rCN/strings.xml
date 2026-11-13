@@ -65,6 +65,12 @@
     <string name="related">相关</string>
     <string name="failed">失败</string>
     <string name="search">搜索</string>
+    <string name="search_keywords_hint">输入搜索关键字（可选）</string>
+    <string name="legacy_content_tags">查询旧拼写</string>
+    <string name="standard_content_tags">标准标签</string>
+    <string name="select_legacy_content_tag">选择旧拼写标签</string>
+    <string name="legacy_content_tag_hint">查找仅标有旧拼写的漫画，选中后会替换对应的标准标签筛选条件。</string>
+    <string name="legacy_content_tag_label">%1$s（旧拼写：%2$s）</string>
     <string name="prev">上一个</string>
     <string name="share">分享</string>
     <string name="image">图像</string>

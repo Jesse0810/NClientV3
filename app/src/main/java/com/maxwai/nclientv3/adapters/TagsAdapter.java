@@ -32,6 +32,9 @@ import com.maxwai.nclientv3.utility.ImageDownloadUtility;
 import com.maxwai.nclientv3.utility.LogUtility;
 import com.maxwai.nclientv3.utility.Utility;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Collections;
@@ -93,6 +96,7 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> im
                 Cursor tags = Queries.TagTable.getFilterCursor(lastQuery, type, tagMode == TagMode.ONLINE,
                     TagV2.isSortedByName(), translatedNames, allowedNames, searchDisplayNamesOnly,
                     EntityTagTranslations.getMatchingNames(context, lastQuery, type));
+                tags = Queries.TagTable.mergeContentTagCursor(tags);
                 results.count = tags.getCount();
                 results.values = tags;
 
@@ -136,11 +140,12 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> im
                     } else {
                         TagV2.updateStatus(ent);
                         updateLogo(holder.imgView, ent.getStatus());
+                        getFilter().filter(lastQuery);
                     }
                     break;
                 case ONLINE:
                     try {
-                        onlineTagUpdate(ent, !Login.isOnlineTags(ent), holder.imgView);
+                        onlineTagUpdate(ent, !isAnyFamilyOnline(ent), holder.imgView);
                     } catch (IOException e) {
                         LogUtility.e("Error setting tag", e);
                     }
@@ -149,7 +154,7 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> im
 
         });
         if (tagMode != TagMode.ONLINE && logged) holder.master.setOnLongClickListener(view -> {
-            if (!Login.isOnlineTags(ent)) showBlacklistDialog(ent, holder.imgView);
+            if (!isEntireFamilyOnline(ent)) showBlacklistDialog(ent, holder.imgView);
             else
                 Toast.makeText(context, R.string.tag_already_in_blacklist, Toast.LENGTH_SHORT).show();
             return true;
@@ -175,14 +180,27 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> im
         }).setNegativeButton(R.string.no, null).show();
     }
 
+    private boolean isAnyFamilyOnline(Tag tag) {
+        for (Tag member : Queries.TagTable.getContentTagFamily(tag))
+            if (Login.isOnlineTags(member)) return true;
+        return false;
+    }
+
+    private boolean isEntireFamilyOnline(Tag tag) {
+        for (Tag member : Queries.TagTable.getContentTagFamily(tag))
+            if (!Login.isOnlineTags(member)) return false;
+        return true;
+    }
+
     private void onlineTagUpdate(final Tag tag, final boolean add, final ImageView imgView) throws IOException {
         if (!Login.isLogged()) return;
+        final List<Tag> family = Queries.TagTable.getContentTagFamily(tag);
         StringWriter sw = new StringWriter();
         JsonWriter jw = new JsonWriter(sw);
         jw.beginObject().name("added").beginArray();
-        if (add) jw.value(tag.getId());;
+        if (add) for (Tag member : family) jw.value(member.getId());
         jw.endArray().name("removed").beginArray();
-        if (!add) jw.value(tag.getId());;
+        if (!add) for (Tag member : family) jw.value(member.getId());
         jw.endArray().endObject();
 
         final String url = Utility.getApiBaseUrl() + "blacklist";
@@ -196,11 +214,18 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> im
 
                 @Override
                 public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                    if (response.body().string().contains("true")) {
-                        if (add) Login.addOnlineTag(tag);
-                        else Login.removeOnlineTag(tag);
-                        if (tagMode == TagMode.ONLINE)
-                            updateLogo(imgView, add ? TagStatus.AVOIDED : TagStatus.DEFAULT);
+                    try (response) {
+                        if (!response.isSuccessful() || response.body() == null
+                            || !new JSONObject(response.body().string()).optBoolean("success", false)) return;
+                        for (Tag member : family) {
+                            if (add) Login.addOnlineTag(member);
+                            else Login.removeOnlineTag(member);
+                        }
+                        context.runOnUiThread(() -> {
+                            if (!context.isFinishing() && !context.isDestroyed()) getFilter().filter(lastQuery);
+                        });
+                    } catch (JSONException error) {
+                        LogUtility.w("Invalid blacklist update response", error);
                     }
                 }
             });

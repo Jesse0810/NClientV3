@@ -9,6 +9,7 @@ import com.maxwai.nclientv3.api.enums.TagStatus;
 import com.maxwai.nclientv3.api.enums.TagType;
 import com.maxwai.nclientv3.async.database.Queries;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -34,11 +35,15 @@ public class TagV2 {
     }
 
     public static List<Tag> getListPrefer(boolean removeIgnoredGalleries) {
-        return removeIgnoredGalleries ? Queries.TagTable.getAllFiltered() :
-            Queries.TagTable.getAllStatus(TagStatus.ACCEPTED);
+        List<Tag> tags = Queries.TagTable.mergeContentTags(removeIgnoredGalleries ? Queries.TagTable.getAllFiltered() :
+            Queries.TagTable.getAllStatus(TagStatus.ACCEPTED));
+        if (!removeIgnoredGalleries) tags.removeIf(tag -> tag.getStatus() != TagStatus.ACCEPTED);
+        return tags;
     }
 
     public static TagStatus updateStatus(Tag t) {
+        if (TagType.TAG.equals(t.getType()))
+            t.setStatus(Queries.TagTable.mergeContentTags(java.util.Collections.singletonList(t)).get(0).getStatus());
         TagStatus old = t.getStatus();
         switch (t.getStatus()) {
             case ACCEPTED:
@@ -51,7 +56,8 @@ public class TagV2 {
                 t.setStatus(TagStatus.ACCEPTED);
                 break;
         }
-        if (Queries.TagTable.updateTag(t) == 1) return t.getStatus();
+        if (Queries.TagTable.updateTagPreference(t) >= 1) return t.getStatus();
+        t.setStatus(old);
         throw new RuntimeException("Unable to update: " + t);
 
     }
@@ -107,7 +113,11 @@ public class TagV2 {
     public static String getAvoidedTags() {
         StringBuilder builder = new StringBuilder();
         List<Tag> tags = Queries.TagTable.getAllStatus(TagStatus.AVOIDED);
-        for (Tag t : tags) builder.append('+').append(t.toQueryTag(TagStatus.AVOIDED));
+        Set<String> terms = new LinkedHashSet<>();
+        for (Tag tag : tags)
+            for (Tag member : Queries.TagTable.getContentTagFamily(tag))
+                terms.add(member.toQueryTag(TagStatus.AVOIDED));
+        for (String term : terms) builder.append('+').append(term);
         return builder.toString();
     }
 }

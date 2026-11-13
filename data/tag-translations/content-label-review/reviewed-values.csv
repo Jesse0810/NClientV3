@@ -1,0 +1,32 @@
+原值,合并后规范值,原显示,新显示,原来源,处理,原ID,依据
+anal,anal,肛交,肛门插入,fullDict,distinguish_meaning,14283,社区定义明确区分：anal 是更广的肛门插入类别，anal intercourse 是其中的性交类型，并以 anal 为前置。
+anal intercourse,anal intercourse,肛交,肛交,EhTagTranslation,distinguish_meaning,130025,社区定义明确区分：anal 是更广的肛门插入类别，anal intercourse 是其中的性交类型，并以 anal 为前置。
+big penis,big penis,巨根,大根,fullDict,distinguish_meaning,30555,社区定义明确区分 big 与 huge 两档，并将 big 作为 huge 的前置；不合并。
+defloration,defloration,破处,女性破处,fullDict,distinguish_meaning,20525,按当前社区标签定义，defloration 用于女性初次失贞过程，virginity 在该标签语境用于男性；不是仅从 virginity 普通字面义推断。
+full body tattoo,full body tattoo,全身纹身,全身纹身,fullDict,distinguish_meaning,21112,full body 描述全身；社区 large tattoo 定义只要求足够突出的大面积纹身，并不要求全身覆盖。
+group,group,群交,群交,fullDict,distinguish_meaning,8010,group 的社区定义是多人同时性活动；orgy 的词典含义突出纵欲聚会。保留两个原值，用“聚会”表明侧重，不编造三人／四人或大型人数门槛。没有证据声称当前网站有正式人数分界。
+huge penis,huge penis,巨根,巨根,fullDict,distinguish_meaning,23967,社区定义明确区分 big 与 huge 两档，并将 big 作为 huge 的前置；不合并。
+human pet,human pet,人宠,人类宠物,fullDict,distinguish_meaning,21774,human pet 表达人作为宠物的身份；petplay 表达宠物式对待／角色扮演活动。两者相关，但没有查得当前网站将它们声明为同义词的证据，因此保留原值并用角色／活动措辞区分。
+large tattoo,large tattoo,全身纹身,大面积纹身,EhTagTranslation,distinguish_meaning,106006,full body 描述全身；社区 large tattoo 定义只要求足够突出的大面积纹身，并不要求全身覆盖。
+masturbation,masturbation,自慰,自慰,fullDict,merge_canonical,9162,两个低频值分别漏掉 a 或 s，含义不变。
+masturbtion,masturbation,自慰（原文拼写有误）,自慰,AI,merge_alias,154718,两个低频值分别漏掉 a 或 s，含义不变。
+maturbation,masturbation,自慰（原文拼写有误）,自慰,AI,merge_alias,134115,两个低频值分别漏掉 a 或 s，含义不变。
+mult-work series,multi-work series,多部作品系列（原文拼写有误）,系列作,AI,merge_alias,135172,mult-work series 为 multi-work series 漏 i；原译名尾注只是拼写提示，不代表独立内容概念。
+multi-work series,multi-work series,系列作,系列作,fullDict,merge_canonical,21572,mult-work series 为 multi-work series 漏 i；原译名尾注只是拼写提示，不代表独立内容概念。
+orgy,orgy,群交,乱交聚会,AI,distinguish_meaning,164701,group 的社区定义是多人同时性活动；orgy 的词典含义突出纵欲聚会。保留两个原值，用“聚会”表明侧重，不编造三人／四人或大型人数门槛。没有证据声称当前网站有正式人数分界。
+petplay,petplay,人宠,宠物扮演,EhTagTranslation,distinguish_meaning,118056,human pet 表达人作为宠物的身份；petplay 表达宠物式对待／角色扮演活动。两者相关，但没有查得当前网站将它们声明为同义词的证据，因此保留原值并用角色／活动措辞区分。
+scanmark,scanmark,水印,扫描组水印,fullDict,distinguish_meaning,15492,社区定义明确要求区分：scanmark 是扫描、翻译、上色相关方添加；watermarked 是与制作流程无关第三方的宣传水印。
+shokushu,tentacles,触手,触手,AI,merge_alias,153107,shokushu 是日语“触手”的罗马字写法，与当前标签语境中的 tentacles 指同一概念；不是另一个物种或行为等级。
+sole female,sole female,单女,单一女性,fullDict,merge_canonical,35762,两个低频值是 female 的漏字／字母错序；合并到正确原名。sole female 指只有一位女性参与，不等于没有男性，也不必然是叙事女主。
+sole femla,sole female,仅女性（原标签拼写有误）,单一女性,AI,merge_alias,134262,两个低频值是 female 的漏字／字母错序；合并到正确原名。sole female 指只有一位女性参与，不等于没有男性，也不必然是叙事女主。
+sole fmelae,sole female,仅女性（原标签拼写有误）,单一女性,AI,merge_alias,134195,两个低频值是 female 的漏字／字母错序；合并到正确原名。sole female 指只有一位女性参与，不等于没有男性，也不必然是叙事女主。
+soshuuhen,soushuuhen,总集篇,总集篇,AI,merge_alias,144688,总集篇（総集編）的低频长音省略写法，归并词库中已有规范罗马字。
+soushuuhen,soushuuhen,总集篇,总集篇,EhTagTranslation,merge_canonical,107503,总集篇（総集編）的低频长音省略写法，归并词库中已有规范罗马字。
+tentacles,tentacles,触手,触手,fullDict,merge_canonical,31775,shokushu 是日语“触手”的罗马字写法，与当前标签语境中的 tentacles 指同一概念；不是另一个物种或行为等级。
+tranformation,transformation,变身,变身,AI,merge_alias,132963,tranformation 比 transformation 少一个 s，归并正确拼写。
+transformation,transformation,变身,变身,fullDict,merge_canonical,2531,tranformation 比 transformation 少一个 s，归并正确拼写。
+underwater,underwater,水下,水下场景,fullDict,distinguish_meaning,3031,underwater 表达水下场景；带 sex 的原值明确限定性行为发生于水下。没有证据可将场景直接等同于具体活动。
+underwater sex,underwater sex,水下,水下性行为,EhTagTranslation,distinguish_meaning,158852,underwater 表达水下场景；带 sex 的原值明确限定性行为发生于水下。没有证据可将场景直接等同于具体活动。
+virginity,virginity,破处,男性失贞,fullDict,distinguish_meaning,2515,按当前社区标签定义，defloration 用于女性初次失贞过程，virginity 在该标签语境用于男性；不是仅从 virginity 普通字面义推断。
+watermaked,watermarked,带水印,第三方水印,AI,merge_alias,145056,watermaked 为 watermarked 漏 r；两项共用明确区分扫描组水印的名称。
+watermarked,watermarked,水印,第三方水印,EhTagTranslation,merge_canonical,30786,watermaked 为 watermarked 漏 r；两项共用明确区分扫描组水印的名称。 社区定义明确要求区分：scanmark 是扫描、翻译、上色相关方添加；watermarked 是与制作流程无关第三方的宣传水印。

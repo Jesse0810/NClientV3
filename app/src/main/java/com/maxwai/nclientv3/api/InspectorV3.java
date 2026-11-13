@@ -24,6 +24,7 @@ import com.maxwai.nclientv3.settings.Global;
 import com.maxwai.nclientv3.utility.LogUtility;
 import com.maxwai.nclientv3.utility.Utility;
 import com.maxwai.nclientv3.utility.BrowserUrls;
+import com.maxwai.nclientv3.utility.ContentTagAliasQueries;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -204,11 +205,24 @@ public class InspectorV3 extends Thread implements Parcelable {
 
     @NonNull
     private static HashSet<Tag> getDefaultTags() {
-        HashSet<Tag> tags = new HashSet<>(Queries.TagTable.getAllStatus(TagStatus.ACCEPTED));
+        HashSet<Tag> tags = new HashSet<>();
+        for (Tag tag : Queries.TagTable.mergeContentTags(Queries.TagTable.getAllStatus(TagStatus.ACCEPTED))) {
+            // The merged database state may be excluded because of an old conflicting alias.
+            // Do not turn it into an active exclusion when excluded preferences are disabled.
+            if (tag.getStatus() == TagStatus.ACCEPTED) tags.add(tag);
+        }
         tags.addAll(getLanguageTags(Global.getOnlyLanguage()));
         if (Global.removeAvoidedGalleries())
-            tags.addAll(Queries.TagTable.getAllStatus(TagStatus.AVOIDED));
-        tags.addAll(Queries.TagTable.getAllOnlineBlacklisted());
+            for (Tag tag : Queries.TagTable.mergeContentTags(Queries.TagTable.getAllStatus(TagStatus.AVOIDED))) {
+                tag.setStatus(TagStatus.AVOIDED);
+                tags.add(tag);
+            }
+        for (Tag tag : Queries.TagTable.mergeContentTags(Queries.TagTable.getAllOnlineBlacklisted())) {
+            // Family projection reads local preferences; an online blacklist is still an exclusion
+            // even when that family's local status is DEFAULT. Existing local entries keep priority.
+            tag.setStatus(TagStatus.AVOIDED);
+            tags.add(tag);
+        }
         return tags;
     }
 
@@ -290,11 +304,25 @@ public class InspectorV3 extends Thread implements Parcelable {
     }
 
     private void createUrl() {
+        url = buildUrl(true);
+        LogUtility.d("WWW: " + getBookmarkURL());
+    }
+
+    private String buildUrl(boolean expandExclusions) {
+        StringBuilder filters = new StringBuilder(this.query == null ? "" : this.query);
+        if ((requestType == ApiRequestType.BYSEARCH || requestType == ApiRequestType.BYTAG) && tags != null) {
+            for (Tag tag : tags) {
+                if (!ContentTagAliasQueries.hasSimpleTerm(filters.toString(), tag))
+                    filters.append(' ').append(tag.toQueryTag());
+            }
+        }
+        String rawQuery = filters.toString();
+        if (expandExclusions) rawQuery = ContentTagAliasQueries.expandExclusions(rawQuery);
         String query;
         try {
-            query = this.query == null ? null : URLEncoder.encode(this.query, Charset.defaultCharset().name());
+            query = URLEncoder.encode(rawQuery, Charset.defaultCharset().name());
         } catch (UnsupportedEncodingException ignore) {
-            query = this.query;
+            query = rawQuery;
         }
         StringBuilder builder = new StringBuilder(Utility.getBaseUrl()).append("api/v2/");
         if (requestType == ApiRequestType.BYALL) {
@@ -311,21 +339,6 @@ public class InspectorV3 extends Thread implements Parcelable {
                 builder.append("&q=").append(query);
         } else if (requestType == ApiRequestType.BYSEARCH || requestType == ApiRequestType.BYTAG) {
             builder.append("search?query=").append(query);
-            for (Tag tt : tags) {
-                if (builder.toString().contains(tt.toQueryTag(TagStatus.ACCEPTED))) continue;
-                builder.append('+');
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    builder.append(URLEncoder.encode(tt.toQueryTag(), Charset.defaultCharset()));
-                } else {
-                    try {
-                        //noinspection CharsetObjectCanBeUsed
-                        builder.append(URLEncoder.encode(tt.toQueryTag(), Charset.defaultCharset().name()));
-                    } catch (UnsupportedEncodingException e) {
-                        LogUtility.wtf("This should not happen since we used the default charset", e);
-                        return;
-                    }
-                }
-            }
             if (ranges != null)
                 builder.append('+').append(ranges.toQuery());
             builder.append("&page=").append(page);
@@ -333,8 +346,7 @@ public class InspectorV3 extends Thread implements Parcelable {
                 builder.append("&sort=").append(sortType.getUrlAddition());
             }
         }
-        url = builder.toString().replace(' ', '+');
-        LogUtility.d("WWW: " + getBookmarkURL());
+        return builder.toString().replace(' ', '+');
     }
 
     private String getBookmarkURL() {
@@ -387,13 +399,29 @@ public class InspectorV3 extends Thread implements Parcelable {
 
     private void filterDocumentTags() {
         if (galleries == null || tags == null) return;
+        List<Tag> included = new ArrayList<>();
+        Set<Tag> excluded = new HashSet<>();
+        for (Tag tag : tags) {
+            if (tag.getStatus() == TagStatus.AVOIDED) {
+                // Resolve each family once, not once per returned gallery. Positive old-spelling
+                // searches remain exact; a merged exclusion covers every spelling.
+                excluded.addAll(Queries.TagTable.getContentTagFamily(tag));
+            } else {
+                included.add(tag);
+            }
+        }
         ArrayList<SimpleGallery> galleryTag = new ArrayList<>(galleries.size());
         for (GenericGallery gal : galleries) {
             assert gal instanceof SimpleGallery;
             SimpleGallery gallery = (SimpleGallery) gal;
-            if (gallery.hasTags(tags)) {
-                galleryTag.add(gallery);
-            }
+            if (!gallery.hasTags(included)) continue;
+            boolean avoided = false;
+            for (Tag tag : excluded)
+                if (gallery.hasTags(Collections.singleton(tag))) {
+                    avoided = true;
+                    break;
+                }
+            if (!avoided) galleryTag.add(gallery);
         }
         galleries.clear();
         galleries.addAll(galleryTag);
@@ -478,6 +506,11 @@ public class InspectorV3 extends Thread implements Parcelable {
 
     public String getUrl() {
         return url;
+    }
+
+    /** Logical filters for saved bookmarks, without execution-only alias exclusions. */
+    public String getSavedFilterUrl() {
+        return buildUrl(false);
     }
 
     @Nullable

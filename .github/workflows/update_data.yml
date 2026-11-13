@@ -31,6 +31,9 @@ jobs:
       - name: Refresh entity inventory without approving new display names
         run: python scripts/build_entity_translations.py
 
+      - name: Refresh duplicate-label audit and disambiguation index
+        run: python scripts/check_translation_collisions.py
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v8
         with:

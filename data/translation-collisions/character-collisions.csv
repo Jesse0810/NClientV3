@@ -1,0 +1,102 @@
+collision_group,namespace,field,display_name,name,canonical_name,tag_ids,status,translation_source,visible_in_picker,group_identity_count,group_logical_concept_count,group_display_variant_count,metadata_reference
+character-001,character,角色,优妮,eunie,eunie,149750,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-001,character,角色,优妮,yuni shingyouji,yuni shingyouji,123591,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-002,character,角色,克拉拉,clara,clara,147104,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-002,character,角色,克拉拉,klara,klara,120467,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-003,character,角色,兰芳,lan fan,lan fan,3872,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-003,character,角色,兰芳,ranfan,ranfan,22258,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-004,character,角色,凯,guy,guy,78191,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-004,character,角色,凯,kei,kei,13774,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-005,character,角色,凯露,kale,kale,88472,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-005,character,角色,凯露,kyaru,kyaru,106834,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-006,character,角色,加百列,archangel gabriel,archangel gabriel,60314,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-006,character,角色,加百列,gabriel,gabriel,72619,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-007,character,角色,卡塔莉娜·亚利洁,katalina,katalina,49805,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-007,character,角色,卡塔莉娜·亚利洁,katalina aryze,katalina aryze,156342,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-008,character,角色,卡辛,casshern,casshern,20130,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-008,character,角色,卡辛,cassin,cassin,169314,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-009,character,角色,可可,cacao,cacao,127387,mapped,EhTagTranslation,True,3,3,1,data/entity-translations/character-inventory.csv
+character-009,character,角色,可可,coco,coco,12218,mapped,EhTagTranslation,True,3,3,1,data/entity-translations/character-inventory.csv
+character-009,character,角色,可可,cocoa,cocoa,150257,mapped,EhTagTranslation,True,3,3,1,data/entity-translations/character-inventory.csv
+character-010,character,角色,四季,shiki,shiki,16019,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-010,character,角色,四季,siki,siki,34029,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-011,character,角色,塞拉,sella,sella,2881,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-011,character,角色,塞拉,serra,serra,61228,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-012,character,角色,夕雾,yugiri,yugiri,100735,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-012,character,角色,夕雾,yuugiri,yuugiri,113172,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-013,character,角色,天野阳菜,amano hina,amano hina,112765,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-013,character,角色,天野阳菜,hina amano,hina amano,133867,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-014,character,角色,小南,konan,konan,14327,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-014,character,角色,小南,liza,liza,94847,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-015,character,角色,尼亚,nate river,nate river,26495,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-015,character,角色,尼亚,near,near,121937,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-016,character,角色,巴特,batou,batou,24059,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-016,character,角色,巴特,burter,burter,116175,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-017,character,角色,布尔玛,bulma,bulma,3143,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-017,character,角色,布尔玛,bulma briefs,bulma briefs,85473,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-018,character,角色,拉普拉斯,laplace,laplace,150985,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-018,character,角色,拉普拉斯,lapras,lapras,107005,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-019,character,角色,早乙女乱马,ranma,ranma,87833,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-019,character,角色,早乙女乱马,ranma saotome,ranma saotome,26261,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-020,character,角色,未来,miku,miku,92503,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-020,character,角色,未来,mirai,mirai,17765,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-021,character,角色,村雨静,oshizu murasame,oshizu murasame,4018,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-021,character,角色,村雨静,shizu murasame,shizu murasame,55337,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-022,character,角色,杰西卡,jessica,jessica,12793,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-022,character,角色,杰西卡,sheska,sheska,26113,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-023,character,角色,柴田胜家,katsuie shibata,katsuie shibata,31806,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-023,character,角色,柴田胜家,shibata katsuie,shibata katsuie,66618,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-024,character,角色,海伦,helen,helen,65896,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-024,character,角色,海伦,helm,helm,145566,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-025,character,角色,温蒂,weedy,weedy,133768,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-025,character,角色,温蒂,wendi,wendi,10384,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-026,character,角色,源静香,minamoto shizuka,minamoto shizuka,26148,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-026,character,角色,源静香,shizuka minamoto,shizuka minamoto,14859,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-027,character,角色,濑川音符,onpu segawa,onpu segawa,32114,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-027,character,角色,濑川音符,segawa onpu,segawa onpu,10558,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-028,character,角色,火伊布,booster,booster,58453,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-028,character,角色,火伊布,flareon,flareon,78744,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-029,character,角色,焰,homura,homura,1047,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-029,character,角色,焰,pyra,pyra,81022,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-030,character,角色,爱德,ade,ade,160110,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-030,character,角色,爱德,ed,ed,107599,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-031,character,角色,玛格丽特,margaret,margaret,28940,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-031,character,角色,玛格丽特,marguerite,marguerite,8578,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-032,character,角色,珊瑚,coral,coral,152089,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-032,character,角色,珊瑚,sango,sango,32877,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-033,character,角色,碧,midori,midori,80377,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-033,character,角色,碧,vyrn,vyrn,75716,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-034,character,角色,篝敦子,akko kagari,akko kagari,6722,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-034,character,角色,篝敦子,atsuko kagari,atsuko kagari,33376,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-035,character,角色,糖糖,ame-chan,ame-chan,151509,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-035,character,角色,糖糖,candy,candy,16124,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-036,character,角色,红豆,sweety,sweety,157448,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-036,character,角色,红豆,vigna,vigna,123723,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-037,character,角色,维克托,kriss vector,kriss vector,93140,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-037,character,角色,维克托,vector,vector,93116,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-038,character,角色,胡桃,hu tao,hu tao,128486,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-038,character,角色,胡桃,kurumi,kurumi,18906,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-039,character,角色,艾丽,elie,elie,2499,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-039,character,角色,艾丽,elly,elly,148942,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-040,character,角色,莎拉,sala tyrrell,sala tyrrell,98618,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-040,character,角色,莎拉,sara,sara,18046,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-041,character,角色,莱特,light,light,137147,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-041,character,角色,莱特,lighter,lighter,159713,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-042,character,角色,葛叶,kuzuha,kuzuha,140930,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-042,character,角色,葛叶,kuzunoha,kuzunoha,160539,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-043,character,角色,贞德,jeanne,jeanne,12248,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-043,character,角色,贞德,joan of arc,joan of arc,9799,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-044,character,角色,银狼,ginro,ginro,122983,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-044,character,角色,银狼,silver wolf,silver wolf,150424,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-045,character,角色,阿尔法,alpha,alpha,145851,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-045,character,角色,阿尔法,alpha hatsuseno,alpha hatsuseno,8032,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-046,character,角色,雪女,yuki-onna,yuki-onna,150354,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-046,character,角色,雪女,yukime,yukime,21689,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-047,character,角色,雷姆,lehm,lehm,23173,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-047,character,角色,雷姆,rem,rem,50415,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-048,character,角色,露姬,rouge,rouge,22342,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-048,character,角色,露姬,rouge the bat,rouge the bat,158704,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv
+character-049,character,角色,露露,lou roux,lou roux,115937,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-049,character,角色,露露,ruru,ruru,155827,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-050,character,角色,齐尔查克,chilchack,chilchack,72917,mapped,Bangumi Archive,True,2,2,1,data/entity-translations/character-inventory.csv
+character-050,character,角色,齐尔查克,chilchuck tims,chilchuck tims,129045,mapped,EhTagTranslation,True,2,2,1,data/entity-translations/character-inventory.csv

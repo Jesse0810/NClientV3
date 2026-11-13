@@ -5,6 +5,7 @@ import android.util.JsonReader;
 import android.util.JsonToken;
 
 import com.maxwai.nclientv3.R;
+import com.maxwai.nclientv3.api.enums.TagType;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -56,6 +57,7 @@ public final class ContentTagTranslations {
         for (String name : ContentTagAllowlist.getAllowedNames(context)) {
             String displayName = labels.get(name);
             if (displayName == null) displayName = name;
+            displayName = TagLabelDisambiguation.getDisplayName(context, TagType.TAG, name, displayName);
             if (displayName.toLowerCase(Locale.ROOT).contains(normalizedQuery))
                 matches.add(name);
         }

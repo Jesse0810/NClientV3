@@ -63,6 +63,15 @@ jobs:
       - name: Check entity display names and complete inventory
         run: python3 scripts/check_entity_translations.py
 
+      - name: Check duplicate labels and disambiguation index
+        run: python3 scripts/check_translation_collisions.py --check
+
+      - name: Check reviewed content labels and spelling groups
+        run: python3 scripts/check_content_label_review.py
+
+      - name: Check alias selection and exclusion regressions
+        run: python3 scripts/check_content_aliases.py
+
       - name: Build Android 9+ and Android 8 Debug APKs
         id: assemble
         run: |
@@ -92,6 +101,7 @@ jobs:
           expected_allowlist = json.loads(Path("app/src/main/assets/content_tag_allowlist.json").read_text())
           expected_translations = json.loads(Path("app/src/main/assets/tag_translations_zh_CN.json").read_text())
           expected_entities = json.loads(Path("app/src/main/assets/entity_translations_zh_CN.json").read_text())
+          expected_collisions = json.loads(Path("app/src/main/assets/tag_label_collisions_zh_CN.json").read_text())
           if not isinstance(expected_allowlist, list) or len(expected_allowlist) != 1127 or len(set(expected_allowlist)) != 1127:
               raise SystemExit("Expected 1127 unique approved content tags")
           if expected_translations.get("incest") != "近亲乱伦" or not set(expected_translations) <= set(expected_allowlist):
@@ -121,9 +131,11 @@ jobs:
                   allowlist = json.loads(archive.read("assets/content_tag_allowlist.json"))
                   translations = json.loads(archive.read("assets/tag_translations_zh_CN.json"))
                   entities = json.loads(archive.read("assets/entity_translations_zh_CN.json"))
+                  collisions = json.loads(archive.read("assets/tag_label_collisions_zh_CN.json"))
                   if "assets/excluded_content_tags.json" in archive.namelist():
                       raise SystemExit(f"Obsolete content-tag exclusion asset in {apk}")
-              if allowlist != expected_allowlist or translations != expected_translations or entities != expected_entities:
+              if (allowlist != expected_allowlist or translations != expected_translations
+                      or entities != expected_entities or collisions != expected_collisions):
                   raise SystemExit(f"Bundled content-tag data differs from tagged sources: {apk}")
               destination = output / f"NClientV3_{tag}_{label}_debug.apk"
               shutil.copy2(apk, destination)

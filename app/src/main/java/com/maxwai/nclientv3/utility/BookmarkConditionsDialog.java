@@ -165,7 +165,7 @@ public final class BookmarkConditionsDialog {
 
     private static String displayName(Context context, BookmarkQuery.Token token) {
         return new Tag(token.value, 0, 0, TagType.typeByName(token.namespace),
-            token.excluded ? TagStatus.AVOIDED : TagStatus.ACCEPTED).getDisplayName(context);
+            token.excluded ? TagStatus.AVOIDED : TagStatus.ACCEPTED).getFilterDisplayName(context);
     }
 
     private static CharSequence formatExpression(Context context, String query) {

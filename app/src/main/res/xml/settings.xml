@@ -176,14 +176,6 @@
             android:summaryOn="@string/setting_on_use_account_tag"
             android:title="@string/use_account_tag"
             app:iconSpaceReserved="false" />
-        <SeekBarPreference
-            android:defaultValue="10"
-            android:key="@string/preference_key_favorite_limit"
-            android:max="20"
-            android:summary="@string/popular_tag_count"
-            android:title="@string/favorite_count"
-            app:iconSpaceReserved="false"
-            app:showSeekBarValue="true" />
     </PreferenceCategory>
 
     <PreferenceCategory

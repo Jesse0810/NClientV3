@@ -1,0 +1,747 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-11-13",
+  "scope": "13 prior content-label collision groups, correct counterparts, and two adjacent explicit spelling mistakes; other namespaces unchanged",
+  "authority": "User requests semantic distinctions and merger of spelling variants; reviewed labels override older source precedence for these entries only.",
+  "merge_groups": [
+    {
+      "canonical_name": "sole female",
+      "display_name": "单一女性",
+      "members": [
+        "sole female",
+        "sole femla",
+        "sole fmelae"
+      ],
+      "aliases": [
+        "sole femla",
+        "sole fmelae"
+      ],
+      "kind": "typo",
+      "rationale": "两个低频值是 female 的漏字／字母错序；合并到正确原名。sole female 指只有一位女性参与，不等于没有男性，也不必然是叙事女主。",
+      "evidence": [
+        "eh-female-sole-female"
+      ]
+    },
+    {
+      "canonical_name": "masturbation",
+      "display_name": "自慰",
+      "members": [
+        "masturbation",
+        "masturbtion",
+        "maturbation"
+      ],
+      "aliases": [
+        "masturbtion",
+        "maturbation"
+      ],
+      "kind": "typo",
+      "rationale": "两个低频值分别漏掉 a 或 s，含义不变。",
+      "evidence": [
+        "eh-female-masturbation"
+      ]
+    },
+    {
+      "canonical_name": "transformation",
+      "display_name": "变身",
+      "members": [
+        "transformation",
+        "tranformation"
+      ],
+      "aliases": [
+        "tranformation"
+      ],
+      "kind": "typo",
+      "rationale": "tranformation 比 transformation 少一个 s，归并正确拼写。",
+      "evidence": [
+        "eh-female-transformation"
+      ]
+    },
+    {
+      "canonical_name": "soushuuhen",
+      "display_name": "总集篇",
+      "members": [
+        "soushuuhen",
+        "soshuuhen"
+      ],
+      "aliases": [
+        "soshuuhen"
+      ],
+      "kind": "romanization_variant",
+      "rationale": "总集篇（総集編）的低频长音省略写法，归并词库中已有规范罗马字。",
+      "evidence": [
+        "eh-other-soushuuhen"
+      ]
+    },
+    {
+      "canonical_name": "tentacles",
+      "display_name": "触手",
+      "members": [
+        "tentacles",
+        "shokushu"
+      ],
+      "aliases": [
+        "shokushu"
+      ],
+      "kind": "language_alias",
+      "rationale": "shokushu 是日语“触手”的罗马字写法，与当前标签语境中的 tentacles 指同一概念；不是另一个物种或行为等级。",
+      "evidence": [
+        "eh-female-tentacles"
+      ]
+    },
+    {
+      "canonical_name": "watermarked",
+      "display_name": "第三方水印",
+      "members": [
+        "watermarked",
+        "watermaked"
+      ],
+      "aliases": [
+        "watermaked"
+      ],
+      "kind": "typo",
+      "rationale": "watermaked 为 watermarked 漏 r；两项共用明确区分扫描组水印的名称。",
+      "evidence": [
+        "eh-other-watermarked"
+      ]
+    },
+    {
+      "canonical_name": "multi-work series",
+      "display_name": "系列作",
+      "members": [
+        "multi-work series",
+        "mult-work series"
+      ],
+      "aliases": [
+        "mult-work series"
+      ],
+      "kind": "typo",
+      "rationale": "mult-work series 为 multi-work series 漏 i；原译名尾注只是拼写提示，不代表独立内容概念。",
+      "evidence": [
+        "eh-other-multi-work-series"
+      ]
+    }
+  ],
+  "distinctions": [
+    {
+      "members": [
+        "human pet",
+        "petplay"
+      ],
+      "display_names": {
+        "human pet": "人类宠物",
+        "petplay": "宠物扮演"
+      },
+      "kind": "role_vs_activity",
+      "rationale": "human pet 表达人作为宠物的身份；petplay 表达宠物式对待／角色扮演活动。两者相关，但没有查得当前网站将它们声明为同义词的证据，因此保留原值并用角色／活动措辞区分。",
+      "evidence": [
+        "eh-female-petplay",
+        "fullDict-human-pet"
+      ]
+    },
+    {
+      "members": [
+        "full body tattoo",
+        "large tattoo"
+      ],
+      "display_names": {
+        "full body tattoo": "全身纹身",
+        "large tattoo": "大面积纹身"
+      },
+      "kind": "coverage_scope",
+      "rationale": "full body 描述全身；社区 large tattoo 定义只要求足够突出的大面积纹身，并不要求全身覆盖。",
+      "evidence": [
+        "eh-female-large-tattoo",
+        "fullDict-full-body-tattoo"
+      ]
+    },
+    {
+      "members": [
+        "big penis",
+        "huge penis"
+      ],
+      "display_names": {
+        "big penis": "大根",
+        "huge penis": "巨根"
+      },
+      "kind": "size_tiers",
+      "rationale": "社区定义明确区分 big 与 huge 两档，并将 big 作为 huge 的前置；不合并。",
+      "evidence": [
+        "eh-male-big-penis",
+        "eh-male-huge-penis"
+      ]
+    },
+    {
+      "members": [
+        "underwater",
+        "underwater sex"
+      ],
+      "display_names": {
+        "underwater": "水下场景",
+        "underwater sex": "水下性行为"
+      },
+      "kind": "setting_vs_activity",
+      "rationale": "underwater 表达水下场景；带 sex 的原值明确限定性行为发生于水下。没有证据可将场景直接等同于具体活动。",
+      "evidence": [
+        "eh-female-underwater-sex",
+        "fullDict-underwater"
+      ]
+    },
+    {
+      "members": [
+        "scanmark",
+        "watermarked"
+      ],
+      "display_names": {
+        "scanmark": "扫描组水印",
+        "watermarked": "第三方水印"
+      },
+      "kind": "mark_provenance",
+      "rationale": "社区定义明确要求区分：scanmark 是扫描、翻译、上色相关方添加；watermarked 是与制作流程无关第三方的宣传水印。",
+      "evidence": [
+        "eh-other-scanmark",
+        "eh-other-watermarked"
+      ]
+    },
+    {
+      "members": [
+        "defloration",
+        "virginity"
+      ],
+      "display_names": {
+        "defloration": "女性破处",
+        "virginity": "男性失贞"
+      },
+      "kind": "gendered_tag_definitions",
+      "rationale": "按当前社区标签定义，defloration 用于女性初次失贞过程，virginity 在该标签语境用于男性；不是仅从 virginity 普通字面义推断。",
+      "evidence": [
+        "eh-female-defloration",
+        "eh-male-virginity"
+      ]
+    },
+    {
+      "members": [
+        "group",
+        "orgy"
+      ],
+      "display_names": {
+        "group": "群交",
+        "orgy": "乱交聚会"
+      },
+      "kind": "general_activity_vs_gathering",
+      "rationale": "group 的社区定义是多人同时性活动；orgy 的词典含义突出纵欲聚会。保留两个原值，用“聚会”表明侧重，不编造三人／四人或大型人数门槛。没有证据声称当前网站有正式人数分界。",
+      "evidence": [
+        "eh-mixed-group",
+        "wordnet-orgy"
+      ]
+    },
+    {
+      "members": [
+        "anal",
+        "anal intercourse"
+      ],
+      "display_names": {
+        "anal": "肛门插入",
+        "anal intercourse": "肛交"
+      },
+      "kind": "broad_vs_specific_activity",
+      "rationale": "社区定义明确区分：anal 是更广的肛门插入类别，anal intercourse 是其中的性交类型，并以 anal 为前置。",
+      "evidence": [
+        "eh-female-anal",
+        "eh-female-anal-intercourse"
+      ]
+    }
+  ],
+  "label_overrides": {
+    "anal": "肛门插入",
+    "anal intercourse": "肛交",
+    "big penis": "大根",
+    "defloration": "女性破处",
+    "full body tattoo": "全身纹身",
+    "group": "群交",
+    "huge penis": "巨根",
+    "human pet": "人类宠物",
+    "large tattoo": "大面积纹身",
+    "masturbation": "自慰",
+    "masturbtion": "自慰",
+    "maturbation": "自慰",
+    "mult-work series": "系列作",
+    "multi-work series": "系列作",
+    "orgy": "乱交聚会",
+    "petplay": "宠物扮演",
+    "scanmark": "扫描组水印",
+    "shokushu": "触手",
+    "sole female": "单一女性",
+    "sole femla": "单一女性",
+    "sole fmelae": "单一女性",
+    "soshuuhen": "总集篇",
+    "soushuuhen": "总集篇",
+    "tentacles": "触手",
+    "tranformation": "变身",
+    "transformation": "变身",
+    "underwater": "水下场景",
+    "underwater sex": "水下性行为",
+    "virginity": "男性失贞",
+    "watermaked": "第三方水印",
+    "watermarked": "第三方水印"
+  },
+  "raw_decisions": {
+    "anal": {
+      "canonical_name": "anal",
+      "display_name": "肛门插入",
+      "action": "distinguish_meaning",
+      "previous_display_name": "肛交",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        14283
+      ],
+      "rationale": "社区定义明确区分：anal 是更广的肛门插入类别，anal intercourse 是其中的性交类型，并以 anal 为前置。",
+      "evidence": [
+        "eh-female-anal",
+        "eh-female-anal-intercourse"
+      ]
+    },
+    "anal intercourse": {
+      "canonical_name": "anal intercourse",
+      "display_name": "肛交",
+      "action": "distinguish_meaning",
+      "previous_display_name": "肛交",
+      "previous_source": "EhTagTranslation",
+      "tag_ids": [
+        130025
+      ],
+      "rationale": "社区定义明确区分：anal 是更广的肛门插入类别，anal intercourse 是其中的性交类型，并以 anal 为前置。",
+      "evidence": [
+        "eh-female-anal",
+        "eh-female-anal-intercourse"
+      ]
+    },
+    "big penis": {
+      "canonical_name": "big penis",
+      "display_name": "大根",
+      "action": "distinguish_meaning",
+      "previous_display_name": "巨根",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        30555
+      ],
+      "rationale": "社区定义明确区分 big 与 huge 两档，并将 big 作为 huge 的前置；不合并。",
+      "evidence": [
+        "eh-male-big-penis",
+        "eh-male-huge-penis"
+      ]
+    },
+    "defloration": {
+      "canonical_name": "defloration",
+      "display_name": "女性破处",
+      "action": "distinguish_meaning",
+      "previous_display_name": "破处",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        20525
+      ],
+      "rationale": "按当前社区标签定义，defloration 用于女性初次失贞过程，virginity 在该标签语境用于男性；不是仅从 virginity 普通字面义推断。",
+      "evidence": [
+        "eh-female-defloration",
+        "eh-male-virginity"
+      ]
+    },
+    "full body tattoo": {
+      "canonical_name": "full body tattoo",
+      "display_name": "全身纹身",
+      "action": "distinguish_meaning",
+      "previous_display_name": "全身纹身",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        21112
+      ],
+      "rationale": "full body 描述全身；社区 large tattoo 定义只要求足够突出的大面积纹身，并不要求全身覆盖。",
+      "evidence": [
+        "eh-female-large-tattoo",
+        "fullDict-full-body-tattoo"
+      ]
+    },
+    "group": {
+      "canonical_name": "group",
+      "display_name": "群交",
+      "action": "distinguish_meaning",
+      "previous_display_name": "群交",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        8010
+      ],
+      "rationale": "group 的社区定义是多人同时性活动；orgy 的词典含义突出纵欲聚会。保留两个原值，用“聚会”表明侧重，不编造三人／四人或大型人数门槛。没有证据声称当前网站有正式人数分界。",
+      "evidence": [
+        "eh-mixed-group",
+        "wordnet-orgy"
+      ]
+    },
+    "huge penis": {
+      "canonical_name": "huge penis",
+      "display_name": "巨根",
+      "action": "distinguish_meaning",
+      "previous_display_name": "巨根",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        23967
+      ],
+      "rationale": "社区定义明确区分 big 与 huge 两档，并将 big 作为 huge 的前置；不合并。",
+      "evidence": [
+        "eh-male-big-penis",
+        "eh-male-huge-penis"
+      ]
+    },
+    "human pet": {
+      "canonical_name": "human pet",
+      "display_name": "人类宠物",
+      "action": "distinguish_meaning",
+      "previous_display_name": "人宠",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        21774
+      ],
+      "rationale": "human pet 表达人作为宠物的身份；petplay 表达宠物式对待／角色扮演活动。两者相关，但没有查得当前网站将它们声明为同义词的证据，因此保留原值并用角色／活动措辞区分。",
+      "evidence": [
+        "eh-female-petplay",
+        "fullDict-human-pet"
+      ]
+    },
+    "large tattoo": {
+      "canonical_name": "large tattoo",
+      "display_name": "大面积纹身",
+      "action": "distinguish_meaning",
+      "previous_display_name": "全身纹身",
+      "previous_source": "EhTagTranslation",
+      "tag_ids": [
+        106006
+      ],
+      "rationale": "full body 描述全身；社区 large tattoo 定义只要求足够突出的大面积纹身，并不要求全身覆盖。",
+      "evidence": [
+        "eh-female-large-tattoo",
+        "fullDict-full-body-tattoo"
+      ]
+    },
+    "masturbation": {
+      "canonical_name": "masturbation",
+      "display_name": "自慰",
+      "action": "merge_canonical",
+      "previous_display_name": "自慰",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        9162
+      ],
+      "rationale": "两个低频值分别漏掉 a 或 s，含义不变。",
+      "evidence": [
+        "eh-female-masturbation"
+      ]
+    },
+    "masturbtion": {
+      "canonical_name": "masturbation",
+      "display_name": "自慰",
+      "action": "merge_alias",
+      "previous_display_name": "自慰（原文拼写有误）",
+      "previous_source": "AI",
+      "tag_ids": [
+        154718
+      ],
+      "rationale": "两个低频值分别漏掉 a 或 s，含义不变。",
+      "evidence": [
+        "eh-female-masturbation"
+      ]
+    },
+    "maturbation": {
+      "canonical_name": "masturbation",
+      "display_name": "自慰",
+      "action": "merge_alias",
+      "previous_display_name": "自慰（原文拼写有误）",
+      "previous_source": "AI",
+      "tag_ids": [
+        134115
+      ],
+      "rationale": "两个低频值分别漏掉 a 或 s，含义不变。",
+      "evidence": [
+        "eh-female-masturbation"
+      ]
+    },
+    "mult-work series": {
+      "canonical_name": "multi-work series",
+      "display_name": "系列作",
+      "action": "merge_alias",
+      "previous_display_name": "多部作品系列（原文拼写有误）",
+      "previous_source": "AI",
+      "tag_ids": [
+        135172
+      ],
+      "rationale": "mult-work series 为 multi-work series 漏 i；原译名尾注只是拼写提示，不代表独立内容概念。",
+      "evidence": [
+        "eh-other-multi-work-series"
+      ]
+    },
+    "multi-work series": {
+      "canonical_name": "multi-work series",
+      "display_name": "系列作",
+      "action": "merge_canonical",
+      "previous_display_name": "系列作",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        21572
+      ],
+      "rationale": "mult-work series 为 multi-work series 漏 i；原译名尾注只是拼写提示，不代表独立内容概念。",
+      "evidence": [
+        "eh-other-multi-work-series"
+      ]
+    },
+    "orgy": {
+      "canonical_name": "orgy",
+      "display_name": "乱交聚会",
+      "action": "distinguish_meaning",
+      "previous_display_name": "群交",
+      "previous_source": "AI",
+      "tag_ids": [
+        164701
+      ],
+      "rationale": "group 的社区定义是多人同时性活动；orgy 的词典含义突出纵欲聚会。保留两个原值，用“聚会”表明侧重，不编造三人／四人或大型人数门槛。没有证据声称当前网站有正式人数分界。",
+      "evidence": [
+        "eh-mixed-group",
+        "wordnet-orgy"
+      ]
+    },
+    "petplay": {
+      "canonical_name": "petplay",
+      "display_name": "宠物扮演",
+      "action": "distinguish_meaning",
+      "previous_display_name": "人宠",
+      "previous_source": "EhTagTranslation",
+      "tag_ids": [
+        118056
+      ],
+      "rationale": "human pet 表达人作为宠物的身份；petplay 表达宠物式对待／角色扮演活动。两者相关，但没有查得当前网站将它们声明为同义词的证据，因此保留原值并用角色／活动措辞区分。",
+      "evidence": [
+        "eh-female-petplay",
+        "fullDict-human-pet"
+      ]
+    },
+    "scanmark": {
+      "canonical_name": "scanmark",
+      "display_name": "扫描组水印",
+      "action": "distinguish_meaning",
+      "previous_display_name": "水印",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        15492
+      ],
+      "rationale": "社区定义明确要求区分：scanmark 是扫描、翻译、上色相关方添加；watermarked 是与制作流程无关第三方的宣传水印。",
+      "evidence": [
+        "eh-other-scanmark",
+        "eh-other-watermarked"
+      ]
+    },
+    "shokushu": {
+      "canonical_name": "tentacles",
+      "display_name": "触手",
+      "action": "merge_alias",
+      "previous_display_name": "触手",
+      "previous_source": "AI",
+      "tag_ids": [
+        153107
+      ],
+      "rationale": "shokushu 是日语“触手”的罗马字写法，与当前标签语境中的 tentacles 指同一概念；不是另一个物种或行为等级。",
+      "evidence": [
+        "eh-female-tentacles"
+      ]
+    },
+    "sole female": {
+      "canonical_name": "sole female",
+      "display_name": "单一女性",
+      "action": "merge_canonical",
+      "previous_display_name": "单女",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        35762
+      ],
+      "rationale": "两个低频值是 female 的漏字／字母错序；合并到正确原名。sole female 指只有一位女性参与，不等于没有男性，也不必然是叙事女主。",
+      "evidence": [
+        "eh-female-sole-female"
+      ]
+    },
+    "sole femla": {
+      "canonical_name": "sole female",
+      "display_name": "单一女性",
+      "action": "merge_alias",
+      "previous_display_name": "仅女性（原标签拼写有误）",
+      "previous_source": "AI",
+      "tag_ids": [
+        134262
+      ],
+      "rationale": "两个低频值是 female 的漏字／字母错序；合并到正确原名。sole female 指只有一位女性参与，不等于没有男性，也不必然是叙事女主。",
+      "evidence": [
+        "eh-female-sole-female"
+      ]
+    },
+    "sole fmelae": {
+      "canonical_name": "sole female",
+      "display_name": "单一女性",
+      "action": "merge_alias",
+      "previous_display_name": "仅女性（原标签拼写有误）",
+      "previous_source": "AI",
+      "tag_ids": [
+        134195
+      ],
+      "rationale": "两个低频值是 female 的漏字／字母错序；合并到正确原名。sole female 指只有一位女性参与，不等于没有男性，也不必然是叙事女主。",
+      "evidence": [
+        "eh-female-sole-female"
+      ]
+    },
+    "soshuuhen": {
+      "canonical_name": "soushuuhen",
+      "display_name": "总集篇",
+      "action": "merge_alias",
+      "previous_display_name": "总集篇",
+      "previous_source": "AI",
+      "tag_ids": [
+        144688
+      ],
+      "rationale": "总集篇（総集編）的低频长音省略写法，归并词库中已有规范罗马字。",
+      "evidence": [
+        "eh-other-soushuuhen"
+      ]
+    },
+    "soushuuhen": {
+      "canonical_name": "soushuuhen",
+      "display_name": "总集篇",
+      "action": "merge_canonical",
+      "previous_display_name": "总集篇",
+      "previous_source": "EhTagTranslation",
+      "tag_ids": [
+        107503
+      ],
+      "rationale": "总集篇（総集編）的低频长音省略写法，归并词库中已有规范罗马字。",
+      "evidence": [
+        "eh-other-soushuuhen"
+      ]
+    },
+    "tentacles": {
+      "canonical_name": "tentacles",
+      "display_name": "触手",
+      "action": "merge_canonical",
+      "previous_display_name": "触手",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        31775
+      ],
+      "rationale": "shokushu 是日语“触手”的罗马字写法，与当前标签语境中的 tentacles 指同一概念；不是另一个物种或行为等级。",
+      "evidence": [
+        "eh-female-tentacles"
+      ]
+    },
+    "tranformation": {
+      "canonical_name": "transformation",
+      "display_name": "变身",
+      "action": "merge_alias",
+      "previous_display_name": "变身",
+      "previous_source": "AI",
+      "tag_ids": [
+        132963
+      ],
+      "rationale": "tranformation 比 transformation 少一个 s，归并正确拼写。",
+      "evidence": [
+        "eh-female-transformation"
+      ]
+    },
+    "transformation": {
+      "canonical_name": "transformation",
+      "display_name": "变身",
+      "action": "merge_canonical",
+      "previous_display_name": "变身",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        2531
+      ],
+      "rationale": "tranformation 比 transformation 少一个 s，归并正确拼写。",
+      "evidence": [
+        "eh-female-transformation"
+      ]
+    },
+    "underwater": {
+      "canonical_name": "underwater",
+      "display_name": "水下场景",
+      "action": "distinguish_meaning",
+      "previous_display_name": "水下",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        3031
+      ],
+      "rationale": "underwater 表达水下场景；带 sex 的原值明确限定性行为发生于水下。没有证据可将场景直接等同于具体活动。",
+      "evidence": [
+        "eh-female-underwater-sex",
+        "fullDict-underwater"
+      ]
+    },
+    "underwater sex": {
+      "canonical_name": "underwater sex",
+      "display_name": "水下性行为",
+      "action": "distinguish_meaning",
+      "previous_display_name": "水下",
+      "previous_source": "EhTagTranslation",
+      "tag_ids": [
+        158852
+      ],
+      "rationale": "underwater 表达水下场景；带 sex 的原值明确限定性行为发生于水下。没有证据可将场景直接等同于具体活动。",
+      "evidence": [
+        "eh-female-underwater-sex",
+        "fullDict-underwater"
+      ]
+    },
+    "virginity": {
+      "canonical_name": "virginity",
+      "display_name": "男性失贞",
+      "action": "distinguish_meaning",
+      "previous_display_name": "破处",
+      "previous_source": "fullDict",
+      "tag_ids": [
+        2515
+      ],
+      "rationale": "按当前社区标签定义，defloration 用于女性初次失贞过程，virginity 在该标签语境用于男性；不是仅从 virginity 普通字面义推断。",
+      "evidence": [
+        "eh-female-defloration",
+        "eh-male-virginity"
+      ]
+    },
+    "watermaked": {
+      "canonical_name": "watermarked",
+      "display_name": "第三方水印",
+      "action": "merge_alias",
+      "previous_display_name": "带水印",
+      "previous_source": "AI",
+      "tag_ids": [
+        145056
+      ],
+      "rationale": "watermaked 为 watermarked 漏 r；两项共用明确区分扫描组水印的名称。",
+      "evidence": [
+        "eh-other-watermarked"
+      ]
+    },
+    "watermarked": {
+      "canonical_name": "watermarked",
+      "display_name": "第三方水印",
+      "action": "merge_canonical",
+      "previous_display_name": "水印",
+      "previous_source": "EhTagTranslation",
+      "tag_ids": [
+        30786
+      ],
+      "rationale": "watermaked 为 watermarked 漏 r；两项共用明确区分扫描组水印的名称。 社区定义明确要求区分：scanmark 是扫描、翻译、上色相关方添加；watermarked 是与制作流程无关第三方的宣传水印。",
+      "evidence": [
+        "eh-other-watermarked",
+        "eh-other-scanmark"
+      ]
+    }
+  },
+  "statistics": {
+    "reviewed_raw_names": 31,
+    "merge_groups": 7,
+    "aliases": 9,
+    "distinguished_pairs": 8,
+    "approved_raw_names_before": 1127,
+    "logical_content_names_after": 1118
+  }
+}

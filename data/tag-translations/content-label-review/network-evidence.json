@@ -1,0 +1,342 @@
+{
+  "purpose": "Read-only verification of source search syntax and retained spelling aliases; no titles or media retained.",
+  "checked_date_utc": "2026-11-13",
+  "sources": [
+    {
+      "url": "https://nhentai.net/info/",
+      "kind": "official search help",
+      "http_status": 200
+    },
+    {
+      "url": "https://nhentai.net/api/v2/openapi.json",
+      "kind": "official OpenAPI specification",
+      "http_status": 200
+    },
+    {
+      "url": "https://nhentai.net/api/v2/search",
+      "kind": "public anonymous GET, query/page parameters",
+      "rate_limit_documented": "10 requests/minute/IP"
+    },
+    {
+      "url": "https://nhentai.net/api/v2/tags/ids",
+      "kind": "public tag metadata GET, ids parameter"
+    }
+  ],
+  "documented_query_features": [
+    "keywords",
+    "quoted exact phrases",
+    "negative terms",
+    "tag namespace filters",
+    "numeric filters",
+    "date filters"
+  ],
+  "query_syntax_conclusion": "OR and grouping are not documented. Tested OR, parenthesized OR and pipe forms do not return a union; implementation must not emit them.",
+  "union_probes": [
+    {
+      "query": "tag:\"transformation\"",
+      "keys": [
+        "result",
+        "num_pages",
+        "per_page",
+        "total"
+      ],
+      "metadata": {
+        "num_pages": 202,
+        "per_page": 25,
+        "total": 5027
+      },
+      "list_lengths": {
+        "result": 25
+      }
+    },
+    {
+      "query": "tag:\"tranformation\"",
+      "keys": [
+        "result",
+        "num_pages",
+        "per_page",
+        "total"
+      ],
+      "metadata": {
+        "num_pages": 0,
+        "per_page": 25,
+        "total": 0
+      },
+      "list_lengths": {
+        "result": 0
+      }
+    },
+    {
+      "query": "tag:\"transformation\" OR tag:\"tranformation\"",
+      "keys": [
+        "result",
+        "num_pages",
+        "per_page",
+        "total"
+      ],
+      "metadata": {
+        "num_pages": 0,
+        "per_page": 25,
+        "total": 0
+      },
+      "list_lengths": {
+        "result": 0
+      }
+    },
+    {
+      "query": "(tag:\"transformation\" OR tag:\"tranformation\")",
+      "keys": [
+        "result",
+        "num_pages",
+        "per_page",
+        "total"
+      ],
+      "metadata": {
+        "num_pages": 0,
+        "per_page": 25,
+        "total": 0
+      },
+      "list_lengths": {
+        "result": 0
+      }
+    },
+    {
+      "query": "tag:\"transformation\" | tag:\"tranformation\"",
+      "keys": [
+        "result",
+        "num_pages",
+        "per_page",
+        "total"
+      ],
+      "metadata": {
+        "num_pages": 0,
+        "per_page": 25,
+        "total": 0
+      },
+      "list_lengths": {
+        "result": 0
+      }
+    },
+    {
+      "query": "tag:\"transformation\" tag:\"tranformation\"",
+      "keys": [
+        "result",
+        "num_pages",
+        "per_page",
+        "total"
+      ],
+      "metadata": {
+        "num_pages": 0,
+        "per_page": 25,
+        "total": 0
+      },
+      "list_lengths": {
+        "result": 0
+      }
+    }
+  ],
+  "alias_search_probes": [
+    {
+      "name": "sole femla",
+      "query": "tag:\"sole femla\"",
+      "total": 0,
+      "num_pages": 0,
+      "returned": 0,
+      "error": null,
+      "checked_utc": "2026-11-13T03:25:41.720906+00:00"
+    },
+    {
+      "name": "sole fmelae",
+      "query": "tag:\"sole fmelae\"",
+      "total": 0,
+      "num_pages": 0,
+      "returned": 0,
+      "error": null,
+      "checked_utc": "2026-11-13T03:25:42.141191+00:00"
+    },
+    {
+      "name": "masturbtion",
+      "query": "tag:\"masturbtion\"",
+      "total": 1,
+      "num_pages": 1,
+      "returned": 1,
+      "error": null,
+      "checked_utc": "2026-11-13T03:25:42.478145+00:00"
+    },
+    {
+      "name": "maturbation",
+      "query": "tag:\"maturbation\"",
+      "total": 0,
+      "num_pages": 0,
+      "returned": 0,
+      "error": null,
+      "checked_utc": "2026-11-13T03:25:42.818451+00:00"
+    },
+    {
+      "name": "soshuuhen",
+      "query": "tag:\"soshuuhen\"",
+      "total": 1,
+      "num_pages": 1,
+      "returned": 1,
+      "error": null,
+      "checked_utc": "2026-11-13T03:25:43.219364+00:00"
+    },
+    {
+      "name": "shokushu",
+      "query": "tag:\"shokushu\"",
+      "total": 1,
+      "num_pages": 1,
+      "returned": 1,
+      "error": null,
+      "checked_utc": "2026-11-13T03:25:43.572845+00:00"
+    },
+    {
+      "name": "watermaked",
+      "query": "tag:\"watermaked\"",
+      "total": 1,
+      "num_pages": 1,
+      "returned": 1,
+      "error": null,
+      "checked_utc": "2026-11-13T03:25:43.945119+00:00"
+    },
+    {
+      "name": "mult-work series",
+      "query": "tag:\"mult-work series\"",
+      "total": 0,
+      "num_pages": 0,
+      "returned": 0,
+      "error": null,
+      "checked_utc": "2026-11-13T03:25:44.199646+00:00"
+    }
+  ],
+  "live_alias_canonical_coverage": [
+    {
+      "alias": "masturbtion",
+      "canonical": "masturbation",
+      "canonical_tag_id": 9162,
+      "total": 1,
+      "returned": 1,
+      "matches": [
+        {
+          "id": 537849,
+          "tag_ids": [
+            6346,
+            8378,
+            20525,
+            21283,
+            24933,
+            26130,
+            27553,
+            33172,
+            35605,
+            142036,
+            142575,
+            150309,
+            154716,
+            154717,
+            154718
+          ],
+          "has_canonical": false
+        }
+      ],
+      "error": null,
+      "checked_utc": "2026-11-13T03:26:57.832256+00:00"
+    },
+    {
+      "alias": "soshuuhen",
+      "canonical": "soushuuhen",
+      "canonical_tag_id": 107503,
+      "total": 1,
+      "returned": 1,
+      "matches": [
+        {
+          "id": 437629,
+          "tag_ids": [
+            5936,
+            6346,
+            8516,
+            13720,
+            20525,
+            21572,
+            27553,
+            30176,
+            33172,
+            72336,
+            90671,
+            144688
+          ],
+          "has_canonical": false
+        }
+      ],
+      "error": null,
+      "checked_utc": "2026-11-13T03:26:58.098201+00:00"
+    },
+    {
+      "alias": "shokushu",
+      "canonical": "tentacles",
+      "canonical_tag_id": 31775,
+      "total": 1,
+      "returned": 1,
+      "matches": [
+        {
+          "id": 515446,
+          "tag_ids": [
+            6343,
+            14283,
+            15658,
+            17249,
+            24102,
+            29224,
+            29963,
+            31775,
+            33172,
+            35762,
+            90671,
+            143116,
+            148331,
+            148332,
+            153107
+          ],
+          "has_canonical": true
+        }
+      ],
+      "error": null,
+      "checked_utc": "2026-11-13T03:26:58.432351+00:00"
+    },
+    {
+      "alias": "watermaked",
+      "canonical": "watermarked",
+      "canonical_tag_id": 30786,
+      "total": 1,
+      "returned": 1,
+      "matches": [
+        {
+          "id": 441108,
+          "tag_ids": [
+            2937,
+            5085,
+            17249,
+            20035,
+            29963,
+            30786,
+            33172,
+            35763,
+            49801,
+            85295,
+            140165,
+            145056
+          ],
+          "has_canonical": true
+        }
+      ],
+      "error": null,
+      "checked_utc": "2026-11-13T03:26:58.655917+00:00"
+    }
+  ],
+  "limitations": [
+    "Counts and membership are a point-in-time snapshot and may change.",
+    "Only documented and explicitly recorded query spellings were tested; no claim about undiscovered syntax.",
+    "A zero-hit alias or an alias currently covered by a canonical tag is not a guarantee about future uploads.",
+    "Two live alias-only hits require an explicit old-spelling search entry; silently redirecting them to the canonical positive query would omit those hits."
+  ]
+}

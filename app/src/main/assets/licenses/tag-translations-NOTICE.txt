@@ -1,4 +1,6 @@
 Offline content-tag display labels, resolved in priority order:
+Explicit user-authorized semantic review overrides the following baseline for listed content labels.
+Reviewed corrections are recorded under AI, with previous values, sources and evidence retained.
 1. fullDict: user-provided dictionary snapshot. No licensing information was supplied or inferred.
 2. EhTagTranslation/Database community labels.
 Copyright: EhTagTranslation Database contributors.

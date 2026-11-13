@@ -25,6 +25,7 @@ import com.maxwai.nclientv3.api.components.Tag;
 import com.maxwai.nclientv3.api.components.TagList;
 import com.maxwai.nclientv3.api.enums.SpecialTagIds;
 import com.maxwai.nclientv3.api.enums.TagType;
+import com.maxwai.nclientv3.api.enums.TagStatus;
 import com.maxwai.nclientv3.api.local.LocalGallery;
 import com.maxwai.nclientv3.async.database.Queries;
 import com.maxwai.nclientv3.components.widgets.CustomGridLayoutManager;
@@ -182,7 +183,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
         TagList tagList = this.gallery.getGalleryData().getTags();
         for (TagType type : TagType.values) {
             idStringTagName = TAG_NAMES[type.getId()];
-            List<Tag> visibleTags = tagList.retrieveForType(type);
+            List<Tag> visibleTags = Queries.TagTable.mergeContentTags(tagList.retrieveForType(type));
             lay = (ViewGroup) vg.getChildAt(type.getId());
             cg = lay.findViewById(R.id.chip_group);
             // Rebinding must not retain chips from a previous gallery.
@@ -194,7 +195,8 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
                 c.setText(tag.getDisplayName(context));
                 c.setOnClickListener(v -> {
                     Intent intent = new Intent(context, MainActivity.class);
-                    intent.putExtra(context.getPackageName() + ".TAG", tag);
+                    intent.putExtra(context.getPackageName() + ".TAG", new Tag(tag.getName(),
+                        tag.getCount(), tag.getId(), tag.getType(), TagStatus.ACCEPTED));
                     intent.putExtra(context.getPackageName() + ".ISBYTAG", true);
                     context.startActivity(intent);
                 });
