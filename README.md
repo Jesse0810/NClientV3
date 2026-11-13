@@ -1,14 +1,14 @@
 # NClientV3
 
-[![Github](https://img.shields.io/github/v/release/maxwai/NClientV3.svg?logo=github)](https://github.com/maxwai/NClientV3/releases/latest)
+[![Github](https://img.shields.io/github/v/release/Jesse0810/NClientV3.svg?logo=github)](https://github.com/Jesse0810/NClientV3/releases/latest)
 
 An unofficial NHentai Android Client. This is a fork of the original Project by [@Dar9586](https://github.com/Dar9586) found [here](https://github.com/Dar9586/NClientV2)
 
 This app works for devices from API 26 (Android 8) and above.
 
-For Devices Running Android 8 (SDK 26 and 27) there is a separate APK with `pre28` in the name. Support for this Version of the app will be reduced.
+For devices running Android 8 (SDK 26 and 27), download the APK with `android8` in the name (`pre28` in older releases). Android 9 and newer devices use the `android9plus` APK.
 
-Releases: <https://github.com/maxwai/NClientV3/releases>
+Releases: <https://github.com/Jesse0810/NClientV3/releases>
 
 ## Migrate from original NClientV2 to NClientV3
 

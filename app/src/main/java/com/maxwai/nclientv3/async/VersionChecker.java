@@ -32,8 +32,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class VersionChecker {
-    private static final String RELEASE_API_URL = "https://api.github.com/repos/maxwai/NClientV3/releases";
-    private static final String LATEST_RELEASE_URL = "https://github.com/maxwai/NClientV3/releases/latest";
+    private static final String RELEASE_API_URL = "https://api.github.com/repos/Jesse0810/NClientV3/releases";
+    private static final String LATEST_RELEASE_URL = "https://github.com/Jesse0810/NClientV3/releases/latest";
+    private static final String RELEASE_DOWNLOAD_PREFIX = "https://github.com/Jesse0810/NClientV3/releases/download/";
     private static String latest = null;
     private final AppCompatActivity context;
     private String downloadUrl;
@@ -127,11 +128,9 @@ public class VersionChecker {
                             jr.skipValue();
                             continue;
                         }
-                        release.downloadUrl = getDownloadUrl(jr);
-                        //noinspection ConstantValue
-                        if ((BuildConfig.FLAVOR.equals("pre28") && !release.downloadUrl.contains("pre28")) ||
-                            (BuildConfig.FLAVOR.equals("post28") && release.downloadUrl.contains("pre28")))
-                            release.downloadUrl = null;
+                        String candidate = getDownloadUrl(jr);
+                        if (isCompatibleApk(candidate, BuildConfig.FLAVOR))
+                            release.downloadUrl = candidate;
                     }
                     jr.endArray();
                     break;
@@ -142,7 +141,27 @@ public class VersionChecker {
         }
         jr.endObject();
 
-        return invalid ? null : release;
+        return invalid || release.versionCode == null || release.downloadUrl == null
+            || !release.versionCode.matches("v?\\d+\\.\\d+\\.\\d+") ? null : release;
+    }
+
+    /** Only install a stable APK for this flavor from this fork's release assets. */
+    private static boolean isCompatibleApk(String url, String flavor) {
+        if (url == null || !url.startsWith(RELEASE_DOWNLOAD_PREFIX)) return false;
+        String assetPath = url.substring(RELEASE_DOWNLOAD_PREFIX.length());
+        int separator = assetPath.indexOf('/');
+        if (separator < 0) return false;
+        String tag = assetPath.substring(0, separator);
+        if (!tag.matches("v?\\d+\\.\\d+\\.\\d+")) return false;
+        String version = tag.startsWith("v") ? tag.substring(1) : tag;
+        String filename = assetPath.substring(separator + 1);
+        Matcher match = Pattern.compile("NClientV3_v?" + Pattern.quote(version)
+            + "(?:-release)?(?:_(android9plus|android8|pre28))?\\.apk").matcher(filename);
+        if (!match.matches()) return false;
+        String variant = match.group(1);
+        if ("pre28".equals(flavor))
+            return "android8".equals(variant) || "pre28".equals(variant);
+        return "post28".equals(flavor) && (variant == null || "android9plus".equals(variant));
     }
 
     private static String getDownloadUrl(JsonReader jr) throws IOException {

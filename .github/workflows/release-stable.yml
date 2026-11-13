@@ -1,0 +1,95 @@
+name: Build stable release APKs
+
+on:
+  push:
+    tags:
+      - 'v[0-9]*.[0-9]*.[0-9]*'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-stable-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: ${{ !contains(github.ref_name, '-') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tagged sources
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Validate stable tag and release notes
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$RELEASE_TAG" =~ ^v([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
+            echo 'Expected a stable tag such as v4.2.14' >&2
+            exit 1
+          fi
+          echo "RELEASE_VERSION=${BASH_REMATCH[1]}" >> "$GITHUB_ENV"
+          test -s "docs/releases/$RELEASE_TAG.md"
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v6.1.0
+        with:
+          java-version: '17'
+          distribution: temurin
+          cache: gradle
+
+      - name: Prepare unsigned Release configuration
+        run: |
+          set -euo pipefail
+          (umask 077; set -o noclobber; cat > keystore.properties <<'PROPERTIES'
+          storePassword=dummy
+          keyPassword=dummy
+          keyAlias=dummy
+          storeFile=dummy.jks
+          PROPERTIES
+          )
+
+      - name: Check bookmark migration and saved queries
+        run: python3 scripts/check_bookmarks.py
+
+      - name: Check entity display names and complete inventory
+        run: python3 scripts/check_entity_translations.py
+
+      - name: Check duplicate labels and disambiguation index
+        run: python3 scripts/check_translation_collisions.py --check
+
+      - name: Check reviewed content labels and spelling groups
+        run: python3 scripts/check_content_label_review.py
+
+      - name: Check alias selection and exclusion regressions
+        run: python3 scripts/check_content_aliases.py
+
+      - name: Check stable update selection
+        run: python3 scripts/check_release_updates.py
+
+      - name: Build Android 9+ and Android 8 unsigned Release APKs
+        run: bash ./gradlew --no-daemon --max-workers=2 -PunsignedRelease=true assemblePost28Release assemblePre28Release
+
+      - name: Verify and stage unsigned APKs
+        run: python3 scripts/verify_release_apks.py --version "$RELEASE_VERSION" --stage-dir release-assets
+
+      - name: Retain verified unsigned APKs for private signing
+        uses: actions/upload-artifact@v7
+        with:
+          name: stable-unsigned-apks
+          path: release-assets/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Retain R8 mapping files
+        uses: actions/upload-artifact@v7
+        with:
+          name: stable-r8-mappings
+          path: |
+            app/build/outputs/mapping/post28Release/mapping.txt
+            app/build/outputs/mapping/pre28Release/mapping.txt
+          if-no-files-found: error
+          retention-days: 90

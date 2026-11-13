@@ -60,7 +60,11 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
             versionNameSuffix = "-release"
             resValue("string", "app_name", "NClientV3")
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = if (providers.gradleProperty("unsignedRelease").orNull == "true") {
+                null
+            } else {
+                signingConfigs.getByName("release")
+            }
         }
         getByName("debug") {
             applicationIdSuffix = ".debug"
