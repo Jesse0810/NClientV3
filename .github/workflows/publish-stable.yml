@@ -104,15 +104,15 @@ jobs:
           set -euo pipefail
           release_metadata="$RUNNER_TEMP/stable-release.json"
           release_error="$RUNNER_TEMP/stable-release-error.txt"
-          if ! gh api "repos/$GH_REPO/releases/tags/$RELEASE_TAG" > "$release_metadata" 2> "$release_error"; then
-            if ! rg -q 'HTTP 404' "$release_error"; then
+          if ! gh release view "$RELEASE_TAG" --json tagName,isDraft,assets > "$release_metadata" 2> "$release_error"; then
+            if ! grep -Eq 'HTTP 404|release not found' "$release_error"; then
               cat "$release_error" >&2
               exit 1
             fi
             gh release create "$RELEASE_TAG" --verify-tag --draft --prerelease=false \
               --title "$RELEASE_TAG · 简体中文正式版" \
               --notes-file "source/docs/releases/$RELEASE_TAG.md"
-            gh api "repos/$GH_REPO/releases/tags/$RELEASE_TAG" > "$release_metadata"
+            gh release view "$RELEASE_TAG" --json tagName,isDraft,assets > "$release_metadata"
           fi
           RELEASE_METADATA="$release_metadata" python3 - <<'PY'
           import json
@@ -120,7 +120,7 @@ jobs:
           from pathlib import Path
 
           release = json.loads(Path(os.environ['RELEASE_METADATA']).read_text())
-          if release.get('tag_name') != os.environ['RELEASE_TAG'] or release.get('draft') is not True:
+          if release.get('tagName') != os.environ['RELEASE_TAG'] or release.get('isDraft') is not True:
               raise SystemExit('Refusing to modify a published release or a different tag')
           if release.get('assets') != []:
               raise SystemExit('Refusing to replace existing release assets')
@@ -129,7 +129,7 @@ jobs:
             "transfer/release-uploads/NClientV3_${RELEASE_TAG}_android9plus.apk" \
             "transfer/release-uploads/NClientV3_${RELEASE_TAG}_android8.apk" \
             transfer/release-uploads/SHA256SUMS.txt
-          gh api "repos/$GH_REPO/releases/tags/$RELEASE_TAG" > "$release_metadata"
+          gh release view "$RELEASE_TAG" --json tagName,isDraft,assets > "$release_metadata"
           RELEASE_METADATA="$release_metadata" python3 - <<'PY'
           import json
           import os
@@ -139,7 +139,7 @@ jobs:
           release = json.loads(Path(os.environ['RELEASE_METADATA']).read_text())
           expected = {f'NClientV3_{tag}_android9plus.apk', f'NClientV3_{tag}_android8.apk', 'SHA256SUMS.txt'}
           assets = release.get('assets', [])
-          if release.get('draft') is not True or len(assets) != 3 or {asset['name'] for asset in assets} != expected:
+          if release.get('isDraft') is not True or len(assets) != 3 or {asset['name'] for asset in assets} != expected:
               raise SystemExit('Uploaded draft assets differ from the expected final file set')
           if any(asset.get('state') != 'uploaded' or not asset.get('size') for asset in assets):
               raise SystemExit('An uploaded asset is incomplete')
