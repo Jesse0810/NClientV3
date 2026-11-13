@@ -52,4 +52,14 @@ python3 scripts/verify_release_apks.py --version X.Y.Z --signed --apk-dir /priva
 
 应用内更新只从本仓库正式版本中选择匹配系统的已签名 APK，跳过 Debug、预发布及校验文件。
 
-当前发布流程由私有签名环境完成最终签名与上传。若未来改为 CI 自动签名，应由仓库管理员将私钥和密码配置为受保护的 GitHub Actions Secrets，保留签名证书核验；不可把密钥写入工作流或仓库。仅有代码／发布权限的集成可能无法访问或配置 Secrets，此时继续采用私有签名流程。
+最终签名始终在私有签名环境完成。如果当前集成可以创建 Release、但无法向 `uploads.github.com` 上传附件，可以通过 `Publish signed stable APKs` 工作流完成上传。它使用 Actions 内置发布凭据，流程如下：
+
+1. 从包含发布工作流的最新主分支创建临时分支 `release-assets/vX.Y.Z`。
+2. 该分支只新增 `release-uploads/` 下四个公开发布文件：两个最终已签名 APK、对应 `SHA256SUMS.txt` 及 `manifest.json`。不传输私钥、密码、私有备份或未签名工件。
+3. `manifest.json` 仅包含 `tag` 和 `source_commit` 两个字段，例如 `{"tag":"v4.2.14","source_commit":"bf7bfa515fa3d786791605cae819c8164116503c"}`。提交号必须是正式标签所指向的完整提交。
+4. 推送临时分支后，工作流检出正式标签，核对清单、提交、文件集合、签名和 APK 内容。它只接受不存在或尚无附件的 Release 草稿，拒绝覆盖已有附件或公开版本。
+5. 工作流上传两个 APK 和 SHA-256 清单，重新下载并验证后，公开为非预发布版本并设为 Latest。发布成功后删除临时传输分支。
+
+如果上传中断而草稿已包含部分附件，工作流会停止，保留草稿供检查，不会自动覆盖或公开不完整的版本。
+
+若未来改为 CI 自动签名，应由仓库管理员将私钥和密码配置为受保护的 GitHub Actions Secrets，保留签名证书核验；不可把密钥写入工作流或仓库。仅有代码／发布权限的集成可能无法访问或配置 Secrets，此时继续采用私有签名流程。
