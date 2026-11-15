@@ -377,6 +377,7 @@ artist,adjingaa zo 95,adjingaa zo 95,preserved,none,unknown,no_reliable_source_m
 artist,adol,adol,preserved,none,unknown,no_reliable_source_match,65339,[]
 artist,adon no aniki,アドンの兄貴,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,12580,"[{""namespace"":""artist"",""raw"":""adon no aniki"",""source"":""EhTagTranslation""},{""danbooru_name"":""adon_no_aniki"",""danbooru_record"":""https://danbooru.donmai.us/artists/96623"",""exact_community_name_agreement"":[""アドンの兄貴""],""matching_official_profile_urls"":[],""native_alias"":""アドンの兄貴""}]"
 artist,adoohay,adoohay,preserved,none,unknown,no_reliable_source_match,139703,[]
+artist,adore-nice,adore-nice,preserved,none,unknown,no_reliable_source_match,170402,[]
 artist,aduki amaguri,aduki amaguri,preserved,none,unknown,no_reliable_source_match,153978,[]
 artist,adult lunch,adult lunch,preserved,none,unknown,no_reliable_source_match,71317,[]
 artist,aduma kei,あづま京,mapped,EhTagTranslation,native_name,community_japanese_script_name,35641,"[{""namespace"":""artist"",""raw"":""aduma kei"",""source"":""EhTagTranslation""},{""label"":""あづま京"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
@@ -577,6 +578,7 @@ artist,aito matoko,あいとまとこ,mapped,EhTagTranslation,native_name,commun
 artist,aito matoko | maisa,aito matoko | maisa,preserved,none,unknown,no_reliable_source_match,94329,[]
 artist,aitoka nantoka,アイトカナントカ,mapped,EhTagTranslation,native_name,community_japanese_script_name,155692,"[{""namespace"":""artist"",""raw"":""aitoka nantoka"",""source"":""EhTagTranslation""},{""label"":""アイトカナントカ"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,aitsu,aitsu,preserved,none,unknown,no_reliable_source_match,23182,[]
+artist,aitsugu,aitsugu,preserved,none,unknown,no_reliable_source_match,170517,[]
 artist,aiu,aiu,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,9297,[]
 artist,aiu eo,aiu eo,preserved,none,unknown,no_reliable_source_match,119347,[]
 artist,aiu iroha,aiu iroha,preserved,none,unknown,no_reliable_source_match,150069,[]
@@ -1480,6 +1482,7 @@ artist,anan yutaka,阿南ゆたか,mapped,EhTagTranslation,native_name,community
 artist,ananakawaii,ananakawaii,preserved,none,unknown,no_reliable_source_match,156546,[]
 artist,anapom,あなぽん,mapped,Bangumi Archive,native_name,bangumi_explicit_native_name,97908,"[{""namespace"":""artist"",""raw"":""anapom"",""source"":""EhTagTranslation""},{""archive_date"":""2026-11-10"",""policy"":""Only original name or explicit Japanese-name field; never simplified-Chinese-name field. Exact explicit roman field or corroborated official profile URL; namespace/type isolated."",""records"":[{""career"":[""illustrator"",""mangaka""],""display"":""あなぽん"",""id"":9245,""identity_method"":""explicit_romaji_field"",""native_field"":""name"",""primary_name"":""あなぽん"",""romaji_fields"":[[""罗马字"",""ANAPOM""]],""source_url"":""https://bgm.tv/person/9245"",""type"":1}]}]"
 artist,anapon,あなぽん,mapped,EhTagTranslation,native_name,community_japanese_script_name,15440,"[{""namespace"":""artist"",""raw"":""anapon"",""source"":""EhTagTranslation""},{""label"":""あなぽん"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
+artist,anar,anar,preserved,none,unknown,no_reliable_source_match,170233,[]
 artist,anashiri,anashiri,preserved,none,unknown,no_reliable_source_match,17504,[]
 artist,anato natto,anato natto,preserved,none,unknown,no_reliable_source_match,163647,[]
 artist,anatto,anatto,preserved,none,unknown,no_reliable_source_match,166908,[]
@@ -1710,6 +1713,7 @@ artist,aoi tetsujin,aoi tetsujin,preserved,none,unknown,no_reliable_source_match
 artist,aoi tiduru,葵井ちづる,mapped,Bangumi Archive,native_name,bangumi_explicit_native_name,14316,"[{""namespace"":""artist"",""raw"":""aoi tiduru"",""source"":""EhTagTranslation""},{""archive_date"":""2026-11-10"",""policy"":""Only original name or explicit Japanese-name field; never simplified-Chinese-name field. Exact explicit roman field or corroborated official profile URL; namespace/type isolated."",""records"":[{""career"":[""mangaka""],""display"":""葵井ちづる"",""id"":43832,""identity_method"":""explicit_romaji_field"",""native_field"":""日文名"",""primary_name"":""葵井ちづる"",""romaji_fields"":[[""英文名"",""Aoi Tiduru""]],""source_url"":""https://bgm.tv/person/43832"",""type"":1}]}]"
 artist,aoi tomomi,aoi tomomi,preserved,none,unknown,no_reliable_source_match,23759,[]
 artist,aoi tyaimu,aoi tyaimu,preserved,none,unknown,no_reliable_source_match,119393,[]
+artist,aoi yoru,aoi yoru,preserved,none,unknown,no_reliable_source_match,170174,[]
 artist,aoi yumi,aoi yumi,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,15386,[]
 artist,aoi yun,蒼井ゆん,mapped,Bangumi Archive,native_name,bangumi_explicit_native_name,69693,"[{""namespace"":""artist"",""raw"":""aoi yun"",""source"":""EhTagTranslation""},{""archive_date"":""2026-11-10"",""policy"":""Only original name or explicit Japanese-name field; never simplified-Chinese-name field. Exact explicit roman field or corroborated official profile URL; namespace/type isolated."",""records"":[{""career"":[""illustrator""],""display"":""蒼井ゆん"",""id"":48277,""identity_method"":""official_profile_url_intersection"",""native_field"":""name"",""primary_name"":""蒼井ゆん"",""romaji_fields"":[],""source_url"":""https://bgm.tv/person/48277"",""type"":1}]}]"
 artist,aoigai,aoigai,preserved,none,unknown,no_reliable_source_match,11077,[]
@@ -2892,6 +2896,7 @@ artist,batsuma,batsuma,preserved,none,unknown,no_reliable_source_match,125956,[]
 artist,batta,batta,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,16659,[]
 artist,batten kyuki,batten kyuki,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,153613,[]
 artist,bau bau,bau bau,preserved,none,unknown,no_reliable_source_match,4546,[]
+artist,bavarois-bass,bavarois-bass,preserved,none,unknown,no_reliable_source_match,170192,[]
 artist,bay,bay,preserved,none,unknown,no_reliable_source_match,76729,[]
 artist,bayachao,bayachao,preserved,none,unknown,no_reliable_source_match,161357,[]
 artist,bayeuxman,bayeuxman,preserved,none,unknown,no_reliable_source_match,144009,[]
@@ -3184,6 +3189,7 @@ artist,bombyama,bombyama,preserved,none,unknown,no_reliable_source_match,120317,
 artist,bomi,bomi,preserved,none,unknown,no_reliable_source_match,30704,[]
 artist,bomu,bomu,preserved,none,unknown,no_reliable_source_match,119009,[]
 artist,bomu bomu purin,bomu bomu purin,preserved,none,unknown,no_reliable_source_match,29894,[]
+artist,bomutaro,bomutaro,preserved,none,unknown,no_reliable_source_match,170285,[]
 artist,bon,bon,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,26218,[]
 artist,bon curry,bon curry,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,67725,[]
 artist,bon ho,bon ho,preserved,none,unknown,no_reliable_source_match,129055,[]
@@ -4238,6 +4244,7 @@ artist,crouton,crouton,preserved,none,unknown,no_reliable_source_match,118881,[]
 artist,crow,crow,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,36171,[]
 artist,crowe,クロエ,mapped,EhTagTranslation,native_name,community_japanese_script_name,74872,"[{""namespace"":""artist"",""raw"":""crowe"",""source"":""EhTagTranslation""},{""label"":""クロエ"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,crowly,くろうり,mapped,EhTagTranslation,native_name,community_japanese_script_name,23893,"[{""namespace"":""artist"",""raw"":""crowly"",""source"":""EhTagTranslation""},{""label"":""くろうり"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
+artist,crown,crown,preserved,none,unknown,no_reliable_source_match,169878,[]
 artist,crozu,crozu,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,55226,[]
 artist,crpn,crpn,preserved,none,unknown,no_reliable_source_match,157608,[]
 artist,cru,cru,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,12464,[]
@@ -5159,6 +5166,7 @@ artist,eimu yuu,eimu yuu,preserved,EhTagTranslation,unknown,han_name_without_exp
 artist,eimu yuu | morino usagi,eimu yuu | morino usagi,preserved,none,unknown,no_reliable_source_match,73933,[]
 artist,eine,eine,preserved,none,unknown,no_reliable_source_match,118995,[]
 artist,eingyeo,eingyeo,preserved,none,unknown,no_reliable_source_match,100123,[]
+artist,eipelppa,eipelppa,preserved,none,unknown,no_reliable_source_match,170031,[]
 artist,eiraku tee,eiraku tee,preserved,none,unknown,no_reliable_source_match,161373,[]
 artist,eirhjien,eirhjien,preserved,none,unknown,no_reliable_source_match,123533,[]
 artist,eiri,eiri,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,28714,[]
@@ -6708,6 +6716,7 @@ artist,gondawara,gondawara,preserved,none,unknown,no_reliable_source_match,14749
 artist,gonderoga,gonderoga,preserved,none,unknown,no_reliable_source_match,161618,[]
 artist,gondom,gondom,preserved,none,unknown,no_reliable_source_match,143794,[]
 artist,gongtak,gongtak,preserved,none,unknown,no_reliable_source_match,168318,[]
+artist,gonin bijin,gonin bijin,preserved,none,unknown,no_reliable_source_match,170205,[]
 artist,gonno usa,gonno usa,preserved,none,unknown,no_reliable_source_match,19177,[]
 artist,gonster,gonster,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,120199,[]
 artist,gonta,gonta,preserved,EhTagTranslation,unknown,multiple_aliases_or_ambiguous_name,31763,[]
@@ -7530,6 +7539,7 @@ artist,harigane shinshi,harigane shinshi,preserved,EhTagTranslation,unknown,han_
 artist,hariken hanna,はりけんはんな,mapped,EhTagTranslation,native_name,community_japanese_script_name,20692,"[{""namespace"":""artist"",""raw"":""hariken hanna"",""source"":""EhTagTranslation""},{""label"":""はりけんはんな"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,hariken ryuu,hariken ryuu,preserved,none,unknown,no_reliable_source_match,99584,[]
 artist,harikko,harikko,preserved,none,unknown,no_reliable_source_match,148115,[]
+artist,hariko,hariko,preserved,none,unknown,no_reliable_source_match,170380,[]
 artist,harima tatsumi,harima tatsumi,preserved,none,unknown,no_reliable_source_match,153653,[]
 artist,harimu ohagi,harimu ohagi,preserved,none,unknown,no_reliable_source_match,126876,[]
 artist,harimura jouji,harimura jouji,preserved,none,unknown,no_reliable_source_match,116533,[]
@@ -8070,6 +8080,7 @@ artist,hiame sou,hiame sou,preserved,none,unknown,no_reliable_source_match,15873
 artist,hiatari shin,日辺しん,mapped,EhTagTranslation,native_name,community_japanese_script_name,72651,"[{""namespace"":""artist"",""raw"":""hiatari shin"",""source"":""EhTagTranslation""},{""label"":""日辺しん"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,hibacha,ひばちゃ,mapped,EhTagTranslation,native_name,community_japanese_script_name,161277,"[{""namespace"":""artist"",""raw"":""hibacha"",""source"":""EhTagTranslation""},{""label"":""ひばちゃ"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,hibakichi,ひばきち,mapped,EhTagTranslation,native_name,community_japanese_script_name,23376,"[{""namespace"":""artist"",""raw"":""hibakichi"",""source"":""EhTagTranslation""},{""label"":""ひばきち"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
+artist,hibari hina,hibari hina,preserved,none,unknown,no_reliable_source_match,170207,[]
 artist,hibari rei,hibari rei,preserved,none,unknown,no_reliable_source_match,29624,[]
 artist,hibi,hibi,preserved,none,unknown,no_reliable_source_match,144251,[]
 artist,hibietto,hibietto,preserved,none,unknown,no_reliable_source_match,159386,[]
@@ -8169,6 +8180,7 @@ artist,hige masamune,ひげ政宗,mapped,Danbooru+EhTagTranslation,native_name,c
 artist,higemorigen,ヒゲモリゲン,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,30765,"[{""namespace"":""artist"",""raw"":""higemorigen"",""source"":""EhTagTranslation""},{""danbooru_name"":""higemorigen"",""danbooru_record"":""https://danbooru.donmai.us/artists/220108"",""exact_community_name_agreement"":[""ヒゲモリゲン""],""matching_official_profile_urls"":[],""native_alias"":""ヒゲモリゲン""}]"
 artist,higenamuchi,ひげなむち,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,6648,"[{""namespace"":""artist"",""raw"":""higenamuchi"",""source"":""EhTagTranslation""},{""danbooru_name"":""higenamuchi"",""danbooru_record"":""https://danbooru.donmai.us/artists/53015"",""exact_community_name_agreement"":[""ひげなむち""],""matching_official_profile_urls"":[],""native_alias"":""ひげなむち""}]"
 artist,higeta,ひげた,mapped,EhTagTranslation,native_name,community_japanese_script_name,96386,"[{""namespace"":""artist"",""raw"":""higeta"",""source"":""EhTagTranslation""},{""label"":""ひげた"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
+artist,high cheese,high cheese,preserved,none,unknown,no_reliable_source_match,170040,[]
 artist,high re,ハイ レ,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,159046,"[{""namespace"":""artist"",""raw"":""high re"",""source"":""EhTagTranslation""},{""danbooru_name"":""high_re"",""danbooru_record"":""https://danbooru.donmai.us/artists/326605"",""exact_community_name_agreement"":[],""matching_official_profile_urls"":[""high-re.fanbox.cc""],""native_alias"":""ハイ レ""}]"
 artist,high river,high river,preserved,none,unknown,no_reliable_source_match,16523,[]
 artist,high-ox,high-ox,preserved,none,unknown,no_reliable_source_match,60960,[]
@@ -8246,6 +8258,7 @@ artist,hikami izuto,ひかみいずと,mapped,Danbooru+EhTagTranslation,native_n
 artist,hikanyan,ひかにゃん,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,99578,"[{""namespace"":""artist"",""raw"":""hikanyan"",""source"":""EhTagTranslation""},{""danbooru_name"":""hikanyan"",""danbooru_record"":""https://danbooru.donmai.us/artists/37716"",""exact_community_name_agreement"":[""ひかにゃん""],""matching_official_profile_urls"":[],""native_alias"":""ひかにゃん""}]"
 artist,hikari,ひかり,mapped,EhTagTranslation,native_name,community_japanese_script_name,26779,"[{""namespace"":""artist"",""raw"":""hikari"",""source"":""EhTagTranslation""},{""label"":""ひかり"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,hikarino daichi,hikarino daichi,preserved,none,unknown,no_reliable_source_match,18373,[]
+artist,hikariyo,hikariyo,preserved,none,unknown,no_reliable_source_match,170449,[]
 artist,hikaru,hikaru,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,124621,[]
 artist,hikaru sayoko,hikaru sayoko,preserved,none,unknown,no_reliable_source_match,53795,[]
 artist,hikawa hekiru,氷川へきる,mapped,Bangumi Archive,native_name,bangumi_explicit_native_name,62795,"[{""namespace"":""artist"",""raw"":""hikawa hekiru"",""source"":""EhTagTranslation""},{""archive_date"":""2026-11-10"",""policy"":""Only original name or explicit Japanese-name field; never simplified-Chinese-name field. Exact explicit roman field or corroborated official profile URL; namespace/type isolated."",""records"":[{""career"":[""mangaka""],""display"":""氷川へきる"",""id"":2859,""identity_method"":""explicit_romaji_field"",""native_field"":""name"",""primary_name"":""氷川へきる"",""romaji_fields"":[[""罗马字"",""Hikawa Hekiru""]],""source_url"":""https://bgm.tv/person/2859"",""type"":1}]}]"
@@ -8623,6 +8636,7 @@ artist,hisatsuki ao,hisatsuki ao,preserved,none,unknown,no_reliable_source_match
 artist,hisauchi michio,hisauchi michio,preserved,none,unknown,no_reliable_source_match,76572,[]
 artist,hisaya,hisaya,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,372,[]
 artist,hisayakiq,ひさやききゅう,mapped,EhTagTranslation,native_name,community_japanese_script_name,70559,"[{""namespace"":""artist"",""raw"":""hisayakiq"",""source"":""EhTagTranslation""},{""label"":""ひさやききゅう"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
+artist,hisayoshi,hisayoshi,preserved,none,unknown,no_reliable_source_match,170286,[]
 artist,hishi,hishi,preserved,none,unknown,no_reliable_source_match,60259,[]
 artist,hishi . kyuuhachi,hishi . kyuuhachi,preserved,none,unknown,no_reliable_source_match,31584,[]
 artist,hishigata tomaru,ひし形とまる,mapped,EhTagTranslation,native_name,community_japanese_script_name,50559,"[{""namespace"":""artist"",""raw"":""hishigata tomaru"",""source"":""EhTagTranslation""},{""label"":""ひし形とまる"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
@@ -8748,6 +8762,7 @@ artist,hizaki ryuuta,ひざきりゅうた,mapped,Danbooru+EhTagTranslation,nati
 artist,hizuki,hizuki,preserved,none,unknown,no_reliable_source_match,134963,[]
 artist,hizuki akira,hizuki akira,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,75791,[]
 artist,hizuki haruka,hizuki haruka,preserved,none,unknown,no_reliable_source_match,127648,[]
+artist,hizuki higure,hizuki higure,preserved,none,unknown,no_reliable_source_match,170302,[]
 artist,hizuki mai,hizuki mai,preserved,none,unknown,no_reliable_source_match,36548,[]
 artist,hizuki nichika,hizuki nichika,preserved,none,unknown,no_reliable_source_match,148552,[]
 artist,hizuki ryou,hizuki ryou,preserved,none,unknown,no_reliable_source_match,57293,[]
@@ -9152,6 +9167,7 @@ artist,huxiao,huxiao,preserved,none,unknown,no_reliable_source_match,144042,[]
 artist,huyugatuo,huyugatuo,preserved,none,unknown,no_reliable_source_match,159075,[]
 artist,huyuki,huyuki,preserved,none,unknown,no_reliable_source_match,159471,[]
 artist,huyukiti,huyukiti,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,54486,[]
+artist,huyukono,huyukono,preserved,none,unknown,no_reliable_source_match,170448,[]
 artist,huyukusa momo,huyukusa momo,preserved,none,unknown,no_reliable_source_match,136757,[]
 artist,huyumitsu,ふゆみつ,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,165452,"[{""namespace"":""artist"",""raw"":""huyumitsu"",""source"":""EhTagTranslation""},{""danbooru_name"":""huyumitsu"",""danbooru_record"":""https://danbooru.donmai.us/artists/87568"",""exact_community_name_agreement"":[""ふゆみつ""],""matching_official_profile_urls"":[""x:huyumitsu""],""native_alias"":""ふゆみつ""}]"
 artist,huzinami kaoru,huzinami kaoru,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,20106,[]
@@ -10515,6 +10531,7 @@ artist,jknor,jknor,preserved,none,unknown,no_reliable_source_match,168231,[]
 artist,jloid,jloid,preserved,none,unknown,no_reliable_source_match,160408,[]
 artist,jm,jm,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,88559,[]
 artist,jmao,jmao,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,159987,[]
+artist,jmg,jmg,preserved,none,unknown,no_reliable_source_match,170383,[]
 artist,jms,jms,preserved,none,unknown,no_reliable_source_match,144953,[]
 artist,jndfh,jndfh,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,160731,[]
 artist,jnnkleche,じんにくれーちぇ,mapped,EhTagTranslation,native_name,community_japanese_script_name,128585,"[{""namespace"":""artist"",""raw"":""jnnkleche"",""source"":""EhTagTranslation""},{""label"":""じんにくれーちぇ"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
@@ -10533,6 +10550,7 @@ artist,joe hasegawa,ジョー長谷川,mapped,EhTagTranslation,native_name,commu
 artist,joe piscopo,joe piscopo,preserved,none,unknown,no_reliable_source_match,153150,[]
 artist,joedongsook,joedongsook,preserved,none,unknown,no_reliable_source_match,146216,[]
 artist,joege ichiretu,joege ichiretu,preserved,none,unknown,no_reliable_source_match,1538,[]
+artist,joero,joero,preserved,none,unknown,no_reliable_source_match,170447,[]
 artist,joh,joh,preserved,none,unknown,no_reliable_source_match,150689,[]
 artist,johan,johan,preserved,none,unknown,no_reliable_source_match,165451,[]
 artist,john,じょん,mapped,EhTagTranslation,native_name,community_japanese_script_name,5917,"[{""namespace"":""artist"",""raw"":""john"",""source"":""EhTagTranslation""},{""label"":""じょん"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
@@ -11021,6 +11039,7 @@ artist,kakabien,かかびえん,mapped,EhTagTranslation,native_name,community_ja
 artist,kakabien | koizumike,kakabien | koizumike,preserved,none,unknown,no_reliable_source_match,161129,[]
 artist,kakakaka,かカカカ,mapped,EhTagTranslation,native_name,community_japanese_script_name,115855,"[{""namespace"":""artist"",""raw"":""kakakaka"",""source"":""EhTagTranslation""},{""label"":""かカカカ"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,kakao,kakao,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,12482,[]
+artist,kakapo,kakapo,preserved,none,unknown,no_reliable_source_match,170204,[]
 artist,kakashi asahiro,かかし朝浩,mapped,EhTagTranslation,native_name,community_japanese_script_name,20991,"[{""namespace"":""artist"",""raw"":""kakashi asahiro"",""source"":""EhTagTranslation""},{""label"":""かかし朝浩"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,kakashino kazuma,kakashino kazuma,preserved,none,unknown,no_reliable_source_match,142450,[]
 artist,kakei,kakei,preserved,none,unknown,no_reliable_source_match,3792,[]
@@ -11490,6 +11509,7 @@ artist,kano ryoki,kano ryoki,preserved,none,unknown,no_reliable_source_match,832
 artist,kano shiuko,鹿乃しうこ,mapped,Bangumi Archive,native_name,bangumi_explicit_native_name,51013,"[{""namespace"":""artist"",""raw"":""kano shiuko"",""source"":""EhTagTranslation""},{""archive_date"":""2026-11-10"",""policy"":""Only original name or explicit Japanese-name field; never simplified-Chinese-name field. Exact explicit roman field or corroborated official profile URL; namespace/type isolated."",""records"":[{""career"":[""mangaka""],""display"":""鹿乃しうこ"",""id"":19070,""identity_method"":""explicit_romaji_field"",""native_field"":""name"",""primary_name"":""鹿乃しうこ"",""romaji_fields"":[[""英文名"",""Kano Shiuko""]],""source_url"":""https://bgm.tv/person/19070"",""type"":1}]}]"
 artist,kano tomo,kano tomo,preserved,none,unknown,no_reliable_source_match,68646,[]
 artist,kano yatsuhashi,kano yatsuhashi,preserved,none,unknown,no_reliable_source_match,155117,[]
+artist,kanocho,kanocho,preserved,none,unknown,no_reliable_source_match,170273,[]
 artist,kanoe,kanoe,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,120,[]
 artist,kanoe yuushi,かのえゆうし,mapped,Bangumi Archive,native_name,bangumi_explicit_native_name,125228,"[{""namespace"":""artist"",""raw"":""kanoe yuushi"",""source"":""EhTagTranslation""},{""archive_date"":""2026-11-10"",""policy"":""Only original name or explicit Japanese-name field; never simplified-Chinese-name field. Exact explicit roman field or corroborated official profile URL; namespace/type isolated."",""records"":[{""career"":[""mangaka""],""display"":""かのえゆうし"",""id"":24109,""identity_method"":""explicit_romaji_field"",""native_field"":""name"",""primary_name"":""かのえゆうし"",""romaji_fields"":[[""罗马字"",""Kanoe Yuushi""]],""source_url"":""https://bgm.tv/person/24109"",""type"":1}]}]"
 artist,kanoh hollow,kanoh hollow,preserved,none,unknown,no_reliable_source_match,10128,[]
@@ -12780,6 +12800,7 @@ artist,kirisaki minchi,kirisaki minchi,preserved,none,unknown,no_reliable_source
 artist,kirisaki mocori,切裂モコリ,mapped,EhTagTranslation,native_name,community_japanese_script_name,15093,"[{""namespace"":""artist"",""raw"":""kirisaki mocori"",""source"":""EhTagTranslation""},{""label"":""切裂モコリ"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,kirisaki moroha,kirisaki moroha,preserved,none,unknown,no_reliable_source_match,67428,[]
 artist,kirisame,kirisame,preserved,none,unknown,no_reliable_source_match,52925,[]
+artist,kirisame mikage,kirisame mikage,preserved,none,unknown,no_reliable_source_match,170042,[]
 artist,kirisawa mint,kirisawa mint,preserved,none,unknown,no_reliable_source_match,4962,[]
 artist,kirisawa shinji,桐沢しんじ,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,3087,"[{""namespace"":""artist"",""raw"":""kirisawa shinji"",""source"":""EhTagTranslation""},{""danbooru_name"":""kirisawa_shinji"",""danbooru_record"":""https://danbooru.donmai.us/artists/22789"",""exact_community_name_agreement"":[""桐沢しんじ""],""matching_official_profile_urls"":[],""native_alias"":""桐沢しんじ""}]"
 artist,kirisawa tokito,きりさわときと,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,5882,"[{""namespace"":""artist"",""raw"":""kirisawa tokito"",""source"":""EhTagTranslation""},{""danbooru_name"":""kirisawa_tokito"",""danbooru_record"":""https://danbooru.donmai.us/artists/17705"",""exact_community_name_agreement"":[""きりさわときと""],""matching_official_profile_urls"":[],""native_alias"":""きりさわときと""}]"
@@ -14358,6 +14379,7 @@ artist,kuroi misa,kuroi misa,preserved,none,unknown,no_reliable_source_match,270
 artist,kuroi shiro,kuroi shiro,preserved,none,unknown,no_reliable_source_match,151429,[]
 artist,kuroi suna,kuroi suna,preserved,none,unknown,no_reliable_source_match,158272,[]
 artist,kuroi tsumuji,黒井つむじ,mapped,Bangumi Archive,native_name,bangumi_explicit_native_name,133837,"[{""namespace"":""artist"",""raw"":""kuroi tsumuji"",""source"":""EhTagTranslation""},{""archive_date"":""2026-11-10"",""policy"":""Only original name or explicit Japanese-name field; never simplified-Chinese-name field. Exact explicit roman field or corroborated official profile URL; namespace/type isolated."",""records"":[{""career"":[""mangaka""],""display"":""黒井つむじ"",""id"":68173,""identity_method"":""explicit_romaji_field"",""native_field"":""name"",""primary_name"":""黒井つむじ"",""romaji_fields"":[[""罗马字"",""kuroi tsumuji""]],""source_url"":""https://bgm.tv/person/68173"",""type"":1}]}]"
+artist,kuroi yodaka,kuroi yodaka,preserved,none,unknown,no_reliable_source_match,170289,[]
 artist,kuroi yonatan,kuroi yonatan,preserved,none,unknown,no_reliable_source_match,136524,[]
 artist,kuroichiba,くろいちば,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,100345,"[{""namespace"":""artist"",""raw"":""kuroichiba"",""source"":""EhTagTranslation""},{""danbooru_name"":""kuroichiba"",""danbooru_record"":""https://danbooru.donmai.us/artists/158034"",""exact_community_name_agreement"":[""くろいちば""],""matching_official_profile_urls"":[],""native_alias"":""くろいちば""}]"
 artist,kuroie,kuroie,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,91256,[]
@@ -14867,6 +14889,7 @@ artist,laplace,laplace,preserved,none,unknown,no_reliable_source_match,57572,[]
 artist,largeroach,largeroach,preserved,none,unknown,no_reliable_source_match,31450,[]
 artist,larua,ラルア,mapped,EhTagTranslation,native_name,community_japanese_script_name,93645,"[{""namespace"":""artist"",""raw"":""larua"",""source"":""EhTagTranslation""},{""label"":""ラルア"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,las,las,preserved,none,unknown,no_reliable_source_match,128304,[]
+artist,laserflip,laserflip,preserved,none,unknown,no_reliable_source_match,170311,[]
 artist,lask,lask,preserved,none,unknown,no_reliable_source_match,21018,[]
 artist,lassie,らっしー,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,110961,"[{""namespace"":""artist"",""raw"":""lassie"",""source"":""EhTagTranslation""},{""danbooru_name"":""lassie"",""danbooru_record"":""https://danbooru.donmai.us/artists/175620"",""exact_community_name_agreement"":[""らっしー""],""matching_official_profile_urls"":[],""native_alias"":""らっしー""}]"
 artist,lassie art,ラッシーアート,mapped,EhTagTranslation,native_name,community_japanese_script_name,159049,"[{""namespace"":""artist"",""raw"":""lassie art"",""source"":""EhTagTranslation""},{""label"":""ラッシーアート"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
@@ -15105,6 +15128,7 @@ artist,luu,luu,preserved,EhTagTranslation,unknown,no_japanese_original_in_commun
 artist,luv p,luv p,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,51451,[]
 artist,lux,lux,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,115983,[]
 artist,luxsumildo,luxsumildo,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,143362,[]
+artist,luxuria,luxuria,preserved,none,unknown,no_reliable_source_match,170510,[]
 artist,lvi,lvi,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,74220,[]
 artist,lvl,lvl,preserved,none,unknown,no_reliable_source_match,154912,[]
 artist,lvlv,lvlv,preserved,none,unknown,no_reliable_source_match,34002,[]
@@ -17275,6 +17299,7 @@ artist,mituko,mituko,preserved,none,unknown,no_reliable_source_match,36265,[]
 artist,mituwo,mituwo,preserved,none,unknown,no_reliable_source_match,56148,[]
 artist,miu,みU,mapped,EhTagTranslation,native_name,community_japanese_script_name,11850,"[{""namespace"":""artist"",""raw"":""miu"",""source"":""EhTagTranslation""},{""label"":""みU"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,miumi,みうみ,mapped,EhTagTranslation,native_name,community_japanese_script_name,70321,"[{""namespace"":""artist"",""raw"":""miumi"",""source"":""EhTagTranslation""},{""label"":""みうみ"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
+artist,miumi suzune,miumi suzune,preserved,none,unknown,no_reliable_source_match,170259,[]
 artist,miura,miura,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,53406,[]
 artist,miura cozumi,miura cozumi,preserved,none,unknown,no_reliable_source_match,147050,[]
 artist,miura hiraku,miura hiraku,preserved,none,unknown,no_reliable_source_match,145632,[]
@@ -20563,6 +20588,7 @@ artist,noise,noise,preserved,EhTagTranslation,unknown,no_japanese_original_in_co
 artist,noisetanker,noisetanker,preserved,none,unknown,no_reliable_source_match,49793,[]
 artist,noji,ノジ,mapped,EhTagTranslation,native_name,community_japanese_script_name,23978,"[{""namespace"":""artist"",""raw"":""noji"",""source"":""EhTagTranslation""},{""label"":""ノジ"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,nojima,nojima,preserved,none,unknown,no_reliable_source_match,62601,[]
+artist,nojima gen,nojima gen,preserved,none,unknown,no_reliable_source_match,170439,[]
 artist,nojirushi,nojirushi,preserved,none,unknown,no_reliable_source_match,117177,[]
 artist,nojo,nojo,preserved,none,unknown,no_reliable_source_match,59450,[]
 artist,nokemon,nokemon,preserved,none,unknown,no_reliable_source_match,140569,[]
@@ -22325,6 +22351,7 @@ artist,phantom,ふぁんとむ,mapped,Bangumi Archive,native_name,bangumi_explic
 artist,phausto,phausto,preserved,none,unknown,no_reliable_source_match,121787,[]
 artist,philly,philly,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,73673,[]
 artist,phoenicia masako,フェニキア雅子,mapped,EhTagTranslation,native_name,community_japanese_script_name,8229,"[{""namespace"":""artist"",""raw"":""phoenicia masako"",""source"":""EhTagTranslation""},{""label"":""フェニキア雅子"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
+artist,physisyoon,physisyoon,preserved,none,unknown,no_reliable_source_match,170287,[]
 artist,pi,pi,preserved,none,unknown,no_reliable_source_match,144323,[]
 artist,pi rahu,pi rahu,preserved,none,unknown,no_reliable_source_match,159776,[]
 artist,pi-ko,pi-ko,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,4583,[]
@@ -23596,6 +23623,7 @@ artist,rtil,rtil,preserved,none,unknown,no_reliable_source_match,145832,[]
 artist,ru sha,ru sha,preserved,none,unknown,no_reliable_source_match,55342,[]
 artist,rua,rua,preserved,none,unknown,no_reliable_source_match,147633,[]
 artist,rube,るべ,mapped,EhTagTranslation,native_name,community_japanese_script_name,128219,"[{""namespace"":""artist"",""raw"":""rube"",""source"":""EhTagTranslation""},{""label"":""るべ"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
+artist,rubewe,rubewe,preserved,none,unknown,no_reliable_source_match,170403,[]
 artist,rubi,rubi,preserved,none,unknown,no_reliable_source_match,138700,[]
 artist,rubi-sama,るび様,mapped,Bangumi Archive,native_name,bangumi_explicit_native_name,14477,"[{""namespace"":""artist"",""raw"":""rubi-sama"",""source"":""EhTagTranslation""},{""archive_date"":""2026-11-10"",""policy"":""Only original name or explicit Japanese-name field; never simplified-Chinese-name field. Exact explicit roman field or corroborated official profile URL; namespace/type isolated."",""records"":[{""career"":[""illustrator"",""seiyu""],""display"":""るび様"",""id"":30815,""identity_method"":""explicit_romaji_field"",""native_field"":""日文名"",""primary_name"":""るび様"",""romaji_fields"":[[""英文名"",""Rubi-sama""]],""source_url"":""https://bgm.tv/person/30815"",""type"":1}]}]"
 artist,rubibi,rubibi,preserved,none,unknown,no_reliable_source_match,19904,[]
@@ -25663,6 +25691,8 @@ artist,shimetta seiya,湿った星夜,mapped,Danbooru+EhTagTranslation,native_na
 artist,shimiccha,shimiccha,preserved,none,unknown,no_reliable_source_match,142369,[]
 artist,shimiko,shimiko,preserved,none,unknown,no_reliable_source_match,143257,[]
 artist,shimimaru,紙魚丸,mapped,Bangumi Archive,native_name,bangumi_explicit_native_name,30083,"[{""namespace"":""artist"",""raw"":""shimimaru"",""source"":""EhTagTranslation""},{""archive_date"":""2026-11-10"",""policy"":""Only original name or explicit Japanese-name field; never simplified-Chinese-name field. Exact explicit roman field or corroborated official profile URL; namespace/type isolated."",""records"":[{""career"":[""mangaka""],""display"":""紙魚丸"",""id"":19162,""identity_method"":""official_profile_url_intersection"",""native_field"":""name"",""primary_name"":""紙魚丸"",""romaji_fields"":[],""source_url"":""https://bgm.tv/person/19162"",""type"":1}]}]"
+artist,shimin k,shimin k,preserved,none,unknown,no_reliable_source_match,170274,[]
+artist,shimin k | citizen k,shimin k | citizen k,preserved,none,unknown,no_reliable_source_match,170208,[]
 artist,shimipan,しみぱん,mapped,EhTagTranslation,native_name,community_japanese_script_name,125412,"[{""namespace"":""artist"",""raw"":""shimipan"",""source"":""EhTagTranslation""},{""label"":""しみぱん"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,shimiri,shimiri,preserved,none,unknown,no_reliable_source_match,154851,[]
 artist,shimiz pem,shimiz pem,preserved,none,unknown,no_reliable_source_match,87099,[]
@@ -26504,6 +26534,7 @@ artist,siscom | inos,siscom | inos,preserved,none,unknown,no_reliable_source_mat
 artist,sisei,しせい,mapped,EhTagTranslation,native_name,community_japanese_script_name,75918,"[{""namespace"":""artist"",""raw"":""sisei"",""source"":""EhTagTranslation""},{""label"":""しせい"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,sisei tokei,sisei tokei,preserved,none,unknown,no_reliable_source_match,18176,[]
 artist,siseki hirame,芝石ひらめ,mapped,EhTagTranslation,native_name,community_japanese_script_name,93853,"[{""namespace"":""artist"",""raw"":""siseki hirame"",""source"":""EhTagTranslation""},{""label"":""芝石ひらめ"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
+artist,sishui,sishui,preserved,none,unknown,no_reliable_source_match,170441,[]
 artist,sisigami kansiro,sisigami kansiro,preserved,none,unknown,no_reliable_source_match,124454,[]
 artist,siskun,siskun,preserved,none,unknown,no_reliable_source_match,138482,[]
 artist,sisochair,sisochair,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,79874,[]
@@ -26927,6 +26958,7 @@ artist,suehiro machi,suehiro machi,preserved,none,unknown,no_reliable_source_mat
 artist,suehiro yoshiyuki,suehiro yoshiyuki,preserved,EhTagTranslation,unknown,script_variant_or_chinese_glyph_risk,86098,[]
 artist,suehirogari,すえひろがり,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,27910,"[{""namespace"":""artist"",""raw"":""suehirogari"",""source"":""EhTagTranslation""},{""danbooru_name"":""suehirogari"",""danbooru_record"":""https://danbooru.donmai.us/artists/10061"",""exact_community_name_agreement"":[""すえひろがり""],""matching_official_profile_urls"":[],""native_alias"":""すえひろがり""}]"
 artist,suemitsu dicca,すえみつぢっか,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,11907,"[{""namespace"":""artist"",""raw"":""suemitsu dicca"",""source"":""EhTagTranslation""},{""danbooru_name"":""suemitsu_dicca"",""danbooru_record"":""https://danbooru.donmai.us/artists/7836"",""exact_community_name_agreement"":[""すえみつぢっか""],""matching_official_profile_urls"":[],""native_alias"":""すえみつぢっか""}]"
+artist,suesada,suesada,preserved,none,unknown,no_reliable_source_match,170109,[]
 artist,suetora ryo,suetora ryo,preserved,none,unknown,no_reliable_source_match,57722,[]
 artist,suetsugu,suetsugu,preserved,none,unknown,no_reliable_source_match,152190,[]
 artist,sueyuu,すえゆう,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,79631,"[{""namespace"":""artist"",""raw"":""sueyuu"",""source"":""EhTagTranslation""},{""danbooru_name"":""sueyuu"",""danbooru_record"":""https://danbooru.donmai.us/artists/43060"",""exact_community_name_agreement"":[""すえゆう""],""matching_official_profile_urls"":[],""native_alias"":""すえゆう""}]"
@@ -28583,6 +28615,7 @@ artist,tazune,たづね,mapped,EhTagTranslation,native_name,community_japanese_s
 artist,tc,tc,preserved,none,unknown,no_reliable_source_match,134033,[]
 artist,td,td,preserved,none,unknown,no_reliable_source_match,87162,[]
 artist,te,te,preserved,none,unknown,no_reliable_source_match,143373,[]
+artist,tea,tea,preserved,none,unknown,no_reliable_source_match,170301,[]
 artist,tea slash pot,tea slash pot,preserved,none,unknown,no_reliable_source_match,126487,[]
 artist,teaindian,紅茶インディアン,mapped,EhTagTranslation,native_name,community_japanese_script_name,37608,"[{""namespace"":""artist"",""raw"":""teaindian"",""source"":""EhTagTranslation""},{""label"":""紅茶インディアン"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,tear,tear,preserved,EhTagTranslation,unknown,no_japanese_original_in_community_label,72908,[]
@@ -29507,6 +29540,7 @@ artist,totan niare,totan niare,preserved,none,unknown,no_reliable_source_match,1
 artist,totemoii,totemoii,preserved,none,unknown,no_reliable_source_match,156254,[]
 artist,toto,toto,preserved,none,unknown,no_reliable_source_match,21945,[]
 artist,toto nemigi,ととねみぎ,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,21707,"[{""namespace"":""artist"",""raw"":""toto nemigi"",""source"":""EhTagTranslation""},{""danbooru_name"":""toto_nemigi"",""danbooru_record"":""https://danbooru.donmai.us/artists/6108"",""exact_community_name_agreement"":[""ととねみぎ""],""matching_official_profile_urls"":[],""native_alias"":""ととねみぎ""}]"
+artist,totobe,totobe,preserved,none,unknown,no_reliable_source_match,170149,[]
 artist,totofumi,ととふみ,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,53010,"[{""namespace"":""artist"",""raw"":""totofumi"",""source"":""EhTagTranslation""},{""danbooru_name"":""totofumi"",""danbooru_record"":""https://danbooru.donmai.us/artists/102562"",""exact_community_name_agreement"":[""ととふみ""],""matching_official_profile_urls"":[],""native_alias"":""ととふみ""}]"
 artist,totoke,totoke,preserved,none,unknown,no_reliable_source_match,148819,[]
 artist,totoki,totoki,preserved,none,unknown,no_reliable_source_match,169598,[]
@@ -30180,6 +30214,7 @@ artist,uetake,植竹,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_n
 artist,ueto seri,上戸セリ,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,10066,"[{""namespace"":""artist"",""raw"":""ueto seri"",""source"":""EhTagTranslation""},{""danbooru_name"":""ueto_seri"",""danbooru_record"":""https://danbooru.donmai.us/artists/100448"",""exact_community_name_agreement"":[""上戸セリ""],""matching_official_profile_urls"":[],""native_alias"":""上戸セリ""}]"
 artist,ueto seri | ueto ruri,ueto seri | ueto ruri,preserved,none,unknown,no_reliable_source_match,128482,[]
 artist,uetsuka ei,uetsuka ei,preserved,none,unknown,no_reliable_source_match,23401,[]
+artist,ueumi elio,ueumi elio,preserved,none,unknown,no_reliable_source_match,170309,[]
 artist,uewaka ao,uewaka ao,preserved,none,unknown,no_reliable_source_match,141364,[]
 artist,ueyama michirou,上山道郎,mapped,Bangumi Archive,native_name,bangumi_explicit_native_name,59574,"[{""namespace"":""artist"",""raw"":""ueyama michirou"",""source"":""EhTagTranslation""},{""archive_date"":""2026-11-10"",""policy"":""Only original name or explicit Japanese-name field; never simplified-Chinese-name field. Exact explicit roman field or corroborated official profile URL; namespace/type isolated."",""records"":[{""career"":[""mangaka""],""display"":""上山道郎"",""id"":24848,""identity_method"":""explicit_romaji_field"",""native_field"":""name"",""primary_name"":""上山道郎"",""romaji_fields"":[[""罗马字"",""Ueyama Michirou""]],""source_url"":""https://bgm.tv/person/24848"",""type"":1}]}]"
 artist,ueyama yousuke,ueyama yousuke,preserved,none,unknown,no_reliable_source_match,23957,[]
@@ -30923,6 +30958,7 @@ artist,wacho,wacho,preserved,none,unknown,no_reliable_source_match,132055,[]
 artist,wackan,わっく艦,mapped,EhTagTranslation,native_name,community_japanese_script_name,158553,"[{""namespace"":""artist"",""raw"":""wackan"",""source"":""EhTagTranslation""},{""label"":""わっく艦"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,wacoco waco,輪子湖わこ,mapped,Bangumi Archive,native_name,bangumi_explicit_native_name,51878,"[{""namespace"":""artist"",""raw"":""wacoco waco"",""source"":""EhTagTranslation""},{""archive_date"":""2026-11-10"",""policy"":""Only original name or explicit Japanese-name field; never simplified-Chinese-name field. Exact explicit roman field or corroborated official profile URL; namespace/type isolated."",""records"":[{""career"":[""mangaka""],""display"":""輪子湖わこ"",""id"":16135,""identity_method"":""explicit_romaji_field"",""native_field"":""name"",""primary_name"":""輪子湖わこ"",""romaji_fields"":[[""罗马字"",""wacoco waco""]],""source_url"":""https://bgm.tv/person/16135"",""type"":1}]}]"
 artist,wada erika,和田エリカ,mapped,EhTagTranslation,native_name,community_japanese_script_name,30726,"[{""namespace"":""artist"",""raw"":""wada erika"",""source"":""EhTagTranslation""},{""label"":""和田エリカ"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
+artist,wada souichi,wada souichi,preserved,none,unknown,no_reliable_source_match,169963,[]
 artist,wada wau,和田羽烏,mapped,Bangumi Archive,native_name,bangumi_explicit_native_name,122993,"[{""namespace"":""artist"",""raw"":""wada wau"",""source"":""EhTagTranslation""},{""archive_date"":""2026-11-10"",""policy"":""Only original name or explicit Japanese-name field; never simplified-Chinese-name field. Exact explicit roman field or corroborated official profile URL; namespace/type isolated."",""records"":[{""career"":[""mangaka""],""display"":""和田羽烏"",""id"":51448,""identity_method"":""official_profile_url_intersection"",""native_field"":""name"",""primary_name"":""和田羽烏"",""romaji_fields"":[[""英文名"",""WADA Wau""]],""source_url"":""https://bgm.tv/person/51448"",""type"":1}]}]"
 artist,wada-chin,和田ちん,mapped,EhTagTranslation,native_name,community_japanese_script_name,142909,"[{""namespace"":""artist"",""raw"":""wada-chin"",""source"":""EhTagTranslation""},{""label"":""和田ちん"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
 artist,wadachi kururu,わだちくるる,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,70733,"[{""namespace"":""artist"",""raw"":""wadachi kururu"",""source"":""EhTagTranslation""},{""danbooru_name"":""wadachi_kururu"",""danbooru_record"":""https://danbooru.donmai.us/artists/130904"",""exact_community_name_agreement"":[""わだちくるる""],""matching_official_profile_urls"":[],""native_alias"":""わだちくるる""}]"
@@ -32345,6 +32381,7 @@ artist,yoshimura hideaki,吉村英明,mapped,Bangumi Archive,native_name,bangumi
 artist,yoshimura kana,yoshimura kana,preserved,none,unknown,no_reliable_source_match,127657,[]
 artist,yoshimura kentaro,よしむらけんたろー,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,9867,"[{""namespace"":""artist"",""raw"":""yoshimura kentaro"",""source"":""EhTagTranslation""},{""danbooru_name"":""yoshimura_kentaro"",""danbooru_record"":""https://danbooru.donmai.us/artists/55106"",""exact_community_name_agreement"":[""よしむらけんたろー""],""matching_official_profile_urls"":[],""native_alias"":""よしむらけんたろー""}]"
 artist,yoshimura tatsumaki,yoshimura tatsumaki,preserved,EhTagTranslation,unknown,han_name_without_explicit_original_orthography,23964,[]
+artist,yoshina,yoshina,preserved,none,unknown,no_reliable_source_match,170051,[]
 artist,yoshina hijiki,yoshina hijiki,preserved,none,unknown,no_reliable_source_match,109469,[]
 artist,yoshina hijiki | mitou aiki,yoshina hijiki | mitou aiki,preserved,none,unknown,no_reliable_source_match,109449,[]
 artist,yoshinaga darao,yoshinaga darao,preserved,none,unknown,no_reliable_source_match,132195,[]
@@ -32434,6 +32471,7 @@ artist,yotsuba suzume,yotsuba suzume,preserved,none,unknown,no_reliable_source_m
 artist,yotsuba tomo,yotsuba tomo,preserved,none,unknown,no_reliable_source_match,10336,[]
 artist,yotsuba yuiko,四葉ゆいこ,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,3982,"[{""namespace"":""artist"",""raw"":""yotsuba yuiko"",""source"":""EhTagTranslation""},{""danbooru_name"":""yotsuba_yuiko"",""danbooru_record"":""https://danbooru.donmai.us/artists/35891"",""exact_community_name_agreement"":[""四葉ゆいこ""],""matching_official_profile_urls"":[],""native_alias"":""四葉ゆいこ""}]"
 artist,yotsuban,yotsuban,preserved,none,unknown,no_reliable_source_match,153491,[]
+artist,yotsuji syoji,yotsuji syoji,preserved,none,unknown,no_reliable_source_match,170110,[]
 artist,yotsura,寄弦,mapped,Danbooru+EhTagTranslation,native_name,crosschecked_native_artist_alias,70945,"[{""namespace"":""artist"",""raw"":""yotsura"",""source"":""EhTagTranslation""},{""danbooru_name"":""yotsura"",""danbooru_record"":""https://danbooru.donmai.us/artists/114613"",""exact_community_name_agreement"":[""寄弦""],""matching_official_profile_urls"":[],""native_alias"":""寄弦""}]"
 artist,yotsuya kirin,yotsuya kirin,preserved,none,unknown,no_reliable_source_match,26563,[]
 artist,yotsuya mika,よつやみか,mapped,EhTagTranslation,native_name,community_japanese_script_name,96363,"[{""namespace"":""artist"",""raw"":""yotsuya mika"",""source"":""EhTagTranslation""},{""label"":""よつやみか"",""qualification"":""Community native-script name, not independently claimed official; no known Chinese/Japanese glyph-risk forms.""}]"
@@ -33183,6 +33221,7 @@ artist,zayaku,zayaku,preserved,none,unknown,no_reliable_source_match,79174,[]
 artist,zayuu,zayuu,preserved,none,unknown,no_reliable_source_match,129950,[]
 artist,zazon,zazon,preserved,none,unknown,no_reliable_source_match,123715,[]
 artist,zb,zb,preserved,none,unknown,no_reliable_source_match,151709,[]
+artist,zds,zds,preserved,none,unknown,no_reliable_source_match,170111,[]
 artist,zea lark,zea lark,preserved,none,unknown,no_reliable_source_match,145711,[]
 artist,zecchou,zecchou,preserved,none,unknown,no_reliable_source_match,72490,[]
 artist,zeco,zeco,preserved,none,unknown,no_reliable_source_match,162918,[]
