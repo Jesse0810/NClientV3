@@ -50,7 +50,9 @@ python3 scripts/verify_release_apks.py --version X.Y.Z --signed --apk-dir /priva
 python3 scripts/verify_release_apks.py --version X.Y.Z --signed --apk-dir /private/downloaded-assets --report /private/downloaded-assets/verification.json
 ```
 
-应用内更新只从本仓库正式版本中选择匹配系统的已签名 APK，跳过 Debug、预发布及校验文件。
+应用内更新默认检查本仓库正式版；开启“包含预览版更新”后也检查预览版。更新按版本及预览编号比较，选择匹配 Android 系统的 APK，跳过草稿、未上传完成的文件、校验清单和未签名工件。同版本正式版优先于预览版；具体规则见 [更新机制](update-mechanism.md)。
+
+正式版与当前 Debug 预览版包名不同，切换时会提示独立安装和数据迁移，并打开对应版本的发布页。同包名的更新下载后核对实际版本、包名及安装签名；临时 Debug 签名不一致时提示备份后手动安装，不调用覆盖安装。
 
 最终签名始终在私有签名环境完成。如果当前集成可以创建 Release、但无法向 `uploads.github.com` 上传附件，可以通过 `Publish signed stable APKs` 工作流完成上传。它使用 Actions 内置发布凭据，流程如下：
 

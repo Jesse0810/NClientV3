@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="filter_chip_count_description">%1$s，%2$s 部作品</string>
+    <string name="filter_chip_included">已包含</string>
+    <string name="filter_chip_excluded">已排除</string>
+</resources>

@@ -84,7 +84,11 @@ def verify_apk(apk, label, min_sdk, target_sdk, version, tools, signed, pinned_c
     # Release resource optimization shortens paths, for example res/yl.xml.
     # Resolve names through the resource table and inspect every configuration.
     resources = run(tools / "aapt2", "dump", "resources", apk)
-    layout_paths = {name: [] for name in ("tag_choice_dialog", "autocomplete_entry")}
+    require('com.maxwai.nclientv3.FilterPickerActivity' in manifest,
+            f"Missing filter picker activity in {apk}")
+    require(re.search(r"\blayout/activity_filter_picker\b", resources),
+            f"Missing filter picker layout in {apk}")
+    layout_paths = {"autocomplete_entry": []}
     current_layout = None
     for line in resources.splitlines():
         resource = re.match(r"\s*resource\s+0x[0-9a-fA-F]+\s+(?:\w+:)?layout/(\S+)", line)

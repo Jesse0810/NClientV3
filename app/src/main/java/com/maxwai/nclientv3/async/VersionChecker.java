@@ -1,30 +1,29 @@
 package com.maxwai.nclientv3.async;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.JsonReader;
-import android.util.JsonToken;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.maxwai.nclientv3.BuildConfig;
 import com.maxwai.nclientv3.R;
 import com.maxwai.nclientv3.settings.Global;
 import com.maxwai.nclientv3.utility.LogUtility;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.maxwai.nclientv3.utility.UpdateApkValidator;
+import com.maxwai.nclientv3.utility.UpdateRelease;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -32,326 +31,181 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class VersionChecker {
-    private static final String RELEASE_API_URL = "https://api.github.com/repos/Jesse0810/NClientV3/releases";
-    private static final String LATEST_RELEASE_URL = "https://github.com/Jesse0810/NClientV3/releases/latest";
-    private static final String RELEASE_DOWNLOAD_PREFIX = "https://github.com/Jesse0810/NClientV3/releases/download/";
-    private static String latest = null;
+    private static final AtomicBoolean CHECKING = new AtomicBoolean();
+    private static final AtomicBoolean DOWNLOADING = new AtomicBoolean();
+    private static final int MAX_PAGES = 20;
     private final AppCompatActivity context;
-    private String downloadUrl;
+    private final boolean silent, includePreview;
+    private final UpdateRelease.Version installed;
 
-    public VersionChecker(AppCompatActivity context, final boolean silent) {
-        boolean withPrerelease = Global.isEnableBeta();
+    public VersionChecker(AppCompatActivity context, boolean silent) {
         this.context = context;
-        if (latest != null && Global.hasStoragePermission(context)) {
-            downloadVersion(latest);
-            latest = null;
+        this.silent = silent;
+        includePreview = Global.isEnableBeta();
+        installed = UpdateRelease.Version.installed(BuildConfig.VERSION_NAME, BuildConfig.RELEASE_TAG,
+            BuildConfig.APPLICATION_ID.endsWith(".debug"));
+        if (!CHECKING.compareAndSet(false, true)) {
+            if (!silent) toast(R.string.checking_update);
             return;
         }
-        LogUtility.d("ACTUAL VERSION: " + BuildConfig.VERSION_NAME);
-        Global.getClient(context).newCall(new Request.Builder().url(RELEASE_API_URL).build()).enqueue(new Callback() {
+        if (installed == null) {
+            checkFailed(new IOException("Unknown installed version"));
+            return;
+        }
+        fetchPage(1, null);
+    }
+
+    private void fetchPage(int page, UpdateRelease previousBest) {
+        String url = UpdateRelease.API_URL + "?per_page=100&page=" + page;
+        Global.getClient(context).newCall(new Request.Builder().url(url)
+            .header("Accept", "application/vnd.github+json").build()).enqueue(new Callback() {
             @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                context.runOnUiThread(() -> {
-                    LogUtility.e(e.getLocalizedMessage(), e);
-                    if (!silent)
-                        Toast.makeText(context, R.string.error_retrieving, Toast.LENGTH_SHORT).show();
-                });
+            public void onFailure(@NonNull Call call, @NonNull IOException error) {
+                checkFailed(error);
             }
 
             @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                GitHubRelease release;
-                try (JsonReader jr = new JsonReader(response.body().charStream())) {
-                    release = parseVersionJson(jr, withPrerelease);
-                }
-                if (release == null) {
-                    release = new GitHubRelease();
-                    release.versionCode = BuildConfig.VERSION_NAME;
-                }
-                downloadUrl = release.downloadUrl;
-                GitHubRelease finalRelease = release;
-                context.runOnUiThread(() -> {
-                    boolean newer;
-                    try {
-                        newer = finalRelease.isNewerThenVersion(BuildConfig.VERSION_NAME);
-                    } catch (IllegalStateException ignored) {
-                        newer = false;
+            public void onResponse(@NonNull Call call, @NonNull Response response) {
+                UpdateRelease best;
+                boolean hasNext;
+                try (Response result = response) {
+                    if (!result.isSuccessful() || result.body() == null)
+                        throw new IOException("Release API HTTP " + result.code());
+                    try (JsonReader reader = new JsonReader(result.body().charStream())) {
+                        best = UpdateRelease.newest(previousBest, ReleaseFeed.read(reader, BuildConfig.FLAVOR,
+                            includePreview, context.getPackageName()));
                     }
-                    if (downloadUrl == null || !newer) {
-                        if (!silent)
-                            Toast.makeText(context, R.string.no_updates_found, Toast.LENGTH_SHORT).show();
-                    } else {
-                        LogUtility.d("Executing false");
-                        createDialog(finalRelease);
-                    }
-                });
+                    hasNext = result.header("Link", "").contains("rel=\"next\"");
+                    if (hasNext && page >= MAX_PAGES) throw new IOException("Incomplete release feed");
+                } catch (IOException | RuntimeException error) {
+                    checkFailed(error);
+                    return;
+                }
+                if (hasNext) fetchPage(page + 1, best);
+                else finishCheck(best);
             }
         });
     }
 
-    private static GitHubRelease parseVersionJson(JsonReader jr, boolean withPrerelease) throws IOException {
+    private void finishCheck(UpdateRelease release) {
+        CHECKING.set(false);
+        onUi(() -> {
+            if (release != null && release.version.compareTo(installed) > 0) createDialog(release);
+            else if (!silent) toast(R.string.no_updates_found);
+        });
+    }
+
+    private void checkFailed(Exception error) {
+        CHECKING.set(false);
+        LogUtility.e("Update check failed", error);
+        if (!silent) toast(R.string.error_retrieving);
+    }
+
+    private void createDialog(UpdateRelease release) {
+        boolean samePackage = release.samePackage(context.getPackageName());
+        String notes = release.body.isEmpty() ? context.getString(R.string.update_no_release_notes) : release.body;
+        String current = BuildConfig.RELEASE_TAG.isEmpty() ? BuildConfig.VERSION_NAME : BuildConfig.RELEASE_TAG;
+        String message = context.getString(R.string.update_version_format, current, release.tag, notes);
+        if (!samePackage) message = context.getString(R.string.update_separate_install_notice) + "\n\n" + message;
+        new MaterialAlertDialogBuilder(context)
+            .setTitle(release.preview ? R.string.new_beta_version_found : R.string.new_version_found)
+            .setIcon(R.drawable.ic_file)
+            .setMessage(message)
+            .setPositiveButton(samePackage ? R.string.install : R.string.update_view_release, (dialog, which) -> {
+                if (samePackage) downloadVersion(release);
+                else openRelease(release);
+            })
+            .setNegativeButton(R.string.cancel, null)
+            .setNeutralButton(R.string.github, (dialog, which) -> openRelease(release))
+            .show();
+    }
+
+    private void openRelease(UpdateRelease release) {
         try {
-            GitHubRelease release;
-            jr.beginArray();
-            while (jr.hasNext()) {
-                release = parseVersion(jr, withPrerelease);
-                if (release != null)
-                    return release;
-            }
-        } catch (IllegalStateException ignore) {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(release.pageUrl())));
+        } catch (ActivityNotFoundException unavailable) {
+            toast(R.string.error_retrieving);
         }
-        return null;
     }
 
-    private static GitHubRelease parseVersion(JsonReader jr, boolean withPrerelease) throws IOException {
-        GitHubRelease release = new GitHubRelease();
-        boolean invalid = false;
-        jr.beginObject();
-
-        while (jr.peek() != JsonToken.END_OBJECT) {
-            switch (jr.nextName()) {
-                case "tag_name":
-                    release.versionCode = jr.nextString();
-                    break;
-                case "body":
-                    release.body = jr.nextString();
-                    break;
-                case "prerelease":
-                    release.beta = jr.nextBoolean();
-                    if (release.beta && !withPrerelease)
-                        invalid = true;
-                    break;
-                case "assets":
-                    jr.beginArray();
-                    while (jr.hasNext()) {
-                        if (release.downloadUrl != null) {
-                            jr.skipValue();
-                            continue;
-                        }
-                        String candidate = getDownloadUrl(jr);
-                        if (isCompatibleApk(candidate, BuildConfig.FLAVOR))
-                            release.downloadUrl = candidate;
-                    }
-                    jr.endArray();
-                    break;
-                default:
-                    jr.skipValue();
-                    break;
-            }
+    private void downloadVersion(UpdateRelease release) {
+        if (!DOWNLOADING.compareAndSet(false, true)) {
+            toast(R.string.downloading_update);
+            return;
         }
-        jr.endObject();
-
-        return invalid || release.versionCode == null || release.downloadUrl == null
-            || !release.versionCode.matches("v?\\d+\\.\\d+\\.\\d+") ? null : release;
-    }
-
-    /** Only install a stable APK for this flavor from this fork's release assets. */
-    private static boolean isCompatibleApk(String url, String flavor) {
-        if (url == null || !url.startsWith(RELEASE_DOWNLOAD_PREFIX)) return false;
-        String assetPath = url.substring(RELEASE_DOWNLOAD_PREFIX.length());
-        int separator = assetPath.indexOf('/');
-        if (separator < 0) return false;
-        String tag = assetPath.substring(0, separator);
-        if (!tag.matches("v?\\d+\\.\\d+\\.\\d+")) return false;
-        String version = tag.startsWith("v") ? tag.substring(1) : tag;
-        String filename = assetPath.substring(separator + 1);
-        Matcher match = Pattern.compile("NClientV3_v?" + Pattern.quote(version)
-            + "(?:-release)?(?:_(android9plus|android8|pre28))?\\.apk").matcher(filename);
-        if (!match.matches()) return false;
-        String variant = match.group(1);
-        if ("pre28".equals(flavor))
-            return "android8".equals(variant) || "pre28".equals(variant);
-        return "post28".equals(flavor) && (variant == null || "android9plus".equals(variant));
-    }
-
-    private static String getDownloadUrl(JsonReader jr) throws IOException {
-        String url = null;
-        jr.beginObject();
-        while (jr.peek() != JsonToken.END_OBJECT) {
-            if ("browser_download_url".equals(jr.nextName()))
-                url = jr.nextString();
-            else jr.skipValue();
-        }
-        jr.endObject();
-        return url;
-    }
-
-    private void createDialog(GitHubRelease release) {
-        String finalBody = release.body;
-        String latestVersion = release.versionCode;
-        boolean beta = release.beta;
-        if (finalBody == null) return;
-        finalBody = finalBody
-            .replace("\r\n", "\n")//Remove ugly newline
-            .replace("NClientV3 " + latestVersion, "")//remove version header
-            .replaceAll("(\\s*\n\\s*)+", "\n")//remove multiple newline
-            .replaceAll("\\(.*\\)", "").trim();//remove things between ()
-        LogUtility.d("Evaluated: " + finalBody);
-        LogUtility.d("Creating dialog");
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-        LogUtility.d("" + context);
-        builder.setTitle(beta ? R.string.new_beta_version_found : R.string.new_version_found);
-        builder.setIcon(R.drawable.ic_file);
-        builder.setMessage(context.getString(R.string.update_version_format, BuildConfig.VERSION_NAME, latestVersion, finalBody));
-        builder.setPositiveButton(R.string.install, (dialog, which) -> {
-            if (Global.hasStoragePermission(context)) downloadVersion(latestVersion);
-            else {
-                latest = latestVersion;
-                context.runOnUiThread(() -> context.requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 2));
-            }
-        }).setNegativeButton(R.string.cancel, null)
-            .setNeutralButton(R.string.github, (dialog, which) -> {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(LATEST_RELEASE_URL));
-                context.startActivity(browserIntent);
-            });
-        if (!context.isFinishing()) builder.show();
-    }
-
-    private void downloadVersion(String latestVersion) {
-        final File f = new File(Global.UPDATEFOLDER, "NClientV3_" + latestVersion + ".apk");
-        if (f.exists()) {
-            if (context.getSharedPreferences("Settings", 0).getBoolean("downloaded", false)) {
-                installApp(f);
-                return;
-            }
-            //noinspection ResultOfMethodCallIgnored
-            f.delete();
-        }
-        if (downloadUrl == null) return;
-        LogUtility.d(f.getAbsolutePath());
-        Global.getClient(context).newCall(new Request.Builder().url(downloadUrl).build()).enqueue(new Callback() {
+        toast(R.string.downloading_update);
+        Global.getClient(context).newCall(new Request.Builder().url(release.downloadUrl).build()).enqueue(new Callback() {
             @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                context.runOnUiThread(() -> Toast.makeText(context, R.string.download_update_failed, Toast.LENGTH_LONG).show());
+            public void onFailure(@NonNull Call call, @NonNull IOException error) {
+                downloadFailed(error);
+                DOWNLOADING.set(false);
             }
 
             @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                context.getSharedPreferences("Settings", 0).edit().putBoolean("downloaded", false).apply();
-                if (Global.UPDATEFOLDER == null) {
-                    Global.initStorage(context);
-                }
-                //noinspection ResultOfMethodCallIgnored
-                Global.UPDATEFOLDER.mkdirs();
-                //noinspection ResultOfMethodCallIgnored
-                f.createNewFile();
-                try (FileOutputStream stream = new FileOutputStream(f);
-                     InputStream stream1 = response.body().byteStream()) {
-                    int read;
-                    byte[] bytes = new byte[1024];
-                    while ((read = stream1.read(bytes)) != -1) {
-                        stream.write(bytes, 0, read);
+            public void onResponse(@NonNull Call call, @NonNull Response response) {
+                File partial = null;
+                try (Response result = response) {
+                    if (!result.isSuccessful() || result.body() == null)
+                        throw new IOException("Update download HTTP " + result.code());
+                    File folder = new File(context.getCacheDir(), "updates");
+                    if (!folder.isDirectory() && !folder.mkdirs()) throw new IOException("Update cache unavailable");
+                    partial = File.createTempFile("update-", ".part.apk", folder);
+                    try (FileOutputStream output = new FileOutputStream(partial);
+                         InputStream input = result.body().byteStream()) {
+                        release.copyApk(input, output);
                     }
-                    stream.flush();
+                    if (!UpdateApkValidator.validate(context.getPackageManager(), context.getPackageName(), partial, release)) {
+                        onUi(() -> showSignatureMismatch(release));
+                        return;
+                    }
+                    File apk = new File(folder, release.assetName);
+                    if (apk.exists() && !apk.delete()) throw new IOException("Cannot replace cached update");
+                    if (!partial.renameTo(apk)) throw new IOException("Cannot finish update download");
+                    partial = null;
+                    onUi(() -> installApp(apk));
+                } catch (IOException | RuntimeException error) {
+                    downloadFailed(error);
+                } finally {
+                    if (partial != null && !partial.delete()) LogUtility.d("Could not remove partial update");
+                    DOWNLOADING.set(false);
                 }
-                context.getSharedPreferences("Settings", 0).edit().putBoolean("downloaded", true).apply();
-                installApp(f);
             }
         });
     }
 
-    private void installApp(File f) {
+    private void showSignatureMismatch(UpdateRelease release) {
+        new MaterialAlertDialogBuilder(context)
+            .setTitle(R.string.update_signature_mismatch_title)
+            .setMessage(R.string.update_signature_mismatch_notice)
+            .setPositiveButton(R.string.update_view_release, (dialog, which) -> openRelease(release))
+            .setNegativeButton(R.string.cancel, null)
+            .show();
+    }
+
+    private void downloadFailed(Exception error) {
+        LogUtility.e("Update download failed", error);
+        toast(R.string.download_update_failed);
+    }
+
+    private void installApp(File apk) {
         try {
-            Uri apkUri = FileProvider.getUriForFile(context, context.getPackageName() + ".provider", f);
+            Uri uri = FileProvider.getUriForFile(context, context.getPackageName() + ".provider", apk);
             @SuppressLint("RequestInstallPackagesPolicy") Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
-            intent.setData(apkUri);
+            intent.setDataAndType(uri, "application/vnd.android.package-archive");
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             context.startActivity(intent);
-        } catch (IllegalArgumentException ignore) {
-            context.runOnUiThread(() -> Toast.makeText(context, context.getString(R.string.downloaded_update_at, f.getAbsolutePath()), Toast.LENGTH_SHORT).show());
-
+        } catch (IllegalArgumentException | ActivityNotFoundException | SecurityException unavailable) {
+            toast(R.string.download_update_failed);
         }
     }
 
+    private void onUi(Runnable action) {
+        context.runOnUiThread(() -> {
+            if (!context.isFinishing() && !context.isDestroyed()) action.run();
+        });
+    }
 
-    public static class GitHubRelease {
-        // regex to get version in the form: MM.mm.pp(-suffix)
-        private final static String regex = "(\\d+)\\.(\\d+)\\.(\\d+)(?:-((?:pre|rc)\\d))?";
-        String versionCode, body, downloadUrl;
-        boolean beta;
-
-        public boolean isNewerThenVersion(String currentVersion) throws IllegalArgumentException {
-            Matcher matcher = Pattern.compile(regex).matcher(currentVersion);
-            if (!matcher.find()) {
-                throw new IllegalArgumentException("Current Version not in format");
-            }
-            int[] curNumbers = new int[3];
-            String curSuffix;
-            try {
-                curNumbers[0] = Integer.parseInt(Objects.requireNonNull(matcher.group(1)));
-                curNumbers[1] = Integer.parseInt(Objects.requireNonNull(matcher.group(2)));
-                curNumbers[2] = Integer.parseInt(Objects.requireNonNull(matcher.group(3)));
-                curSuffix = matcher.group(4);
-            } catch (NumberFormatException ignored) {
-                throw new IllegalStateException("Current Version not in format");
-            }
-
-            matcher = Pattern.compile(regex).matcher(versionCode);
-            if (!matcher.find()) {
-                throw new IllegalArgumentException("New Version not in format");
-            }
-            int[] newNumbers = new int[3];
-            String newSuffix;
-            try {
-                newNumbers[0] = Integer.parseInt(Objects.requireNonNull(matcher.group(1)));
-                newNumbers[1] = Integer.parseInt(Objects.requireNonNull(matcher.group(2)));
-                newNumbers[2] = Integer.parseInt(Objects.requireNonNull(matcher.group(3)));
-                newSuffix = matcher.group(4);
-            } catch (NumberFormatException ignored) {
-                throw new IllegalStateException("New Version not in format");
-            }
-
-            for (int i = 0; i < curNumbers.length; i++) {
-                if (newNumbers[i] < curNumbers[i]) {
-                    return false;
-                } else if (newNumbers[i] > curNumbers[i]) {
-                    return true;
-                }
-            }
-            // At this point only the suffix may be different
-
-            if (curSuffix == null && newSuffix == null) {
-                return false;
-            } else if (curSuffix == null) { // newSuffix != null
-                // our current version doesn't have a suffix but the newest has one.
-                // as suffixes are only for pre release, we have a newer version
-                return false;
-            } else if (newSuffix == null) { // curSuffix != null
-                // our current version has a suffix but the newest has none.
-                // as suffixes are only for pre release, there is a newer version
-                return true;
-            }
-
-            // Hierarchy of pre release: preX -> rcX
-            if (curSuffix.startsWith("pre") && newSuffix.startsWith("rc")) {
-                return true;
-            } else if (curSuffix.startsWith("rc") && newSuffix.startsWith("pre")) {
-                return false;
-            }
-
-            if (curSuffix.startsWith("pre") && newSuffix.startsWith("pre")) {
-                int curPreRelease, newPreRelease;
-                try {
-                    curPreRelease = Integer.parseInt(curSuffix.substring(3));
-                    newPreRelease = Integer.parseInt(newSuffix.substring(3));
-                } catch (NumberFormatException ignored) {
-                    throw new IllegalStateException("New Version not in format");
-                }
-                return newPreRelease > curPreRelease;
-            }
-
-            if (curSuffix.startsWith("rc") && newSuffix.startsWith("rc")) {
-                int curPreRelease, newPreRelease;
-                try {
-                    curPreRelease = Integer.parseInt(curSuffix.substring(2));
-                    newPreRelease = Integer.parseInt(newSuffix.substring(2));
-                } catch (NumberFormatException ignored) {
-                    throw new IllegalStateException("New Version not in format");
-                }
-                return newPreRelease > curPreRelease;
-            }
-
-            throw new IllegalStateException("Suffix was not formated as expected");
-        }
+    private void toast(int resource) {
+        onUi(() -> Toast.makeText(context, resource, Toast.LENGTH_SHORT).show());
     }
 }

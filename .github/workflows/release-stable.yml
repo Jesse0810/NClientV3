@@ -67,11 +67,13 @@ jobs:
       - name: Check alias selection and exclusion regressions
         run: python3 scripts/check_content_aliases.py
 
-      - name: Check stable update selection
+      - name: Check stable and preview update selection
         run: python3 scripts/check_release_updates.py
 
       - name: Build Android 9+ and Android 8 unsigned Release APKs
-        run: bash ./gradlew --no-daemon --max-workers=2 -PunsignedRelease=true assemblePost28Release assemblePre28Release
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: bash ./gradlew --no-daemon --max-workers=2 -PunsignedRelease=true "-PreleaseTag=$RELEASE_TAG" assemblePost28Release assemblePre28Release
 
       - name: Verify and stage unsigned APKs
         run: python3 scripts/verify_release_apks.py --version "$RELEASE_VERSION" --stage-dir release-assets

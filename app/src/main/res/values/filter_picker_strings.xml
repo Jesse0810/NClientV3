@@ -1,0 +1,15 @@
+<resources>
+    <string name="filter_picker_all">All values</string>
+    <string name="filter_picker_selected">Selected (%1$d)</string>
+    <string name="filter_picker_hint">✓ Include   × Exclude</string>
+    <string name="filter_picker_old_spellings">Old spellings</string>
+    <string name="filter_picker_standard_spellings">Standard spellings</string>
+    <string name="filter_picker_clear">Clear selections</string>
+    <string name="filter_picker_apply">Apply</string>
+    <string name="filter_picker_no_match">No matching values.</string>
+    <string name="filter_picker_no_selection">No values selected.</string>
+    <string name="filter_picker_retry">Unable to load values. Tap to retry.</string>
+    <string name="filter_picker_undo_include">Stop including %1$s</string>
+    <string name="filter_picker_undo_exclude">Stop excluding %1$s</string>
+    <string name="filter_picker_gallery_count">%1$s galleries</string>
+</resources>

@@ -40,7 +40,7 @@ jobs:
             -   name: Check alias selection and exclusion regressions
                 run: python3 scripts/check_content_aliases.py
 
-            -   name: Check stable update and APK selection
+            -   name: Check stable and preview update selection
                 run: python3 scripts/check_release_updates.py
 
             -   name: Add empty keystore.properties

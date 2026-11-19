@@ -138,9 +138,6 @@
     <string name="failed">Failed</string>
     <string name="search">Search</string>
     <string name="search_keywords_hint">Enter search keywords (optional)</string>
-    <string name="legacy_content_tags">Old spellings</string>
-    <string name="standard_content_tags">Standard tags</string>
-    <string name="select_legacy_content_tag">Search an old spelling</string>
     <string name="legacy_content_tag_hint">Find galleries tagged with an old spelling. This replaces the corresponding standard tag in your filters.</string>
     <string name="legacy_content_tag_label">%1$s (old spelling: %2$s)</string>
     <string name="prev">Previous</string>
@@ -314,7 +311,14 @@
     <string name="bookmark_here">Bookmark here</string>
     <string name="resume_from_page">Resume from page %d</string>
     <string name="new_beta_version_found">New beta version found</string>
-    <string name="check_beta_releases">Check for beta releases</string>
+    <string name="check_beta_releases">Include preview updates</string>
+    <string name="checking_update">Checking for updates…</string>
+    <string name="downloading_update">Downloading update…</string>
+    <string name="update_view_release">View release</string>
+    <string name="update_no_release_notes">No release notes provided.</string>
+    <string name="update_separate_install_notice">This release is a separate app and can be installed alongside this one. Export data from the current app and import it into the new app. Configure your API Key and migrate downloaded comics separately.</string>
+    <string name="update_signature_mismatch_title">Manual installation required</string>
+    <string name="update_signature_mismatch_notice">This build has a different signing certificate and cannot replace the installed app. Export your data and separately back up downloaded comics outside the app folder, then follow the instructions on the release page.</string>
     <string name="page_range">Page range:</string>
     <string name="upload_time">Upload time:</string>
     <string name="from_page">From page:</string>
@@ -368,7 +372,7 @@
     <string name="insert_path">Insert path:</string>
     <string name="requesting_storage_access">Requesting storage access</string>
     <string name="request_storage_manager_summary">Due to some restriction in Android 11 to the storage access this app will require you to give additional permission to use custom paths.\nIf you want to give those permission please enable the setting in the next dialog.</string>
-    <string name="summary_beta">Switching to a beta version will make you unable to return to stable versions without uninstalling</string>
+    <string name="summary_beta">Also check this repository for preview releases. Some previews require a separate installation or a backup before manual installation.</string>
     <string name="navigation_settings_per_screen">Navigation settings per screen</string>
     <string name="downloaded_update_at" formatted="true">Downloaded update at %s</string>
     <string name="summary_offscreen_limit">Set the number of images to preload offscreen when reading a gallery</string>
@@ -472,16 +476,14 @@
     <string name="bookmark_name_required">Enter a bookmark name</string>
     <string name="bookmark_save_failed">Unable to save. A bookmark with the same conditions may already exist.</string>
     <string name="bookmark_keywords">Keywords or search expression</string>
-    <string name="bookmark_filter_hint">Tap a tag to include or exclude it. Use its close button to remove it.</string>
+    <string name="bookmark_filter_hint">Open a field with Choose to select its values. Tap an active value to switch between include and exclude, or use its close button to remove it.</string>
+    <string name="choose_filter_values">Choose</string>
     <string name="bookmark_complex_hint">This custom expression is kept in the keyword field. You can edit it directly; selected tags add more conditions.</string>
     <string name="bookmark_page_reset_hint">Bookmarks open on page 1 with the latest galleries first. Change pages and sorting in the results.</string>
     <string name="invalid_tag_name">Enter a tag name without quotes or backslashes. Put custom expressions in the keyword field.</string>
     <string name="select_existing_tag">Select %1$s</string>
     <string name="search_existing_tags">Search by keyword</string>
-    <string name="select_existing_tag_hint">Search, then choose an existing value from the dropdown.</string>
-    <string name="select_existing_tag_error">Choose an existing value from the dropdown.</string>
     <string name="tag_choices_loading">Loading available values…</string>
-    <string name="tag_choices_error">Unable to load values. Close this dialog and try again.</string>
     <string name="tag_choices_empty">No existing values are available.</string>
     <string name="bookmark_view_conditions">View conditions</string>
     <string name="bookmark_scope_label">Search in</string>

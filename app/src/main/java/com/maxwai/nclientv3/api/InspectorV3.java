@@ -168,7 +168,9 @@ public class InspectorV3 extends Thread implements Parcelable {
             tags = getDefaultTags();
             tags.add(tag);
         } else {
-            tags = Collections.singleton(tag);
+            tags = new HashSet<>();
+            tags.add(tag);
+            tags.addAll(getLanguageTags(Global.getOnlyLanguage()));
         }
         return searchInspector(context, null, tags, page, sortType, null, response);
     }
@@ -177,7 +179,8 @@ public class InspectorV3 extends Thread implements Parcelable {
         InspectorV3 inspector = new InspectorV3(context, response);
         inspector.custom = tags != null;
         inspector.tags = inspector.custom ? new HashSet<>(tags) : getDefaultTags();
-        inspector.tags.addAll(getLanguageTags(Global.getOnlyLanguage()));
+        // An explicit filter snapshot already includes its language choices, even if the
+        // user cleared the language field. Basic searches still read the global defaults.
         inspector.page = page;
         inspector.pageCount = 0;
         inspector.ranges = ranges;

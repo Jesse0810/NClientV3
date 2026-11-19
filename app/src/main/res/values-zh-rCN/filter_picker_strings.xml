@@ -1,0 +1,15 @@
+<resources>
+    <string name="filter_picker_all">全部词条</string>
+    <string name="filter_picker_selected">已选（%1$d）</string>
+    <string name="filter_picker_hint">✓ 包含　× 排除</string>
+    <string name="filter_picker_old_spellings">旧拼写</string>
+    <string name="filter_picker_standard_spellings">标准拼写</string>
+    <string name="filter_picker_clear">清除选择</string>
+    <string name="filter_picker_apply">应用</string>
+    <string name="filter_picker_no_match">没有匹配的词条。</string>
+    <string name="filter_picker_no_selection">还没有选择词条。</string>
+    <string name="filter_picker_retry">加载失败，点击重试。</string>
+    <string name="filter_picker_undo_include">取消包含 %1$s</string>
+    <string name="filter_picker_undo_exclude">取消排除 %1$s</string>
+    <string name="filter_picker_gallery_count">%1$s 本作品</string>
+</resources>

@@ -1,13 +1,11 @@
 package com.maxwai.nclientv3;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,7 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -40,25 +39,21 @@ import com.maxwai.nclientv3.components.widgets.CustomLinearLayoutManager;
 import com.maxwai.nclientv3.settings.DefaultDialogs;
 import com.maxwai.nclientv3.settings.Global;
 import com.maxwai.nclientv3.settings.Login;
-import com.maxwai.nclientv3.utility.LogUtility;
 import com.maxwai.nclientv3.utility.BookmarkQuery;
 import com.maxwai.nclientv3.utility.BookmarkFilters;
-import com.maxwai.nclientv3.utility.ContentTagAllowlist;
 import com.maxwai.nclientv3.utility.ContentTagAliases;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class SearchActivity extends GeneralActivity {
     public static final String EXTRA_BOOKMARK_URL = "com.maxwai.nclientv3.extra.EDIT_BOOKMARK_URL";
@@ -79,6 +74,18 @@ public class SearchActivity extends GeneralActivity {
     private Bookmark originalBookmark;
     private TextInputEditText bookmarkName;
     private String initialBookmarkQuery;
+    private final ActivityResultLauncher<Intent> filterPicker = registerForActivityResult(
+        new ActivityResultContracts.StartActivityForResult(), result -> {
+            Intent data = result.getData();
+            if (result.getResultCode() != Activity.RESULT_OK || data == null) return;
+            TagType type = FilterPickerActivity.getType(data);
+            ArrayList<Tag> selected = FilterPickerActivity.getSelection(data);
+            if (type == null || TagType.UNKNOWN.equals(type) || selected == null || groups == null) return;
+            Map<String, TagStatus> before = fieldStatuses(type, getSelectedTags());
+            Map<String, TagStatus> after = fieldStatuses(type, selected);
+            replaceFieldTags(type, selected);
+            if (!before.equals(after)) advanced = true;
+        });
 
     public void setQuery(String str, boolean submit) {
         runOnUiThread(() -> searchView.setQuery(str, submit));
@@ -155,7 +162,7 @@ public class SearchActivity extends GeneralActivity {
         else {
             // SearchView's built-in submit button ignores an empty keyword. Submit filters directly.
             findViewById(R.id.submit_search).setOnClickListener(v -> submitSearch(searchView.getQuery().toString()));
-            searchView.requestFocus();
+            if (!restoreDraft(savedInstanceState)) searchView.requestFocus();
         }
     }
 
@@ -195,28 +202,20 @@ public class SearchActivity extends GeneralActivity {
         for (BookmarkQuery.Token term : filters.tags) {
             TagType type = TagType.typeByName(term.namespace);
             Tag tag = Queries.TagTable.searchTag(term.value, type);
-            if (tag == null) tag = new Tag(term.value, 0, customId++, type, TagStatus.DEFAULT);
+            if (tag == null) tag = new Tag(term.value, -1, customId++, type, TagStatus.DEFAULT);
             tag.setStatus(term.excluded ? TagStatus.AVOIDED : TagStatus.ACCEPTED);
-            restoreBookmarkTag(tag);
+            addFilterTag(tag);
         }
         initialBookmarkQuery = getBookmarkEditorQuery();
         TextView hint = findViewById(R.id.bookmark_complex_hint);
         hint.setVisibility(filters.rawExpression || originalQuery == null ? View.VISIBLE : View.GONE);
         if (originalQuery == null) hint.setText(R.string.bookmark_unavailable);
-        if (savedState != null && savedState.containsKey("bookmarkDraftName")) {
-            bookmarkName.setText(savedState.getString("bookmarkDraftName", ""));
-            searchView.setQuery(savedState.getString("bookmarkDraftKeywords", ""), false);
-            for (ChipTag chip : tags) chip.changeStatus(TagStatus.DEFAULT);
-            ArrayList<Tag> savedTags = savedState.getParcelableArrayList("bookmarkDraftTags");
-            if (savedTags != null) for (Tag tag : savedTags) restoreBookmarkTag(tag);
-            Ranges savedRanges = savedState.getParcelable("bookmarkDraftRanges");
-            if (savedRanges != null) ranges = savedRanges;
-        }
-        refreshBookmarkRangeLabels();
+        boolean restored = restoreDraft(savedState);
+        if (!restored) refreshRangeLabels();
         findViewById(R.id.save_bookmark).setOnClickListener(v -> saveBookmark());
         searchView.setQueryHint(getString(R.string.bookmark_keywords));
         searchView.setSubmitButtonEnabled(false);
-        bookmarkName.requestFocus();
+        if (!restored) bookmarkName.requestFocus();
     }
 
     private Ranges.TimeUnit findTimeUnit(String unit) {
@@ -225,21 +224,23 @@ public class SearchActivity extends GeneralActivity {
         return Ranges.UNDEFINED_DATE;
     }
 
-    private void restoreBookmarkTag(Tag tag) {
-        for (ChipTag chip : tags) {
-            if (chip.getTag().getType().equals(tag.getType()) && chip.getTag().getName().equals(tag.getName())) {
-                chip.changeStatus(tag.getStatus());
-                return;
-            }
+    private boolean restoreDraft(Bundle state) {
+        if (state == null || !state.containsKey("filterDraftTags")) return false;
+        searchView.setQuery(state.getString("filterDraftKeywords", ""), false);
+        if (bookmarkName != null) bookmarkName.setText(state.getString("bookmarkDraftName", ""));
+        ArrayList<Tag> selected = state.getParcelableArrayList("filterDraftTags");
+        if (selected != null) {
+            for (TagType type : TagType.values)
+                if (!TagType.UNKNOWN.equals(type)) replaceFieldTags(type, selected);
         }
-        Chip add = addChip[tag.getType().getId()];
-        ChipGroup group = getGroup(tag.getType());
-        if (add != null) group.removeView(add);
-        addChipTag(tag, true, true);
-        if (add != null) group.addView(add);
+        Ranges savedRanges = state.getParcelable("filterDraftRanges");
+        if (savedRanges != null) ranges = savedRanges;
+        advanced = state.getBoolean("filterDraftAdvanced");
+        refreshRangeLabels();
+        return true;
     }
 
-    private void refreshBookmarkRangeLabels() {
+    private void refreshRangeLabels() {
         View page = findViewById(R.id.page_range), date = findViewById(R.id.upload_range);
         ((Button) page.findViewById(R.id.fromButton)).setText(ranges.getFromPage() == Ranges.UNDEFINED ? "" : String.valueOf(ranges.getFromPage()));
         ((Button) page.findViewById(R.id.toButton)).setText(ranges.getToPage() == Ranges.UNDEFINED ? "" : String.valueOf(ranges.getToPage()));
@@ -310,11 +311,13 @@ public class SearchActivity extends GeneralActivity {
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle state) {
-        if (bookmarkMode && bookmarkName != null) {
+        if (bookmarkName != null)
             state.putString("bookmarkDraftName", bookmarkName.getText() == null ? "" : bookmarkName.getText().toString());
-            state.putString("bookmarkDraftKeywords", searchView.getQuery().toString());
-            state.putParcelableArrayList("bookmarkDraftTags", getSelectedTags());
-            state.putParcelable("bookmarkDraftRanges", ranges);
+        if (searchView != null) {
+            state.putString("filterDraftKeywords", searchView.getQuery().toString());
+            state.putParcelableArrayList("filterDraftTags", getSelectedTags());
+            state.putParcelable("filterDraftRanges", ranges);
+            state.putBoolean("filterDraftAdvanced", advanced);
         }
         super.onSaveInstanceState(state);
     }
@@ -432,304 +435,127 @@ public class SearchActivity extends GeneralActivity {
     }
 
     private void populateGroup() {
-        // Content and entity fields start with actual selections only, without popular suggestions.
-        //add already filtered tags
-        if (!bookmarkMode) for (Tag t : Queries.TagTable.mergeContentTags(Queries.TagTable.getAllFiltered())) {
-            // Fixed choices below already include their saved states and must not become removable duplicates.
-            if (!TagType.CATEGORY.equals(t.getType()) && !TagType.LANGUAGE.equals(t.getType()))
-                addChipTag(t, true, true);
-        }
-        //add categories
-        for (Tag t : Queries.TagTable.getTrueAllType(TagType.CATEGORY)) {
-            if (bookmarkMode) t.setStatus(TagStatus.DEFAULT);
-            addChipTag(t, false, bookmarkMode);
-        }
-        //add languages
-        for (Tag t : Queries.TagTable.getTrueAllType(TagType.LANGUAGE)) {
-            if (bookmarkMode) t.setStatus(TagStatus.DEFAULT);
-            else if (t.getId() == SpecialTagIds.LANGUAGE_ENGLISH && Global.getOnlyLanguage() == Language.ENGLISH)
-                t.setStatus(TagStatus.ACCEPTED);
-            else if (t.getId() == SpecialTagIds.LANGUAGE_JAPANESE && Global.getOnlyLanguage() == Language.JAPANESE)
-                t.setStatus(TagStatus.ACCEPTED);
-            else if (t.getId() == SpecialTagIds.LANGUAGE_CHINESE && Global.getOnlyLanguage() == Language.CHINESE)
-                t.setStatus(TagStatus.ACCEPTED);
-            addChipTag(t, false, bookmarkMode);
-        }
-        //add online tags
-        if (!bookmarkMode && Login.useAccountTag()) for (Tag t : Queries.TagTable.mergeContentTags(Queries.TagTable.getAllOnlineBlacklisted())) {
-            if (!tagAlreadyExist(t)) {
-                t.setStatus(TagStatus.AVOIDED);
-                addChipTag(t, true, true);
-            }
-        }
-        //add + button
-        for (TagType type : TagType.values) {
-            //ignore these tags
-            if (type == TagType.UNKNOWN || type == TagType.LANGUAGE || type == TagType.CATEGORY) {
-                addChip[type.getId()] = null;
-                continue;
-            }
-            ChipGroup cg = getGroup(type);
-            Chip add = createAddChip(type, cg);
-            addChip[type.getId()] = add;
-            cg.addView(add);
-        }
-    }
-
-    private Chip createAddChip(TagType type, ChipGroup group) {
-        Chip c = (Chip) getLayoutInflater().inflate(R.layout.chip_layout, group, false);
-        c.setCloseIconVisible(false);
-        c.setChipIconResource(R.drawable.ic_add);
-        c.setText(getString(R.string.add));
-        c.setOnClickListener(v -> loadTag(type));
-        Global.setTint(this, c.getChipIcon());
-        return c;
-    }
-
-    private boolean tagAlreadyExist(Tag tag) {
-        for (ChipTag t : tags) {
-            if (t.getTag().getName().equals(tag.getName()) && t.getTag().getType().equals(tag.getType())) return true;
-        }
-        return false;
-    }
-
-    private void addChipTag(Tag t, boolean close, boolean canBeAvoided) {
-        for (ChipTag existing : tags) {
-            Tag original = existing.getTag();
-            if (original.getType().equals(t.getType()) && original.getName().equals(t.getName())) {
-                // Different IDs can represent the same query value; retain an existing active preference.
-                if (original.getStatus() == TagStatus.DEFAULT && t.getStatus() != TagStatus.DEFAULT)
-                    existing.changeStatus(t.getStatus());
-                return;
-            }
-        }
-        ChipGroup cg = getGroup(t.getType());
-        ChipTag c = (ChipTag) getLayoutInflater().inflate(R.layout.chip_layout_entry, cg, false);
-        c.init(t, close, canBeAvoided);
-        c.setOnCloseIconClickListener(v -> {
-            cg.removeView(c);
-            tags.remove(c);
-            advanced = true;
-        });
-        c.setOnClickListener(v -> {
-            c.updateStatus();
-            advanced = true;
-        });
-        cg.addView(c);
-        tags.add(c);
-    }
-
-    private ArrayAdapter<TagSuggestion> createSuggestionAdapter(List<TagSuggestion> suggestions) {
-        return new ArrayAdapter<TagSuggestion>(this,
-            R.layout.tag_suggestion_row, new ArrayList<>(suggestions)) {
-            private final Filter suggestionFilter = new Filter() {
-                @Override
-                public CharSequence convertResultToString(Object resultValue) {
-                    return resultValue instanceof TagSuggestion ? resultValue.toString() : "";
-                }
-
-                @Override
-                protected FilterResults performFiltering(CharSequence constraint) {
-                    String query = constraint == null ? "" : constraint.toString().trim().toLowerCase(Locale.ROOT);
-                    List<TagSuggestion> matches = new ArrayList<>();
-                    for (TagSuggestion suggestion : suggestions) {
-                        if (suggestion.matches(query)) matches.add(suggestion);
+        if (!bookmarkMode) {
+            for (Tag tag : Queries.TagTable.mergeContentTags(Queries.TagTable.getAllFiltered()))
+                if (tag.getStatus() != TagStatus.AVOIDED || Global.removeAvoidedGalleries()) addFilterTag(tag);
+            Tag language = getDefaultSearchLanguage();
+            if (language != null) addFilterTag(language);
+            if (Login.useAccountTag()) {
+                for (Tag tag : Queries.TagTable.mergeContentTags(Queries.TagTable.getAllOnlineBlacklisted())) {
+                    if (findFilterTag(tag) == null) {
+                        tag.setStatus(TagStatus.AVOIDED);
+                        addFilterTag(tag);
                     }
-                    FilterResults results = new FilterResults();
-                    results.values = matches.toArray(new TagSuggestion[0]);
-                    results.count = matches.size();
-                    return results;
                 }
-
-                @Override
-                protected void publishResults(CharSequence constraint, FilterResults results) {
-                    setNotifyOnChange(false);
-                    clear();
-                    for (TagSuggestion suggestion : (TagSuggestion[]) results.values) add(suggestion);
-                    notifyDataSetChanged();
-                }
-            };
-
-            @NonNull
-            @Override
-            public Filter getFilter() {
-                return suggestionFilter;
             }
-        };
-    }
-
-    private static final class TagSuggestion {
-        private final Tag tag;
-        private final String displayName;
-        private final String searchName, searchDisplay;
-
-        private TagSuggestion(Context context, Tag tag) {
-            this.tag = tag;
-            displayName = tag.getFilterDisplayName(context);
-            searchName = (TagType.TAG.equals(tag.getType())
-                ? String.join(" ", ContentTagAliases.members(tag.getName())) : tag.getName()).toLowerCase(Locale.ROOT);
-            searchDisplay = displayName.toLowerCase(Locale.ROOT);
+        } else if (creatingBookmark) {
+            // Only blank bookmark creation supplies a default. Edits and restored drafts
+            // must keep the user's language selections, including an empty language field.
+            addFilterTag(includedLanguage(SpecialTagIds.LANGUAGE_CHINESE, "chinese"));
         }
-
-        private boolean matches(String query) {
-            return searchName.contains(query) || searchDisplay.contains(query);
-        }
-
-        @NonNull
-        @Override
-        public String toString() {
-            return displayName;
+        for (TagType type : TagType.values) {
+            if (TagType.UNKNOWN.equals(type)) continue;
+            ChipGroup group = getGroup(type);
+            Chip choose = (Chip) getLayoutInflater().inflate(R.layout.chip_layout, group, false);
+            choose.setCloseIconVisible(false);
+            choose.setChipIconResource(R.drawable.ic_add);
+            choose.setText(R.string.choose_filter_values);
+            choose.setOnClickListener(view -> openFilterPicker(type));
+            Global.setTint(this, choose.getChipIcon());
+            addChip[type.getId()] = choose;
+            group.addView(choose);
         }
     }
 
-    private void loadTag(TagType type) {
-        if (isSelectableTagType(type)) showTagPicker(type);
+    private Tag getDefaultSearchLanguage() {
+        Language language = Global.getOnlyLanguage();
+        if (Language.ENGLISH == language) return includedLanguage(SpecialTagIds.LANGUAGE_ENGLISH, "english");
+        if (Language.JAPANESE == language) return includedLanguage(SpecialTagIds.LANGUAGE_JAPANESE, "japanese");
+        if (Language.CHINESE == language) return includedLanguage(SpecialTagIds.LANGUAGE_CHINESE, "chinese");
+        return null;
     }
 
-    private static boolean isSelectableTagType(TagType type) {
-        return TagType.TAG.equals(type) || TagType.PARODY.equals(type) || TagType.CHARACTER.equals(type)
-            || TagType.ARTIST.equals(type) || TagType.GROUP.equals(type);
+    private static Tag includedLanguage(int id, String name) {
+        Tag existing = Queries.TagTable.getTagById(id);
+        if (existing != null && TagType.LANGUAGE.equals(existing.getType()) && name.equals(existing.getName()))
+            return new Tag(name, existing.getCount(), id, TagType.LANGUAGE, TagStatus.ACCEPTED);
+        return new Tag(name, -1, id, TagType.LANGUAGE, TagStatus.ACCEPTED);
     }
 
-    private List<TagSuggestion> loadTagChoices(TagType type) {
-        return loadTagChoices(type, false);
+    private static Map<String, TagStatus> fieldStatuses(TagType type, List<Tag> selected) {
+        Map<String, TagStatus> statuses = new LinkedHashMap<>();
+        for (Tag tag : selected)
+            if (type.equals(tag.getType()) && tag.getStatus() != TagStatus.DEFAULT)
+                statuses.put(tag.getName(), tag.getStatus());
+        return statuses;
     }
 
-    private List<TagSuggestion> loadTagChoices(TagType type, boolean legacySpellings) {
-        List<TagSuggestion> choices = new ArrayList<>();
-        Set<String> names = new HashSet<>();
-        List<Tag> available = Queries.TagTable.getTrueAllType(type);
-        if (!legacySpellings) available = Queries.TagTable.mergeContentTags(available);
-        for (Tag tag : available) {
-            if (type.equals(tag.getType()) && !tag.getName().trim().isEmpty()
-                && (!TagType.TAG.equals(type) || ContentTagAllowlist.isAllowed(this, tag.getName()))
-                && (!legacySpellings || (TagType.TAG.equals(type)
-                    && !ContentTagAliases.canonicalName(tag.getName()).equals(tag.getName())))
-                && names.add(tag.getName()))
-                choices.add(new TagSuggestion(this, tag));
-        }
-        choices.sort((left, right) -> {
-            int display = left.displayName.compareToIgnoreCase(right.displayName);
-            return display != 0 ? display : left.tag.getName().compareTo(right.tag.getName());
-        });
-        return choices;
+    private void openFilterPicker(TagType type) {
+        ArrayList<Tag> selected = new ArrayList<>();
+        for (Tag tag : getSelectedTags())
+            if (type.equals(tag.getType())) selected.add(tag);
+        inputMethodManager.hideSoftInputFromWindow(searchView.getWindowToken(), 0);
+        filterPicker.launch(FilterPickerActivity.createIntent(this, type, selected));
     }
 
-    private void showTagPicker(TagType type) {
-        showTagPicker(type, false);
-    }
-
-    private void showTagPicker(TagType type, boolean legacySpellings) {
-        View view = getLayoutInflater().inflate(R.layout.tag_choice_dialog, null);
-        TextInputLayout field = view.findViewById(R.id.tag_choice_layout);
-        MaterialAutoCompleteTextView input = view.findViewById(R.id.tag_choice);
-        // A single CJK character is a useful query; never inherit the platform's two-character default.
-        input.setThreshold(1);
-        int title = TagType.TAG.equals(type) ? R.string.tags : TagType.PARODY.equals(type) ? R.string.parodies : TagType.CHARACTER.equals(type)
-            ? R.string.characters : TagType.ARTIST.equals(type) ? R.string.artists : R.string.groups;
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this)
-            .setTitle(legacySpellings ? getString(R.string.select_legacy_content_tag)
-                : getString(R.string.select_existing_tag, getString(title)))
-            .setView(view).setPositiveButton(R.string.add, null)
-            .setNegativeButton(R.string.cancel, null);
-        if (TagType.TAG.equals(type)) builder.setNeutralButton(legacySpellings
-            ? R.string.standard_content_tags : R.string.legacy_content_tags,
-            (ignored, which) -> showTagPicker(type, !legacySpellings));
-        AlertDialog dialog = builder.create();
-        TagSuggestion[] selected = new TagSuggestion[1];
-        field.setEnabled(false);
-        field.setHelperText(getString(R.string.tag_choices_loading));
-        Runnable addSelection = () -> {
-            TagSuggestion choice = selected[0];
-            if (choice == null || !type.equals(choice.tag.getType())
-                || !choice.toString().contentEquals(input.getText()) || !addExistingTag(choice.tag, type)) {
-                field.setError(getString(R.string.select_existing_tag_error));
-                return;
-            }
-            inputMethodManager.hideSoftInputFromWindow(input.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-            dialog.dismiss();
-        };
-        input.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence text, int start, int count, int after) {}
-            @Override public void onTextChanged(CharSequence text, int start, int before, int count) {
-                selected[0] = null;
-                field.setError(null);
-                if (dialog.isShowing()) dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
-            }
-            @Override public void afterTextChanged(Editable text) {
-                if (text.length() == 0 && input.getAdapter() != null)
-                    ((ArrayAdapter<?>) input.getAdapter()).getFilter().filter("", count -> {
-                        if (dialog.isShowing() && input.hasFocus()) input.showDropDown();
-                    });
-            }
-        });
-        input.setOnItemClickListener((parent, itemView, position, id) -> {
-            Object item = parent.getItemAtPosition(position);
-            TagSuggestion choice = item instanceof TagSuggestion ? (TagSuggestion) item : null;
-            // Keep the object that was clicked; never resolve an identity from its localized text.
-            if (choice != null) input.setText(choice.toString(), false);
-            selected[0] = choice;
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(selected[0] != null);
-        });
-        input.setOnEditorActionListener((textView, action, event) -> {
-            if (action == EditorInfo.IME_ACTION_DONE || action == EditorInfo.IME_ACTION_SEARCH || action == EditorInfo.IME_ACTION_SEND) {
-                addSelection.run();
-                return true;
-            }
-            return false;
-        });
-        dialog.setOnShowListener(ignored -> {
-            Button add = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-            add.setEnabled(false);
-            add.setOnClickListener(button -> addSelection.run());
-        });
-        dialog.show();
-        CompletableFuture<List<TagSuggestion>> loading = CompletableFuture.supplyAsync(() -> loadTagChoices(type, legacySpellings));
-        dialog.setOnDismissListener(ignored -> loading.cancel(true));
-        loading.whenComplete((choices, error) -> runOnUiThread(() -> {
-            if (!dialog.isShowing() || isFinishing() || isDestroyed()) return;
-            if (error != null) {
-                LogUtility.w("Unable to load existing tags", error);
-                field.setHelperText(getString(R.string.tag_choices_error));
-                return;
-            }
-            input.setAdapter(createSuggestionAdapter(choices));
-            field.setEnabled(true);
-            field.setHelperText(getString(choices.isEmpty() ? R.string.tag_choices_empty
-                : legacySpellings ? R.string.legacy_content_tag_hint : R.string.select_existing_tag_hint));
-            input.requestFocus();
-            input.post(() -> {
-                if (dialog.isShowing()) input.showDropDown();
-            });
-        }));
-    }
-
-    private boolean addExistingTag(Tag candidate, TagType type) {
-        if (!isSelectableTagType(type) || candidate == null || !type.equals(candidate.getType())) return false;
-        Tag existing = Queries.TagTable.getTagById(candidate.getId());
-        if (existing == null || !type.equals(existing.getType()) || !existing.getName().equals(candidate.getName())
-            || existing.getName().trim().isEmpty() || existing.getName().contains("\"") || existing.getName().contains("\\")) return false;
-        if (TagType.TAG.equals(type) && !ContentTagAllowlist.isAllowed(this, existing.getName())) return false;
-        Tag tag = new Tag(existing.getName(), existing.getCount(), existing.getId(), type, TagStatus.ACCEPTED);
+    private void replaceFieldTags(TagType type, List<Tag> selected) {
         ChipGroup group = getGroup(type);
-        if (TagType.TAG.equals(type) && ContentTagAliases.members(tag.getName()).size() > 1) {
-            // Standard and old spellings are alternative searches, not an AND of both names.
-            for (int index = tags.size() - 1; index >= 0; index--) {
-                ChipTag chip = tags.get(index);
-                if (ContentTagAliases.sameTag(chip.getTag(), tag)
-                    && !chip.getTag().getName().equals(tag.getName())) {
-                    if (chip.getTag().getStatus() == TagStatus.AVOIDED) tag.setStatus(TagStatus.AVOIDED);
-                    group.removeView(chip);
-                    tags.remove(index);
-                }
+        for (int index = tags.size() - 1; index >= 0; index--) {
+            ChipTag chip = tags.get(index);
+            if (type.equals(chip.getTag().getType())) {
+                group.removeView(chip);
+                tags.remove(index);
             }
         }
-        Chip add = addChip[type.getId()];
-        if (add != null) group.removeView(add);
-        addChipTag(tag, true, true);
-        if (add != null) group.addView(add);
+        for (Tag tag : selected)
+            if (type.equals(tag.getType())) addFilterTag(tag);
+    }
+
+    private ChipTag findFilterTag(Tag tag) {
+        for (ChipTag chip : tags) {
+            Tag current = chip.getTag();
+            if (current.getType().equals(tag.getType()) && current.getName().equals(tag.getName()))
+                return chip;
+        }
+        return null;
+    }
+
+    private void addFilterTag(Tag tag) {
+        if (tag.getStatus() == TagStatus.DEFAULT || TagType.UNKNOWN.equals(tag.getType())) return;
+        ChipTag existing = findFilterTag(tag);
+        if (existing != null) {
+            existing.changeStatus(tag.getStatus());
+            return;
+        }
+        TagType type = tag.getType();
+        if (TagType.TAG.equals(type) && ContentTagAliases.members(tag.getName()).size() > 1) {
+            // Management collapses a family using its highest count. A filter displays the
+            // count of the exact raw value that will be queried, including old spellings.
+            Tag raw = Queries.TagTable.getTagById(tag.getId());
+            if (raw != null && raw.getName().equals(tag.getName()) && type.equals(raw.getType())) {
+                raw.setStatus(tag.getStatus());
+                tag = raw;
+            }
+        }
+        ChipGroup group = getGroup(type);
+        ChipTag chip = (ChipTag) getLayoutInflater().inflate(R.layout.chip_layout_entry, group, false);
+        chip.init(tag, true, true);
+        chip.setOnCloseIconClickListener(view -> removeFilterChip(group, chip));
+        chip.setOnClickListener(view -> {
+            chip.updateStatus();
+            if (chip.getTag().getStatus() == TagStatus.DEFAULT) removeFilterChip(group, chip);
+            advanced = true;
+        });
+        Chip choose = addChip[type.getId()];
+        int chooseIndex = choose == null ? -1 : group.indexOfChild(choose);
+        group.addView(chip, chooseIndex);
+        tags.add(chip);
+    }
+
+    private void removeFilterChip(ChipGroup group, ChipTag chip) {
+        group.removeView(chip);
+        tags.remove(chip);
         advanced = true;
-        return true;
     }
 
     private ChipGroup getGroup(TagType type) {

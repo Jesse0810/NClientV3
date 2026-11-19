@@ -254,7 +254,7 @@ public class Global {
         removeAvoidedGalleries = shared.getBoolean(context.getString(R.string.preference_key_remove_ignored), true);
         onlyTag = shared.getBoolean(context.getString(R.string.key_ignore_tags), true);
         volumeOverride = shared.getBoolean(context.getString(R.string.preference_key_override_volume), true);
-        enableBeta = shared.getBoolean(context.getString(R.string.preference_key_enable_beta), true);
+        enableBeta = shared.getBoolean(context.getString(R.string.preference_key_enable_beta), false);
         columnCount = shared.getInt(context.getString(R.string.key_column_count), 2);
         showTitles = shared.getBoolean(context.getString(R.string.preference_key_show_titles), true);
         exactTagMatch = shared.getBoolean(context.getString(R.string.preference_key_exact_title_match), false);

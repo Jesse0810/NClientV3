@@ -15,9 +15,17 @@ val keystoreProperties = Properties().apply {
 
 val majorVersion = 4
 val minorVersion = 2
-val patchVersion = 14
+val patchVersion = 15
 val buildVersion = 0
 val version = "${majorVersion}.${minorVersion}.${patchVersion}"
+val publishedTag = providers.gradleProperty("releaseTag").orNull.orEmpty()
+if (publishedTag.isNotEmpty()) {
+    val tag = Regex("^v(\\d+\\.\\d+\\.\\d+)(?:-zh-preview\\.([1-9]\\d*))?$").matchEntire(publishedTag)
+    require(tag != null && tag.groupValues[1] == version) {
+        "releaseTag must match this version: v$version or v$version-zh-preview.N"
+    }
+}
+val publishedVersion = if (publishedTag.isEmpty()) version else publishedTag.removePrefix("v")
 
 android {
     signingConfigs {
@@ -36,7 +44,8 @@ android {
         versionCode =
             "%d%d%02d%02d".format(majorVersion, minorVersion, patchVersion, buildVersion).toInt()
         multiDexEnabled = true
-        versionName = version
+        versionName = publishedVersion
+        buildConfigField("String", "RELEASE_TAG", "\"$publishedTag\"")
         vectorDrawables.useSupportLibrary = true
         proguardFiles("proguard-rules.pro")
     }

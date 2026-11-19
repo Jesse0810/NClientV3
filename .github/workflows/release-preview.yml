@@ -28,7 +28,7 @@ jobs:
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
           set -euo pipefail
-          if [[ ! "$RELEASE_TAG" =~ ^v([0-9]+\.[0-9]+\.[0-9]+)-zh-preview\.[0-9]+$ ]]; then
+          if [[ ! "$RELEASE_TAG" =~ ^v([0-9]+\.[0-9]+\.[0-9]+)-zh-preview\.[1-9][0-9]*$ ]]; then
             echo 'Expected a tag such as v4.2.8-zh-preview.1' >&2
             exit 1
           fi
@@ -72,11 +72,16 @@ jobs:
       - name: Check alias selection and exclusion regressions
         run: python3 scripts/check_content_aliases.py
 
+      - name: Check stable and preview update selection
+        run: python3 scripts/check_release_updates.py
+
       - name: Build Android 9+ and Android 8 Debug APKs
         id: assemble
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
         run: |
           set -euo pipefail
-          bash ./gradlew --no-daemon --max-workers=2 assemblePost28Debug assemblePre28Debug
+          bash ./gradlew --no-daemon --max-workers=2 "-PreleaseTag=$RELEASE_TAG" assemblePost28Debug assemblePre28Debug
 
       - name: Verify APK signatures, metadata and bundled translations
         id: verify
@@ -95,6 +100,8 @@ jobs:
 
           version = os.environ["RELEASE_VERSION"]
           tag = os.environ["RELEASE_TAG"]
+          major, minor, patch = map(int, version.split("."))
+          version_code = int(f"{major}{minor}{patch:02d}00")
           tools = Path(os.environ["ANDROID_HOME"]) / "build-tools" / "36.0.0"
           output = Path("release-assets")
           output.mkdir()
@@ -112,14 +119,15 @@ jobs:
               ("pre28", "_pre28", 26, 28, "android8"),
           )
           for flavor, suffix, min_sdk, target_sdk, label in variants:
-              apk = Path(f"app/build/outputs/apk/{flavor}/debug/NClientV3_{version}{suffix}_debug.apk")
+              apk = Path(f"app/build/outputs/apk/{flavor}/debug/NClientV3_{tag[1:]}{suffix}_debug.apk")
               if not apk.is_file():
                   raise SystemExit(f"Missing APK: {apk}")
               subprocess.run([str(tools / "apksigner"), "verify", "--verbose", "--print-certs", str(apk)], check=True)
               badging = subprocess.check_output([str(tools / "aapt2"), "dump", "badging", str(apk)], text=True)
               checks = {
                   "package": (r"^package: name='([^']+)'", "com.maxwai.nclientv3.debug"),
-                  "version": (r"^package: .*versionName='([^']+)'", f"{version}-debug"),
+                  "version": (r"^package: .*versionName='([^']+)'", f"{tag[1:]}-debug"),
+                  "version code": (r"^package: .*versionCode='([^']+)'", str(version_code)),
                   "min SDK": (r"^(?:sdkVersion|minSdkVersion):'([^']+)'", str(min_sdk)),
                   "target SDK": (r"^targetSdkVersion:'([^']+)'", str(target_sdk)),
               }
@@ -128,6 +136,9 @@ jobs:
                   if match is None or match.group(1) != expected:
                       raise SystemExit(f"Unexpected {field} in {apk}")
               with zipfile.ZipFile(apk) as archive:
+                  for layout in ("activity_filter_picker", "filter_picker_row"):
+                      if f"res/layout/{layout}.xml" not in archive.namelist():
+                          raise SystemExit(f"Missing filter picker layout {layout}: {apk}")
                   allowlist = json.loads(archive.read("assets/content_tag_allowlist.json"))
                   translations = json.loads(archive.read("assets/tag_translations_zh_CN.json"))
                   entities = json.loads(archive.read("assets/entity_translations_zh_CN.json"))
