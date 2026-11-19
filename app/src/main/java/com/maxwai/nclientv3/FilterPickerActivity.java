@@ -12,7 +12,6 @@ import android.text.Layout;
 import android.text.TextPaint;
 import android.text.TextWatcher;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -144,7 +143,8 @@ public class FilterPickerActivity extends GeneralActivity {
         }
 
         recycler = findViewById(R.id.recycler);
-        TextView sample = (TextView) getLayoutInflater().inflate(R.layout.filter_picker_row, recycler, false);
+        // The sample only supplies text metrics; it does not need RecyclerView layout params.
+        TextView sample = (TextView) getLayoutInflater().inflate(R.layout.filter_picker_row, null);
         choicePaint = new TextPaint(sample.getPaint());
         choiceGap = dp(6);
         choiceIconSize = dp(16);
