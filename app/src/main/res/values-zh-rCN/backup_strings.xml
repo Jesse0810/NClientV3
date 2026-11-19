@@ -1,0 +1,5 @@
+<resources>
+    <string name="backup_invalid">所选文件不是完整的 NClientV3 备份。请另选 ZIP，或从旧版重新导出。</string>
+    <string name="backup_export_failed">未能保存备份。请选一个可写入的文件夹后重新导出。</string>
+    <string name="backup_import_failed">未能读取或恢复备份，请重试。</string>
+</resources>

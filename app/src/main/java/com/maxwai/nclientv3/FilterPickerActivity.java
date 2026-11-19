@@ -2,17 +2,22 @@ package com.maxwai.nclientv3;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.RippleDrawable;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.text.Editable;
+import android.text.Layout;
+import android.text.TextPaint;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,12 +26,16 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.IntentCompat;
+import androidx.core.graphics.ColorUtils;
 import androidx.core.os.BundleCompat;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.color.MaterialColors;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.maxwai.nclientv3.api.components.Tag;
 import com.maxwai.nclientv3.api.enums.TagStatus;
 import com.maxwai.nclientv3.api.enums.TagType;
@@ -37,6 +46,7 @@ import com.maxwai.nclientv3.utility.ContentTagAliases;
 import com.maxwai.nclientv3.utility.ContentTagAllowlist;
 import com.maxwai.nclientv3.utility.LogUtility;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -56,10 +66,13 @@ public class FilterPickerActivity extends GeneralActivity {
     private static final String STATE_QUERY = "filterPickerQuery";
     private static final String STATE_SELECTED_ONLY = "filterPickerSelectedOnly";
     private static final String STATE_LEGACY = "filterPickerLegacySpellings";
-    private static final String STATE_SCROLL = "filterPickerScroll";
+    private static final String STATE_ANCHOR = "filterPickerAnchor";
+    private static final String STATE_OFFSET = "filterPickerAnchorOffset";
 
     private static final Comparator<Choice> CHOICE_ORDER = Comparator
-        .comparing((Choice choice) -> choice.displayName, String.CASE_INSENSITIVE_ORDER)
+        .comparingInt((Choice choice) -> ChipTag.hasKnownCount(choice.tag) ? choice.tag.getCount() : -1)
+        .reversed()
+        .thenComparing(choice -> choice.displayName, String.CASE_INSENSITIVE_ORDER)
         .thenComparing(choice -> choice.tag.getName());
 
     private final Map<String, Tag> selected = new LinkedHashMap<>();
@@ -71,15 +84,18 @@ public class FilterPickerActivity extends GeneralActivity {
     private boolean legacySpellings;
     private boolean catalogFailed;
     private Catalog catalog;
-    private Parcelable savedScroll;
+    private ScrollAnchor savedScroll;
     private TextInputEditText search;
     private TabLayout tabs;
     private TextView hint;
     private TextView spelling;
     private TextView message;
     private View clear;
+    private RecyclerView recycler;
     private LinearLayoutManager layout;
     private ChoiceAdapter adapter;
+    private TextPaint choicePaint;
+    private int choiceMinWidth, choiceExtraWidth, choiceGap, choiceIconSize;
 
     public static Intent createIntent(Context context, TagType type, ArrayList<Tag> selection) {
         return new Intent(context, FilterPickerActivity.class)
@@ -123,14 +139,29 @@ public class FilterPickerActivity extends GeneralActivity {
         if (state != null) {
             selectedOnly = state.getBoolean(STATE_SELECTED_ONLY);
             legacySpellings = state.getBoolean(STATE_LEGACY);
-            savedScroll = BundleCompat.getParcelable(state, STATE_SCROLL, Parcelable.class);
+            String anchor = state.getString(STATE_ANCHOR);
+            if (anchor != null) savedScroll = new ScrollAnchor(anchor, state.getInt(STATE_OFFSET));
         }
 
-        RecyclerView recycler = findViewById(R.id.recycler);
+        recycler = findViewById(R.id.recycler);
+        TextView sample = (TextView) getLayoutInflater().inflate(R.layout.filter_picker_row, recycler, false);
+        choicePaint = new TextPaint(sample.getPaint());
+        choiceGap = dp(6);
+        choiceIconSize = dp(16);
+        choiceMinWidth = sample.getMinimumWidth();
+        choiceExtraWidth = sample.getPaddingStart() + sample.getPaddingEnd()
+            + choiceIconSize + sample.getCompoundDrawablePadding();
         layout = new LinearLayoutManager(this);
         adapter = new ChoiceAdapter();
         recycler.setLayoutManager(layout);
         recycler.setAdapter(adapter);
+        recycler.setItemAnimator(null);
+        recycler.addOnLayoutChangeListener((view, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
+            if (right - left != oldRight - oldLeft) {
+                if (savedScroll == null) savedScroll = scrollAnchor();
+                updateResults(false);
+            }
+        });
         hint = findViewById(R.id.filter_picker_hint);
         spelling = findViewById(R.id.filter_picker_spelling);
         message = findViewById(R.id.filter_picker_message);
@@ -141,6 +172,7 @@ public class FilterPickerActivity extends GeneralActivity {
             updateResults(false);
         });
         findViewById(R.id.filter_picker_apply).setOnClickListener(view -> apply());
+        findViewById(R.id.filter_picker_cancel).setOnClickListener(view -> finish());
         spelling.setOnClickListener(view -> {
             legacySpellings = !legacySpellings;
             updateSpellingToggle();
@@ -148,6 +180,8 @@ public class FilterPickerActivity extends GeneralActivity {
         });
 
         search = findViewById(R.id.filter_picker_search);
+        TextInputLayout searchField = findViewById(R.id.filter_picker_search_field);
+        searchField.setHint(getString(R.string.filter_picker_search_field_hint, getString(fieldName())));
         if (state != null) search.setText(state.getString(STATE_QUERY, ""));
         search.setOnEditorActionListener((view, action, event) -> {
             InputMethodManager keyboard = getSystemService(InputMethodManager.class);
@@ -186,7 +220,11 @@ public class FilterPickerActivity extends GeneralActivity {
             state.putBoolean(STATE_SELECTED_ONLY, selectedOnly);
             state.putBoolean(STATE_LEGACY, legacySpellings);
             state.putParcelableArrayList(EXTRA_SELECTION, new ArrayList<>(selected.values()));
-            state.putParcelable(STATE_SCROLL, savedScroll != null ? savedScroll : layout.onSaveInstanceState());
+            ScrollAnchor anchor = savedScroll != null ? savedScroll : scrollAnchor();
+            if (anchor != null) {
+                state.putString(STATE_ANCHOR, anchor.name);
+                state.putInt(STATE_OFFSET, anchor.offset);
+            }
         }
         super.onSaveInstanceState(state);
     }
@@ -258,9 +296,10 @@ public class FilterPickerActivity extends GeneralActivity {
         Map<String, Choice> byName = new HashMap<>();
         Map<String, Choice> representatives = new HashMap<>();
         ArrayList<Choice> oldSpellings = new ArrayList<>();
+        NumberFormat countFormat = countFormat();
         for (Tag tag : rows.values()) {
             if (Thread.currentThread().isInterrupted()) return Catalog.empty();
-            Choice choice = new Choice(this, tag, content);
+            Choice choice = new Choice(tag, content, countFormat);
             byName.put(tag.getName(), choice);
             if (!content) continue;
             if (!ContentTagAllowlist.isAllowed(this, tag.getName())) continue;
@@ -282,17 +321,20 @@ public class FilterPickerActivity extends GeneralActivity {
         if (filtering != null) filtering.cancel(true);
         final int generation = ++filterGeneration;
         if (catalog == null && !selectedOnly) {
-            adapter.setRows(Collections.emptyList());
+            adapter.setRows(PackedChoices.empty());
             if (catalogFailed) showMessage(R.string.filter_picker_retry, this::loadCatalog);
             else showMessage(R.string.tag_choices_loading, null);
             return;
         }
+        int width = recycler.getWidth() - recycler.getPaddingLeft() - recycler.getPaddingRight();
+        if (width <= 0) return; // The RecyclerView's first layout will re-run this search.
         List<Choice> source;
         if (selectedOnly) {
             source = new ArrayList<>(selected.size());
+            NumberFormat countFormat = countFormat();
             for (Tag tag : selected.values()) {
                 Choice choice = catalog == null ? null : catalog.byName.get(tag.getName());
-                if (choice == null) choice = new Choice(this, tag, TagType.TAG.equals(type));
+                if (choice == null) choice = new Choice(tag, TagType.TAG.equals(type), countFormat);
                 source.add(choice);
             }
             source.sort(CHOICE_ORDER);
@@ -308,23 +350,32 @@ public class FilterPickerActivity extends GeneralActivity {
                     if (choice.matches(query)) rows.add(choice);
                 }
             }
-            List<Choice> result = rows;
+            PackedChoices result = PackedChoices.pack(rows, width, choiceGap);
             runOnUiThread(() -> {
                 if (generation != filterGeneration || isFinishing() || isDestroyed()) return;
                 adapter.setRows(result);
-                if (result.isEmpty()) {
+                if (result.rows.isEmpty()) {
                     int text = selectedOnly && selected.isEmpty() ? R.string.filter_picker_no_selection
                         : !query.isEmpty() ? R.string.filter_picker_no_match : R.string.tag_choices_empty;
                     showMessage(text, null);
                 } else {
                     message.setVisibility(View.GONE);
                     if (savedScroll != null) {
-                        layout.onRestoreInstanceState(savedScroll);
+                        Integer row = result.rowByName.get(savedScroll.name);
+                        if (row != null) layout.scrollToPositionWithOffset(row, savedScroll.offset);
                         savedScroll = null;
                     } else if (fromStart) layout.scrollToPositionWithOffset(0, 0);
                 }
             });
         });
+    }
+
+    private ScrollAnchor scrollAnchor() {
+        int position = layout.findFirstVisibleItemPosition();
+        View row = layout.findViewByPosition(position);
+        if (row == null || position < 0 || position >= adapter.choices.rows.size()) return null;
+        return new ScrollAnchor(adapter.choices.rows.get(position).get(0).tag.getName(),
+            row.getTop() - recycler.getPaddingTop());
     }
 
     private void showMessage(@StringRes int text, @Nullable Runnable action) {
@@ -347,21 +398,23 @@ public class FilterPickerActivity extends GeneralActivity {
         clear.setEnabled(!selected.isEmpty());
     }
 
-    private void changeSelection(Choice choice, TagStatus status) {
+    private void changeSelection(Choice choice) {
         String name = choice.tag.getName();
         Tag prior = selected.get(name);
-        if (prior != null && prior.getStatus() == status) selected.remove(name);
+        Tag next = prior == null ? withStatus(choice.tag, TagStatus.DEFAULT) : withStatus(prior, prior.getStatus());
+        boolean removed = next.updateStatus() == TagStatus.DEFAULT;
+        if (removed) selected.remove(name);
         else {
             if (TagType.TAG.equals(type)) {
                 // The selected raw spelling replaces alternatives rather than intersecting
                 // two different searches for the same reviewed concept.
                 for (String alternative : ContentTagAliases.members(name))
-                    if (!name.equals(alternative)) selected.remove(alternative);
+                    if (!name.equals(alternative) && selected.remove(alternative) != null) removed = true;
             }
-            selected.put(name, withStatus(prior == null ? choice.tag : prior, status));
+            selected.put(name, next);
         }
         updateSelectionSummary();
-        if (selectedOnly) updateResults(false);
+        if (selectedOnly && removed) updateResults(false);
         else adapter.refreshSelection(name);
     }
 
@@ -380,13 +433,27 @@ public class FilterPickerActivity extends GeneralActivity {
         return R.string.tags;
     }
 
-    private static final class Choice {
+    private NumberFormat countFormat() {
+        Locale locale = getResources().getConfiguration().getLocales().get(0);
+        return NumberFormat.getIntegerInstance(locale == null ? Locale.getDefault() : locale);
+    }
+
+    private int dp(int value) {
+        return Math.round(value * getResources().getDisplayMetrics().density);
+    }
+
+    private final class Choice {
         private final Tag tag;
         private final String displayName, searchDisplay, searchName;
+        private final String countLabel, label;
+        private final int width;
 
-        private Choice(Context context, Tag tag, boolean content) {
+        private Choice(Tag tag, boolean content, NumberFormat countFormat) {
             this.tag = tag;
-            displayName = tag.getFilterDisplayName(context);
+            displayName = tag.getFilterDisplayName(FilterPickerActivity.this);
+            countLabel = ChipTag.hasKnownCount(tag) ? countFormat.format(tag.getCount()) : "";
+            label = countLabel.isEmpty() ? displayName : displayName + " · " + countLabel;
+            width = Math.max(choiceMinWidth, (int) Math.ceil(Layout.getDesiredWidth(label, choicePaint)) + choiceExtraWidth);
             searchDisplay = displayName.toLowerCase(Locale.ROOT);
             String rawName = tag.getName();
             searchName = (content && ContentTagAliases.canonicalName(rawName).equals(rawName)
@@ -413,84 +480,154 @@ public class FilterPickerActivity extends GeneralActivity {
         }
     }
 
-    private final class ChoiceAdapter extends RecyclerView.Adapter<ChoiceHolder> {
-        private List<Choice> rows = Collections.emptyList();
+    private static final class ScrollAnchor {
+        final String name;
+        final int offset;
 
-        private void setRows(List<Choice> choices) {
-            rows = choices;
+        ScrollAnchor(String name, int offset) {
+            this.name = name;
+            this.offset = offset;
+        }
+    }
+
+    /** Wrap labels into rows without constructing a view for every search result. */
+    private static final class PackedChoices {
+        final List<List<Choice>> rows;
+        final Map<String, Integer> rowByName;
+        final int width;
+
+        PackedChoices(List<List<Choice>> rows, Map<String, Integer> rowByName, int width) {
+            this.rows = rows;
+            this.rowByName = rowByName;
+            this.width = width;
+        }
+
+        static PackedChoices empty() {
+            return new PackedChoices(Collections.emptyList(), Collections.emptyMap(), 0);
+        }
+
+        static PackedChoices pack(List<Choice> choices, int width, int gap) {
+            List<List<Choice>> rows = new ArrayList<>();
+            Map<String, Integer> rowByName = new HashMap<>();
+            List<Choice> row = null;
+            int used = 0;
+            for (Choice choice : choices) {
+                int size = Math.min(choice.width, width);
+                if (row == null || used + gap + size > width) {
+                    row = new ArrayList<>();
+                    rows.add(row);
+                    used = 0;
+                }
+                if (used > 0) used += gap;
+                used += size;
+                row.add(choice);
+                rowByName.put(choice.tag.getName(), rows.size() - 1);
+            }
+            return new PackedChoices(rows, rowByName, width);
+        }
+    }
+
+    private final class ChoiceAdapter extends RecyclerView.Adapter<ChoiceHolder> {
+        private PackedChoices choices = PackedChoices.empty();
+
+        private void setRows(PackedChoices choices) {
+            this.choices = choices;
             notifyDataSetChanged();
         }
 
         private void refreshSelection(String changed) {
             List<String> affected = TagType.TAG.equals(type) ? ContentTagAliases.members(changed)
                 : Collections.singletonList(changed);
-            for (int index = 0; index < rows.size(); index++)
-                if (affected.contains(rows.get(index).tag.getName())) notifyItemChanged(index);
+            java.util.Set<Integer> rows = new java.util.HashSet<>();
+            for (String name : affected) {
+                Integer row = choices.rowByName.get(name);
+                if (row != null && rows.add(row)) notifyItemChanged(row);
+            }
         }
 
         @NonNull
         @Override
         public ChoiceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.filter_picker_row, parent, false);
+            LinearLayout row = new LinearLayout(parent.getContext());
+            row.setOrientation(LinearLayout.HORIZONTAL);
+            row.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
+            row.setPadding(0, 0, 0, choiceGap);
+            row.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
             return new ChoiceHolder(row);
         }
 
         @Override
         public void onBindViewHolder(@NonNull ChoiceHolder holder, int position) {
-            holder.bind(rows.get(position));
+            holder.bind(choices.rows.get(position), choices.width);
         }
 
         @Override
         public int getItemCount() {
-            return rows.size();
+            return choices.rows.size();
         }
     }
 
     private final class ChoiceHolder extends RecyclerView.ViewHolder {
-        private final TextView name, count;
-        private final ImageButton include, exclude;
-        private final GradientDrawable background = new GradientDrawable();
+        private final LinearLayout row;
 
-        private ChoiceHolder(View row) {
+        ChoiceHolder(LinearLayout row) {
             super(row);
-            name = row.findViewById(R.id.filter_picker_name);
-            count = row.findViewById(R.id.filter_picker_count);
-            include = row.findViewById(R.id.filter_picker_include);
-            exclude = row.findViewById(R.id.filter_picker_exclude);
-            background.setCornerRadius(12 * row.getResources().getDisplayMetrics().density);
-            row.setBackground(background);
+            this.row = row;
         }
 
-        private void bind(Choice choice) {
+        void bind(List<Choice> choices, int width) {
+            for (int index = 0; index < choices.size(); index++) {
+                Choice choice = choices.get(index);
+                TextView chip = (TextView) row.getChildAt(index);
+                if (chip == null) {
+                    chip = (TextView) getLayoutInflater().inflate(R.layout.filter_picker_row, row, false);
+                    row.addView(chip);
+                }
+                chip.setVisibility(View.VISIBLE);
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) chip.getLayoutParams();
+                params.width = Math.min(choice.width, width);
+                params.setMarginStart(index == 0 ? 0 : choiceGap);
+                chip.setLayoutParams(params);
+                bindChip(chip, choice);
+            }
+            for (int index = choices.size(); index < row.getChildCount(); index++) {
+                View unused = row.getChildAt(index);
+                unused.setVisibility(View.GONE);
+                unused.setOnClickListener(null);
+            }
+        }
+
+        private void bindChip(TextView chip, Choice choice) {
             Tag current = selected.get(choice.tag.getName());
-            boolean included = current != null && current.getStatus() == TagStatus.ACCEPTED;
-            boolean excluded = current != null && current.getStatus() == TagStatus.AVOIDED;
+            TagStatus status = current == null ? TagStatus.DEFAULT : current.getStatus();
+            boolean included = status == TagStatus.ACCEPTED;
+            boolean excluded = status == TagStatus.AVOIDED;
             int fill = ContextCompat.getColor(FilterPickerActivity.this, included ? R.color.bookmark_include_background
                 : excluded ? R.color.bookmark_exclude_background : R.color.bookmark_neutral_background);
             int foreground = ContextCompat.getColor(FilterPickerActivity.this, included ? R.color.bookmark_include_foreground
                 : excluded ? R.color.bookmark_exclude_foreground : R.color.bookmark_neutral_foreground);
-            int includeTint = ContextCompat.getColor(FilterPickerActivity.this, R.color.bookmark_include_foreground);
-            int excludeTint = ContextCompat.getColor(FilterPickerActivity.this, R.color.bookmark_exclude_foreground);
-            background.setColor(fill);
-            name.setText(choice.displayName);
-            name.setTextColor(foreground);
-            String number = ChipTag.getCountLabel(FilterPickerActivity.this, choice.tag);
-            count.setVisibility(number.isEmpty() ? View.GONE : View.VISIBLE);
-            count.setText(number);
-            count.setTextColor(foreground);
-            count.setContentDescription(number.isEmpty() ? null : getString(R.string.filter_picker_gallery_count, number));
-            include.setImageResource(included ? R.drawable.ic_check_circle : R.drawable.ic_check);
-            exclude.setImageResource(excluded ? R.drawable.ic_filter_exclude_selected : R.drawable.ic_close);
-            include.setColorFilter(includeTint);
-            exclude.setColorFilter(excludeTint);
-            include.setSelected(included);
-            exclude.setSelected(excluded);
-            include.setContentDescription(included ? getString(R.string.filter_picker_undo_include, choice.displayName)
-                : getString(R.string.bookmark_include_tag, getString(fieldName()), choice.displayName));
-            exclude.setContentDescription(excluded ? getString(R.string.filter_picker_undo_exclude, choice.displayName)
-                : getString(R.string.bookmark_exclude_tag, getString(fieldName()), choice.displayName));
-            include.setOnClickListener(view -> changeSelection(choice, TagStatus.ACCEPTED));
-            exclude.setOnClickListener(view -> changeSelection(choice, TagStatus.AVOIDED));
+            GradientDrawable pill = new GradientDrawable();
+            pill.setColor(fill);
+            pill.setCornerRadius(dp(24));
+            pill.setStroke(dp(1), ColorUtils.setAlphaComponent(foreground, 72));
+            int ripple = MaterialColors.getColor(chip, android.R.attr.colorControlHighlight,
+                ColorUtils.setAlphaComponent(foreground, 32));
+            chip.setBackground(new RippleDrawable(ColorStateList.valueOf(ripple), pill, null));
+            chip.setText(choice.label);
+            chip.setTextColor(foreground);
+            chip.setContentDescription(choice.countLabel.isEmpty() ? choice.displayName
+                : getString(R.string.filter_chip_count_description, choice.displayName, choice.countLabel));
+            ViewCompat.setStateDescription(chip, getString(included ? R.string.filter_chip_included
+                : excluded ? R.string.filter_chip_excluded : R.string.filter_picker_not_selected));
+            Drawable icon = ContextCompat.getDrawable(FilterPickerActivity.this,
+                included ? R.drawable.ic_check : excluded ? R.drawable.ic_close : R.drawable.ic_void);
+            if (icon != null) {
+                icon.mutate().setTint(foreground);
+                icon.setBounds(0, 0, choiceIconSize, choiceIconSize);
+            }
+            chip.setCompoundDrawablesRelative(icon, null, null, null);
+            chip.setOnClickListener(view -> changeSelection(choice));
         }
     }
 }

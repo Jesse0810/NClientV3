@@ -3,7 +3,10 @@ package com.maxwai.nclientv3;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -19,6 +22,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,6 +46,7 @@ import com.maxwai.nclientv3.settings.Login;
 import com.maxwai.nclientv3.utility.BookmarkQuery;
 import com.maxwai.nclientv3.utility.BookmarkFilters;
 import com.maxwai.nclientv3.utility.ContentTagAliases;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -50,8 +55,8 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -59,10 +64,23 @@ public class SearchActivity extends GeneralActivity {
     public static final String EXTRA_BOOKMARK_URL = "com.maxwai.nclientv3.extra.EDIT_BOOKMARK_URL";
     public static final String EXTRA_CREATE_BOOKMARK = "com.maxwai.nclientv3.extra.CREATE_BOOKMARK";
     public static final int CUSTOM_ID_START = 100000000;
+    private static final int[] FIELD_NAMES = {0, R.string.parodies, R.string.characters, R.string.tags,
+        R.string.artists, R.string.groups, R.string.languages, R.string.categories};
+    private static final int[] FIELD_PICKERS = {0, R.id.parody_picker, R.id.character_picker, R.id.tag_picker,
+        R.id.artist_picker, R.id.group_picker, 0, 0};
+    private static final int[] UPLOAD_PRESET_NAMES = {R.string.advanced_filter_any, R.string.advanced_filter_recent_24_hours,
+        R.string.advanced_filter_recent_7_days, R.string.advanced_filter_recent_30_days, R.string.advanced_filter_recent_year,
+        R.string.advanced_filter_older_year, R.string.advanced_filter_custom};
+    private static final int CUSTOM_UPLOAD = UPLOAD_PRESET_NAMES.length - 1;
+    private static final int OLDER_YEAR = CUSTOM_UPLOAD - 1;
+    private static final int[] RECENT_UPLOAD_LIMITS = {24, 7, 30, 1};
+    private static final Ranges.TimeUnit[] RECENT_UPLOAD_UNITS = {Ranges.TimeUnit.HOUR, Ranges.TimeUnit.DAY,
+        Ranges.TimeUnit.DAY, Ranges.TimeUnit.YEAR};
     private static int customId = CUSTOM_ID_START;
     private Ranges ranges = new Ranges();
     private final ArrayList<ChipTag> tags = new ArrayList<>();
-    private final Chip[] addChip = new Chip[TagType.values.length];
+    private final Chip[] anyChips = new Chip[TagType.values.length];
+    private final Chip[] uploadPresets = new Chip[UPLOAD_PRESET_NAMES.length];
     private ChipGroup[] groups;
     private SearchView searchView;
     private HistoryAdapter adapter;
@@ -71,8 +89,10 @@ public class SearchActivity extends GeneralActivity {
     private InputMethodManager inputMethodManager;
     private boolean bookmarkMode;
     private boolean creatingBookmark;
+    private boolean showCustomUpload, updatingFavorites;
     private Bookmark originalBookmark;
     private TextInputEditText bookmarkName;
+    private TextInputEditText minimumFavorites;
     private String initialBookmarkQuery;
     private final ActivityResultLauncher<Intent> filterPicker = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(), result -> {
@@ -85,6 +105,7 @@ public class SearchActivity extends GeneralActivity {
             Map<String, TagStatus> after = fieldStatuses(type, selected);
             replaceFieldTags(type, selected);
             if (!before.equals(after)) advanced = true;
+            refreshFilterSummary();
         });
 
     public void setQuery(String str, boolean submit) {
@@ -111,8 +132,9 @@ public class SearchActivity extends GeneralActivity {
         setSupportActionBar(toolbar);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(bookmarkMode);
-        if (bookmarkMode) getSupportActionBar().setTitle(creatingBookmark ? R.string.bookmark_new : R.string.bookmark_edit);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle(!bookmarkMode ? R.string.search
+            : creatingBookmark ? R.string.bookmark_new : R.string.bookmark_edit);
 
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
@@ -162,11 +184,16 @@ public class SearchActivity extends GeneralActivity {
         else {
             // SearchView's built-in submit button ignores an empty keyword. Submit filters directly.
             findViewById(R.id.submit_search).setOnClickListener(v -> submitSearch(searchView.getQuery().toString()));
-            if (!restoreDraft(savedInstanceState)) searchView.requestFocus();
+            if (!restoreDraft(savedInstanceState)) {
+                refreshRangeLabels();
+                searchView.requestFocus();
+            }
         }
+        refreshFilterSummary();
     }
 
     private void submitSearch(String query) {
+        if (!validateMinimumFavorites(true)) return;
         query = query.trim();
         if (!query.isEmpty()) adapter.addHistory(query);
         Intent intent = new Intent(this, MainActivity.class);
@@ -199,6 +226,7 @@ public class SearchActivity extends GeneralActivity {
         ranges.setToDate(filters.maxAge);
         ranges.setFromDateUnit(findTimeUnit(filters.minAgeUnit));
         ranges.setToDateUnit(findTimeUnit(filters.maxAgeUnit));
+        ranges.setMinFavorites(filters.minFavorites);
         for (BookmarkQuery.Token term : filters.tags) {
             TagType type = TagType.typeByName(term.namespace);
             Tag tag = Queries.TagTable.searchTag(term.value, type);
@@ -236,16 +264,34 @@ public class SearchActivity extends GeneralActivity {
         Ranges savedRanges = state.getParcelable("filterDraftRanges");
         if (savedRanges != null) ranges = savedRanges;
         advanced = state.getBoolean("filterDraftAdvanced");
+        showCustomUpload = state.getBoolean("filterDraftCustomUpload");
         refreshRangeLabels();
+        String favoriteDraft = state.getString("filterDraftFavoriteText");
+        if (favoriteDraft != null) setMinimumFavoritesText(favoriteDraft);
+        validateMinimumFavorites(false);
         return true;
     }
 
     private void refreshRangeLabels() {
+        refreshRangeButtons();
+        setMinimumFavoritesText(ranges.getMinFavorites() == Ranges.UNDEFINED ? "" : String.valueOf(ranges.getMinFavorites()));
+        refreshUploadPresets();
+        refreshFilterSummary();
+    }
+
+    private void refreshRangeButtons() {
         View page = findViewById(R.id.page_range), date = findViewById(R.id.upload_range);
-        ((Button) page.findViewById(R.id.fromButton)).setText(ranges.getFromPage() == Ranges.UNDEFINED ? "" : String.valueOf(ranges.getFromPage()));
-        ((Button) page.findViewById(R.id.toButton)).setText(ranges.getToPage() == Ranges.UNDEFINED ? "" : String.valueOf(ranges.getToPage()));
-        ((Button) date.findViewById(R.id.fromButton)).setText(formatAge(ranges.getFromDate(), ranges.getFromDateUnit()));
-        ((Button) date.findViewById(R.id.toButton)).setText(formatAge(ranges.getToDate(), ranges.getToDateUnit()));
+        setRangeLabel(page, R.id.fromButton, R.string.advanced_filter_minimum,
+            ranges.getFromPage() == Ranges.UNDEFINED ? "" : String.valueOf(ranges.getFromPage()));
+        setRangeLabel(page, R.id.toButton, R.string.advanced_filter_maximum,
+            ranges.getToPage() == Ranges.UNDEFINED ? "" : String.valueOf(ranges.getToPage()));
+        setRangeLabel(date, R.id.fromButton, R.string.advanced_filter_minimum, formatAge(ranges.getFromDate(), ranges.getFromDateUnit()));
+        setRangeLabel(date, R.id.toButton, R.string.advanced_filter_maximum, formatAge(ranges.getToDate(), ranges.getToDateUnit()));
+    }
+
+    private void setRangeLabel(View range, int button, int placeholder, String value) {
+        Button view = range.findViewById(button);
+        view.setText(value.isEmpty() ? getString(placeholder) : value);
     }
 
     private String formatAge(int value, Ranges.TimeUnit unit) {
@@ -276,6 +322,7 @@ public class SearchActivity extends GeneralActivity {
     }
 
     private void saveBookmark() {
+        if (!validateMinimumFavorites(true)) return;
         String name = bookmarkName.getText() == null ? "" : bookmarkName.getText().toString().trim();
         TextInputLayout input = findViewById(R.id.bookmark_name_layout);
         if (name.isEmpty()) {
@@ -318,6 +365,8 @@ public class SearchActivity extends GeneralActivity {
             state.putParcelableArrayList("filterDraftTags", getSelectedTags());
             state.putParcelable("filterDraftRanges", ranges);
             state.putBoolean("filterDraftAdvanced", advanced);
+            state.putBoolean("filterDraftCustomUpload", showCustomUpload);
+            state.putString("filterDraftFavoriteText", minimumFavorites.getText().toString());
         }
         super.onSaveInstanceState(state);
     }
@@ -342,7 +391,7 @@ public class SearchActivity extends GeneralActivity {
         LinearLayout uploadRangeLayout = findViewById(R.id.upload_range);
         if (bookmarkMode) pageRangeLayout.setVisibility(View.GONE);
         ((TextView) pageRangeLayout.findViewById(R.id.title)).setText(R.string.page_range);
-        ((TextView) uploadRangeLayout.findViewById(R.id.title)).setText(R.string.upload_time);
+        uploadRangeLayout.findViewById(R.id.title).setVisibility(View.GONE);
         Button fromPage = pageRangeLayout.findViewById(R.id.fromButton);
         Button toPage = pageRangeLayout.findViewById(R.id.toButton);
         Button fromDate = uploadRangeLayout.findViewById(R.id.fromButton);
@@ -351,39 +400,56 @@ public class SearchActivity extends GeneralActivity {
             @Override
             public void positive(int actual) {
                 ranges.setFromPage(actual);
-                fromPage.setText(String.format(Locale.US, "%d", actual));
-                if (ranges.getFromPage() > ranges.getToPage()) {
-                    ranges.setToPage(Ranges.UNDEFINED);
-                    toPage.setText("");
-                }
-                advanced = true;
+                if (ranges.getFromPage() > ranges.getToPage()) ranges.setToPage(Ranges.UNDEFINED);
+                onRangeChanged();
             }
 
             @Override
             public void neutral() {
                 ranges.setFromPage(Ranges.UNDEFINED);
-                fromPage.setText("");
+                onRangeChanged();
             }
         }));
         toPage.setOnClickListener(v -> createPageBuilder(R.string.to_page, ranges.getFromPage(), 2000, ranges.getToPage(), new DefaultDialogs.CustomDialogResults() {
             @Override
             public void positive(int actual) {
                 ranges.setToPage(actual);
-                toPage.setText(String.format(Locale.US, "%d", actual));
-                advanced = true;
+                onRangeChanged();
             }
 
             @Override
             public void neutral() {
                 ranges.setToPage(Ranges.UNDEFINED);
-                toPage.setText("");
+                onRangeChanged();
             }
         }));
-        fromDate.setOnClickListener(v -> showUnitDialog(fromDate, true));
-        toDate.setOnClickListener(v -> showUnitDialog(toDate, false));
+        fromDate.setOnClickListener(v -> showUnitDialog(true));
+        toDate.setOnClickListener(v -> showUnitDialog(false));
+
+        ChipGroup presets = findViewById(R.id.upload_presets);
+        for (int index = 0; index < UPLOAD_PRESET_NAMES.length; index++) {
+            int preset = index;
+            Chip chip = createChoiceChip(presets, UPLOAD_PRESET_NAMES[index]);
+            chip.setOnClickListener(view -> selectUploadPreset(preset));
+            presets.addView(chip);
+            uploadPresets[index] = chip;
+        }
+        minimumFavorites = findViewById(R.id.filter_min_favorites);
+        // The draft saves the exact input, including an invalid value still being edited.
+        minimumFavorites.setSaveEnabled(false);
+        minimumFavorites.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence text, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence text, int start, int before, int count) {
+                if (updatingFavorites) return;
+                int previous = ranges.getMinFavorites();
+                if (validateMinimumFavorites(false) && ranges.getMinFavorites() != previous) advanced = true;
+                refreshFilterSummary();
+            }
+            @Override public void afterTextChanged(Editable text) {}
+        });
     }
 
-    private void showUnitDialog(Button button, boolean from) {
+    private void showUnitDialog(boolean from) {
         int i = 0;
         String[] strings = new String[Ranges.TimeUnit.values().length];
         for (Ranges.TimeUnit unit : Ranges.TimeUnit.values())
@@ -404,8 +470,7 @@ public class SearchActivity extends GeneralActivity {
                         ranges.setToDateUnit(temporaryUnit);
                         ranges.setToDate(actual);
                     }
-                    button.setText(formatAge(actual, temporaryUnit));
-                    advanced = true;
+                    onRangeChanged();
                 }
 
                 @Override
@@ -417,7 +482,7 @@ public class SearchActivity extends GeneralActivity {
                         ranges.setToDateUnit(Ranges.UNDEFINED_DATE);
                         ranges.setToDate(Ranges.UNDEFINED);
                     }
-                    button.setText("");
+                    onRangeChanged();
                 }
             });
         });
@@ -429,12 +494,96 @@ public class SearchActivity extends GeneralActivity {
                 ranges.setToDateUnit(Ranges.UNDEFINED_DATE);
                 ranges.setToDate(Ranges.UNDEFINED);
             }
-            button.setText("");
+            onRangeChanged();
         });
         builder.show();
     }
 
+    private void onRangeChanged() {
+        advanced = true;
+        refreshRangeButtons();
+        refreshUploadPresets();
+        refreshFilterSummary();
+    }
+
+    private void setMinimumFavoritesText(String value) {
+        updatingFavorites = true;
+        minimumFavorites.setText(value);
+        updatingFavorites = false;
+    }
+
+    private boolean validateMinimumFavorites(boolean focusOnError) {
+        TextInputLayout field = findViewById(R.id.filter_min_favorites_layout);
+        CharSequence value = minimumFavorites.getText();
+        String text = value == null ? "" : value.toString().trim();
+        if (text.isEmpty()) {
+            field.setError(null);
+            ranges.setMinFavorites(Ranges.UNDEFINED);
+            return true;
+        }
+        try {
+            int valueAsNumber = Integer.parseInt(text);
+            if (valueAsNumber > 0) {
+                field.setError(null);
+                ranges.setMinFavorites(valueAsNumber);
+                return true;
+            }
+        } catch (NumberFormatException ignored) {
+            // Leave the draft intact so an invalid number can be corrected.
+        }
+        ranges.setMinFavorites(Ranges.UNDEFINED);
+        field.setError(getString(R.string.advanced_filter_invalid_number));
+        if (focusOnError) minimumFavorites.requestFocus();
+        return false;
+    }
+
+    private void selectUploadPreset(int preset) {
+        if (preset == CUSTOM_UPLOAD) {
+            showCustomUpload = true;
+            refreshUploadPresets();
+            return;
+        }
+        showCustomUpload = false;
+        ranges.setFromDate(Ranges.UNDEFINED);
+        ranges.setToDate(Ranges.UNDEFINED);
+        ranges.setFromDateUnit(Ranges.UNDEFINED_DATE);
+        ranges.setToDateUnit(Ranges.UNDEFINED_DATE);
+        if (preset == OLDER_YEAR) {
+            ranges.setFromDate(1);
+            ranges.setFromDateUnit(Ranges.TimeUnit.YEAR);
+        } else if (preset > 0) {
+            ranges.setToDate(RECENT_UPLOAD_LIMITS[preset - 1]);
+            ranges.setToDateUnit(RECENT_UPLOAD_UNITS[preset - 1]);
+        }
+        onRangeChanged();
+    }
+
+    private int currentUploadPreset() {
+        if (showCustomUpload) return CUSTOM_UPLOAD;
+        if (ranges.getFromDate() == Ranges.UNDEFINED) {
+            if (ranges.getToDate() == Ranges.UNDEFINED) return 0;
+            for (int i = 0; i < RECENT_UPLOAD_LIMITS.length; i++)
+                if (ranges.getToDate() == RECENT_UPLOAD_LIMITS[i] && ranges.getToDateUnit() == RECENT_UPLOAD_UNITS[i])
+                    return i + 1;
+        } else if (ranges.getToDate() == Ranges.UNDEFINED && ranges.getFromDate() == 1
+            && ranges.getFromDateUnit() == Ranges.TimeUnit.YEAR) return OLDER_YEAR;
+        return CUSTOM_UPLOAD;
+    }
+
+    private void refreshUploadPresets() {
+        int active = currentUploadPreset();
+        findViewById(R.id.upload_range).setVisibility(active == CUSTOM_UPLOAD ? View.VISIBLE : View.GONE);
+        for (int index = 0; index < uploadPresets.length; index++)
+            stylePresetChip(uploadPresets[index], index == active);
+    }
+
     private void populateGroup() {
+        for (TagType type : TagType.values) {
+            int pickerId = FIELD_PICKERS[type.getId()];
+            if (pickerId != 0) findViewById(pickerId).setOnClickListener(view -> openFilterPicker(type));
+        }
+        populateInlineField(TagType.LANGUAGE);
+        populateInlineField(TagType.CATEGORY);
         if (!bookmarkMode) {
             for (Tag tag : Queries.TagTable.mergeContentTags(Queries.TagTable.getAllFiltered()))
                 if (tag.getStatus() != TagStatus.AVOIDED || Global.removeAvoidedGalleries()) addFilterTag(tag);
@@ -453,18 +602,80 @@ public class SearchActivity extends GeneralActivity {
             // must keep the user's language selections, including an empty language field.
             addFilterTag(includedLanguage(SpecialTagIds.LANGUAGE_CHINESE, "chinese"));
         }
-        for (TagType type : TagType.values) {
-            if (TagType.UNKNOWN.equals(type)) continue;
-            ChipGroup group = getGroup(type);
-            Chip choose = (Chip) getLayoutInflater().inflate(R.layout.chip_layout, group, false);
-            choose.setCloseIconVisible(false);
-            choose.setChipIconResource(R.drawable.ic_add);
-            choose.setText(R.string.choose_filter_values);
-            choose.setOnClickListener(view -> openFilterPicker(type));
-            Global.setTint(this, choose.getChipIcon());
-            addChip[type.getId()] = choose;
-            group.addView(choose);
+    }
+
+    private void populateInlineField(TagType type) {
+        ChipGroup group = getGroup(type);
+        Chip any = createChoiceChip(group, R.string.advanced_filter_any);
+        any.setOnClickListener(view -> {
+            if (fieldStatuses(type, getSelectedTags()).isEmpty()) return;
+            replaceFieldTags(type, Collections.emptyList());
+            advanced = true;
+            refreshFilterSummary();
+        });
+        anyChips[type.getId()] = any;
+        group.addView(any);
+        Map<String, Tag> unique = new LinkedHashMap<>();
+        for (Tag tag : Queries.TagTable.getTrueAllType(type)) {
+            if (!isSafeNewValue(tag.getName())) continue;
+            unique.merge(tag.getName(), tag, (first, second) -> new Tag(first.getName(),
+                Math.max(first.getCount(), second.getCount()), Math.min(first.getId(), second.getId()), type, TagStatus.DEFAULT));
         }
+        List<Tag> choices = new ArrayList<>(unique.values());
+        choices.sort(Comparator.comparingInt((Tag tag) -> ChipTag.hasKnownCount(tag) ? tag.getCount() : -1).reversed()
+            .thenComparing(tag -> tag.getFilterDisplayName(this), String.CASE_INSENSITIVE_ORDER)
+            .thenComparing(Tag::getName));
+        for (Tag tag : choices)
+            addFilterTag(new Tag(tag.getName(), tag.getCount(), tag.getId(), type, TagStatus.DEFAULT));
+    }
+
+    private static boolean isSafeNewValue(String name) {
+        return name != null && !name.trim().isEmpty() && name.indexOf('"') < 0 && name.indexOf('\\') < 0;
+    }
+
+    private static boolean isInlineField(TagType type) {
+        return TagType.LANGUAGE.equals(type) || TagType.CATEGORY.equals(type);
+    }
+
+    private Chip createChoiceChip(ChipGroup group, int label) {
+        Chip chip = (Chip) getLayoutInflater().inflate(R.layout.chip_layout, group, false);
+        chip.setCloseIconVisible(false);
+        chip.setChipIconVisible(false);
+        chip.setText(label);
+        return chip;
+    }
+
+    private void stylePresetChip(Chip chip, boolean active) {
+        chip.setSelected(active);
+        int background = ContextCompat.getColor(this, active ? R.color.bookmark_include_background : R.color.bookmark_neutral_background);
+        int foreground = ContextCompat.getColor(this, active ? R.color.bookmark_include_foreground : R.color.bookmark_neutral_foreground);
+        chip.setChipBackgroundColor(ColorStateList.valueOf(background));
+        chip.setTextColor(foreground);
+    }
+
+    private void refreshFilterSummary() {
+        int[] counts = new int[TagType.values.length];
+        for (ChipTag chip : tags) {
+            Tag tag = chip.getTag();
+            if (tag.getStatus() != TagStatus.DEFAULT) counts[tag.getType().getId()]++;
+        }
+        int total = 0;
+        for (TagType type : TagType.values) {
+            int index = type.getId();
+            total += counts[index];
+            int pickerId = FIELD_PICKERS[index];
+            if (pickerId != 0) {
+                MaterialButton picker = findViewById(pickerId);
+                String field = getString(FIELD_NAMES[index]);
+                picker.setText(counts[index] == 0 ? field : getString(R.string.advanced_filter_field_count, field, counts[index]));
+                getGroup(type).setVisibility(counts[index] == 0 ? View.GONE : View.VISIBLE);
+            } else if (anyChips[index] != null) stylePresetChip(anyChips[index], counts[index] == 0);
+        }
+        if (!bookmarkMode && (ranges.getFromPage() != Ranges.UNDEFINED || ranges.getToPage() != Ranges.UNDEFINED)) total++;
+        if (ranges.getFromDate() != Ranges.UNDEFINED || ranges.getToDate() != Ranges.UNDEFINED) total++;
+        if (ranges.getMinFavorites() != Ranges.UNDEFINED) total++;
+        TextView summary = findViewById(R.id.advanced_filter_summary);
+        summary.setText(total == 0 ? getString(R.string.advanced_filters) : getString(R.string.advanced_filters_count, total));
     }
 
     private Tag getDefaultSearchLanguage() {
@@ -503,8 +714,11 @@ public class SearchActivity extends GeneralActivity {
         for (int index = tags.size() - 1; index >= 0; index--) {
             ChipTag chip = tags.get(index);
             if (type.equals(chip.getTag().getType())) {
-                group.removeView(chip);
-                tags.remove(index);
+                if (isInlineField(type)) chip.changeStatus(TagStatus.DEFAULT);
+                else {
+                    group.removeView(chip);
+                    tags.remove(index);
+                }
             }
         }
         for (Tag tag : selected)
@@ -521,13 +735,14 @@ public class SearchActivity extends GeneralActivity {
     }
 
     private void addFilterTag(Tag tag) {
-        if (tag.getStatus() == TagStatus.DEFAULT || TagType.UNKNOWN.equals(tag.getType())) return;
+        TagType type = tag.getType();
+        boolean inline = isInlineField(type);
+        if (TagType.UNKNOWN.equals(type) || (!inline && tag.getStatus() == TagStatus.DEFAULT)) return;
         ChipTag existing = findFilterTag(tag);
         if (existing != null) {
             existing.changeStatus(tag.getStatus());
             return;
         }
-        TagType type = tag.getType();
         if (TagType.TAG.equals(type) && ContentTagAliases.members(tag.getName()).size() > 1) {
             // Management collapses a family using its highest count. A filter displays the
             // count of the exact raw value that will be queried, including old spellings.
@@ -539,23 +754,28 @@ public class SearchActivity extends GeneralActivity {
         }
         ChipGroup group = getGroup(type);
         ChipTag chip = (ChipTag) getLayoutInflater().inflate(R.layout.chip_layout_entry, group, false);
-        chip.init(tag, true, true);
-        chip.setOnCloseIconClickListener(view -> removeFilterChip(group, chip));
+        chip.init(tag, !inline, true);
+        if (!inline) chip.setOnCloseIconClickListener(view -> {
+            removeFilterChip(group, chip);
+            onFilterChanged();
+        });
         chip.setOnClickListener(view -> {
             chip.updateStatus();
-            if (chip.getTag().getStatus() == TagStatus.DEFAULT) removeFilterChip(group, chip);
-            advanced = true;
+            if (!inline && chip.getTag().getStatus() == TagStatus.DEFAULT) removeFilterChip(group, chip);
+            onFilterChanged();
         });
-        Chip choose = addChip[type.getId()];
-        int chooseIndex = choose == null ? -1 : group.indexOfChild(choose);
-        group.addView(chip, chooseIndex);
+        group.addView(chip);
         tags.add(chip);
     }
 
     private void removeFilterChip(ChipGroup group, ChipTag chip) {
         group.removeView(chip);
         tags.remove(chip);
+    }
+
+    private void onFilterChanged() {
         advanced = true;
+        refreshFilterSummary();
     }
 
     private ChipGroup getGroup(TagType type) {

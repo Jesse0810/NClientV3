@@ -1,47 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
+    android:drawablePadding="6dp"
+    android:ellipsize="middle"
+    android:focusable="true"
     android:gravity="center_vertical"
-    android:minHeight="52dp"
-    android:orientation="horizontal"
-    android:paddingStart="12dp"
-    android:paddingEnd="4dp">
-
-    <TextView
-        android:id="@+id/filter_picker_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:breakStrategy="simple"
-        android:paddingVertical="8dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
-
-    <TextView
-        android:id="@+id/filter_picker_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="4dp"
-        android:gravity="end"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/filter_picker_include"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:padding="12dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_check" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/filter_picker_exclude"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:padding="12dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_close" />
-</LinearLayout>
+    android:minHeight="48dp"
+    android:minWidth="48dp"
+    android:paddingHorizontal="10dp"
+    android:singleLine="true"
+    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="advanced_filters">高级筛选</string>
+    <string name="advanced_filters_count">高级筛选 · %1$d 项</string>
+    <string name="advanced_filter_field_count">%1$s · %2$d 项</string>
+    <string name="advanced_filter_any">不限</string>
+    <string name="advanced_filter_uploaded">上传时间</string>
+    <string name="advanced_filter_recent_24_hours">近 24 小时</string>
+    <string name="advanced_filter_recent_7_days">近 7 天</string>
+    <string name="advanced_filter_recent_30_days">近 30 天</string>
+    <string name="advanced_filter_recent_year">近 1 年</string>
+    <string name="advanced_filter_older_year">1 年前</string>
+    <string name="advanced_filter_custom">自定义范围</string>
+    <string name="advanced_filter_numeric">数值筛选</string>
+    <string name="advanced_filter_minimum">最少</string>
+    <string name="advanced_filter_maximum">最多</string>
+    <string name="advanced_filter_min_favorites">最少收藏数</string>
+    <string name="advanced_filter_invalid_number">请输入大于 0 的整数</string>
+    <string name="advanced_filter_bookmark_hint">点字段可浏览词条。点词条可依次切换包含、排除和不选。</string>
+</resources>

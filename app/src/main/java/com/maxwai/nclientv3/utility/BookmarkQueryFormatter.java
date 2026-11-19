@@ -31,7 +31,10 @@ public final class BookmarkQueryFormatter {
                     context.getString(TYPE_NAMES[type.getId()]), tag.getFilterDisplayName(context)));
             } else {
                 Matcher range = RANGE.matcher(token.raw);
-                if (range.matches()) {
+                int minimumFavorites = BookmarkFilters.favoriteMinimum(token.raw);
+                if (minimumFavorites > 0) {
+                    result.append(context.getString(R.string.advanced_filter_min_favorites)).append(" ≥ ").append(minimumFavorites);
+                } else if (range.matches()) {
                     String value = range.group(3);
                     if (!range.group(4).isEmpty()) value += " " + context.getString(unitResource(range.group(4).toLowerCase(Locale.ROOT)));
                     result.append(context.getString("pages".equalsIgnoreCase(range.group(1)) ? R.string.page_range : R.string.upload_time))

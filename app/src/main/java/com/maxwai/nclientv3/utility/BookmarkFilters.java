@@ -13,12 +13,14 @@ import java.util.regex.Pattern;
 public final class BookmarkFilters {
     private static final Pattern RANGE = Pattern.compile("(-?)(pages|uploaded):(.*)", Pattern.CASE_INSENSITIVE);
     private static final Pattern BOUND = Pattern.compile("(>=|<=)?([0-9]+)([a-z]*)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern FAVORITE_THRESHOLD = Pattern.compile("favorites:>=([0-9]+)", Pattern.CASE_INSENSITIVE);
     public final String keywords, minAgeUnit, maxAgeUnit;
     public final List<BookmarkQuery.Token> tags;
-    public final int minPages, maxPages, minAge, maxAge;
+    public final int minPages, maxPages, minAge, maxAge, minFavorites;
     public final boolean rawExpression;
 
-    private BookmarkFilters(String keywords, List<BookmarkQuery.Token> tags, Bounds pages, Bounds age, boolean rawExpression) {
+    private BookmarkFilters(String keywords, List<BookmarkQuery.Token> tags, Bounds pages, Bounds age,
+                            int minFavorites, boolean rawExpression) {
         this.keywords = keywords;
         this.tags = Collections.unmodifiableList(new ArrayList<>(tags));
         minPages = pages.min;
@@ -27,6 +29,7 @@ public final class BookmarkFilters {
         maxAge = age.max;
         minAgeUnit = age.minUnit;
         maxAgeUnit = age.maxUnit;
+        this.minFavorites = minFavorites;
         this.rawExpression = rawExpression;
     }
 
@@ -36,6 +39,7 @@ public final class BookmarkFilters {
         List<BookmarkQuery.Token> tags = new ArrayList<>();
         Set<String> seenTags = new HashSet<>();
         Bounds pages = new Bounds(), age = new Bounds();
+        int minFavorites = -1;
         StringBuilder keywords = new StringBuilder();
         int copiedUntil = 0;
         for (BookmarkQuery.Token token : BookmarkQuery.tokenize(raw)) {
@@ -50,6 +54,13 @@ public final class BookmarkFilters {
                 if (!seenTags.add(token.namespace + ":" + token.value.toLowerCase(Locale.ROOT))) return raw(raw);
                 tags.add(token);
                 extracted = true;
+            } else {
+                int threshold = favoriteMinimum(token.raw);
+                if (threshold > 0) {
+                    if (minFavorites != -1) return raw(raw);
+                    minFavorites = threshold;
+                    extracted = true;
+                }
             }
             if (extracted) {
                 keywords.append(raw, copiedUntil, token.start);
@@ -58,11 +69,23 @@ public final class BookmarkFilters {
         }
         if (pages.reversed() || age.reversed()) return raw(raw);
         keywords.append(raw, copiedUntil, raw.length());
-        return new BookmarkFilters(keywords.toString().trim(), tags, pages, age, false);
+        return new BookmarkFilters(keywords.toString().trim(), tags, pages, age, minFavorites, false);
+    }
+
+    /** Only the numeric minimum exposed by the editor can be represented as a field. */
+    static int favoriteMinimum(String token) {
+        Matcher matcher = FAVORITE_THRESHOLD.matcher(token);
+        if (!matcher.matches()) return -1;
+        try {
+            int value = Integer.parseInt(matcher.group(1));
+            return value > 0 ? value : -1;
+        } catch (NumberFormatException invalid) {
+            return -1;
+        }
     }
 
     private static BookmarkFilters raw(String query) {
-        return new BookmarkFilters(query, Collections.emptyList(), new Bounds(), new Bounds(), true);
+        return new BookmarkFilters(query, Collections.emptyList(), new Bounds(), new Bounds(), -1, true);
     }
 
     private static final class Bounds {

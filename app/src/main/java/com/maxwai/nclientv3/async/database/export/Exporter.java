@@ -13,9 +13,13 @@ import com.maxwai.nclientv3.async.database.Queries;
 import com.maxwai.nclientv3.settings.Database;
 import com.maxwai.nclientv3.utility.LogUtility;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Map;
 import java.util.Set;
@@ -25,11 +29,11 @@ import java.util.zip.ZipOutputStream;
 
 public class Exporter {
     static final String DB_ZIP_FILE = "Database.json";
-    private static final String[] SHARED_FILES = new String[]{
+    static final String[] SHARED_FILES = new String[]{
         "Settings",
         "ScrapedTags",
     };
-    private static final String[] SCHEMAS = new String[]{
+    static final String[] SCHEMAS = new String[]{
         Queries.GalleryTable.TABLE_NAME,
         Queries.TagTable.TABLE_NAME,
         Queries.GalleryBridgeTable.TABLE_NAME,
@@ -47,7 +51,7 @@ public class Exporter {
         if (db == null)
             throw new IOException("Can't export Database, don't have database connection yet");
         // Do not close the writer here, as that would close the shared ZipOutputStream.
-        JsonWriter writer = new JsonWriter(new OutputStreamWriter(stream));
+        JsonWriter writer = new JsonWriter(new OutputStreamWriter(stream, StandardCharsets.UTF_8));
         writer.beginObject();
         for (String s : SCHEMAS) {
             try (Cursor cur = db.query(s, null, null, null, null, null, null)) {
@@ -94,9 +98,22 @@ public class Exporter {
     }
 
     public static void exportData(SettingsActivity context, Uri selectedFile) throws IOException {
+        File staged = File.createTempFile("nclient-export-", ".zip", context.getCacheDir());
+        try {
+            writeArchive(context, staged);
+            // Finish the compressed archive before copying to the document provider.
+            try (FileInputStream archive = new FileInputStream(staged);
+                 OutputStream output = context.getContentResolver().openOutputStream(selectedFile, "wt")) {
+                if (output == null) throw new IOException("Cannot open backup destination");
+                BackupArchive.copy(archive, output);
+            }
+        } finally {
+            if (!staged.delete()) LogUtility.d("Unable to remove temporary export file");
+        }
+    }
 
-        OutputStream outputStream = context.getContentResolver().openOutputStream(selectedFile);
-        try (ZipOutputStream zip = new ZipOutputStream(outputStream)) {
+    private static void writeArchive(SettingsActivity context, File file) throws IOException {
+        try (ZipOutputStream zip = new ZipOutputStream(new FileOutputStream(file))) {
             zip.setLevel(Deflater.BEST_COMPRESSION);
 
             zip.putNextEntry(new ZipEntry(DB_ZIP_FILE));
@@ -113,7 +130,7 @@ public class Exporter {
     }
 
     private static void exportSharedPreferences(Context context, String sharedName, OutputStream stream) throws IOException {
-        JsonWriter writer = new JsonWriter(new OutputStreamWriter(stream));
+        JsonWriter writer = new JsonWriter(new OutputStreamWriter(stream, StandardCharsets.UTF_8));
         SharedPreferences pref = context.getSharedPreferences(sharedName, 0);
         Map<String, ?> map = pref.getAll();
         writer.beginObject();

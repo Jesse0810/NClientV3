@@ -49,10 +49,28 @@ def database_checks():
 
 
 def query_checks():
-    # Stubs supply only parcel/annotation signatures; tests execute the actual pure query logic.
+    # Android stubs let the checks exercise query and integer parcel logic in the JVM.
     stubs = {
         "android/os/Parcelable.java": "package android.os; public interface Parcelable { int describeContents(); void writeToParcel(Parcel p,int f); interface Creator<T>{T createFromParcel(Parcel p);T[] newArray(int n);} }",
-        "android/os/Parcel.java": "package android.os; public class Parcel { public int readInt(){throw new UnsupportedOperationException();} public void writeInt(int n){throw new UnsupportedOperationException();} }",
+        "android/os/Parcel.java": """package android.os;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Parcel {
+    private final List<Integer> integers = new ArrayList<>();
+    private int position;
+
+    public static Parcel obtain() { return new Parcel(); }
+    public void recycle() {}
+    public void setDataPosition(int value) { position = value; }
+    public int readInt() { return integers.get(position++); }
+    public void writeInt(int value) {
+        if (position == integers.size()) integers.add(value);
+        else integers.set(position, value);
+        position++;
+    }
+}
+""",
         "androidx/annotation/StringRes.java": "package androidx.annotation; public @interface StringRes {}",
         "com/maxwai/nclientv3/R.java": "package com.maxwai.nclientv3; public final class R { public static final class string {public static final int hours=1,days=2,weeks=3,months=4,years=5;} }",
     }

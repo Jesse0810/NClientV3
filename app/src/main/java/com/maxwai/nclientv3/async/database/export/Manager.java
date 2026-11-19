@@ -33,9 +33,11 @@ public class Manager extends Thread {
             if (export) Exporter.exportData(context, file);
             else Importer.importData(context, file);
             context.runOnUiThread(end);
-        } catch (IOException e) {
-            LogUtility.e(e, e);
-            context.runOnUiThread(() -> Toast.makeText(context, R.string.failed, Toast.LENGTH_SHORT).show());
+        } catch (IOException | RuntimeException error) {
+            LogUtility.e(error, error);
+            int message = export ? R.string.backup_export_failed : error instanceof BackupArchive.InvalidBackupException
+                ? R.string.backup_invalid : R.string.backup_import_failed;
+            context.runOnUiThread(() -> Toast.makeText(context, message, Toast.LENGTH_LONG).show());
         }
     }
 }

@@ -8,37 +8,34 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
+        android:background="?attr/colorSurface"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
-            android:minHeight="?attr/actionBarSize"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/search" />
 
-            <LinearLayout
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.NClient.AdvancedFilter.Keyword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="8dp">
+
+            <com.maxwai.nclientv3.components.widgets.CustomSearchView
+                android:id="@+id/search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <com.maxwai.nclientv3.components.widgets.CustomSearchView
-                    android:id="@+id/search"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:imeOptions="actionSearch"
-                    app:iconifiedByDefault="false"
-                    app:queryHint="@string/search_keywords_hint" />
-
-
-            </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>
-
+                android:imeOptions="actionSearch"
+                android:minHeight="52dp"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@null"
+                app:queryHint="@string/search_keywords_hint"
+                app:submitBackground="@null" />
+        </com.google.android.material.card.MaterialCardView>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -50,8 +47,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appbar">
 
-        <LinearLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <include layout="@layout/search_options" />
 
@@ -59,6 +58,7 @@
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
                 android:nestedScrollingEnabled="false" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -67,9 +67,11 @@
         android:id="@+id/submit_search"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8dp"
         android:minHeight="48dp"
         android:text="@string/search"
+        app:cornerRadius="10dp"
         app:icon="@drawable/ic_search"
         app:iconGravity="textStart"
         app:layout_constraintBottom_toBottomOf="parent"

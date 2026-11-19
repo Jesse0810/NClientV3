@@ -1,0 +1,5 @@
+<resources>
+    <string name="backup_invalid">This file is not a complete NClientV3 backup. Choose another ZIP or export it again from the old app.</string>
+    <string name="backup_export_failed">Could not save the backup. Please choose a writable folder and export again.</string>
+    <string name="backup_import_failed">Could not read or restore the backup. Please try again.</string>
+</resources>

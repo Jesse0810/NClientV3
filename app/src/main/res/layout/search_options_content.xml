@@ -1,132 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/advanced_filter_summary"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginBottom="4dp"
+        android:accessibilityHeading="true"
+        android:drawableStart="@drawable/ic_filter_list"
+        android:drawablePadding="10dp"
+        android:drawableTint="?attr/colorOnSurface"
+        android:gravity="center_vertical"
+        android:minHeight="44dp"
+        android:paddingHorizontal="4dp"
+        android:text="@string/advanced_filters" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/tag_picker"
+        style="@style/Widget.NClient.AdvancedFilter.Field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tags" />
 
-        <include
-            android:id="@+id/page_range"
-            layout="@layout/search_range"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/tag_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
-        <include
-            android:id="@+id/upload_range"
-            layout="@layout/search_range"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/artist_picker"
+        style="@style/Widget.NClient.AdvancedFilter.Field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/artists" />
 
-        <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline6"
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/artist_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/character_picker"
+        style="@style/Widget.NClient.AdvancedFilter.Field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/characters" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/character_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/parody_picker"
+        style="@style/Widget.NClient.AdvancedFilter.Field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/parodies" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/parody_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/group_picker"
+        style="@style/Widget.NClient.AdvancedFilter.Field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/groups" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/group_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <TextView
+        style="@style/Widget.NClient.AdvancedFilter.Section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:accessibilityHeading="true"
+        android:text="@string/languages" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/language_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        style="@style/Widget.NClient.AdvancedFilter.Section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:accessibilityHeading="true"
+        android:text="@string/categories" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/category_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        style="@style/Widget.NClient.AdvancedFilter.Section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:accessibilityHeading="true"
+        android:text="@string/advanced_filter_uploaded" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/upload_presets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        android:id="@+id/upload_range"
+        layout="@layout/search_range"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <TextView
+        style="@style/Widget.NClient.AdvancedFilter.Section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:accessibilityHeading="true"
+        android:text="@string/advanced_filter_numeric" />
+
+    <include
+        android:id="@+id/page_range"
+        layout="@layout/search_range"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filter_min_favorites_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/advanced_filter_min_favorites">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/filter_min_favorites"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tags" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/tag_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:animateLayoutChanges="true" />
-
-        <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/parodies" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/parody_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:animateLayoutChanges="true" />
-
-        <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/characters" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/character_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:animateLayoutChanges="true" />
-
-        <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/artists" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/artist_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:animateLayoutChanges="true" />
-
-        <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/groups" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/group_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:animateLayoutChanges="true" />
-
-        <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/categories" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/category_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:animateLayoutChanges="true" />
-
-        <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/languages" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/language_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:animateLayoutChanges="true" />
-
-    </LinearLayout>
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="10"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>

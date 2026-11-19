@@ -64,6 +64,7 @@ public final class BookmarkConditionsDialog {
                 addRange(activity, fields, R.string.page_range, filters.minPages, "", filters.maxPages, "");
                 addRange(activity, fields, R.string.upload_time, filters.minAge, filters.minAgeUnit,
                     filters.maxAge, filters.maxAgeUnit);
+                addRange(activity, fields, R.string.advanced_filter_min_favorites, filters.minFavorites, "", -1, "");
             }
         }
         new MaterialAlertDialogBuilder(activity).setTitle(bookmark.getDisplayTitle(activity))

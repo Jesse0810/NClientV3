@@ -3,13 +3,9 @@
     android:id="@+id/groups"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginRight="8dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
-    android:orientation="vertical">
+    android:layout_marginHorizontal="16dp"
+    android:orientation="vertical"
+    android:paddingVertical="8dp">
 
     <include layout="@layout/search_options_content" />
 </LinearLayout>
